@@ -44,5 +44,15 @@ class GameOfLife {
             }
             return newState
         }
+
+        fun countAlive(newStateOfGame: List<List<Boolean>>): Int {
+            var aliveCount = 0
+            for (row in newStateOfGame.indices) {
+                for (col in newStateOfGame.first().indices) {
+                    if (newStateOfGame[row][col]) aliveCount++
+                }
+            }
+            return aliveCount
+        }
     }
 }

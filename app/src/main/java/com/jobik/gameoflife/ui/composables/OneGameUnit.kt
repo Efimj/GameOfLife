@@ -13,7 +13,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun OneGameUnit(state: Boolean, onClick: () -> Unit) {
+fun OneGameUnit(state: Boolean, enableEmojis: Boolean = false, onClick: () -> Unit) {
+
+
     Box(
         modifier = Modifier
             .aspectRatio(1f)

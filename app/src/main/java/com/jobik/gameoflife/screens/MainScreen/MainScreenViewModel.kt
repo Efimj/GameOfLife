@@ -4,6 +4,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.countAlive
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.makeOneStepGameOfLife
 import com.jobik.gameoflife.helpers.ArrayHelper.Companion.cloneList
 import com.jobik.gameoflife.helpers.ArrayHelper.Companion.fillTwoDimListRandomly
@@ -16,8 +17,10 @@ data class MainScreenStates(
     val isSimulationRunning: Boolean = false,
     val rows: Int = 10,
     val columns: Int = 10,
+    val aliveCount: Int = 0,
     val currentStep: Long = 0,
     val currentStepValues: List<List<Boolean>> = List(rows) { List(columns) { false } },
+    val oneStepDurationMills: Long = 200,
 )
 
 class MainScreenViewModel : ViewModel() {
@@ -27,7 +30,8 @@ class MainScreenViewModel : ViewModel() {
     init {
         val list = generateTwoDimList(rows = states.value.rows, cols = states.value.columns, initialValue = false)
         fillTwoDimListRandomly(list)
-        _states.value = states.value.copy(currentStepValues = list)
+        val aliveCount = countAlive(list)
+        _states.value = states.value.copy(currentStepValues = list, aliveCount = aliveCount)
     }
 
     fun onElementClick(row: Int, column: Int) {
@@ -35,7 +39,8 @@ class MainScreenViewModel : ViewModel() {
         if (checkIsOutOfBounds(row, column, oldList)) return
         val newList = cloneList(oldList)
         newList[row][column] = newList[row][column].not()
-        _states.value = states.value.copy(currentStepValues = newList)
+        val aliveCount = countAlive(newList)
+        _states.value = states.value.copy(currentStepValues = newList, aliveCount = aliveCount)
     }
 
     private fun checkIsOutOfBounds(
@@ -57,10 +62,10 @@ class MainScreenViewModel : ViewModel() {
             wipeStep()
             while (true) {
                 updateStep()
-                delay(200)
+                delay(states.value.oneStepDurationMills)
                 val newStateOfGame = makeOneStepGameOfLife(currentState = states.value.currentStepValues)
-                _states.value = states.value.copy(currentStepValues = newStateOfGame)
-
+                val aliveCount = countAlive(newStateOfGame)
+                _states.value = states.value.copy(currentStepValues = newStateOfGame, aliveCount = aliveCount)
             }
         }
     }
@@ -86,5 +91,9 @@ class MainScreenViewModel : ViewModel() {
     fun turnOffSimulation() {
         _states.value = states.value.copy(isSimulationRunning = false)
         stopSimulation()
+    }
+
+    fun changeStepDuration(duration: Long) {
+        _states.value = states.value.copy(oneStepDurationMills = duration)
     }
 }

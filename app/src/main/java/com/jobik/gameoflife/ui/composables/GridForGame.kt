@@ -10,7 +10,6 @@ import androidx.compose.ui.unit.dp
 fun GridForGame(array: List<List<Boolean>>, onElementClick: (row: Int, column: Int) -> Unit) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(array.size),
-        contentPadding = PaddingValues(20.dp)
     ) {
         items(array.size * array.first().size) { index ->
             val row = index / array.first().size
