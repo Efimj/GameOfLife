@@ -81,7 +81,6 @@ class MainScreenViewModel : ViewModel() {
         simulationJob?.cancel()
 
         simulationJob = viewModelScope.launch {
-            wipeStep()
             while (true) {
                 updateStep()
                 delay(states.value.oneStepDurationMills)
@@ -129,10 +128,6 @@ class MainScreenViewModel : ViewModel() {
 
     fun updateStep() {
         _states.value = states.value.copy(stepNumber = states.value.stepNumber + 1)
-    }
-
-    fun wipeStep() {
-        _states.value = states.value.copy(stepNumber = 0)
     }
 
     fun turnOnSimulation() {

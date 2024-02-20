@@ -2,10 +2,7 @@ package com.jobik.gameoflife.ui.composables
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -36,7 +33,8 @@ fun GridForGame(
             .border(BorderStroke(2.dp, MaterialTheme.colorScheme.outline), MaterialTheme.shapes.medium),
         columns = GridCells.Fixed(array.size),
         verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterVertically),
-        horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally)
+        horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally),
+        contentPadding = PaddingValues(4.dp)
     ) {
         items(array.size * array.first().size) { index ->
             val row = index / array.first().size
