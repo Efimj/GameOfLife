@@ -1,10 +1,8 @@
 package com.jobik.gameoflife.screens.MainScreen
 
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.RestartAlt
 import androidx.compose.material3.*
@@ -25,11 +23,38 @@ fun MainScreen(viewModel: MainScreenViewModel = androidx.lifecycle.viewmodel.com
             .background(MaterialTheme.colorScheme.background)
             .padding(20.dp)
     ) {
-        GridForGame(
-            array = viewModel.states.value.currentStep,
-            emojiMode = viewModel.states.value.emojiEnabled,
-            onElementClick = viewModel::onElementClick
-        )
+        Column(
+            modifier = Modifier
+                .clip(MaterialTheme.shapes.medium)
+                .background(MaterialTheme.colorScheme.secondaryContainer)
+        ) {
+            Box(
+                modifier = Modifier
+                    .padding(2.dp)
+                    .clip(MaterialTheme.shapes.medium)
+                    .background(MaterialTheme.colorScheme.surface)
+            ) {
+                GridForGame(
+                    array = viewModel.states.value.currentStep,
+                    emojiMode = viewModel.states.value.emojiEnabled,
+                    onElementClick = viewModel::onElementClick
+                )
+            }
+            Row(
+                modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp),
+                horizontalArrangement = Arrangement.spacedBy(20.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(text = "Alive", color = MaterialTheme.colorScheme.onSurface)
+                LinearProgressIndicator(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(20.dp))
+                        .weight(1f),
+                    progress = viewModel.states.value.aliveCount / 100f
+                )
+                Text(text = "${viewModel.states.value.aliveCount}", color = MaterialTheme.colorScheme.onSurface)
+            }
+        }
         Spacer(modifier = Modifier.height(10.dp))
         Content(viewModel = viewModel)
     }
@@ -38,20 +63,6 @@ fun MainScreen(viewModel: MainScreenViewModel = androidx.lifecycle.viewmodel.com
 @Composable
 private fun Content(viewModel: MainScreenViewModel) {
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(20.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(text = "Alive", color = MaterialTheme.colorScheme.onSurface)
-            LinearProgressIndicator(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(20.dp))
-                    .weight(1f),
-                progress = viewModel.states.value.aliveCount / 100f
-            )
-            Text(text = "${viewModel.states.value.aliveCount}", color = MaterialTheme.colorScheme.onSurface)
-        }
-
         Row(
             modifier = Modifier.padding(vertical = 20.dp),
             horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),

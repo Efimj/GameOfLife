@@ -29,8 +29,7 @@ fun GridForGame(
     LazyVerticalGrid(
         modifier = Modifier
             .heightIn(max = maxHeight.dp)
-            .widthIn(max = maxHeight.dp)
-            .border(BorderStroke(2.dp, MaterialTheme.colorScheme.outline), MaterialTheme.shapes.medium),
+            .widthIn(max = maxHeight.dp),
         columns = GridCells.Fixed(array.size),
         verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterVertically),
         horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally),
