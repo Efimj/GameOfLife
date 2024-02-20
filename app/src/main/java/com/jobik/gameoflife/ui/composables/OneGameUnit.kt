@@ -10,6 +10,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -36,10 +37,15 @@ val DeadEmojis = listOf(
 )
 
 @Composable
-fun OneGameUnit(state: GameOfLifeUnitState, enableEmojis: Boolean = true, onClick: () -> Unit) {
+fun OneGameUnit(
+    modifier: Modifier = Modifier,
+    state: GameOfLifeUnitState,
+    enableEmojis: Boolean = true,
+    onClick: () -> Unit
+) {
     val backgroundColorValue = when {
         enableEmojis -> Color.Transparent
-        state == GameOfLifeUnitState.Alive -> MaterialTheme.colorScheme.onSurface
+        state == GameOfLifeUnitState.Alive -> MaterialTheme.colorScheme.tertiary
         else -> Color.Transparent
     }
 
@@ -56,11 +62,12 @@ fun OneGameUnit(state: GameOfLifeUnitState, enableEmojis: Boolean = true, onClic
     }
 
     Box(
-        modifier = Modifier
+        modifier = modifier
             .aspectRatio(1f)
-            .clip(RoundedCornerShape(6.dp))
+            .clip(MaterialTheme.shapes.medium)
             .clickable { onClick() }
-            .background(background)
+            .background(background),
+        contentAlignment = Alignment.Center
     ) {
         if (enableEmojis) {
             Text(text = text)

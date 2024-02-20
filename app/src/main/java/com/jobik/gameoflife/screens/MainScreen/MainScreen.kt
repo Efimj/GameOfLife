@@ -19,6 +19,7 @@ import com.jobik.gameoflife.ui.composables.GridForGame
 fun MainScreen(viewModel: MainScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
     Column(
         modifier = Modifier
+            .verticalScroll(rememberScrollState())
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
             .padding(20.dp)
@@ -26,11 +27,9 @@ fun MainScreen(viewModel: MainScreenViewModel = androidx.lifecycle.viewmodel.com
         GridForGame(
             array = viewModel.states.value.currentStep,
             emojiMode = viewModel.states.value.emojiEnabled,
-            content = {
-                Content(viewModel)
-            },
             onElementClick = viewModel::onElementClick
         )
+        Content(viewModel = viewModel)
     }
 }
 
