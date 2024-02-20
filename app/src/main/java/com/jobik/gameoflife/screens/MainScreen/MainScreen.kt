@@ -8,15 +8,13 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.RestartAlt
 import androidx.compose.material3.*
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import com.jobik.gameoflife.ui.composables.AliveEmojis
-import com.jobik.gameoflife.ui.composables.CustomFabButton
-import com.jobik.gameoflife.ui.composables.CustomTab
-import com.jobik.gameoflife.ui.composables.GridForGame
+import com.jobik.gameoflife.ui.composables.*
 
 @Composable
 fun MainScreen(viewModel: MainScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
@@ -71,10 +69,7 @@ private fun Content(viewModel: MainScreenViewModel) {
                     viewModel.turnOnSimulation()
             }
             Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.CenterStart) {
-                Text(
-                    text = viewModel.states.value.stepNumber.toString(),
-                    color = MaterialTheme.colorScheme.onSurface
-                )
+                Counter(viewModel.states.value.stepNumber.toInt(), style = MaterialTheme.typography.headlineSmall)
             }
         }
 
