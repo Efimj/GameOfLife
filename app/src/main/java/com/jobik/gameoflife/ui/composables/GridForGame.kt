@@ -35,8 +35,8 @@ fun GridForGame(
             .widthIn(max = maxHeight.dp)
             .border(BorderStroke(2.dp, MaterialTheme.colorScheme.outline), MaterialTheme.shapes.medium),
         columns = GridCells.Fixed(array.size),
-        verticalArrangement = Arrangement.spacedBy(2.dp, Alignment.CenterVertically),
-        horizontalArrangement = Arrangement.spacedBy(2.dp, Alignment.CenterHorizontally)
+        verticalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterVertically),
+        horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally)
     ) {
         items(array.size * array.first().size) { index ->
             val row = index / array.first().size
