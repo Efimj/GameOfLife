@@ -82,7 +82,6 @@ class MainScreenViewModel : ViewModel() {
 
         simulationJob = viewModelScope.launch {
             while (true) {
-                updateStep()
                 delay(states.value.oneStepDurationMills)
                 var nextStep = makeOneStepGameOfLife(currentState = states.value.currentStep)
                 val aliveCount = countAlive(nextStep)
@@ -95,6 +94,7 @@ class MainScreenViewModel : ViewModel() {
                     aliveCount = aliveCount,
                     previousStep = nextStep
                 )
+                updateStep()
             }
         }
     }

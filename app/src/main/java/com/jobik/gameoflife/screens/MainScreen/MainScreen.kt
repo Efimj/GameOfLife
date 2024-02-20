@@ -52,7 +52,7 @@ fun MainScreen(viewModel: MainScreenViewModel = androidx.lifecycle.viewmodel.com
                         .weight(1f),
                     progress = viewModel.states.value.aliveCount / 100f
                 )
-                Text(text = "${viewModel.states.value.aliveCount}", color = MaterialTheme.colorScheme.onSurface)
+                Counter(viewModel.states.value.aliveCount, style = MaterialTheme.typography.bodyMedium)
             }
         }
         Spacer(modifier = Modifier.height(10.dp))
