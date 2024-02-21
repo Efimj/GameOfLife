@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -18,11 +19,18 @@ import com.jobik.gameoflife.ui.composables.GridForGame
 
 @Composable
 fun GameContent(viewModel: MainScreenViewModel) {
+    val containerColorTarget = when {
+        viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.primaryContainer
+        viewModel.states.value.gameResult != null -> MaterialTheme.colorScheme.tertiaryContainer
+        else -> MaterialTheme.colorScheme.secondaryContainer
+    }
+    val containerColor by animateColorAsState(targetValue = containerColorTarget, label = "containerColor")
+
     Column(
         modifier = Modifier
             .padding(top = 10.dp)
             .clip(MaterialTheme.shapes.medium)
-            .background(MaterialTheme.colorScheme.secondaryContainer)
+            .background(containerColor)
     ) {
         AnimatedVisibility(
             visible = viewModel.states.value.gameResult != null,
@@ -49,7 +57,7 @@ fun GameContent(viewModel: MainScreenViewModel) {
         }
         Box(
             modifier = Modifier
-                .padding(2.dp)
+                .padding(4.dp)
                 .clip(MaterialTheme.shapes.medium)
                 .background(MaterialTheme.colorScheme.surface)
         ) {
