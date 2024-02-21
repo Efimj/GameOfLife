@@ -62,11 +62,12 @@ class MainScreenViewModel : ViewModel() {
 
     fun onElementClick(row: Int, column: Int) {
         val oldList = states.value.currentStep
+        val isEmojiMode = states.value.emojiEnabled
         if (checkIsOutOfBounds(row, column, oldList)) return
         val newList = cloneGameState(oldList)
         newList[row][column] = when (newList[row][column]) {
             GameOfLifeUnitState.Alive -> GameOfLifeUnitState.Dead
-            GameOfLifeUnitState.Dead -> GameOfLifeUnitState.Empty
+            GameOfLifeUnitState.Dead -> if (isEmojiMode) GameOfLifeUnitState.Empty else GameOfLifeUnitState.Alive
             GameOfLifeUnitState.Empty -> GameOfLifeUnitState.Alive
         }
         val aliveCount = countAlive(newList)

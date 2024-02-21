@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.ui.composables.*
 
@@ -97,32 +98,23 @@ private fun GameContent(viewModel: MainScreenViewModel) {
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "Alive", color = MaterialTheme.colorScheme.onSurface)
+                Text(text = "Alive", color = MaterialTheme.colorScheme.onSurface, overflow = TextOverflow.Ellipsis)
                 Counter(viewModel.states.value.alive, style = MaterialTheme.typography.bodyMedium)
             }
             Row(
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "Deaths", color = MaterialTheme.colorScheme.onSurface)
+                Text(text = "Deaths", color = MaterialTheme.colorScheme.onSurface, overflow = TextOverflow.Ellipsis)
                 Counter(viewModel.states.value.deaths, style = MaterialTheme.typography.bodyMedium)
             }
             Row(
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "Revivals", color = MaterialTheme.colorScheme.onSurface)
+                Text(text = "Revivals", color = MaterialTheme.colorScheme.onSurface, overflow = TextOverflow.Ellipsis)
                 Counter(viewModel.states.value.revivals, style = MaterialTheme.typography.bodyMedium)
             }
-
-//            LinearProgressIndicator(
-//                progress = {
-//                    viewModel.states.value.aliveCount / 100f
-//                },
-//                modifier = Modifier
-//                    .clip(RoundedCornerShape(20.dp))
-//                    .weight(1f),
-//            )
         }
     }
 }
@@ -147,7 +139,10 @@ private fun SettingsContent(viewModel: MainScreenViewModel) {
                     viewModel.turnOnSimulation()
             }
             Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.CenterStart) {
-                Counter(viewModel.states.value.stepNumber.toInt(), style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.SemiBold))
+                Counter(
+                    viewModel.states.value.stepNumber.toInt(),
+                    style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.SemiBold)
+                )
             }
         }
 
