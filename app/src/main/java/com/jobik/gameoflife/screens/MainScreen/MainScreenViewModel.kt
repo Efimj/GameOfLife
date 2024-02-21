@@ -124,6 +124,8 @@ class MainScreenViewModel : ViewModel() {
         nextState: List<List<GameOfLifeUnitState>>,
         previousState: List<List<GameOfLifeUnitState>>
     ): Boolean {
+        if (previousState.isEmpty()) return false
+
         for (row in nextState.indices) {
             for (col in nextState[row].indices) {
                 if (nextState[row][col] != previousState[row][col])
@@ -180,7 +182,7 @@ class MainScreenViewModel : ViewModel() {
             cols = states.value.columns,
             initialValue = GameOfLifeUnitState.Empty
         )
-        _states.value = states.value.copy(currentStep = list)
+        _states.value = states.value.copy(currentStep = list, alive = 0)
     }
 
     fun turnOnSimulation() {
