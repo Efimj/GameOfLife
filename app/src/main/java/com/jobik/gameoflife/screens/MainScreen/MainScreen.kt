@@ -46,7 +46,7 @@ fun MainScreen(viewModel: MainScreenViewModel = androidx.lifecycle.viewmodel.com
         frontLayerScrimColor = Color.Unspecified,
         backLayerBackgroundColor = MaterialTheme.colorScheme.surface,
         backLayerContent = {
-                GameContent(viewModel)
+                GameContent(viewModel =viewModel)
         },
         frontLayerContent = {
             ActionsContent(viewModel = viewModel)

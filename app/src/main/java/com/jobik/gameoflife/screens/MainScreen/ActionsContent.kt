@@ -1,5 +1,6 @@
 package com.jobik.gameoflife.screens.MainScreen
 
+import androidx.compose.animation.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -25,29 +26,7 @@ fun ActionsContent(viewModel: MainScreenViewModel) {
             .padding(20.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        Row(
-            modifier = Modifier.padding(vertical = 20.dp),
-            horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.CenterEnd) {
-                FilledIconButton(onClick = { viewModel.dropGame() }) {
-                    Icon(Icons.Filled.RestartAlt, contentDescription = "Favorite")
-                }
-            }
-            CustomFabButton(viewModel.states.value.isSimulationRunning) {
-                if (viewModel.states.value.isSimulationRunning)
-                    viewModel.turnOffSimulation()
-                else
-                    viewModel.turnOnSimulation()
-            }
-            Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.CenterStart) {
-                Counter(
-                    viewModel.states.value.stepNumber.toInt(),
-                    style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.SemiBold)
-                )
-            }
-        }
+        MainActions(viewModel)
 
         Card {
             Column(modifier = Modifier.padding(vertical = 10.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -147,6 +126,44 @@ fun ActionsContent(viewModel: MainScreenViewModel) {
                     }
                 }
             }
+        }
+    }
+}
+
+@Composable
+private fun MainActions(viewModel: MainScreenViewModel) {
+    Column(modifier = Modifier.padding(vertical = 20.dp)) {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.CenterEnd) {
+                FilledIconButton(onClick = { viewModel.dropGame() }) {
+                    Icon(Icons.Filled.RestartAlt, contentDescription = "Favorite")
+                }
+            }
+            CustomFabButton(viewModel.states.value.isSimulationRunning) {
+                if (viewModel.states.value.isSimulationRunning)
+                    viewModel.turnOffSimulation()
+                else
+                    viewModel.turnOnSimulation()
+            }
+            Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.CenterStart) {
+                Counter(
+                    viewModel.states.value.stepNumber.toInt(),
+                    style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.SemiBold)
+                )
+            }
+        }
+        AnimatedVisibility(
+            visible = viewModel.states.value.isSimulationRunning,
+            enter = slideInVertically() + expandVertically(expandFrom = Alignment.Top) + fadeIn(initialAlpha = 0.3f),
+            exit = slideOutVertically() + shrinkVertically() + fadeOut()
+        ) {
+            Text(
+                text = "Hello",
+                modifier = Modifier.fillMaxWidth()
+            )
         }
     }
 }
