@@ -91,8 +91,13 @@ class MainScreenViewModel : ViewModel() {
             while (true) {
                 delay(states.value.oneStepDurationMills)
                 var nextStep = makeOneStepGameOfLife(currentState = states.value.currentStep)
-                val aliveCount = countAlive(nextStep)
 
+                if (checkIsStopNeeded(nextStep, states.value.previousStep)) {
+                    turnOffSimulation()
+                    return@launch
+                }
+
+                val aliveCount = countAlive(nextStep)
                 var revives = states.value.revivals
                 var deaths = states.value.deaths
                 if (states.value.previousStep.isNotEmpty()) {
@@ -108,11 +113,24 @@ class MainScreenViewModel : ViewModel() {
                     alive = aliveCount,
                     deaths = deaths,
                     revivals = revives,
-                    previousStep = nextStep
+                    previousStep = nextStep,
+                    stepNumber = states.value.stepNumber + 1
                 )
-                updateStep()
             }
         }
+    }
+
+    fun checkIsStopNeeded(
+        nextState: List<List<GameOfLifeUnitState>>,
+        previousState: List<List<GameOfLifeUnitState>>
+    ): Boolean {
+        for (row in nextState.indices) {
+            for (col in nextState[row].indices) {
+                if (nextState[row][col] != previousState[row][col])
+                    return false
+            }
+        }
+        return true
     }
 
     private fun freeSouls(
@@ -137,11 +155,7 @@ class MainScreenViewModel : ViewModel() {
         regenerateGame()
     }
 
-    private fun stopSimulation() {
-        simulationJob?.cancel()
-    }
-
-    fun setFullAlive(){
+    fun setFullAlive() {
         val list = generateTwoDimList(
             rows = states.value.rows,
             cols = states.value.columns,
@@ -151,7 +165,7 @@ class MainScreenViewModel : ViewModel() {
         _states.value = states.value.copy(currentStep = list)
     }
 
-    fun setFullDeath(){
+    fun setFullDeath() {
         val list = generateTwoDimList(
             rows = states.value.rows,
             cols = states.value.columns,
@@ -160,7 +174,7 @@ class MainScreenViewModel : ViewModel() {
         _states.value = states.value.copy(currentStep = list)
     }
 
-    fun setFullEmpty(){
+    fun setFullEmpty() {
         val list = generateTwoDimList(
             rows = states.value.rows,
             cols = states.value.columns,
@@ -169,18 +183,14 @@ class MainScreenViewModel : ViewModel() {
         _states.value = states.value.copy(currentStep = list)
     }
 
-    fun updateStep() {
-        _states.value = states.value.copy(stepNumber = states.value.stepNumber + 1)
-    }
-
     fun turnOnSimulation() {
         _states.value = states.value.copy(isSimulationRunning = true)
         startSimulation()
     }
 
     fun turnOffSimulation() {
+        simulationJob?.cancel()
         _states.value = states.value.copy(isSimulationRunning = false)
-        stopSimulation()
     }
 
     fun changeStepDuration(duration: Long) {
