@@ -62,11 +62,37 @@ class GameOfLife {
         fun countAlive(newStateOfGame: List<List<GameOfLifeUnitState>>): Int {
             var aliveCount = 0
             for (row in newStateOfGame.indices) {
-                for (col in newStateOfGame.first().indices) {
+                for (col in newStateOfGame[row].indices) {
                     if (newStateOfGame[row][col] == GameOfLifeUnitState.Alive) aliveCount++
                 }
             }
             return aliveCount
+        }
+
+        fun countDeaths(
+            newStateOfGame: List<List<GameOfLifeUnitState>>,
+            previousState: List<List<GameOfLifeUnitState>>,
+        ): Int {
+            var count = 0
+            for (row in newStateOfGame.indices) {
+                for (col in newStateOfGame[row].indices) {
+                    if (previousState[row][col] == GameOfLifeUnitState.Alive && newStateOfGame[row][col] == GameOfLifeUnitState.Dead) count++
+                }
+            }
+            return count
+        }
+
+        fun countRevives(
+            newStateOfGame: List<List<GameOfLifeUnitState>>,
+            previousState: List<List<GameOfLifeUnitState>>,
+        ): Int {
+            var count = 0
+            for (row in newStateOfGame.indices) {
+                for (col in newStateOfGame[row].indices) {
+                    if (previousState[row][col] != GameOfLifeUnitState.Alive && newStateOfGame[row][col] == GameOfLifeUnitState.Alive) count++
+                }
+            }
+            return count
         }
 
         fun cloneGameState(list: List<List<GameOfLifeUnitState>>): MutableList<MutableList<GameOfLifeUnitState>> {

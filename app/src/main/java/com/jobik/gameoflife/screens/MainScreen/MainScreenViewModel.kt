@@ -7,6 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.GameOfLifeUnitState
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.cloneGameState
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.countAlive
+import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.countDeaths
+import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.countRevives
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.makeOneStepGameOfLife
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.makeRandomStartStates
 import com.jobik.gameoflife.helpers.ArrayHelper.Companion.generateTwoDimList
@@ -20,11 +22,13 @@ data class MainScreenStates(
     val emojiEnabled: Boolean = true,
     val rows: Int = 10,
     val columns: Int = 10,
-    val aliveCount: Int = 0,
+    val alive: Int = 0,
+    val deaths: Int = 0,
+    val revivals: Int = 0,
     val stepNumber: Long = 0,
     val currentStep: List<List<GameOfLifeUnitState>> = List(rows) { List(columns) { GameOfLifeUnitState.Empty } },
     val previousStep: List<List<GameOfLifeUnitState>> = emptyList(),
-    val oneStepDurationMills: Long = 200,
+    val oneStepDurationMills: Long = 250,
 )
 
 class MainScreenViewModel : ViewModel() {
@@ -47,7 +51,9 @@ class MainScreenViewModel : ViewModel() {
         val aliveCount = countAlive(startState)
         _states.value = states.value.copy(
             currentStep = startState,
-            aliveCount = aliveCount,
+            alive = aliveCount,
+            deaths = 0,
+            revivals = 0,
             isSimulationRunning = false,
             stepNumber = 0,
             previousStep = emptyList()
@@ -64,7 +70,7 @@ class MainScreenViewModel : ViewModel() {
             GameOfLifeUnitState.Empty -> GameOfLifeUnitState.Alive
         }
         val aliveCount = countAlive(newList)
-        _states.value = states.value.copy(currentStep = newList, aliveCount = aliveCount)
+        _states.value = states.value.copy(currentStep = newList, alive = aliveCount)
     }
 
     private fun checkIsOutOfBounds(
@@ -86,12 +92,21 @@ class MainScreenViewModel : ViewModel() {
                 var nextStep = makeOneStepGameOfLife(currentState = states.value.currentStep)
                 val aliveCount = countAlive(nextStep)
 
+                var revives = states.value.revivals
+                var deaths = states.value.deaths
+                if (states.value.previousStep.isNotEmpty()) {
+                    revives += countRevives(nextStep, states.value.previousStep)
+                    deaths += countDeaths(nextStep, states.value.previousStep)
+                }
+
                 if (states.value.freeSoulMode)
                     nextStep = freeSouls(nextState = nextStep, previousState = states.value.previousStep)
 
                 _states.value = states.value.copy(
                     currentStep = nextStep,
-                    aliveCount = aliveCount,
+                    alive = aliveCount,
+                    deaths = deaths,
+                    revivals = revives,
                     previousStep = nextStep
                 )
                 updateStep()
