@@ -43,6 +43,7 @@ fun MainScreen(viewModel: MainScreenViewModel = androidx.lifecycle.viewmodel.com
                 }
             )
         },
+        persistentAppBar = false,
         frontLayerScrimColor = Color.Unspecified,
         backLayerBackgroundColor = MaterialTheme.colorScheme.surface,
         backLayerContent = {
