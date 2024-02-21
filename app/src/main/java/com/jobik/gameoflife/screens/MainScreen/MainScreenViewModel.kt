@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.GameOfLifeUnitState
+import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.GameOfLifeResult
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.cloneGameState
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.countAlive
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.countDeaths
@@ -28,6 +29,7 @@ data class MainScreenStates(
     val stepNumber: Long = 0,
     val currentStep: List<List<GameOfLifeUnitState>> = List(rows) { List(columns) { GameOfLifeUnitState.Empty } },
     val previousStep: List<List<GameOfLifeUnitState>> = emptyList(),
+    val gameResult: GameOfLifeResult? = null,
     val oneStepDurationMills: Long = 250,
 )
 
@@ -56,7 +58,8 @@ class MainScreenViewModel : ViewModel() {
             revivals = 0,
             isSimulationRunning = false,
             stepNumber = 0,
-            previousStep = emptyList()
+            previousStep = emptyList(),
+            gameResult = null,
         )
     }
 
@@ -92,8 +95,10 @@ class MainScreenViewModel : ViewModel() {
                 delay(states.value.oneStepDurationMills)
                 var nextStep = makeOneStepGameOfLife(currentState = states.value.currentStep)
 
-                if (checkIsStopNeeded(nextStep, states.value.previousStep)) {
+                val gameResult = checkIsGameFinishedResult(nextStep, states.value.previousStep)
+                if (gameResult != null) {
                     turnOffSimulation()
+                    _states.value = states.value.copy(gameResult = gameResult)
                     return@launch
                 }
 
@@ -120,19 +125,24 @@ class MainScreenViewModel : ViewModel() {
         }
     }
 
-    fun checkIsStopNeeded(
+    private fun checkIsGameFinishedResult(
         nextState: List<List<GameOfLifeUnitState>>,
         previousState: List<List<GameOfLifeUnitState>>
-    ): Boolean {
-        if (previousState.isEmpty()) return false
+    ): GameOfLifeResult? {
+        if (previousState.isEmpty()) return null
 
+        var isStable = false
         for (row in nextState.indices) {
             for (col in nextState[row].indices) {
                 if (nextState[row][col] != previousState[row][col])
-                    return false
+                    return null
+                if (nextState[row][col] == GameOfLifeUnitState.Alive)
+                    isStable = true
             }
         }
-        return true
+
+        if (isStable) return GameOfLifeResult.StableCombination
+        return GameOfLifeResult.NoOneSurvived
     }
 
     private fun freeSouls(

@@ -1,5 +1,6 @@
 package com.jobik.gameoflife.screens.MainScreen
 
+import androidx.compose.animation.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
@@ -8,8 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.jobik.gameoflife.gameOfLife.GameOfLife
 import com.jobik.gameoflife.ui.composables.Counter
 import com.jobik.gameoflife.ui.composables.GridForGame
 
@@ -21,6 +24,29 @@ fun GameContent(viewModel: MainScreenViewModel) {
             .clip(MaterialTheme.shapes.medium)
             .background(MaterialTheme.colorScheme.secondaryContainer)
     ) {
+        AnimatedVisibility(
+            visible = viewModel.states.value.gameResult != null,
+            enter = slideInVertically() + expandVertically(expandFrom = Alignment.Top) + fadeIn(initialAlpha = 0.3f),
+            exit = slideOutVertically() + shrinkVertically() + fadeOut()
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 10.dp, bottom = 5.dp),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = when (viewModel.states.value.gameResult) {
+                        GameOfLife.Companion.GameOfLifeResult.StableCombination -> "Stable combination \uD83C\uDF89"
+                        GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> "No one survived \uD83D\uDC80"
+                        else -> ""
+                    },
+                    color = MaterialTheme.colorScheme.onSurface,
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontWeight = FontWeight.Bold,
+                )
+            }
+        }
         Box(
             modifier = Modifier
                 .padding(2.dp)

@@ -9,10 +9,16 @@ import kotlin.random.Random
 class GameOfLife {
     companion object {
         @Keep
-        enum class GameOfLifeUnitState() {
+        enum class GameOfLifeUnitState {
             Alive,
             Dead,
             Empty
+        }
+
+        @Keep
+        enum class GameOfLifeResult {
+            StableCombination,
+            NoOneSurvived,
         }
 
         fun getNumberOfNeighbors(row: Int, col: Int, list: List<List<GameOfLifeUnitState>>): Int {

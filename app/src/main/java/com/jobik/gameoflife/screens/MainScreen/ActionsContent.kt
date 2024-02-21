@@ -1,6 +1,5 @@
 package com.jobik.gameoflife.screens.MainScreen
 
-import androidx.compose.animation.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -15,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.ui.composables.*
+
 
 @Composable
 fun ActionsContent(viewModel: MainScreenViewModel) {
@@ -154,16 +154,6 @@ private fun MainActions(viewModel: MainScreenViewModel) {
                     style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.SemiBold)
                 )
             }
-        }
-        AnimatedVisibility(
-            visible = viewModel.states.value.isSimulationRunning,
-            enter = slideInVertically() + expandVertically(expandFrom = Alignment.Top) + fadeIn(initialAlpha = 0.3f),
-            exit = slideOutVertically() + shrinkVertically() + fadeOut()
-        ) {
-            Text(
-                text = "Hello",
-                modifier = Modifier.fillMaxWidth()
-            )
         }
     }
 }
