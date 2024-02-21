@@ -20,7 +20,6 @@ import com.jobik.gameoflife.ui.composables.GridForGame
 fun GameContent(viewModel: MainScreenViewModel) {
     Column(
         modifier = Modifier
-//            .padding(horizontal = 20.dp)
             .padding(top = 10.dp)
             .clip(MaterialTheme.shapes.medium)
             .background(MaterialTheme.colorScheme.secondaryContainer)
