@@ -149,6 +149,17 @@ private fun SettingsContent(viewModel: MainScreenViewModel) {
         Card {
             Column(modifier = Modifier.padding(vertical = 10.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Button(modifier = Modifier.weight(1f), onClick = viewModel::setFullEmpty) {
+                        Text(text = "Clear fields", overflow = TextOverflow.Ellipsis, maxLines = 1)
+                    }
+                }
+                Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),
                     verticalAlignment = Alignment.CenterVertically
@@ -217,6 +228,20 @@ private fun SettingsContent(viewModel: MainScreenViewModel) {
                             null
                         }
                     )
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Button(modifier = Modifier.weight(1f), onClick = viewModel::setFullAlive) {
+                        Text(text = "${AliveEmojis.random()} Respawn", overflow = TextOverflow.Ellipsis, maxLines = 1)
+                    }
+                    Button(modifier = Modifier.weight(1f), onClick = viewModel::setFullDeath) {
+                        Text(text = "${DeadEmojis.random()} Death", overflow = TextOverflow.Ellipsis, maxLines = 1)
+                    }
                 }
             }
         }

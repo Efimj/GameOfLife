@@ -33,7 +33,6 @@ val AliveEmojis = listOf(
 @Keep
 val DeadEmojis = listOf(
     "\uD83D\uDC80",
-    "☠\uFE0F",
 )
 
 @Composable

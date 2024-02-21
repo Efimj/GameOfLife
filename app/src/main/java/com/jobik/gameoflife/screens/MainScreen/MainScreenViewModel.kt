@@ -139,7 +139,34 @@ class MainScreenViewModel : ViewModel() {
 
     private fun stopSimulation() {
         simulationJob?.cancel()
+    }
 
+    fun setFullAlive(){
+        val list = generateTwoDimList(
+            rows = states.value.rows,
+            cols = states.value.columns,
+            initialValue = GameOfLifeUnitState.Alive
+        )
+
+        _states.value = states.value.copy(currentStep = list)
+    }
+
+    fun setFullDeath(){
+        val list = generateTwoDimList(
+            rows = states.value.rows,
+            cols = states.value.columns,
+            initialValue = GameOfLifeUnitState.Dead
+        )
+        _states.value = states.value.copy(currentStep = list)
+    }
+
+    fun setFullEmpty(){
+        val list = generateTwoDimList(
+            rows = states.value.rows,
+            cols = states.value.columns,
+            initialValue = GameOfLifeUnitState.Empty
+        )
+        _states.value = states.value.copy(currentStep = list)
     }
 
     fun updateStep() {
