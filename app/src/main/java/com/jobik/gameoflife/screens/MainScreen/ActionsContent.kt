@@ -23,7 +23,7 @@ fun ActionsContent(viewModel: MainScreenViewModel) {
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .background(MaterialTheme.colorScheme.surface)
+            .background(MaterialTheme.colorScheme.background)
             .padding(top = 20.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
@@ -31,7 +31,7 @@ fun ActionsContent(viewModel: MainScreenViewModel) {
         Column(
             modifier = Modifier
                 .clip(MaterialTheme.shapes.medium)
-                .background(MaterialTheme.colorScheme.secondaryContainer)
+                .background(MaterialTheme.colorScheme.surface)
                 .padding(vertical = 10.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {

@@ -20,11 +20,20 @@ import com.jobik.gameoflife.ui.composables.GridForGame
 @Composable
 fun GameContent(viewModel: MainScreenViewModel) {
     val containerColorTarget = when {
-        viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.primaryContainer
-        viewModel.states.value.gameResult != null -> MaterialTheme.colorScheme.tertiaryContainer
-        else -> MaterialTheme.colorScheme.secondaryContainer
+        viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.secondary
+        viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.error
+        viewModel.states.value.gameResult != null -> MaterialTheme.colorScheme.primary
+        else -> MaterialTheme.colorScheme.surfaceContainerHighest
     }
     val containerColor by animateColorAsState(targetValue = containerColorTarget, label = "containerColor")
+
+    val contentColorTarget = when {
+        viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.onSecondary
+        viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.onError
+        viewModel.states.value.gameResult != null -> MaterialTheme.colorScheme.onPrimary
+        else -> MaterialTheme.colorScheme.onSurface
+    }
+    val contentColor by animateColorAsState(targetValue = contentColorTarget, label = "contentColor")
 
     Column(
         modifier = Modifier
@@ -49,7 +58,7 @@ fun GameContent(viewModel: MainScreenViewModel) {
                         GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> "No one survived \uD83D\uDC80"
                         else -> ""
                     },
-                    color = MaterialTheme.colorScheme.onSurface,
+                    color = contentColor,
                     style = MaterialTheme.typography.headlineSmall,
                     fontWeight = FontWeight.Bold,
                 )
@@ -78,22 +87,22 @@ fun GameContent(viewModel: MainScreenViewModel) {
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "Alive", color = MaterialTheme.colorScheme.onSurface, overflow = TextOverflow.Ellipsis)
-                Counter(viewModel.states.value.alive, style = MaterialTheme.typography.bodyMedium)
+                Text(text = "Alive", color = contentColor, overflow = TextOverflow.Ellipsis)
+                Counter(viewModel.states.value.alive, style = MaterialTheme.typography.bodyMedium, color = contentColor)
             }
             Row(
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "Deaths", color = MaterialTheme.colorScheme.onSurface, overflow = TextOverflow.Ellipsis)
-                Counter(viewModel.states.value.deaths, style = MaterialTheme.typography.bodyMedium)
+                Text(text = "Deaths", color = contentColor, overflow = TextOverflow.Ellipsis)
+                Counter(viewModel.states.value.deaths, style = MaterialTheme.typography.bodyMedium, color = contentColor)
             }
             Row(
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "Revivals", color = MaterialTheme.colorScheme.onSurface, overflow = TextOverflow.Ellipsis)
-                Counter(viewModel.states.value.revivals, style = MaterialTheme.typography.bodyMedium)
+                Text(text = "Revivals", color = contentColor, overflow = TextOverflow.Ellipsis)
+                Counter(viewModel.states.value.revivals, style = MaterialTheme.typography.bodyMedium, color = contentColor)
             }
         }
     }
