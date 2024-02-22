@@ -44,7 +44,7 @@ fun OneGameUnit(
 ) {
     val backgroundColorValue = when {
         enableEmojis -> Color.Transparent
-        state == GameOfLifeUnitState.Alive -> MaterialTheme.colorScheme.tertiary
+        state == GameOfLifeUnitState.Alive -> MaterialTheme.colorScheme.primary
         else -> Color.Transparent
     }
 

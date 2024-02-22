@@ -21,7 +21,7 @@ import com.jobik.gameoflife.ui.composables.GridForGame
 fun GameContent(viewModel: MainScreenViewModel) {
     val containerColorTarget = when {
         viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.secondary
-        viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.error
+        viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.errorContainer
         viewModel.states.value.gameResult != null -> MaterialTheme.colorScheme.primary
         else -> MaterialTheme.colorScheme.surfaceContainerHighest
     }
@@ -29,7 +29,7 @@ fun GameContent(viewModel: MainScreenViewModel) {
 
     val contentColorTarget = when {
         viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.onSecondary
-        viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.onError
+        viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.onErrorContainer
         viewModel.states.value.gameResult != null -> MaterialTheme.colorScheme.onPrimary
         else -> MaterialTheme.colorScheme.onSurface
     }

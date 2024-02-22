@@ -30,8 +30,9 @@ fun ActionsContent(viewModel: MainScreenViewModel) {
         MainActions(viewModel)
         Column(
             modifier = Modifier
+                .padding(horizontal = 20.dp)
                 .clip(MaterialTheme.shapes.medium)
-                .background(MaterialTheme.colorScheme.surface)
+                .background(MaterialTheme.colorScheme.secondaryContainer)
                 .padding(vertical = 10.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
@@ -43,7 +44,13 @@ fun ActionsContent(viewModel: MainScreenViewModel) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Button(modifier = Modifier.weight(1f), onClick = viewModel::setFullEmpty) {
-                    Text(text = "Clear fields", overflow = TextOverflow.Ellipsis, maxLines = 1)
+                    Text(text = "Clear", overflow = TextOverflow.Ellipsis, maxLines = 1)
+                }
+                FilledIconButton(modifier = Modifier, onClick = viewModel::setFullAlive) {
+                    Text(text = AliveEmojis.random(), overflow = TextOverflow.Ellipsis, maxLines = 1)
+                }
+                FilledIconButton(modifier = Modifier, onClick = viewModel::setFullDeath) {
+                    Text(text = DeadEmojis.random(), overflow = TextOverflow.Ellipsis, maxLines = 1)
                 }
             }
             Row(
@@ -123,12 +130,7 @@ fun ActionsContent(viewModel: MainScreenViewModel) {
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Button(modifier = Modifier.weight(1f), onClick = viewModel::setFullAlive) {
-                    Text(text = "${AliveEmojis.random()} Respawn", overflow = TextOverflow.Ellipsis, maxLines = 1)
-                }
-                Button(modifier = Modifier.weight(1f), onClick = viewModel::setFullDeath) {
-                    Text(text = "${DeadEmojis.random()} Death", overflow = TextOverflow.Ellipsis, maxLines = 1)
-                }
+
             }
         }
     }
