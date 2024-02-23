@@ -7,10 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.HelpOutline
-import androidx.compose.material.icons.filled.HelpOutline
 import androidx.compose.material.icons.filled.SportsEsports
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -23,7 +21,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
-import com.jobik.gameoflife.navigation.NavigationItem
 import com.jobik.gameoflife.navigation.Screen
 import kotlinx.coroutines.launch
 
@@ -117,11 +114,11 @@ fun <T : Enum<T>> AppDrawerContent(
 
 @Composable
 fun <T> AppDrawerItem(item: AppDrawerItemInfo<T>, enabled: Boolean, onClick: (options: T) -> Unit) {
-    val backgroundColorValue = if (enabled) MaterialTheme.colorScheme.primaryContainer else Color.Transparent
+    val backgroundColorValue = if (enabled) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent
     val backgroundColor by animateColorAsState(targetValue = backgroundColorValue, label = "backgroundColor")
 
     val contentColorValue =
-        if (enabled) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onBackground
+        if (enabled) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onBackground
     val contentColor by animateColorAsState(targetValue = contentColorValue, label = "backgroundColor")
 
     Surface(

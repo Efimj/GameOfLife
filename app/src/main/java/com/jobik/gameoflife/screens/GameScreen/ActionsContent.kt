@@ -144,7 +144,12 @@ private fun MainActions(viewModel: GameScreenViewModel) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.CenterEnd) {
-                FilledIconButton(onClick = { viewModel.dropGame() }) {
+                IconButton(
+                    colors = IconButtonDefaults.filledIconButtonColors(
+                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                        containerColor = MaterialTheme.colorScheme.tertiaryContainer
+                    ),
+                    onClick = { viewModel.dropGame() }) {
                     Icon(Icons.Filled.RestartAlt, contentDescription = "Favorite")
                 }
             }
