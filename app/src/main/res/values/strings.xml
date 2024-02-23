@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Game of Life</string>
+
+    <string name="GameOfLife">Game of Life</string>
+    <string name="Settings">Settings</string>
+    <string name="Onboarding">Onboarding</string>
+    <string name="drawer_GameOfLife_description">Game of life</string>
+    <string name="drawer_Settings_description">Settings</string>
+    <string name="drawer_Onboarding_description">Onboarding</string>
+
 </resources>

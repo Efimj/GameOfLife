@@ -15,7 +15,10 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
 @Composable
-fun MainScreen(viewModel: MainScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
+fun GameScreen(
+    drawerState: DrawerState,
+    viewModel: MainScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
     val backdropScaffoldState = rememberBackdropScaffoldState(BackdropValue.Revealed)
 
