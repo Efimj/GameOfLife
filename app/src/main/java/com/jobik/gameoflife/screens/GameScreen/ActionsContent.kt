@@ -1,4 +1,4 @@
-package com.jobik.gameoflife.screens.MainScreen
+package com.jobik.gameoflife.screens.GameScreen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -18,7 +18,7 @@ import com.jobik.gameoflife.ui.composables.*
 
 
 @Composable
-fun ActionsContent(viewModel: MainScreenViewModel) {
+fun ActionsContent(viewModel: GameScreenViewModel) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -137,7 +137,7 @@ fun ActionsContent(viewModel: MainScreenViewModel) {
 }
 
 @Composable
-private fun MainActions(viewModel: MainScreenViewModel) {
+private fun MainActions(viewModel: GameScreenViewModel) {
     Column(modifier = Modifier.padding(vertical = 20.dp)) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),

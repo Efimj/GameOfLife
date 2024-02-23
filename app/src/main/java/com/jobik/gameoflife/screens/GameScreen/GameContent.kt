@@ -1,4 +1,4 @@
-package com.jobik.gameoflife.screens.MainScreen
+package com.jobik.gameoflife.screens.GameScreen
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.background
@@ -18,7 +18,7 @@ import com.jobik.gameoflife.ui.composables.Counter
 import com.jobik.gameoflife.ui.composables.GridForGame
 
 @Composable
-fun GameContent(viewModel: MainScreenViewModel) {
+fun GameContent(viewModel: GameScreenViewModel) {
     val containerColorTarget = when {
         viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.secondary
         viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.errorContainer

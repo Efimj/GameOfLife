@@ -1,25 +1,29 @@
-package com.jobik.gameoflife.screens.MainScreen
+package com.jobik.gameoflife.screens.GameScreen
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BackdropScaffold
 import androidx.compose.material.BackdropValue
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.rememberBackdropScaffoldState
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
 @Composable
 fun GameScreen(
     drawerState: DrawerState,
-    viewModel: MainScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    viewModel: GameScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
-    val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
+    val coroutineScope = rememberCoroutineScope()
     val backdropScaffoldState = rememberBackdropScaffoldState(BackdropValue.Revealed)
 
     LaunchedEffect(backdropScaffoldState.currentValue) {
@@ -38,10 +42,19 @@ fun GameScreen(
         ),
         appBar = {
             TopAppBar(
-                scrollBehavior = scrollBehavior,
-                title = {
-                    Text("Top app bar")
-                }
+                title = {},
+                navigationIcon = {
+                    IconButton(onClick = {
+                        coroutineScope.launch {
+                            drawerState.open()
+                        }
+                    }) {
+                        Icon(
+                            Icons.Filled.Menu,
+                            contentDescription = "MenuButton"
+                        )
+                    }
+                },
             )
         },
         persistentAppBar = false,

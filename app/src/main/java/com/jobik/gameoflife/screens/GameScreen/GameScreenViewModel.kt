@@ -1,4 +1,4 @@
-package com.jobik.gameoflife.screens.MainScreen
+package com.jobik.gameoflife.screens.GameScreen
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -17,7 +17,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-data class MainScreenStates(
+data class GameScreenStates(
     val isSimulationRunning: Boolean = false,
     val freeSoulMode: Boolean = true,
     val emojiEnabled: Boolean = true,
@@ -33,9 +33,9 @@ data class MainScreenStates(
     val oneStepDurationMills: Long = 250,
 )
 
-class MainScreenViewModel : ViewModel() {
-    private val _states = mutableStateOf(MainScreenStates())
-    val states: State<MainScreenStates> = _states
+class GameScreenViewModel : ViewModel() {
+    private val _states = mutableStateOf(GameScreenStates())
+    val states: State<GameScreenStates> = _states
     private var simulationJob: Job? = null
 
     init {

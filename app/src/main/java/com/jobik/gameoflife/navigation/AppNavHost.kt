@@ -2,11 +2,10 @@ package com.jobik.gameoflife.navigation
 
 import androidx.compose.material3.DrawerState
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.jobik.gameoflife.screens.MainScreen.GameScreen
+import com.jobik.gameoflife.screens.GameScreen.GameScreen
 
 @Composable
 fun AppNavHost(
