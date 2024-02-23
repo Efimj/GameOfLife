@@ -59,7 +59,7 @@ fun GameScreen(
         },
         persistentAppBar = false,
         frontLayerScrimColor = Color.Unspecified,
-        frontLayerBackgroundColor = MaterialTheme.colorScheme.surfaceContainer,
+        frontLayerBackgroundColor = MaterialTheme.colorScheme.background,
         backLayerBackgroundColor = MaterialTheme.colorScheme.surface,
         backLayerContent = {
             GameContent(viewModel = viewModel)

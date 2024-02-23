@@ -1,10 +1,12 @@
 package com.jobik.gameoflife.screens.AppLayout
 
 import androidx.annotation.StringRes
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.HelpOutline
@@ -14,6 +16,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -75,21 +78,20 @@ fun <T : Enum<T>> AppDrawerContent(
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // header image on top of the drawer
                 Image(
                     modifier = Modifier.size(150.dp),
                     painter = painterResource(id = R.drawable.ic_launcher_foreground),
                     contentDescription = "Main app icon"
                 )
-                // column of options to pick from for user
                 LazyColumn(
-                    modifier = Modifier.padding(horizontal = 8.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                    contentPadding = PaddingValues(horizontal = 10.dp, vertical = 20.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     // generates on demand the required composables
                     items(menuItems) { item ->
                         // custom UI representation of the button
-                        AppDrawerItem(item = item) { navOption ->
+                        AppDrawerItem(item = item, enabled = currentPick == item.drawerOption) { navOption ->
 
                             // if it is the same - ignore the click
                             if (currentPick == navOption) {
@@ -114,14 +116,20 @@ fun <T : Enum<T>> AppDrawerContent(
 }
 
 @Composable
-fun <T> AppDrawerItem(item: AppDrawerItemInfo<T>, onClick: (options: T) -> Unit) {
-    // making surface clickable causes to show the appropriate splash animation
+fun <T> AppDrawerItem(item: AppDrawerItemInfo<T>, enabled: Boolean, onClick: (options: T) -> Unit) {
+    val backgroundColorValue = if (enabled) MaterialTheme.colorScheme.primaryContainer else Color.Transparent
+    val backgroundColor by animateColorAsState(targetValue = backgroundColorValue, label = "backgroundColor")
+
+    val contentColorValue =
+        if (enabled) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onBackground
+    val contentColor by animateColorAsState(targetValue = contentColorValue, label = "backgroundColor")
+
     Surface(
-        color = MaterialTheme.colorScheme.onPrimary,
-        modifier = Modifier
-            .width(150.dp),
+        color = backgroundColor,
+        contentColor = contentColor,
+        modifier = Modifier.width(280.dp),
         onClick = { onClick(item.drawerOption) },
-        shape = RoundedCornerShape(50),
+        shape = CircleShape,
     ) {
         Row(
             horizontalArrangement = Arrangement.Start,
