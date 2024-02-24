@@ -18,8 +18,6 @@ import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.ui.composables.*
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
-import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
-
 
 @Composable
 fun ActionsContent(viewModel: GameScreenViewModel) {

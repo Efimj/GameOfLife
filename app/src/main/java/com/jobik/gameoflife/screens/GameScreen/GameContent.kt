@@ -3,6 +3,7 @@ package com.jobik.gameoflife.screens.GameScreen
 import androidx.compose.animation.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -38,9 +39,10 @@ fun GameContent(viewModel: GameScreenViewModel) {
 
     Column(
         modifier = Modifier
-            .padding(top = 10.dp)
-            .clip(MaterialTheme.shapes.medium)
+            .clip(RoundedCornerShape(bottomEnd = 12.dp, bottomStart = 12.dp))
             .background(containerColor)
+            .topWindowInsetsPadding()
+            .padding(top = 10.dp)
     ) {
         AnimatedVisibility(
             visible = viewModel.states.value.gameResult != null,

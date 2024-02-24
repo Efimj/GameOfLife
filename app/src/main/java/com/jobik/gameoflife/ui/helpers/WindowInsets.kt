@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
+import androidx.compose.ui.unit.Dp
 
 fun Modifier.topWindowInsetsPadding() = composed {
     this.padding(top = WindowInsets.safeDrawing.asPaddingValues().calculateTopPadding())
@@ -11,6 +12,16 @@ fun Modifier.topWindowInsetsPadding() = composed {
 
 fun Modifier.bottomWindowInsetsPadding() = composed {
     this.padding(bottom = WindowInsets.safeDrawing.asPaddingValues().calculateBottomPadding())
+}
+
+@Composable
+fun topWindowInsetsPadding(): Dp {
+    return WindowInsets.safeDrawing.asPaddingValues().calculateTopPadding()
+}
+
+@Composable
+fun bottomWindowInsetsPadding(): Dp {
+    return WindowInsets.safeDrawing.asPaddingValues().calculateBottomPadding()
 }
 
 @Composable
