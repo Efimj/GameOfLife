@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 fun VerticalIndicator(
     pagerState: PagerState,
     color: Color = MaterialTheme.colorScheme.primaryContainer,
-    activeColor: Color = MaterialTheme.colorScheme.primary,
+    activeColor: Color = MaterialTheme.colorScheme.secondary,
     spacing: Dp = 15.dp,
     dotWidth: Dp = 8.dp,
     dotHeight: Dp = 25.dp,
