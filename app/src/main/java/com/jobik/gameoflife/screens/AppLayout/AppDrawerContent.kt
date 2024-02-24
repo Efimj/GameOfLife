@@ -4,14 +4,11 @@ import androidx.annotation.StringRes
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.HelpOutline
 import androidx.compose.material.icons.automirrored.outlined.HelpOutline
-import androidx.compose.material.icons.filled.Casino
-import androidx.compose.material.icons.filled.SportsEsports
 import androidx.compose.material.icons.outlined.Casino
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.*
@@ -25,6 +22,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.navigation.Screen
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
@@ -38,7 +37,9 @@ data class AppDrawerItemInfo<T>(
     val drawerOption: T,
     @StringRes val title: Int,
     val icon: ImageVector,
-    @StringRes val descriptionId: Int
+    @StringRes val description: Int,
+    val enabled: Boolean = false,
+    val route: Screen,
 )
 
 
@@ -51,19 +52,22 @@ object DrawerParams {
             drawerOption = Screen.Game,
             title = R.string.GameOfLife,
             icon = Icons.Outlined.Casino,
-            descriptionId = R.string.drawer_GameOfLife_description
+            description = R.string.drawer_GameOfLife_description,
+            route = Screen.Game
         ),
         AppDrawerItemInfo(
             drawerOption = Screen.Onboarding,
             title = R.string.Onboarding,
             icon = Icons.AutoMirrored.Outlined.HelpOutline,
-            descriptionId = R.string.drawer_Onboarding_description
+            description = R.string.drawer_Onboarding_description,
+            route = Screen.Onboarding
         ),
         AppDrawerItemInfo(
             drawerOption = Screen.Settings,
             title = R.string.Settings,
             icon = Icons.Outlined.Settings,
-            descriptionId = R.string.drawer_Settings_description
+            description = R.string.drawer_Settings_description,
+            route = Screen.Settings
         ),
     )
 }
@@ -72,63 +76,60 @@ object DrawerParams {
  * T for generic type to be used for the picking
  */
 @Composable
-fun <T : Enum<T>> AppDrawerContent(
+fun AppDrawerContent(
+    navController: NavHostController,
     drawerState: DrawerState,
-    menuItems: List<AppDrawerItemInfo<T>>,
-    defaultPick: T,
-    onClick: (T) -> Unit
 ) {
-    // default home destination to avoid duplication
-    var currentPick by remember { mutableStateOf(defaultPick) }
+    val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
     val coroutineScope = rememberCoroutineScope()
 
     ModalDrawerSheet(windowInsets = WindowInsets.ime) {
         Surface(color = MaterialTheme.colorScheme.background) {
             Column(
-                horizontalAlignment = Alignment.CenterHorizontally
+                modifier = Modifier.verticalScroll(rememberScrollState()),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 Image(
-                    modifier = Modifier.size(150.dp),
+                    modifier = Modifier
+                        .size(150.dp)
+                        .padding(bottom = 20.dp),
                     painter = painterResource(id = R.drawable.ic_launcher_foreground),
                     contentDescription = "Main app icon"
                 )
-                LazyColumn(
-                    contentPadding = PaddingValues(horizontal = 10.dp, vertical = 20.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(10.dp)
-                ) {
-                    // generates on demand the required composables
-                    items(menuItems) { item ->
-                        // custom UI representation of the button
-                        AppDrawerItem(item = item, enabled = currentPick == item.drawerOption) { navOption ->
-
-                            // if it is the same - ignore the click
-                            if (currentPick == navOption) {
-                                return@AppDrawerItem
+                Column(modifier = Modifier.padding(horizontal = 10.dp)) {
+                    for (button in DrawerParams.drawerButtons) {
+                        AppDrawerItem(
+                            title = button.title,
+                            contentDescription = button.description,
+                            icon = button.icon,
+                            enabled = button.route.name == currentRoute,
+                            onClick = {
+                                coroutineScope.launch {
+                                    drawerState.close()
+                                }
+                                navController.navigate(button.route.name) {
+                                    // pops the route to root and places new screen
+                                    popUpTo(button.route.name)
+                                }
                             }
-
-                            currentPick = navOption
-
-                            // close the drawer after clicking the option
-                            coroutineScope.launch {
-                                drawerState.close()
-                            }
-
-                            // navigate to the required screen
-                            onClick(navOption)
-                        }
-                    }
-                    item {
-                        BottomWindowInsetsSpacer()
+                        )
                     }
                 }
+                BottomWindowInsetsSpacer()
             }
         }
     }
 }
 
 @Composable
-fun <T> AppDrawerItem(item: AppDrawerItemInfo<T>, enabled: Boolean, onClick: (options: T) -> Unit) {
+fun AppDrawerItem(
+    icon: ImageVector,
+    @StringRes title: Int,
+    @StringRes contentDescription: Int,
+    enabled: Boolean,
+    onClick: () -> Unit
+) {
     val backgroundColorValue = if (enabled) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent
     val backgroundColor by animateColorAsState(targetValue = backgroundColorValue, label = "backgroundColor")
 
@@ -139,8 +140,8 @@ fun <T> AppDrawerItem(item: AppDrawerItemInfo<T>, enabled: Boolean, onClick: (op
     Surface(
         color = backgroundColor,
         contentColor = contentColor,
-        modifier = Modifier.width(280.dp),
-        onClick = { onClick(item.drawerOption) },
+        modifier = Modifier.fillMaxWidth(),
+        onClick = onClick,
         shape = CircleShape,
     ) {
         Row(
@@ -150,14 +151,14 @@ fun <T> AppDrawerItem(item: AppDrawerItemInfo<T>, enabled: Boolean, onClick: (op
                 .padding(16.dp)
         ) {
             Icon(
-                imageVector = item.icon,
-                contentDescription = stringResource(id = item.descriptionId),
+                imageVector = icon,
+                contentDescription = stringResource(id = contentDescription),
                 modifier = Modifier
                     .size(24.dp)
             )
             Spacer(modifier = Modifier.width(16.dp))
             Text(
-                text = stringResource(id = item.title),
+                text = stringResource(id = title),
                 style = MaterialTheme.typography.bodyLarge,
                 textAlign = TextAlign.Center,
                 maxLines = 1,

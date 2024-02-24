@@ -13,5 +13,12 @@
     <string name="speed_value_500ms">500ms</string>
     <string name="speed_value_1s">1s</string>
 
+    <string name="text_large">Sizes on the rendered type scale should aim to provide impactful contrast between sizes by avoiding small differences</string>
+    <string name="text_medium">The following units are used to express font size on Android and the web</string>
+    <string name="text_small">Web browsers calculate the REM</string>
+
+    <string name="header_small">Game of Life</string>
+    <string name="header_medium">The following units are for spacing</string>
+    <string name="header_large">Weight is the primary attribute that defines the overall thickness of a typeface’s strokes.</string>
 
 </resources>

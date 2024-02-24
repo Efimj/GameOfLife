@@ -19,38 +19,15 @@ fun AppLayout(
             drawerState = drawerState,
             drawerContent = {
                 AppDrawerContent(
+                    navController = navController,
                     drawerState = drawerState,
-                    menuItems = DrawerParams.drawerButtons,
-                    defaultPick = Screen.Game,
-                ) { onUserPickedOption ->
-                    // when user picks, the path - navigates to new one
-                    when (onUserPickedOption) {
-                        Screen.Game -> {
-                            navController.navigate(onUserPickedOption.name) {
-                                // pops the route to root and places new screen
-                                popUpTo(Screen.Game.name)
-                            }
-                        }
-
-                        Screen.Onboarding -> {
-                            navController.navigate(onUserPickedOption.name) {
-                                popUpTo(Screen.Onboarding.name)
-                            }
-                        }
-
-                        Screen.Settings -> {
-                            navController.navigate(onUserPickedOption.name) {
-                                popUpTo(Screen.Settings.name)
-                            }
-                        }
-                    }
-                }
+                )
             }
         ) {
             AppNavHost(
                 drawerState = drawerState,
                 navController = navController,
-                startDestination = Screen.Game.name
+                startDestination = Screen.Onboarding.name
             )
         }
     }

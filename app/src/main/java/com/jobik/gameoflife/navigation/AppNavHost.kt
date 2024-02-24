@@ -6,7 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.jobik.gameoflife.screens.Game.GameScreen
-import com.jobik.gameoflife.screens.Onboarding.OnboardingScreen
+import com.jobik.gameoflife.screens.Onboarding.OnboardingScreenContainer
 
 @Composable
 fun AppNavHost(
@@ -22,7 +22,7 @@ fun AppNavHost(
             GameScreen(drawerState)
         }
         composable(NavigationItem.Onboarding.route) {
-            OnboardingScreen()
+            OnboardingScreenContainer(navController)
         }
         composable(NavigationItem.Settings.route) {
 
