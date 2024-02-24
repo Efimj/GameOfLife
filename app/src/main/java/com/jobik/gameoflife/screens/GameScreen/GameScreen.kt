@@ -1,5 +1,6 @@
 package com.jobik.gameoflife.screens.GameScreen
 
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BackdropScaffold
 import androidx.compose.material.BackdropValue
@@ -41,6 +42,7 @@ fun GameScreen(
             topEnd = 12.dp
         ),
         appBar = {
+
             TopAppBar(
                 title = {},
                 navigationIcon = {

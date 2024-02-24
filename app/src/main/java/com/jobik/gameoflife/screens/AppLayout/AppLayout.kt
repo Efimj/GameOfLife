@@ -13,7 +13,6 @@ fun AppLayout(
     navController: NavHostController = rememberNavController(),
     drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed),
 ) {
-
     Surface {
         // the main drawer composable, which creates the actual drawer
         ModalNavigationDrawer(

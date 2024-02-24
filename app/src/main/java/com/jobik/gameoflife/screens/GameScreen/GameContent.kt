@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.gameOfLife.GameOfLife
 import com.jobik.gameoflife.ui.composables.Counter
 import com.jobik.gameoflife.ui.composables.GridForGame
+import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
 
 @Composable
 fun GameContent(viewModel: GameScreenViewModel) {
@@ -37,6 +38,7 @@ fun GameContent(viewModel: GameScreenViewModel) {
 
     Column(
         modifier = Modifier
+            .topWindowInsetsPadding()
             .padding(top = 10.dp)
             .clip(MaterialTheme.shapes.medium)
             .background(containerColor)
