@@ -96,14 +96,22 @@ fun GameContent(viewModel: GameScreenViewModel) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(text = "Deaths", color = contentColor, overflow = TextOverflow.Ellipsis)
-                Counter(viewModel.states.value.deaths, style = MaterialTheme.typography.bodyMedium, color = contentColor)
+                Counter(
+                    viewModel.states.value.deaths,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = contentColor
+                )
             }
             Row(
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(text = "Revivals", color = contentColor, overflow = TextOverflow.Ellipsis)
-                Counter(viewModel.states.value.revivals, style = MaterialTheme.typography.bodyMedium, color = contentColor)
+                Counter(
+                    viewModel.states.value.revivals,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = contentColor
+                )
             }
         }
     }

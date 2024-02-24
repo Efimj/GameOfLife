@@ -1,32 +1,30 @@
 package com.jobik.gameoflife.screens.GameScreen
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BackdropScaffold
 import androidx.compose.material.BackdropValue
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.rememberBackdropScaffoldState
-import androidx.compose.material3.*
+import androidx.compose.material3.DrawerState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
-import kotlinx.coroutines.launch
 
-
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun GameScreen(
     drawerState: DrawerState,
     viewModel: GameScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
-    val coroutineScope = rememberCoroutineScope()
     val backdropScaffoldState = rememberBackdropScaffoldState(BackdropValue.Revealed)
 
     LaunchedEffect(backdropScaffoldState.currentValue) {
@@ -34,8 +32,15 @@ fun GameScreen(
             viewModel.turnOffSimulation()
     }
 
+    val statusBarColorValue =
+        if (backdropScaffoldState.currentValue == BackdropValue.Concealed) MaterialTheme.colorScheme.secondaryContainer else
+            MaterialTheme.colorScheme.background
+    val statusBarColor by animateColorAsState(targetValue = statusBarColorValue, label = "statusBarColor")
+
     BackdropScaffold(
-        modifier = Modifier.topWindowInsetsPadding(),
+        modifier = Modifier
+            .background(statusBarColor)
+            .topWindowInsetsPadding(),
         scaffoldState = backdropScaffoldState,
         frontLayerShape = RoundedCornerShape(
             bottomStart = 0.dp,
@@ -44,23 +49,7 @@ fun GameScreen(
             topEnd = 12.dp
         ),
         appBar = {
-            TopAppBar(
-                modifier = Modifier.background(MaterialTheme.colorScheme.secondaryContainer),
-                title = {},
-                windowInsets = WindowInsets.ime,
-                navigationIcon = {
-                    IconButton(onClick = {
-                        coroutineScope.launch {
-                            drawerState.open()
-                        }
-                    }) {
-                        Icon(
-                            Icons.Filled.Menu,
-                            contentDescription = "MenuButton"
-                        )
-                    }
-                },
-            )
+            GameAppBar(drawerState)
         },
         persistentAppBar = false,
         frontLayerScrimColor = Color.Unspecified,
