@@ -1,5 +1,6 @@
 package com.jobik.gameoflife.screens.GameScreen
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.BackdropScaffold
@@ -15,6 +16,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
 import kotlinx.coroutines.launch
 
 
@@ -33,7 +35,7 @@ fun GameScreen(
     }
 
     BackdropScaffold(
-        modifier = Modifier,
+        modifier = Modifier.topWindowInsetsPadding(),
         scaffoldState = backdropScaffoldState,
         frontLayerShape = RoundedCornerShape(
             bottomStart = 0.dp,
@@ -42,9 +44,10 @@ fun GameScreen(
             topEnd = 12.dp
         ),
         appBar = {
-
             TopAppBar(
+                modifier = Modifier.background(MaterialTheme.colorScheme.secondaryContainer),
                 title = {},
+                windowInsets = WindowInsets.ime,
                 navigationIcon = {
                     IconButton(onClick = {
                         coroutineScope.launch {

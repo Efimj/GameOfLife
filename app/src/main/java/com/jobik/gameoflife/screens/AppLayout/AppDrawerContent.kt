@@ -70,7 +70,7 @@ fun <T : Enum<T>> AppDrawerContent(
     var currentPick by remember { mutableStateOf(defaultPick) }
     val coroutineScope = rememberCoroutineScope()
 
-    ModalDrawerSheet {
+    ModalDrawerSheet(windowInsets = WindowInsets.ime) {
         Surface(color = MaterialTheme.colorScheme.background) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally

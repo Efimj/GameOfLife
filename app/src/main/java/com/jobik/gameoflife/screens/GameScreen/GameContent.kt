@@ -38,7 +38,6 @@ fun GameContent(viewModel: GameScreenViewModel) {
 
     Column(
         modifier = Modifier
-            .topWindowInsetsPadding()
             .padding(top = 10.dp)
             .clip(MaterialTheme.shapes.medium)
             .background(containerColor)

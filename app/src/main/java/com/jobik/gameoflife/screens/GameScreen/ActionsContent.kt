@@ -11,10 +11,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.jobik.gameoflife.R
 import com.jobik.gameoflife.ui.composables.*
+import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 
 
 @Composable
@@ -58,9 +61,17 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),
                 verticalAlignment = Alignment.CenterVertically
             ) {
+
+                val tabs = listOf(
+                    stringResource(id = R.string.speed_value_100ms),
+                    stringResource(id = R.string.speed_value_250ms),
+                    stringResource(id = R.string.speed_value_500ms),
+                    stringResource(id = R.string.speed_value_1s),
+                )
+
                 CustomTab(
                     tabWidth = 80.dp,
-                    items = listOf("100ms", "250ms", "500ms", "1s"),
+                    items = tabs,
                     selectedItemIndex =
                     when (viewModel.states.value.oneStepDurationMills) {
                         100L -> 0
@@ -133,6 +144,7 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
 
             }
         }
+        BottomWindowInsetsSpacer()
     }
 }
 
