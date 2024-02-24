@@ -45,7 +45,14 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Button(modifier = Modifier.weight(1f), onClick = viewModel::setFullEmpty) {
+                Button(
+                    modifier = Modifier.weight(1f),
+                    onClick = viewModel::setFullEmpty,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                ) {
                     Text(text = "Clear", overflow = TextOverflow.Ellipsis, maxLines = 1)
                 }
                 FilledIconButton(
@@ -124,7 +131,12 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                         }
                     } else {
                         null
-                    }
+                    },
+                    colors = SwitchDefaults.colors(
+                        checkedTrackColor = MaterialTheme.colorScheme.secondaryContainer,
+                        checkedThumbColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+
                 )
             }
             Row(
@@ -144,7 +156,13 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                         }
                     } else {
                         null
-                    }
+                    },
+//                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
+//                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    colors = SwitchDefaults.colors(
+                        checkedTrackColor = MaterialTheme.colorScheme.secondaryContainer,
+                        checkedThumbColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
                 )
             }
             Row(
