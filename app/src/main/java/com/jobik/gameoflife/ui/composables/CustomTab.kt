@@ -48,14 +48,16 @@ private fun CustomTabIndicator(
 private fun CustomTabItem(
     isSelected: Boolean,
     onClick: () -> Unit,
+    activeTextColor: Color = MaterialTheme.colorScheme.onSecondaryContainer,
+    textColor: Color = MaterialTheme.colorScheme.onSurface,
     tabWidth: Dp,
     text: String,
 ) {
     val tabTextColor: Color by animateColorAsState(
         targetValue = if (isSelected) {
-            MaterialTheme.colorScheme.onPrimary
+            activeTextColor
         } else {
-            MaterialTheme.colorScheme.onSurface
+            textColor
         },
         animationSpec = tween(easing = LinearEasing), label = "tabTextColor",
     )
@@ -86,6 +88,7 @@ fun CustomTab(
     items: List<String>,
     modifier: Modifier = Modifier,
     tabWidth: Dp = 100.dp,
+    indicatorColor: Color = MaterialTheme.colorScheme.secondaryContainer,
     onClick: (index: Int) -> Unit,
 ) {
     val indicatorOffset: Dp by animateDpAsState(
@@ -103,7 +106,7 @@ fun CustomTab(
         CustomTabIndicator(
             indicatorWidth = tabWidth,
             indicatorOffset = indicatorOffset,
-            indicatorColor = MaterialTheme.colorScheme.primary,
+            indicatorColor = indicatorColor,
         )
         Row(
             horizontalArrangement = Arrangement.Center,

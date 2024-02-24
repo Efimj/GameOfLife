@@ -34,7 +34,7 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
             modifier = Modifier
                 .padding(horizontal = 20.dp)
                 .clip(MaterialTheme.shapes.medium)
-                .background(MaterialTheme.colorScheme.secondaryContainer)
+//                .background(MaterialTheme.colorScheme.secondaryContainer)
                 .padding(vertical = 10.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
@@ -48,10 +48,24 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 Button(modifier = Modifier.weight(1f), onClick = viewModel::setFullEmpty) {
                     Text(text = "Clear", overflow = TextOverflow.Ellipsis, maxLines = 1)
                 }
-                FilledIconButton(modifier = Modifier, onClick = viewModel::setFullAlive) {
+                FilledIconButton(
+                    modifier = Modifier,
+                    onClick = viewModel::setFullAlive,
+                    colors = IconButtonDefaults.filledIconButtonColors(
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                ) {
                     Text(text = AliveEmojis.random(), overflow = TextOverflow.Ellipsis, maxLines = 1)
                 }
-                FilledIconButton(modifier = Modifier, onClick = viewModel::setFullDeath) {
+                FilledIconButton(
+                    modifier = Modifier,
+                    onClick = viewModel::setFullDeath,
+                    colors = IconButtonDefaults.filledIconButtonColors(
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                ) {
                     Text(text = DeadEmojis.random(), overflow = TextOverflow.Ellipsis, maxLines = 1)
                 }
             }
