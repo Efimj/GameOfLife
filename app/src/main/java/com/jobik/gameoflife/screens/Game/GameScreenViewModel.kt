@@ -1,4 +1,4 @@
-package com.jobik.gameoflife.screens.GameScreen
+package com.jobik.gameoflife.screens.Game
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
