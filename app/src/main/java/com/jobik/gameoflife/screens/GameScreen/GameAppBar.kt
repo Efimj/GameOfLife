@@ -9,7 +9,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -22,7 +21,9 @@ fun GameAppBar(
     TopAppBar(
         modifier = Modifier
             .background(MaterialTheme.colorScheme.secondaryContainer),
-        title = {},
+        title = {
+            Text(text = "Game of Life")
+        },
         windowInsets = WindowInsets.ime,
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.secondaryContainer,

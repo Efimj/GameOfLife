@@ -9,7 +9,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.HelpOutline
+import androidx.compose.material.icons.automirrored.outlined.HelpOutline
+import androidx.compose.material.icons.filled.Casino
 import androidx.compose.material.icons.filled.SportsEsports
+import androidx.compose.material.icons.outlined.Casino
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -19,9 +23,11 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.navigation.Screen
+import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import kotlinx.coroutines.launch
 
 /**
@@ -44,14 +50,20 @@ object DrawerParams {
         AppDrawerItemInfo(
             drawerOption = Screen.Game,
             title = R.string.GameOfLife,
-            icon = Icons.Filled.SportsEsports,
+            icon = Icons.Outlined.Casino,
             descriptionId = R.string.drawer_GameOfLife_description
         ),
         AppDrawerItemInfo(
             drawerOption = Screen.Onboarding,
             title = R.string.Onboarding,
-            icon = Icons.AutoMirrored.Filled.HelpOutline,
+            icon = Icons.AutoMirrored.Outlined.HelpOutline,
             descriptionId = R.string.drawer_Onboarding_description
+        ),
+        AppDrawerItemInfo(
+            drawerOption = Screen.Settings,
+            title = R.string.Settings,
+            icon = Icons.Outlined.Settings,
+            descriptionId = R.string.drawer_Settings_description
         ),
     )
 }
@@ -106,6 +118,9 @@ fun <T : Enum<T>> AppDrawerContent(
                             onClick(navOption)
                         }
                     }
+                    item {
+                        BottomWindowInsetsSpacer()
+                    }
                 }
             }
         }
@@ -145,6 +160,8 @@ fun <T> AppDrawerItem(item: AppDrawerItemInfo<T>, enabled: Boolean, onClick: (op
                 text = stringResource(id = item.title),
                 style = MaterialTheme.typography.bodyLarge,
                 textAlign = TextAlign.Center,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
         }
     }

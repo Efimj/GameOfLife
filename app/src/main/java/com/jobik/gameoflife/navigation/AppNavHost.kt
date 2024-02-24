@@ -23,5 +23,8 @@ fun AppNavHost(
         composable(NavigationItem.Onboarding.route) {
 
         }
+        composable(NavigationItem.Settings.route) {
+
+        }
     }
 }

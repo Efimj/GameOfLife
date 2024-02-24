@@ -37,6 +37,12 @@ fun AppLayout(
                                 popUpTo(Screen.Onboarding.name)
                             }
                         }
+
+                        Screen.Settings -> {
+                            navController.navigate(onUserPickedOption.name) {
+                                popUpTo(Screen.Settings.name)
+                            }
+                        }
                     }
                 }
             }
