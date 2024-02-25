@@ -34,7 +34,7 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
             modifier = Modifier
                 .padding(horizontal = 20.dp)
                 .clip(MaterialTheme.shapes.medium)
-//                .background(MaterialTheme.colorScheme.secondaryContainer)
+                .background(MaterialTheme.colorScheme.secondaryContainer.copy(alpha = .2f))
                 .padding(vertical = 10.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {

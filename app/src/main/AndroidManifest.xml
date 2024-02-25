@@ -16,7 +16,7 @@
                 android:name="com.jobik.gameoflife.MainActivity"
                 android:exported="true"
                 android:label="@string/app_name"
-                android:theme="@style/Theme.GameOfLife">
+                android:theme="@style/Theme.GameOfLife.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

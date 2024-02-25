@@ -67,8 +67,13 @@ dependencies {
 
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+
     implementation("androidx.compose.material:material-icons-extended")
 
+    // Compose navigation
     implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    // Splash API
+    implementation ("androidx.core:core-splashscreen:1.0.1")
 
 }
