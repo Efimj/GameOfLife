@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">인생의 게임</string>
+
+    <string name="GameOfLife">인생의 게임</string>
+    <string name="Settings">설정</string>
+    <string name="Onboarding">온보딩</string>
+    <string name="drawer_GameOfLife_description">인생의 게임</string>
+    <string name="drawer_Settings_description">설정</string>
+    <string name="drawer_Onboarding_description">온보딩</string>
+
+    <string name="speed_value_100ms">100ms</string>
+    <string name="speed_value_250ms">250ms</string>
+    <string name="speed_value_500ms">500ms</string>
+    <string name="speed_value_1s">1초</string>
+
+    <string name="text_large">렌더링된 활자 크기의 크기는 작은 차이를 피함으로써 크기 간에 효과적인 대비를 제공하는 것을 목표로 해야 합니다.</string>
+    <string name="text_medium">Android 및 웹에서 글꼴 크기를 표현하는 데 사용되는 단위는 다음과 같습니다.</string>
+    <string name="text_small">웹 브라우저는 REM을 계산합니다.</string>
+
+    <string name="header_small">인생의 게임</string>
+    <string name="header_medium">다음 단위는 간격을 나타냅니다.</string>
+    <string name="header_large">무게는 서체 획의 전체 두께를 정의하는 주요 속성입니다.</string>
+
+</resources>

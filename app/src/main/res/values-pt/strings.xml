@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Jogo da vida</string>
+
+    <string name="GameOfLife">Jogo da vida</string>
+    <string name="Settings">Configurações</string>
+    <string name="Onboarding">Integração</string>
+    <string name="drawer_GameOfLife_description">Jogo da vida</string>
+    <string name="drawer_Settings_description">Configurações</string>
+    <string name="drawer_Onboarding_description">Integração</string>
+
+    <string name="speed_value_100ms">100ms</string>
+    <string name="speed_value_250ms">250ms</string>
+    <string name="speed_value_500ms">500ms</string>
+    <string name="speed_value_1s">1s</string>
+
+    <string name="text_large">Os tamanhos na escala de tipo renderizada devem ter como objetivo fornecer um contraste impactante entre os tamanhos, evitando pequenas diferenças</string>
+    <string name="text_medium">As unidades a seguir são usadas para expressar o tamanho da fonte no Android e na web</string>
+    <string name="text_small">Os navegadores da Web calculam o REM</string>
+
+    <string name="header_small">Jogo da vida</string>
+    <string name="header_medium">As seguintes unidades são para espaçamento</string>
+    <string name="header_large">A espessura é o atributo principal que define a espessura geral dos traços de uma fonte.</string>
+
+</resources>

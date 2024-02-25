@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Гра життя</string>
+
+    <string name="GameOfLife">Гра життя</string>
+    <string name="Settings">Налаштування</string>
+    <string name="Onboarding">Онбордінг</string>
+    <string name="drawer_GameOfLife_description">Гра життя</string>
+    <string name="drawer_Settings_description">Налаштування</string>
+    <string name="drawer_Onboarding_description">Онбордінг</string>
+
+    <string name="speed_value_100ms">100 мс</string>
+    <string name="speed_value_250ms">250 мс</string>
+    <string name="speed_value_500ms">500 мс</string>
+    <string name="speed_value_1s">1с</string>
+
+    <string name="text_large">Розміри на відтвореній шкалі шрифтів мають бути спрямовані на забезпечення ефектного контрасту між розмірами, уникаючи невеликих відмінностей</string>
+    <string name="text_medium">Наведені нижче одиниці вимірювання використовуються для вираження розміру шрифту на Android і в Інтернеті</string>
+    <string name="text_small">Веб-браузери обчислюють REM</string>
+
+    <string name="header_small">Гра життя</string>
+    <string name="header_medium">Наступні одиниці для інтервалу</string>
+    <string name="header_large">Вага – це основний атрибут, який визначає загальну товщину штрихів гарнітури.</string>
+
+</resources>

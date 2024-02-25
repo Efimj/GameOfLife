@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">生命遊戲</string>
+
+    <string name="GameOfLife">生命遊戲</string>
+    <string name="Settings">設定</string>
+    <string name="Onboarding">入職</string>
+    <string name="drawer_GameOfLife_description">生命的遊戲</string>
+    <string name="drawer_Settings_description">設定</string>
+    <string name="drawer_Onboarding_description">入職</string>
+
+    <string name="speed_value_100ms">100毫秒</string>
+    <string name="speed_value_250ms">250毫秒</string>
+    <string name="speed_value_500ms">500毫秒</string>
+    <string name="speed_value_1s">1秒</string>
+
+    <string name="text_large">渲染字體比例上的尺寸應旨在透過避免微小差異來提供尺寸之間有影響力的對比</string>
+    <string name="text_medium">以下單位用於表示 Android 和 Web 上的字體大小</string>
+    <string name="text_small">Web 瀏覽器計算 REM</string>
+
+    <string name="header_small">生命遊戲</string>
+    <string name="header_medium">以下單位為間距</string>
+    <string name="header_large">粗細是定義字型筆畫整體粗細的主要屬性。</string>
+
+</resources>

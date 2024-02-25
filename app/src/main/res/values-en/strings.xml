@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Game of Life</string>
+
+    <string name="GameOfLife">Game of Life</string>
+    <string name="Settings">Settings</string>
+    <string name="Onboarding">Onboarding</string>
+    <string name="drawer_GameOfLife_description">Game of life</string>
+    <string name="drawer_Settings_description">Settings</string>
+    <string name="drawer_Onboarding_description">Onboarding</string>
+
+    <string name="speed_value_100ms">100ms</string>
+    <string name="speed_value_250ms">250ms</string>
+    <string name="speed_value_500ms">500ms</string>
+    <string name="speed_value_1s">1s</string>
+
+    <string name="text_large">Sizes on the rendered type scale should aim to provide impactful contrast between sizes by avoiding small differences</string>
+    <string name="text_medium">The following units are used to express font size on Android and the web</string>
+    <string name="text_small">Web browsers calculate the REM</string>
+
+    <string name="header_small">Game of Life</string>
+    <string name="header_medium">The following units are for spacing</string>
+    <string name="header_large">Weight is the primary attribute that defines the overall thickness of a typeface’s strokes.</string>
+
+</resources>

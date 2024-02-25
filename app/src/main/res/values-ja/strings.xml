@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">人生ゲーム</string>
+
+    <string name="GameOfLife">人生ゲーム</string>
+    <string name="Settings">設定</string>
+    <string name="Onboarding">オンボーディング</string>
+    <string name="drawer_GameOfLife_description">人生ゲーム</string>
+    <string name="drawer_Settings_description">設定</string>
+    <string name="drawer_Onboarding_description">オンボーディング</string>
+
+    <string name="speed_value_100ms">100ミリ秒</string>
+    <string name="speed_value_250ms">250ミリ秒</string>
+    <string name="speed_value_500ms">500ミリ秒</string>
+    <string name="speed_value_1s">1秒</string>
+
+    <string name="text_large">レンダリングされたタイプ スケール上のサイズは、小さな違いを避けてサイズ間にインパクトのあるコントラストを提供することを目指す必要があります。</string>
+    <string name="text_medium">Android および Web ではフォント サイズを表すために次の単位が使用されます。</string>
+    <string name="text_small">Web ブラウザは REM を計算します</string>
+
+    <string name="header_small">人生ゲーム</string>
+    <string name="header_medium">次の単位は間隔を表すものです</string>
+    <string name="header_large">ウェイトは、書体のストローク全体の太さを定義する主要な属性です。</string>
+
+</resources>

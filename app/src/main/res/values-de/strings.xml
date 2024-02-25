@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Spiel des Lebens</string>
+
+    <string name="GameOfLife">Spiel des Lebens</string>
+    <string name="Settings">Einstellungen</string>
+    <string name="Onboarding">Onboarding</string>
+    <string name="drawer_GameOfLife_description">Spiel des Lebens</string>
+    <string name="drawer_Settings_description">Einstellungen</string>
+    <string name="drawer_Onboarding_description">Onboarding</string>
+
+    <string name="speed_value_100ms">100 ms</string>
+    <string name="speed_value_250ms">250 ms</string>
+    <string name="speed_value_500ms">500 ms</string>
+    <string name="speed_value_1s">1s</string>
+
+    <string name="text_large">Die Größen auf der gerenderten Schriftskala sollten darauf abzielen, durch die Vermeidung kleiner Unterschiede einen wirkungsvollen Kontrast zwischen den Größen zu erzielen</string>
+    <string name="text_medium">Die folgenden Einheiten werden zur Angabe der Schriftgröße auf Android und im Web verwendet</string>
+    <string name="text_small">Webbrowser berechnen den REM</string>
+
+    <string name="header_small">Spiel des Lebens</string>
+    <string name="header_medium">Die folgenden Einheiten gelten für den Abstand</string>
+    <string name="header_large">Das Gewicht ist das primäre Attribut, das die Gesamtdicke der Striche einer Schriftart definiert.</string>
+
+</resources>

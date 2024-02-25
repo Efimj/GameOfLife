@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Gioco della vita</string>
+
+    <string name="GameOfLife">Gioco della vita</string>
+    <string name="Settings">Impostazioni</string>
+    <string name="Onboarding">Onboarding</string>
+    <string name="drawer_GameOfLife_description">Gioco della vita</string>
+    <string name="drawer_Settings_description">Impostazioni</string>
+    <string name="drawer_Onboarding_description">Onboarding</string>
+
+    <string name="speed_value_100ms">100 ms</string>
+    <string name="speed_value_250ms">250 ms</string>
+    <string name="speed_value_500ms">500 ms</string>
+    <string name="speed_value_1s">1 secondo</string>
+
+    <string name="text_large">Le dimensioni sulla scala del tipo visualizzato dovrebbero mirare a fornire un contrasto di grande impatto tra le dimensioni evitando piccole differenze</string>
+    <string name="text_medium">Le seguenti unità vengono utilizzate per esprimere la dimensione del carattere su Android e sul Web</string>
+    <string name="text_small">I browser Web calcolano il REM</string>
+
+    <string name="header_small">Gioco della vita</string>
+    <string name="header_medium">Le seguenti unità servono per la spaziatura</string>
+    <string name="header_large">Il peso è l\'attributo principale che definisce lo spessore complessivo dei tratti di un carattere tipografico.</string>
+
+</resources>

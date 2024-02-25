@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Le jeu de la vie</string>
+
+    <string name="GameOfLife">Le jeu de la vie</string>
+    <string name="Settings">Paramètres</string>
+    <string name="Onboarding">Intégration</string>
+    <string name="drawer_GameOfLife_description">Le jeu de la vie</string>
+    <string name="drawer_Settings_description">Paramètres</string>
+    <string name="drawer_Onboarding_description">Intégration</string>
+
+    <string name="speed_value_100ms">100 ms</string>
+    <string name="speed_value_250ms">250 ms</string>
+    <string name="speed_value_500ms">500 ms</string>
+    <string name="speed_value_1s">1s</string>
+
+    <string name="text_large">Les tailles sur l\'échelle de caractères rendue doivent viser à fournir un contraste percutant entre les tailles en évitant les petites différences</string>
+    <string name="text_medium">Les unités suivantes sont utilisées pour exprimer la taille de la police sur Android et sur le Web</string>
+    <string name="text_small">Les navigateurs Web calculent le REM</string>
+
+    <string name="header_small">Le jeu de la vie</string>
+    <string name="header_medium">Les unités suivantes sont pour l\'espacement</string>
+    <string name="header_large">Le poids est l’attribut principal qui définit l’épaisseur globale des traits d’une police.</string>
+
+</resources>

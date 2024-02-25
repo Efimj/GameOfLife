@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Игра Жизни</string>
+
+    <string name="GameOfLife">Игра Жизни</string>
+    <string name="Settings">Настройки</string>
+    <string name="Onboarding">Регистрация</string>
+    <string name="drawer_GameOfLife_description">Игра жизни</string>
+    <string name="drawer_Settings_description">Настройки</string>
+    <string name="drawer_Onboarding_description">Регистрация</string>
+
+    <string name="speed_value_100ms">100 мс</string>
+    <string name="speed_value_250ms">250 мс</string>
+    <string name="speed_value_500ms">500 мс</string>
+    <string name="speed_value_1s">1 с</string>
+
+    <string name="text_large">Размеры в масштабе отображаемого шрифта должны быть направлены на обеспечение впечатляющего контраста между размерами, избегая небольших различий.</string>
+    <string name="text_medium">Следующие единицы используются для выражения размера шрифта на Android и в Интернете.</string>
+    <string name="text_small">Веб-браузеры рассчитывают REM</string>
+
+    <string name="header_small">Игра Жизни</string>
+    <string name="header_medium">Следующие единицы предназначены для интервалов</string>
+    <string name="header_large">Вес — это основной атрибут, определяющий общую толщину штрихов шрифта.</string>
+
+</resources>

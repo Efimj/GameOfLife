@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">जीवन का नाटक</string>
+
+    <string name="GameOfLife">जीवन का नाटक</string>
+    <string name="Settings">समायोजन</string>
+    <string name="Onboarding">ज्ञानप्राप्ति</string>
+    <string name="drawer_GameOfLife_description">जीवन का नाटक</string>
+    <string name="drawer_Settings_description">समायोजन</string>
+    <string name="drawer_Onboarding_description">ज्ञानप्राप्ति</string>
+
+    <string name="speed_value_100ms">100ms</string>
+    <string name="speed_value_250ms">250ms</string>
+    <string name="speed_value_500ms">500ms</string>
+    <string name="speed_value_1s">1s</string>
+
+    <string name="text_large">प्रस्तुत प्रकार के पैमाने पर आकारों का लक्ष्य छोटे अंतरों से बचते हुए आकारों के बीच प्रभावशाली अंतर प्रदान करना होना चाहिए</string>
+    <string name="text_medium">एंड्रॉइड और वेब पर फ़ॉन्ट आकार को व्यक्त करने के लिए निम्नलिखित इकाइयों का उपयोग किया जाता है</string>
+    <string name="text_small">वेब ब्राउज़र REM की गणना करते हैं</string>
+
+    <string name="header_small">जीवन का नाटक</string>
+    <string name="header_medium">निम्नलिखित इकाइयाँ रिक्ति के लिए हैं</string>
+    <string name="header_large">वजन प्राथमिक विशेषता है जो टाइपफेस के स्ट्रोक की समग्र मोटाई को परिभाषित करता है।</string>
+
+</resources>

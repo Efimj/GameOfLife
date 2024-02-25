@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Juego de vida</string>
+
+    <string name="GameOfLife">Juego de vida</string>
+    <string name="Settings">Ajustes</string>
+    <string name="Onboarding">Inducción</string>
+    <string name="drawer_GameOfLife_description">Juego de vida</string>
+    <string name="drawer_Settings_description">Ajustes</string>
+    <string name="drawer_Onboarding_description">Inducción</string>
+
+    <string name="speed_value_100ms">100 ms</string>
+    <string name="speed_value_250ms">250 ms</string>
+    <string name="speed_value_500ms">500ms</string>
+    <string name="speed_value_1s">1s</string>
+
+    <string name="text_large">Los tamaños en la escala de tipografía renderizada deben tener como objetivo proporcionar un contraste impactante entre los tamaños evitando pequeñas diferencias.</string>
+    <string name="text_medium">Las siguientes unidades se utilizan para expresar el tamaño de fuente en Android y la web.</string>
+    <string name="text_small">Los navegadores web calculan el REM</string>
+
+    <string name="header_small">Juego de vida</string>
+    <string name="header_medium">Las siguientes unidades son para espaciar</string>
+    <string name="header_large">El peso es el atributo principal que define el grosor general de los trazos de un tipo de letra.</string>
+
+</resources>

@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Trò chơi của cuộc sống</string>
+
+    <string name="GameOfLife">Trò chơi của cuộc sống</string>
+    <string name="Settings">Cài đặt</string>
+    <string name="Onboarding">Giới thiệu</string>
+    <string name="drawer_GameOfLife_description">Trò chơi của cuộc sống</string>
+    <string name="drawer_Settings_description">Cài đặt</string>
+    <string name="drawer_Onboarding_description">Giới thiệu</string>
+
+    <string name="speed_value_100ms">100 mili giây</string>
+    <string name="speed_value_250ms">250 mili giây</string>
+    <string name="speed_value_500ms">500 mili giây</string>
+    <string name="speed_value_1s">1 giây</string>
+
+    <string name="text_large">Kích thước trên thang loại được hiển thị phải nhằm mục đích mang lại độ tương phản mạnh mẽ giữa các kích thước bằng cách tránh những khác biệt nhỏ</string>
+    <string name="text_medium">Các đơn vị sau dùng để thể hiện cỡ chữ trên Android và web</string>
+    <string name="text_small">Trình duyệt web tính toán REM</string>
+
+    <string name="header_small">Trò chơi của cuộc sống</string>
+    <string name="header_medium">Các đơn vị sau đây dành cho khoảng cách</string>
+    <string name="header_large">Trọng lượng là thuộc tính chính xác định độ dày tổng thể của các nét chữ của kiểu chữ.</string>
+
+</resources>

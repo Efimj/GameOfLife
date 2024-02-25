@@ -101,7 +101,7 @@ private fun BoxScope.NavigationContent(pagerState: PagerState, navController: Na
                                 pagerState.animateScrollToPage(
                                     pagerState.currentPage + 1, animationSpec = spring(
                                         dampingRatio = Spring.DampingRatioNoBouncy,
-                                        stiffness = Spring.StiffnessVeryLow
+                                        stiffness = Spring.StiffnessLow
                                     )
                                 )
                             }
