@@ -13,12 +13,11 @@
     <string name="speed_value_500ms">500ms</string>
     <string name="speed_value_1s">1s</string>
 
-    <string name="text_large">Los tamaños en la escala de tipografía renderizada deben tener como objetivo proporcionar un contraste impactante entre los tamaños evitando pequeñas diferencias.</string>
-    <string name="text_medium">Las siguientes unidades se utilizan para expresar el tamaño de fuente en Android y la web.</string>
-    <string name="text_small">Los navegadores web calculan el REM</string>
-
-    <string name="header_small">Juego de vida</string>
-    <string name="header_medium">Las siguientes unidades son para espaciar</string>
-    <string name="header_large">El peso es el atributo principal que define el grosor general de los trazos de un tipo de letra.</string>
+    <string name="onb_1_headline">Conway\'s</string>
+    <string name="onb_1_description">\"Game of Life\" es una simulación de la evolución de los autómatas celulares, donde cada célula del tablero de juego sigue reglas simples</string>
+    <string name="onb_2_headline">Regla 1</string>
+    <string name="onb_2_description">En una celda vacía (muerta), si hay exactamente tres vecinos vivos, nace la vida.</string>
+    <string name="onb_3_headline">Regla 2</string>
+    <string name="onb_3_description">Si una célula viva tiene dos o tres vecinos vivos, continúa viviendo; de lo contrario, la celda muere (debido a \"soledad\" o \"hacinamiento\")</string>
 
 </resources>

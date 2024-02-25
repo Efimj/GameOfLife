@@ -31,9 +31,9 @@ fun Counter(
                     targetState = digit,
                     transitionSpec = {
                         if (targetState > initialState) {
-                            slideInVertically { -it } with slideOutVertically { it }
+                            slideInVertically { -it } togetherWith slideOutVertically { it }
                         } else {
-                            slideInVertically { it } with slideOutVertically { -it }
+                            slideInVertically { it } togetherWith slideOutVertically { -it }
                         }
                     },
                     label = "Counter"

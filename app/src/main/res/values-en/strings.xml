@@ -13,12 +13,11 @@
     <string name="speed_value_500ms">500ms</string>
     <string name="speed_value_1s">1s</string>
 
-    <string name="text_large">Sizes on the rendered type scale should aim to provide impactful contrast between sizes by avoiding small differences</string>
-    <string name="text_medium">The following units are used to express font size on Android and the web</string>
-    <string name="text_small">Web browsers calculate the REM</string>
-
-    <string name="header_small">Game of Life</string>
-    <string name="header_medium">The following units are for spacing</string>
-    <string name="header_large">Weight is the primary attribute that defines the overall thickness of a typeface’s strokes.</string>
+    <string name="onb_1_headline">Conway\'s</string>
+    <string name="onb_1_description">"Game of Life" is a simulation of cellular automata evolution, where each cell on the game board follows simple rules</string>
+    <string name="onb_2_headline">Rule 1</string>
+    <string name="onb_2_description">In an empty (dead) cell, if there are exactly three living neighbors, life is born</string>
+    <string name="onb_3_headline">Rule 2</string>
+    <string name="onb_3_description">If a living cell has two or three living neighbors, it continues to live; otherwise, the cell dies (due to \"loneliness\" or \"overcrowding\")</string>
 
 </resources>

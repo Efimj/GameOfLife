@@ -13,12 +13,11 @@
     <string name="speed_value_500ms">500 мс</string>
     <string name="speed_value_1s">1 с</string>
 
-    <string name="text_large">Размеры в масштабе отображаемого шрифта должны быть направлены на обеспечение впечатляющего контраста между размерами, избегая небольших различий.</string>
-    <string name="text_medium">Следующие единицы используются для выражения размера шрифта на Android и в Интернете.</string>
-    <string name="text_small">Веб-браузеры рассчитывают REM</string>
-
-    <string name="header_small">Игра Жизни</string>
-    <string name="header_medium">Следующие единицы предназначены для интервалов</string>
-    <string name="header_large">Вес — это основной атрибут, определяющий общую толщину штрихов шрифта.</string>
+    <string name="onb_1_headline">Конвея</string>
+    <string name="onb_1_description">«Игра жизни» — это симуляция эволюции клеточных автоматов, где каждая клетка на игровом поле следует простым правилам.</string>
+    <string name="onb_2_headline">Правило 1</string>
+    <string name="onb_2_description">В пустой (мертвой) клетке, если живых соседей ровно три, рождается жизнь</string>
+    <string name="onb_3_headline">Правило 2</string>
+    <string name="onb_3_description">Если у живой клетки есть два или три живых соседа, она продолжает жить; в противном случае клетка погибает (из-за «одиночества» или «перенаселенности»)</string>
 
 </resources>

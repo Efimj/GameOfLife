@@ -13,12 +13,11 @@
     <string name="speed_value_500ms">500ms</string>
     <string name="speed_value_1s">1초</string>
 
-    <string name="text_large">렌더링된 활자 크기의 크기는 작은 차이를 피함으로써 크기 간에 효과적인 대비를 제공하는 것을 목표로 해야 합니다.</string>
-    <string name="text_medium">Android 및 웹에서 글꼴 크기를 표현하는 데 사용되는 단위는 다음과 같습니다.</string>
-    <string name="text_small">웹 브라우저는 REM을 계산합니다.</string>
-
-    <string name="header_small">인생의 게임</string>
-    <string name="header_medium">다음 단위는 간격을 나타냅니다.</string>
-    <string name="header_large">무게는 서체 획의 전체 두께를 정의하는 주요 속성입니다.</string>
+    <string name="onb_1_headline">콘웨이</string>
+    <string name="onb_1_description">\"Game of Life\"는 게임 보드의 각 셀이 간단한 규칙을 따르는 셀룰러 오토마타 진화 시뮬레이션입니다.</string>
+    <string name="onb_2_headline">규칙 1</string>
+    <string name="onb_2_description">빈(죽은) 셀에 정확히 3명의 이웃이 살아 있으면 생명이 탄생한다</string>
+    <string name="onb_3_headline">규칙 2</string>
+    <string name="onb_3_description">살아있는 세포에 두세 개의 살아있는 이웃이 있으면 계속해서 살아갑니다. 그렇지 않으면 세포가 죽습니다(\"외로움\" 또는 \"과밀\"로 인해).</string>
 
 </resources>

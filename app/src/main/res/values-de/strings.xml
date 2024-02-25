@@ -13,12 +13,11 @@
     <string name="speed_value_500ms">500 ms</string>
     <string name="speed_value_1s">1s</string>
 
-    <string name="text_large">Die Größen auf der gerenderten Schriftskala sollten darauf abzielen, durch die Vermeidung kleiner Unterschiede einen wirkungsvollen Kontrast zwischen den Größen zu erzielen</string>
-    <string name="text_medium">Die folgenden Einheiten werden zur Angabe der Schriftgröße auf Android und im Web verwendet</string>
-    <string name="text_small">Webbrowser berechnen den REM</string>
-
-    <string name="header_small">Spiel des Lebens</string>
-    <string name="header_medium">Die folgenden Einheiten gelten für den Abstand</string>
-    <string name="header_large">Das Gewicht ist das primäre Attribut, das die Gesamtdicke der Striche einer Schriftart definiert.</string>
+    <string name="onb_1_headline">Conway\'s</string>
+    <string name="onb_1_description">„Game of Life“ ist eine Simulation der Entwicklung zellularer Automaten, bei der jede Zelle auf dem Spielbrett einfachen Regeln folgt</string>
+    <string name="onb_2_headline">Regel 1</string>
+    <string name="onb_2_description">Wenn in einer leeren (toten) Zelle genau drei lebende Nachbarn sind, entsteht Leben</string>
+    <string name="onb_3_headline">Regel 2</string>
+    <string name="onb_3_description">Wenn eine lebende Zelle zwei oder drei lebende Nachbarn hat, lebt sie weiter; andernfalls stirbt die Zelle (aufgrund von „Einsamkeit“ oder „Überfüllung“)</string>
 
 </resources>

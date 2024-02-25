@@ -13,12 +13,11 @@
     <string name="speed_value_500ms">500毫秒</string>
     <string name="speed_value_1s">1秒</string>
 
-    <string name="text_large">渲染字體比例上的尺寸應旨在透過避免微小差異來提供尺寸之間有影響力的對比</string>
-    <string name="text_medium">以下單位用於表示 Android 和 Web 上的字體大小</string>
-    <string name="text_small">Web 瀏覽器計算 REM</string>
-
-    <string name="header_small">生命遊戲</string>
-    <string name="header_medium">以下單位為間距</string>
-    <string name="header_large">粗細是定義字型筆畫整體粗細的主要屬性。</string>
+    <string name="onb_1_headline">康威的</string>
+    <string name="onb_1_description">「生命遊戲」是細胞自動機進化的模擬，遊戲板上的每個細胞都遵循簡單的規則</string>
+    <string name="onb_2_headline">規則1</string>
+    <string name="onb_2_description">在空（死）細胞中，如果剛好有三個活著的鄰居，生命就會誕生</string>
+    <string name="onb_3_headline">規則2</string>
+    <string name="onb_3_description">如果一個活細胞有兩個或三個活的鄰居，它就會繼續活下去；否則，細胞就會死亡（由於「孤獨」或「過度擁擠」）</string>
 
 </resources>

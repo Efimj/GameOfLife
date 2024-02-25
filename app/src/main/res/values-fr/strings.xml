@@ -13,12 +13,11 @@
     <string name="speed_value_500ms">500 ms</string>
     <string name="speed_value_1s">1s</string>
 
-    <string name="text_large">Les tailles sur l\'échelle de caractères rendue doivent viser à fournir un contraste percutant entre les tailles en évitant les petites différences</string>
-    <string name="text_medium">Les unités suivantes sont utilisées pour exprimer la taille de la police sur Android et sur le Web</string>
-    <string name="text_small">Les navigateurs Web calculent le REM</string>
-
-    <string name="header_small">Le jeu de la vie</string>
-    <string name="header_medium">Les unités suivantes sont pour l\'espacement</string>
-    <string name="header_large">Le poids est l’attribut principal qui définit l’épaisseur globale des traits d’une police.</string>
+    <string name="onb_1_headline">de Conway</string>
+    <string name="onb_1_description">\"Game of Life\" est une simulation de l\'évolution des automates cellulaires, où chaque cellule du plateau de jeu suit des règles simples</string>
+    <string name="onb_2_headline">Règle 1</string>
+    <string name="onb_2_description">Dans une cellule vide (morte), s\'il y a exactement trois voisins vivants, la vie naît</string>
+    <string name="onb_3_headline">Règle 2</string>
+    <string name="onb_3_description">Si une cellule vivante a deux ou trois voisins vivants, elle continue à vivre ; sinon, la cellule meurt (à cause de la « solitude » ou du « surpeuplement »)</string>
 
 </resources>

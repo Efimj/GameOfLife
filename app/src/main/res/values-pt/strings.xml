@@ -13,12 +13,11 @@
     <string name="speed_value_500ms">500ms</string>
     <string name="speed_value_1s">1s</string>
 
-    <string name="text_large">Os tamanhos na escala de tipo renderizada devem ter como objetivo fornecer um contraste impactante entre os tamanhos, evitando pequenas diferenças</string>
-    <string name="text_medium">As unidades a seguir são usadas para expressar o tamanho da fonte no Android e na web</string>
-    <string name="text_small">Os navegadores da Web calculam o REM</string>
-
-    <string name="header_small">Jogo da vida</string>
-    <string name="header_medium">As seguintes unidades são para espaçamento</string>
-    <string name="header_large">A espessura é o atributo principal que define a espessura geral dos traços de uma fonte.</string>
+    <string name="onb_1_headline">Conway</string>
+    <string name="onb_1_description">“Game of Life” é uma simulação da evolução de autômatos celulares, onde cada célula do tabuleiro segue regras simples</string>
+    <string name="onb_2_headline">Regra 1</string>
+    <string name="onb_2_description">Em uma cela vazia (morta), se houver exatamente três vizinhos vivos, nasce a vida</string>
+    <string name="onb_3_headline">Regra 2</string>
+    <string name="onb_3_description">Se uma célula viva tiver dois ou três vizinhos vivos, ela continuará viva; caso contrário, a célula morre (devido à “solidão” ou “superlotação”)</string>
 
 </resources>

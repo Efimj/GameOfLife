@@ -13,12 +13,11 @@
     <string name="speed_value_500ms">500ms</string>
     <string name="speed_value_1s">1s</string>
 
-    <string name="text_large">प्रस्तुत प्रकार के पैमाने पर आकारों का लक्ष्य छोटे अंतरों से बचते हुए आकारों के बीच प्रभावशाली अंतर प्रदान करना होना चाहिए</string>
-    <string name="text_medium">एंड्रॉइड और वेब पर फ़ॉन्ट आकार को व्यक्त करने के लिए निम्नलिखित इकाइयों का उपयोग किया जाता है</string>
-    <string name="text_small">वेब ब्राउज़र REM की गणना करते हैं</string>
-
-    <string name="header_small">जीवन का नाटक</string>
-    <string name="header_medium">निम्नलिखित इकाइयाँ रिक्ति के लिए हैं</string>
-    <string name="header_large">वजन प्राथमिक विशेषता है जो टाइपफेस के स्ट्रोक की समग्र मोटाई को परिभाषित करता है।</string>
+    <string name="onb_1_headline">कॉनवे\'स</string>
+    <string name="onb_1_description">\"गेम ऑफ लाइफ\" सेलुलर ऑटोमेटा विकास का अनुकरण है, जहां गेम बोर्ड पर प्रत्येक सेल सरल नियमों का पालन करता है</string>
+    <string name="onb_2_headline">नियम 1</string>
+    <string name="onb_2_description">एक खाली (मृत) कोशिका में, यदि ठीक तीन जीवित पड़ोसी हों, तो जीवन का जन्म होता है</string>
+    <string name="onb_3_headline">नियम 2</string>
+    <string name="onb_3_description">यदि किसी जीवित कोशिका में दो या तीन जीवित पड़ोसी हों, तो वह जीवित रहती है; अन्यथा, कोशिका मर जाती है (\"अकेलापन\" या \"भीड़भाड़\" के कारण)</string>
 
 </resources>

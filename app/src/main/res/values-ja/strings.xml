@@ -13,12 +13,11 @@
     <string name="speed_value_500ms">500ミリ秒</string>
     <string name="speed_value_1s">1秒</string>
 
-    <string name="text_large">レンダリングされたタイプ スケール上のサイズは、小さな違いを避けてサイズ間にインパクトのあるコントラストを提供することを目指す必要があります。</string>
-    <string name="text_medium">Android および Web ではフォント サイズを表すために次の単位が使用されます。</string>
-    <string name="text_small">Web ブラウザは REM を計算します</string>
-
-    <string name="header_small">人生ゲーム</string>
-    <string name="header_medium">次の単位は間隔を表すものです</string>
-    <string name="header_large">ウェイトは、書体のストローク全体の太さを定義する主要な属性です。</string>
+    <string name="onb_1_headline">コンウェイさん</string>
+    <string name="onb_1_description">「ライフ ゲーム」は、ゲーム ボード上の各セルが単純なルールに従って進む、セル オートマトンの進化のシミュレーションです。</string>
+    <string name="onb_2_headline">ルール1</string>
+    <string name="onb_2_description">空の（死んだ）独房に、生きている隣人がちょうど 3 人いる場合、生命が誕生します。</string>
+    <string name="onb_3_headline">ルール2</string>
+    <string name="onb_3_description">生きているセルに 2 つまたは 3 つの生きている隣接セルがある場合、そのセルは生き続けます。そうしないと、細胞は死んでしまいます（「孤独」または「過密」により）</string>
 
 </resources>

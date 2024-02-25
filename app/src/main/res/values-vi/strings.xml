@@ -13,12 +13,11 @@
     <string name="speed_value_500ms">500 mili giây</string>
     <string name="speed_value_1s">1 giây</string>
 
-    <string name="text_large">Kích thước trên thang loại được hiển thị phải nhằm mục đích mang lại độ tương phản mạnh mẽ giữa các kích thước bằng cách tránh những khác biệt nhỏ</string>
-    <string name="text_medium">Các đơn vị sau dùng để thể hiện cỡ chữ trên Android và web</string>
-    <string name="text_small">Trình duyệt web tính toán REM</string>
-
-    <string name="header_small">Trò chơi của cuộc sống</string>
-    <string name="header_medium">Các đơn vị sau đây dành cho khoảng cách</string>
-    <string name="header_large">Trọng lượng là thuộc tính chính xác định độ dày tổng thể của các nét chữ của kiểu chữ.</string>
+    <string name="onb_1_headline">Conway\'s</string>
+    <string name="onb_1_description">\"Trò chơi cuộc sống\" là mô phỏng quá trình tiến hóa tự động của tế bào, trong đó mỗi ô trên bảng trò chơi tuân theo các quy tắc đơn giản</string>
+    <string name="onb_2_headline">Quy tắc 1</string>
+    <string name="onb_2_description">Trong một ô trống (chết), nếu có đúng ba người hàng xóm còn sống thì sự sống sẽ ra đời</string>
+    <string name="onb_3_headline">Quy tắc 2</string>
+    <string name="onb_3_description">Nếu một tế bào sống có hai hoặc ba tế bào lân cận còn sống thì nó vẫn tiếp tục sống; nếu không thì tế bào sẽ chết (do \"cô đơn\" hoặc \"quá đông\")</string>
 
 </resources>

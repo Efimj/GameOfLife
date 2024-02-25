@@ -13,12 +13,11 @@
     <string name="speed_value_500ms">500 мс</string>
     <string name="speed_value_1s">1с</string>
 
-    <string name="text_large">Розміри на відтвореній шкалі шрифтів мають бути спрямовані на забезпечення ефектного контрасту між розмірами, уникаючи невеликих відмінностей</string>
-    <string name="text_medium">Наведені нижче одиниці вимірювання використовуються для вираження розміру шрифту на Android і в Інтернеті</string>
-    <string name="text_small">Веб-браузери обчислюють REM</string>
-
-    <string name="header_small">Гра життя</string>
-    <string name="header_medium">Наступні одиниці для інтервалу</string>
-    <string name="header_large">Вага – це основний атрибут, який визначає загальну товщину штрихів гарнітури.</string>
+    <string name="onb_1_headline">Конвея</string>
+    <string name="onb_1_description">«Game of Life» — це симуляція еволюції клітинних автоматів, де кожна клітинка на ігровому полі відповідає простим правилам</string>
+    <string name="onb_2_headline">Правило 1</string>
+    <string name="onb_2_description">У порожній (мертвій) клітині, якщо живих сусідів рівно три, зароджується життя</string>
+    <string name="onb_3_headline">Правило 2</string>
+    <string name="onb_3_description">Якщо жива клітина має двох або трьох живих сусідів, вона продовжує жити; інакше клітина гине (через «самотність» або «перенаселеність»)</string>
 
 </resources>
