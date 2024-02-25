@@ -12,32 +12,26 @@ sealed class OnboardingScreen(
     @StringRes
     val description: Int
 ) {
-    data object AboutGameOfLife : OnboardingScreen(
+    data object GameOfLife : OnboardingScreen(
         image = R.drawable.ic_launcher_foreground,
-        title = R.string.header_small,
-        description = R.string.text_small,
+        title = R.string.onb_1_headline,
+        description = R.string.onb_1_description,
     )
 
-    data object AboutGameOfLife2 : OnboardingScreen(
+    data object Rule1 : OnboardingScreen(
         image = R.drawable.ic_launcher_foreground,
-        title = R.string.header_medium,
-        description = R.string.text_medium,
+        title = R.string.onb_2_headline,
+        description = R.string.onb_2_description,
     )
 
-    data object AboutGameOfLife3 : OnboardingScreen(
+    data object Rule2 : OnboardingScreen(
         image = R.drawable.ic_launcher_foreground,
-        title = R.string.header_large,
-        description = R.string.text_large,
-    )
-
-    data object AboutGameOfLife4 : OnboardingScreen(
-        image = R.drawable.ic_launcher_foreground,
-        title = R.string.header_small,
-        description = R.string.text_large,
+        title = R.string.onb_3_headline,
+        description = R.string.onb_3_description,
     )
 
     object PageList {
-        val PageList = listOf(AboutGameOfLife, AboutGameOfLife2, AboutGameOfLife3, AboutGameOfLife4)
+        val PageList = listOf(GameOfLife, Rule1, Rule2)
         val Count = PageList.size
     }
 }

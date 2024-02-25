@@ -24,11 +24,11 @@ import androidx.compose.ui.unit.dp
 fun VerticalIndicator(
     pagerState: PagerState,
     color: Color = MaterialTheme.colorScheme.primaryContainer,
-    activeColor: Color = MaterialTheme.colorScheme.secondary,
+    activeColor: Color = MaterialTheme.colorScheme.primary,
     spacing: Dp = 15.dp,
     dotWidth: Dp = 8.dp,
     dotHeight: Dp = 25.dp,
-    dotActiveHeight: Dp = 62.dp,
+    dotActiveHeight: Dp = 58.dp,
 ) {
     // To get scroll offset
     val pageOffset = pagerState.currentPage + pagerState.currentPageOffsetFraction

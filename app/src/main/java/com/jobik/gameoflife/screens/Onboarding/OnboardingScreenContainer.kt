@@ -135,6 +135,7 @@ fun PagerScreen(content: OnboardingScreen) {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .padding(bottom = 70.dp)
             .topWindowInsetsPadding()
             .bottomWindowInsetsPadding(),
         horizontalAlignment = Alignment.CenterHorizontally,
