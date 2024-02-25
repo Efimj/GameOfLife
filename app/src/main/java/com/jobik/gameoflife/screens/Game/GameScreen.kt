@@ -11,9 +11,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
 import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
+import com.jobik.gameoflife.ui.helpers.verticalWindowInsetsPadding
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -32,6 +35,7 @@ fun GameScreen(
     val frontCorner by animateDpAsState(targetValue = frontCornerValue, label = "frontCorner")
 
     BackdropScaffold(
+        modifier = Modifier.horizontalWindowInsetsPadding(),
         scaffoldState = backdropScaffoldState,
         frontLayerShape = RoundedCornerShape(
             bottomStart = 0.dp,

@@ -27,6 +27,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.navigation.Screen
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
+import com.jobik.gameoflife.ui.helpers.startWindowInsetsPadding
 import kotlinx.coroutines.launch
 
 /**
@@ -86,7 +87,9 @@ fun AppDrawerContent(
     ModalDrawerSheet(windowInsets = WindowInsets.ime) {
         Surface(color = MaterialTheme.colorScheme.background) {
             Column(
-                modifier = Modifier.verticalScroll(rememberScrollState()),
+                modifier = Modifier
+                    .verticalScroll(rememberScrollState())
+                    .startWindowInsetsPadding(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
@@ -140,7 +143,7 @@ fun AppDrawerItem(
     Surface(
         color = backgroundColor,
         contentColor = contentColor,
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.widthIn(max = 260.dp).fillMaxWidth(),
         onClick = onClick,
         shape = CircleShape,
     ) {

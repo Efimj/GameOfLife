@@ -5,12 +5,12 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.PageSize
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.VerticalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowForward
 import androidx.compose.material3.*
@@ -18,7 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -32,7 +32,9 @@ import com.jobik.gameoflife.R
 import com.jobik.gameoflife.navigation.Screen
 import com.jobik.gameoflife.ui.composables.VerticalIndicator
 import com.jobik.gameoflife.ui.helpers.bottomWindowInsetsPadding
+import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
 import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
+import com.jobik.gameoflife.ui.helpers.verticalWindowInsetsPadding
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -42,7 +44,11 @@ fun OnboardingScreenContainer(navController: NavHostController) {
         OnboardingScreen.PageList.Count
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .horizontalWindowInsetsPadding()
+    ) {
         IndicatorContent(pagerState)
         VerticalPager(
             modifier = Modifier.fillMaxSize(),
@@ -68,8 +74,8 @@ private fun BoxScope.NavigationContent(pagerState: PagerState, navController: Na
     Box(modifier = Modifier.align(Alignment.BottomCenter), contentAlignment = Alignment.BottomCenter) {
         Row(
             modifier = Modifier
-                .bottomWindowInsetsPadding()
                 .fillMaxWidth()
+                .bottomWindowInsetsPadding()
                 .padding(horizontal = 40.dp)
                 .padding(bottom = 20.dp),
             verticalAlignment = Alignment.CenterVertically,
@@ -83,7 +89,7 @@ private fun BoxScope.NavigationContent(pagerState: PagerState, navController: Na
                         popUpTo(Screen.Game.name)
                     }
                 }) {
-                Text(text = "Start game")
+                Text(text = stringResource(id = R.string.start_game))
             }
             AnimatedVisibility(
                 visible = pagerState.currentPage < OnboardingScreen.PageList.Count - 1,
@@ -135,22 +141,17 @@ fun PagerScreen(content: OnboardingScreen) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(bottom = 70.dp)
-            .topWindowInsetsPadding()
-            .bottomWindowInsetsPadding(),
+            .verticalWindowInsetsPadding()
+            .padding(bottom = 90.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        Box(modifier = Modifier.height(440.dp), contentAlignment = Alignment.Center) {
-            Image(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(20.dp))
-                    .fillMaxHeight(),
-                painter = painterResource(id = content.image),
-                contentScale = ContentScale.FillHeight,
-                contentDescription = stringResource(R.string.Onboarding)
-            )
-        }
+        Image(
+            modifier = Modifier.weight(1f),
+            painter = painterResource(id = content.image),
+            contentScale = ContentScale.FillWidth,
+            contentDescription = stringResource(R.string.Onboarding)
+        )
         Text(
             modifier = Modifier
                 .fillMaxWidth()
@@ -170,8 +171,6 @@ fun PagerScreen(content: OnboardingScreen) {
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Start,
             color = MaterialTheme.colorScheme.onSecondaryContainer,
-            minLines = 4,
-            maxLines = 4,
             overflow = TextOverflow.Ellipsis
         )
     }
