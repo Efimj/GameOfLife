@@ -23,17 +23,17 @@ import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
 fun GameContent(viewModel: GameScreenViewModel) {
     val containerColorTarget = when {
         viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.secondary
-        viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.errorContainer
+        viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.error
         viewModel.states.value.gameResult != null -> MaterialTheme.colorScheme.primary
-        else -> MaterialTheme.colorScheme.secondaryContainer
+        else -> MaterialTheme.colorScheme.surfaceContainer
     }
     val containerColor by animateColorAsState(targetValue = containerColorTarget, label = "containerColor")
 
     val contentColorTarget = when {
         viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.onSecondary
-        viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.onErrorContainer
+        viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.onError
         viewModel.states.value.gameResult != null -> MaterialTheme.colorScheme.onPrimary
-        else -> MaterialTheme.colorScheme.onSecondaryContainer
+        else -> MaterialTheme.colorScheme.onSurface
     }
     val contentColor by animateColorAsState(targetValue = contentColorTarget, label = "contentColor")
 

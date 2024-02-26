@@ -13,19 +13,19 @@ sealed class OnboardingScreen(
     val description: Int
 ) {
     data object GameOfLife : OnboardingScreen(
-        image = R.drawable.ic_launcher_foreground,
+        image = R.mipmap.ic_launcher_round,
         title = R.string.onb_1_headline,
         description = R.string.onb_1_description,
     )
 
     data object Rule1 : OnboardingScreen(
-        image = R.drawable.ic_launcher_foreground,
+        image = R.mipmap.ic_launcher_round,
         title = R.string.onb_2_headline,
         description = R.string.onb_2_description,
     )
 
     data object Rule2 : OnboardingScreen(
-        image = R.drawable.ic_launcher_foreground,
+        image = R.mipmap.ic_launcher_round,
         title = R.string.onb_3_headline,
         description = R.string.onb_3_description,
     )

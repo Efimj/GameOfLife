@@ -97,7 +97,7 @@ fun AppDrawerContent(
                     modifier = Modifier
                         .size(150.dp)
                         .padding(bottom = 20.dp),
-                    painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                    painter = painterResource(id = R.mipmap.ic_launcher_round),
                     contentDescription = "Main app icon"
                 )
                 Column(modifier = Modifier.padding(horizontal = 10.dp)) {
