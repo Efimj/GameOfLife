@@ -13,6 +13,19 @@
     <string name="speed_value_500ms">500ms</string>
     <string name="speed_value_1s">1초</string>
 
+    <string name="start_game">게임을 시작하다</string>
+    <string name="menu_button">메뉴 버튼</string>
+    <string name="clear">분명한</string>
+    <string name="free_soul_mode">자유로운 영혼 모드</string>
+    <string name="emoji_mode">이모지 모드</string>
+    <string name="restart">재시작</string>
+    <string name="stable_combination">안정적인 조합 🎉</string>
+    <string name="no_one_survived">아무도 살아남지 못했어요 💀</string>
+    <string name="alive">살아 있는</string>
+    <string name="deaths">사망자</string>
+    <string name="revivals">부흥</string>
+    <string name="switch_running_simulation">스위치 실행 시뮬레이션</string>
+
     <string name="onb_1_headline">콘웨이</string>
     <string name="onb_1_description">\"Game of Life\"는 게임 보드의 각 셀이 간단한 규칙을 따르는 셀룰러 오토마타 진화 시뮬레이션입니다.</string>
     <string name="onb_2_headline">규칙 1</string>

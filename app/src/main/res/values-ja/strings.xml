@@ -13,6 +13,19 @@
     <string name="speed_value_500ms">500ミリ秒</string>
     <string name="speed_value_1s">1秒</string>
 
+    <string name="start_game">ゲームをスタート</string>
+    <string name="menu_button">メニューボタン</string>
+    <string name="clear">クリア</string>
+    <string name="free_soul_mode">フリーソウルモード</string>
+    <string name="emoji_mode">Emoji mode</string>
+    <string name="restart">再起動</string>
+    <string name="stable_combination">安定の組み合わせ🎉</string>
+    <string name="no_one_survived">誰も生き残れませんでした💀</string>
+    <string name="alive">生きている</string>
+    <string name="deaths">死亡者（数</string>
+    <string name="revivals">リバイバルズ</string>
+    <string name="switch_running_simulation">スイッチ走行シミュレーション</string>
+
     <string name="onb_1_headline">コンウェイさん</string>
     <string name="onb_1_description">「ライフ ゲーム」は、ゲーム ボード上の各セルが単純なルールに従って進む、セル オートマトンの進化のシミュレーションです。</string>
     <string name="onb_2_headline">ルール1</string>

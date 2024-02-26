@@ -14,9 +14,20 @@
     <string name="speed_value_1s">1s</string>
 
     <string name="start_game">Start game</string>
+    <string name="menu_button">Menu button</string>
+    <string name="clear">Clear</string>
+    <string name="free_soul_mode">Free soul mode</string>
+    <string name="emoji_mode">Emoji mode</string>
+    <string name="restart">Restart</string>
+    <string name="stable_combination">Stable combination 🎉</string>
+    <string name="no_one_survived">No one survived 💀</string>
+    <string name="alive">Alive</string>
+    <string name="deaths">Deaths</string>
+    <string name="revivals">Revivals</string>
+    <string name="switch_running_simulation">Switch running simulation</string>
 
-    <string name="onb_1_headline">Conway\'s</string>
-    <string name="onb_1_description">"Game of Life" is a simulation of cellular automata evolution, where each cell on the game board follows simple rules</string>
+    <string name="onb_1_headline">"Game of Life"</string>
+    <string name="onb_1_description">This is a simulation of cellular automata evolution devised by Dr. John Conway in 1970, where each cell on the game field follows simple rules</string>
     <string name="onb_2_headline">Rule 1</string>
     <string name="onb_2_description">In an empty (dead) cell, if there are exactly three living neighbors, life is born</string>
     <string name="onb_3_headline">Rule 2</string>

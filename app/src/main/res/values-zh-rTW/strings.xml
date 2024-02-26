@@ -13,6 +13,19 @@
     <string name="speed_value_500ms">500毫秒</string>
     <string name="speed_value_1s">1秒</string>
 
+    <string name="start_game">開始遊戲</string>
+    <string name="menu_button">選單按鈕</string>
+    <string name="clear">清除</string>
+    <string name="free_soul_mode">自由靈魂模式</string>
+    <string name="emoji_mode">表情符號模式</string>
+    <string name="restart">重新開始</string>
+    <string name="stable_combination">穩定的組合🎉</string>
+    <string name="no_one_survived">無一人倖存💀</string>
+    <string name="alive">活</string>
+    <string name="deaths">死亡人數</string>
+    <string name="revivals">復興</string>
+    <string name="switch_running_simulation">開關運行模擬</string>
+
     <string name="onb_1_headline">康威的</string>
     <string name="onb_1_description">「生命遊戲」是細胞自動機進化的模擬，遊戲板上的每個細胞都遵循簡單的規則</string>
     <string name="onb_2_headline">規則1</string>

@@ -27,6 +27,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.navigation.Screen
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
+import com.jobik.gameoflife.ui.helpers.TopWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.startWindowInsetsPadding
 import kotlinx.coroutines.launch
 
@@ -93,11 +94,12 @@ fun AppDrawerContent(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
+                TopWindowInsetsSpacer()
                 Image(
                     modifier = Modifier
                         .size(150.dp)
                         .padding(bottom = 20.dp),
-                    painter = painterResource(id = R.mipmap.ic_launcher_round),
+                    painter = painterResource(id = R.drawable.icon),
                     contentDescription = "Main app icon"
                 )
                 Column(modifier = Modifier.padding(horizontal = 10.dp)) {
@@ -143,7 +145,9 @@ fun AppDrawerItem(
     Surface(
         color = backgroundColor,
         contentColor = contentColor,
-        modifier = Modifier.widthIn(max = 260.dp).fillMaxWidth(),
+        modifier = Modifier
+            .widthIn(max = 260.dp)
+            .fillMaxWidth(),
         onClick = onClick,
         shape = CircleShape,
     ) {

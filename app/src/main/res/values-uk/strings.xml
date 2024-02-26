@@ -13,6 +13,19 @@
     <string name="speed_value_500ms">500 мс</string>
     <string name="speed_value_1s">1с</string>
 
+    <string name="start_game">Почни гру</string>
+    <string name="menu_button">Кнопка меню</string>
+    <string name="clear">ясно</string>
+    <string name="free_soul_mode">Безкоштовний режим душі</string>
+    <string name="emoji_mode">Режим Emoji</string>
+    <string name="restart">Перезапустіть</string>
+    <string name="stable_combination">Стійке поєднання🎉</string>
+    <string name="no_one_survived">Ніхто не вижив 💀</string>
+    <string name="alive">Живий</string>
+    <string name="deaths">Смерті</string>
+    <string name="revivals">Відродження</string>
+    <string name="switch_running_simulation">Симуляція бігу</string>
+
     <string name="onb_1_headline">Конвея</string>
     <string name="onb_1_description">«Game of Life» — це симуляція еволюції клітинних автоматів, де кожна клітинка на ігровому полі відповідає простим правилам</string>
     <string name="onb_2_headline">Правило 1</string>

@@ -12,7 +12,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun Counter(
     count: Int,

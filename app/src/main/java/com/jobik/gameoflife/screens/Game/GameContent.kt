@@ -11,9 +11,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.jobik.gameoflife.R
 import com.jobik.gameoflife.gameOfLife.GameOfLife
 import com.jobik.gameoflife.ui.composables.Counter
 import com.jobik.gameoflife.ui.composables.GridForGame
@@ -57,8 +59,8 @@ fun GameContent(viewModel: GameScreenViewModel) {
             ) {
                 Text(
                     text = when (viewModel.states.value.gameResult) {
-                        GameOfLife.Companion.GameOfLifeResult.StableCombination -> "Stable combination \uD83C\uDF89"
-                        GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> "No one survived \uD83D\uDC80"
+                        GameOfLife.Companion.GameOfLifeResult.StableCombination -> stringResource(id = R.string.stable_combination)
+                        GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> stringResource(id = R.string.no_one_survived)
                         else -> ""
                     },
                     color = contentColor,
@@ -90,14 +92,14 @@ fun GameContent(viewModel: GameScreenViewModel) {
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "Alive", color = contentColor, overflow = TextOverflow.Ellipsis)
+                Text(text = stringResource(id = R.string.alive), color = contentColor, overflow = TextOverflow.Ellipsis)
                 Counter(viewModel.states.value.alive, style = MaterialTheme.typography.bodyMedium, color = contentColor)
             }
             Row(
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "Deaths", color = contentColor, overflow = TextOverflow.Ellipsis)
+                Text(text = stringResource(id = R.string.deaths), color = contentColor, overflow = TextOverflow.Ellipsis)
                 Counter(
                     viewModel.states.value.deaths,
                     style = MaterialTheme.typography.bodyMedium,
@@ -108,7 +110,7 @@ fun GameContent(viewModel: GameScreenViewModel) {
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "Revivals", color = contentColor, overflow = TextOverflow.Ellipsis)
+                Text(text = stringResource(id = R.string.revivals), color = contentColor, overflow = TextOverflow.Ellipsis)
                 Counter(
                     viewModel.states.value.revivals,
                     style = MaterialTheme.typography.bodyMedium,

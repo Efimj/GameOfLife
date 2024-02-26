@@ -53,7 +53,7 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                         contentColor = MaterialTheme.colorScheme.onSecondaryContainer
                     )
                 ) {
-                    Text(text = "Clear", overflow = TextOverflow.Ellipsis, maxLines = 1)
+                    Text(text = stringResource(id = R.string.clear), overflow = TextOverflow.Ellipsis, maxLines = 1)
                 }
                 FilledIconButton(
                     modifier = Modifier,
@@ -120,7 +120,7 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "Free soul mode", color = MaterialTheme.colorScheme.onSurface)
+                Text(text = stringResource(id = R.string.free_soul_mode), color = MaterialTheme.colorScheme.onSurface)
                 Switch(
                     enabled = viewModel.states.value.emojiEnabled,
                     checked = viewModel.states.value.freeSoulMode,
@@ -132,11 +132,6 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                     } else {
                         null
                     },
-                    colors = SwitchDefaults.colors(
-                        checkedTrackColor = MaterialTheme.colorScheme.secondaryContainer,
-                        checkedThumbColor = MaterialTheme.colorScheme.onSecondaryContainer
-                    )
-
                 )
             }
             Row(
@@ -146,7 +141,7 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "Emoji mode", color = MaterialTheme.colorScheme.onSurface)
+                Text(text = stringResource(id = R.string.emoji_mode), color = MaterialTheme.colorScheme.onSurface)
                 Switch(
                     checked = viewModel.states.value.emojiEnabled,
                     onCheckedChange = { viewModel.switchEmojiMode() },
@@ -157,12 +152,6 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                     } else {
                         null
                     },
-//                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
-//                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer
-                    colors = SwitchDefaults.colors(
-                        checkedTrackColor = MaterialTheme.colorScheme.secondaryContainer,
-                        checkedThumbColor = MaterialTheme.colorScheme.onSecondaryContainer
-                    )
                 )
             }
             Row(
@@ -193,7 +182,7 @@ private fun MainActions(viewModel: GameScreenViewModel) {
                         containerColor = MaterialTheme.colorScheme.tertiaryContainer
                     ),
                     onClick = { viewModel.dropGame() }) {
-                    Icon(Icons.Filled.RestartAlt, contentDescription = "Favorite")
+                    Icon(Icons.Filled.RestartAlt, contentDescription = stringResource(id = R.string.restart))
                 }
             }
             CustomFabButton(viewModel.states.value.isSimulationRunning) {

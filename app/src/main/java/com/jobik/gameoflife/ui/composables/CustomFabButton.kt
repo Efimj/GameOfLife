@@ -12,7 +12,9 @@ import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.jobik.gameoflife.R
 
 @Composable
 fun CustomFabButton(enabled: Boolean, onClick: () -> Unit) {
@@ -32,7 +34,7 @@ fun CustomFabButton(enabled: Boolean, onClick: () -> Unit) {
     ) {
         Icon(
             if (enabled) Icons.Filled.Pause else Icons.Filled.PlayArrow,
-            contentDescription = "Switch running simulation."
+            contentDescription = stringResource(id = R.string.switch_running_simulation)
         )
     }
 }

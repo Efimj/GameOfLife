@@ -13,6 +13,19 @@
     <string name="speed_value_500ms">500 ms</string>
     <string name="speed_value_1s">1 secondo</string>
 
+    <string name="start_game">Inizia il gioco</string>
+    <string name="menu_button">Pulsante del menu</string>
+    <string name="clear">Chiaro</string>
+    <string name="free_soul_mode">Modalità anima libera</string>
+    <string name="emoji_mode">Modalità emoji</string>
+    <string name="restart">Ricomincia</string>
+    <string name="stable_combination">Combinazione stabile 🎉</string>
+    <string name="no_one_survived">Nessuno è sopravvissuto 💀</string>
+    <string name="alive">Vivo</string>
+    <string name="deaths">Deceduti</string>
+    <string name="revivals">Revival</string>
+    <string name="switch_running_simulation">Cambia l\'esecuzione della simulazione</string>
+
     <string name="onb_1_headline">Conway</string>
     <string name="onb_1_description">\"Game of Life\" è una simulazione dell\'evoluzione degli automi cellulari, in cui ogni cellula sul tabellone segue semplici regole</string>
     <string name="onb_2_headline">Regola 1</string>

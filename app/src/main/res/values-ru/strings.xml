@@ -13,6 +13,19 @@
     <string name="speed_value_500ms">500 мс</string>
     <string name="speed_value_1s">1 с</string>
 
+    <string name="start_game">Начать игру</string>
+    <string name="menu_button">Кнопка меню</string>
+    <string name="clear">Прозрачный</string>
+    <string name="free_soul_mode">Бесплатный режим души</string>
+    <string name="emoji_mode">Режим эмодзи</string>
+    <string name="restart">Перезапуск</string>
+    <string name="stable_combination">Стабильное сочетание 🎉</string>
+    <string name="no_one_survived">Никто не выжил 💀</string>
+    <string name="alive">Живой</string>
+    <string name="deaths">Летальные исходы</string>
+    <string name="revivals">возрождения</string>
+    <string name="switch_running_simulation">Переключить симуляцию бега</string>
+
     <string name="onb_1_headline">Конвея</string>
     <string name="onb_1_description">«Игра жизни» — это симуляция эволюции клеточных автоматов, где каждая клетка на игровом поле следует простым правилам.</string>
     <string name="onb_2_headline">Правило 1</string>

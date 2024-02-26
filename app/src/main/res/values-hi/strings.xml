@@ -13,6 +13,19 @@
     <string name="speed_value_500ms">500ms</string>
     <string name="speed_value_1s">1s</string>
 
+    <string name="start_game">खेल शुरू</string>
+    <string name="menu_button">मेनू बटन</string>
+    <string name="clear">स्पष्ट</string>
+    <string name="free_soul_mode">मुक्त आत्मा मोड</string>
+    <string name="emoji_mode">इमोजी मोड</string>
+    <string name="restart">पुनः आरंभ करें</string>
+    <string name="stable_combination">स्थिर संयोजन 🎉</string>
+    <string name="no_one_survived">कोई नहीं बचा 💀</string>
+    <string name="alive">जीवित</string>
+    <string name="deaths">मौतें</string>
+    <string name="revivals">पुनरुद्धार</string>
+    <string name="switch_running_simulation">चल रहे सिमुलेशन को स्विच करें</string>
+
     <string name="onb_1_headline">कॉनवे\'स</string>
     <string name="onb_1_description">\"गेम ऑफ लाइफ\" सेलुलर ऑटोमेटा विकास का अनुकरण है, जहां गेम बोर्ड पर प्रत्येक सेल सरल नियमों का पालन करता है</string>
     <string name="onb_2_headline">नियम 1</string>
