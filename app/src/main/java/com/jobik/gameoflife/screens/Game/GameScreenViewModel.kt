@@ -20,9 +20,9 @@ import kotlinx.coroutines.launch
 data class GameScreenStates(
     val isSimulationRunning: Boolean = false,
     val freeSoulMode: Boolean = true,
-    val emojiEnabled: Boolean = true,
-    val rows: Int = 10,
-    val cols: Int = 10,
+    val emojiEnabled: Boolean = false,
+    val rows: Int = 15,
+    val cols: Int = 15,
     val alive: Int = 0,
     val deaths: Int = 0,
     val revivals: Int = 0,
