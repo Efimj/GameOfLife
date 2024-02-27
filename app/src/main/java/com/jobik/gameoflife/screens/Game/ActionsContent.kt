@@ -182,7 +182,7 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
                     Text(
                         text = stringResource(id = R.string.set_field_dimensions),
-                        style = MaterialTheme.typography.headlineSmall,
+                        style = MaterialTheme.typography.titleMedium,
                     )
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(10.dp),
