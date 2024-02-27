@@ -36,7 +36,7 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
         MainActions(viewModel)
         Column(
             modifier = Modifier
-                .padding(horizontal = 20.dp)
+                .padding(horizontal = 10.dp)
                 .clip(MaterialTheme.shapes.medium)
                 .background(MaterialTheme.colorScheme.secondaryContainer.copy(alpha = .2f))
                 .padding(vertical = 10.dp),
@@ -45,7 +45,7 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 20.dp),
+                    .padding(horizontal = 10.dp),
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
