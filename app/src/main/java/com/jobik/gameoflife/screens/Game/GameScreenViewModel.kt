@@ -22,12 +22,12 @@ data class GameScreenStates(
     val freeSoulMode: Boolean = true,
     val emojiEnabled: Boolean = true,
     val rows: Int = 10,
-    val columns: Int = 10,
+    val cols: Int = 10,
     val alive: Int = 0,
     val deaths: Int = 0,
     val revivals: Int = 0,
     val stepNumber: Long = 0,
-    val currentStep: List<List<GameOfLifeUnitState>> = List(rows) { List(columns) { GameOfLifeUnitState.Empty } },
+    val currentStep: List<List<GameOfLifeUnitState>> = List(rows) { List(cols) { GameOfLifeUnitState.Empty } },
     val previousStep: List<List<GameOfLifeUnitState>> = emptyList(),
     val gameResult: GameOfLifeResult? = null,
     val oneStepDurationMills: Long = 250,
@@ -46,7 +46,7 @@ class GameScreenViewModel : ViewModel() {
         simulationJob?.cancel()
         val list = generateTwoDimList(
             rows = states.value.rows,
-            cols = states.value.columns,
+            cols = states.value.cols,
             initialValue = GameOfLifeUnitState.Empty
         )
         val startState = makeRandomStartStates(list)
@@ -170,7 +170,7 @@ class GameScreenViewModel : ViewModel() {
     fun setFullAlive() {
         val list = generateTwoDimList(
             rows = states.value.rows,
-            cols = states.value.columns,
+            cols = states.value.cols,
             initialValue = GameOfLifeUnitState.Alive
         )
 
@@ -180,7 +180,7 @@ class GameScreenViewModel : ViewModel() {
     fun setFullDeath() {
         val list = generateTwoDimList(
             rows = states.value.rows,
-            cols = states.value.columns,
+            cols = states.value.cols,
             initialValue = GameOfLifeUnitState.Dead
         )
         _states.value = states.value.copy(currentStep = list)
@@ -189,7 +189,7 @@ class GameScreenViewModel : ViewModel() {
     fun setFullEmpty() {
         val list = generateTwoDimList(
             rows = states.value.rows,
-            cols = states.value.columns,
+            cols = states.value.cols,
             initialValue = GameOfLifeUnitState.Empty
         )
         _states.value = states.value.copy(currentStep = list, alive = 0)
@@ -215,5 +215,23 @@ class GameScreenViewModel : ViewModel() {
 
     fun switchEmojiMode() {
         _states.value = states.value.copy(emojiEnabled = states.value.emojiEnabled.not())
+    }
+
+    fun setRows(matrixRowsString: String) {
+        val matrixRows = matrixRowsString.toIntOrNull() ?: return
+        if (matrixRows == states.value.rows) return
+
+        if (matrixRows >= 1)
+            _states.value = states.value.copy(rows = matrixRows)
+        regenerateGame()
+    }
+
+    fun setColumns(matrixColumnsString: String) {
+        val matrixCols = matrixColumnsString.toIntOrNull() ?: return
+        if (matrixCols == states.value.cols) return
+
+        if (matrixCols >= 1)
+            _states.value = states.value.copy(cols = matrixCols)
+        regenerateGame()
     }
 }

@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Gra życia</string>
+
+    <string name="GameOfLife">Gra życia</string>
+    <string name="Settings">Ustawienia</string>
+    <string name="Onboarding">Proces wdrażania do firmy nowego pracownika</string>
+    <string name="drawer_GameOfLife_description">Gra życia</string>
+    <string name="drawer_Settings_description">Ustawienia</string>
+    <string name="drawer_Onboarding_description">Wstęp</string>
+
+    <string name="speed_value_100ms">100 ms</string>
+    <string name="speed_value_250ms">250 ms</string>
+    <string name="speed_value_500ms">500 ms</string>
+    <string name="speed_value_1s">1s</string>
+
+    <string name="start_game">Rozpocząć grę</string>
+    <string name="menu_button">Przycisk MENU</string>
+    <string name="clear">Jasne</string>
+    <string name="free_soul_mode">Tryb wolnej duszy</string>
+    <string name="emoji_mode">Tryb emotikonów</string>
+    <string name="restart">Uruchom ponownie</string>
+    <string name="stable_combination">Stabilne połączenie 🎉</string>
+    <string name="no_one_survived">Nikt nie przeżył 💀</string>
+    <string name="alive">Żywy</string>
+    <string name="deaths">Zgony</string>
+    <string name="revivals">Przebudzenia</string>
+    <string name="switch_running_simulation">Przełącz symulację biegu</string>
+
+    <string name="onb_1_headline">\"Gra życia\"</string>
+    <string name="onb_1_description">Jest to symulacja ewolucji automatów komórkowych opracowana przez dr Johna Conwaya w
+        1970, gdzie każda komórka na boisku kieruje się prostymi zasadami</string>
+    <string name="onb_2_headline">Zasada nr 1</string>
+    <string name="onb_2_description">W pustej (martwej) celi, jeśli jest dokładnie trzech żywych sąsiadów, życie jest
+        urodzić się</string>
+    <string name="onb_3_headline">Zasada 2</string>
+    <string name="onb_3_description">Jeśli żywa komórka ma dwóch lub trzech żywych sąsiadów, żyje nadal;
+        w przeciwnym razie komórka umiera (z powodu „samotności” lub „przeludnienia”)</string>
+
+</resources>

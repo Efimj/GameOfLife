@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">인생의 게임</string>
+
+    <string name="GameOfLife">인생의 게임</string>
+    <string name="Settings">설정</string>
+    <string name="Onboarding">온보딩</string>
+    <string name="drawer_GameOfLife_description">인생의 게임</string>
+    <string name="drawer_Settings_description">설정</string>
+    <string name="drawer_Onboarding_description">소개</string>
+
+    <string name="speed_value_100ms">100ms</string>
+    <string name="speed_value_250ms">250ms</string>
+    <string name="speed_value_500ms">500ms</string>
+    <string name="speed_value_1s">1초</string>
+
+    <string name="start_game">게임을 시작하다</string>
+    <string name="menu_button">메뉴버튼</string>
+    <string name="clear">분명한</string>
+    <string name="free_soul_mode">자유로운 영혼 모드</string>
+    <string name="emoji_mode">이모지 모드</string>
+    <string name="restart">재시작</string>
+    <string name="stable_combination">안정적인 조합 🎉</string>
+    <string name="no_one_survived">아무도 살아남지 못했어요 💀</string>
+    <string name="alive">살아 있는</string>
+    <string name="deaths">사망자</string>
+    <string name="revivals">부흥</string>
+    <string name="switch_running_simulation">스위치 실행 시뮬레이션</string>
+
+    <string name="onb_1_headline">\"인생게임\"</string>
+    <string name="onb_1_description">이것은 존 콘웨이(John Conway) 박사가 고안한 세포 오토마타 진화의 시뮬레이션입니다.
+        1970년, 게임 필드의 각 셀은 간단한 규칙을 따릅니다.</string>
+    <string name="onb_2_headline">규칙 1</string>
+    <string name="onb_2_description">빈(죽은) 셀에 정확히 세 명의 살아있는 이웃이 있다면 생명은
+        태어나다</string>
+    <string name="onb_3_headline">규칙 2</string>
+    <string name="onb_3_description">살아있는 세포에 두세 개의 살아있는 이웃이 있으면 계속해서 살아갑니다.
+        그렇지 않으면 세포가 죽습니다(\"외로움\" 또는 \"과밀\"로 인해).</string>
+
+</resources>

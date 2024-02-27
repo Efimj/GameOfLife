@@ -1,18 +1,23 @@
 package com.jobik.gameoflife.screens.Game
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.RestartAlt
+import androidx.compose.material.icons.outlined.Link
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
@@ -162,6 +167,65 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
 
+                var isRelated by rememberSaveable { mutableStateOf(true) }
+                val rows = remember { mutableStateOf(viewModel.states.value.rows.toString()) }
+                val cols = remember { mutableStateOf(viewModel.states.value.cols.toString()) }
+
+                LaunchedEffect(rows.value, cols.value, isRelated) {
+                    if (rows.value.isBlank() || cols.value.isBlank()) return@LaunchedEffect
+                    viewModel.setRows(rows.value)
+                    if (isRelated) {
+                        cols.value = rows.value
+                    }
+                    viewModel.setColumns(cols.value)
+                }
+
+                Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
+                    Text(
+                        "Set the matrix",
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        OutlinedTextField(
+                            modifier = Modifier.weight(1f),
+                            value = rows.value,
+                            onValueChange = { rows.value = it },
+                            label = {
+                                Text(text = "Rows")
+                            },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                        )
+                        OutlinedTextField(
+                            modifier = Modifier.weight(1f),
+                            value = cols.value,
+                            onValueChange = { cols.value = it },
+                            label = {
+                                Text(text = "Columns")
+                            },
+                            enabled = !isRelated,
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                        )
+                        Switch(
+                            checked = isRelated,
+                            onCheckedChange = { isRelated = !isRelated },
+                            thumbContent = if (isRelated) {
+                                {
+                                    Icon(
+                                        imageVector = Icons.Outlined.Link,
+                                        contentDescription = null,
+                                        modifier = Modifier.size(SwitchDefaults.IconSize),
+                                    )
+                                }
+                            } else {
+                                null
+                            }
+                        )
+                    }
+                }
             }
         }
         BottomWindowInsetsSpacer()
