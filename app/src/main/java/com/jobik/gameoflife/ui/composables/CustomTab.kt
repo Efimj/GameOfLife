@@ -77,8 +77,7 @@ private fun CustomTabItem(
         textAlign = TextAlign.Center,
         maxLines = 1,
         overflow = TextOverflow.Ellipsis,
-        fontWeight = FontWeight.SemiBold,
-        style = MaterialTheme.typography.bodyMedium
+        style = MaterialTheme.typography.labelLarge
     )
 }
 

@@ -1,6 +1,5 @@
 package com.jobik.gameoflife.screens.Game
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -182,9 +181,8 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
 
                 Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
                     Text(
-                        "Set the matrix",
-                        style = MaterialTheme.typography.bodyMedium,
-                        fontWeight = FontWeight.SemiBold
+                        text = stringResource(id = R.string.set_field_dimensions),
+                        style = MaterialTheme.typography.headlineSmall,
                     )
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(10.dp),
@@ -195,7 +193,7 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                             value = rows.value,
                             onValueChange = { rows.value = it },
                             label = {
-                                Text(text = "Rows")
+                                Text(text = stringResource(id = R.string.rows))
                             },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
                         )
@@ -204,7 +202,7 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                             value = cols.value,
                             onValueChange = { cols.value = it },
                             label = {
-                                Text(text = "Columns")
+                                Text(text = stringResource(id = R.string.columns))
                             },
                             enabled = !isRelated,
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
