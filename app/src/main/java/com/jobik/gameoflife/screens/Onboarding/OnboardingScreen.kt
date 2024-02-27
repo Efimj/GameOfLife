@@ -13,7 +13,7 @@ sealed class OnboardingScreen(
     val description: Int
 ) {
     data object GameOfLife : OnboardingScreen(
-        image = R.drawable.icon,
+        image = R.drawable.john_horton_conway,
         title = R.string.onb_1_headline,
         description = R.string.onb_1_description,
     )

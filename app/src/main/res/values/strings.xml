@@ -30,10 +30,9 @@
     <string name="columns">columns</string>
 
 
-
-    <string name="onb_1_headline">"Game of Life"</string>
-    <string name="onb_1_description">This is a simulation of cellular automata evolution devised by Dr. John Conway in
-        1970, where each cell on the game field follows simple rules
+    <string name="onb_1_headline">Dr. John Conway</string>
+    <string name="onb_1_description">Devised this simulation of cellular automata evolution in 1970, called the \"Game
+        of Life\", where each cell on the game field follows simple rules
     </string>
     <string name="onb_2_headline">Rule 1</string>
     <string name="onb_2_description">In an empty (dead) cell, if there are exactly three living neighbors, life is
