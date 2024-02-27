@@ -85,21 +85,39 @@ fun GameContent(viewModel: GameScreenViewModel) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp, vertical = 10.dp),
-            horizontalArrangement = Arrangement.SpaceAround,
+            horizontalArrangement = Arrangement.spacedBy(30.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Row(
+                modifier = Modifier.weight(1f),
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = stringResource(id = R.string.alive), color = contentColor, overflow = TextOverflow.Ellipsis)
-                Counter(viewModel.states.value.alive, style = MaterialTheme.typography.bodyMedium, color = contentColor)
+                Text(
+                    modifier = Modifier.weight(1f),
+                    text = stringResource(id = R.string.alive),
+                    color = contentColor,
+                    overflow = TextOverflow.Clip,
+                    maxLines = 1
+                )
+                Counter(
+                    viewModel.states.value.alive,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = contentColor
+                )
             }
             Row(
+                modifier = Modifier.weight(1f),
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = stringResource(id = R.string.deaths), color = contentColor, overflow = TextOverflow.Ellipsis)
+                Text(
+                    modifier = Modifier.weight(1f),
+                    text = stringResource(id = R.string.deaths),
+                    color = contentColor,
+                    overflow = TextOverflow.Clip,
+                    maxLines = 1
+                )
                 Counter(
                     viewModel.states.value.deaths,
                     style = MaterialTheme.typography.bodyMedium,
@@ -107,10 +125,17 @@ fun GameContent(viewModel: GameScreenViewModel) {
                 )
             }
             Row(
+                modifier = Modifier.weight(1f),
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = stringResource(id = R.string.revivals), color = contentColor, overflow = TextOverflow.Ellipsis)
+                Text(
+                    modifier = Modifier.weight(1f),
+                    text = stringResource(id = R.string.revivals),
+                    color = contentColor,
+                    overflow = TextOverflow.Clip,
+                    maxLines = 1
+                )
                 Counter(
                     viewModel.states.value.revivals,
                     style = MaterialTheme.typography.bodyMedium,
