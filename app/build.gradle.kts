@@ -76,4 +76,8 @@ dependencies {
     // Splash API
     implementation ("androidx.core:core-splashscreen:1.0.1")
 
+    // Coil to async images and graphics
+    implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation("io.coil-kt:coil-gif:2.6.0")
+
 }

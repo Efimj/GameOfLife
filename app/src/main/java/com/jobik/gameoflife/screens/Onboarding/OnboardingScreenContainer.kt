@@ -1,5 +1,6 @@
 package com.jobik.gameoflife.screens.Onboarding
 
+import android.os.Build.VERSION.SDK_INT
 import androidx.compose.animation.*
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
@@ -20,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -28,6 +30,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavHostController
+import coil.ImageLoader
+import coil.compose.rememberAsyncImagePainter
+import coil.decode.GifDecoder
+import coil.decode.ImageDecoderDecoder
+import coil.request.ImageRequest
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.navigation.Screen
 import com.jobik.gameoflife.ui.composables.VerticalIndicator
@@ -142,20 +149,36 @@ fun PagerScreen(content: OnboardingScreen) {
         modifier = Modifier
             .fillMaxSize()
             .verticalWindowInsetsPadding()
-            .padding(bottom = 90.dp),
+            .padding(bottom = 90.dp)
+            .padding(horizontal = 40.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
+
+        val imageLoader = ImageLoader.Builder(LocalContext.current)
+            .components {
+                if (SDK_INT >= 28) {
+                    add(ImageDecoderDecoder.Factory())
+                } else {
+                    add(GifDecoder.Factory())
+                }
+            }
+            .build()
+
         Image(
             modifier = Modifier.weight(1f),
-            painter = painterResource(id = content.image),
-            contentScale = ContentScale.FillWidth,
+            painter = rememberAsyncImagePainter(
+                ImageRequest.Builder(LocalContext.current)
+                    .data(data = content.image)
+                    .build(),
+                imageLoader = imageLoader
+            ),
+            contentScale = ContentScale.Fit,
             contentDescription = stringResource(R.string.Onboarding)
         )
         Text(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 40.dp),
+                .fillMaxWidth(),
             text = stringResource(content.title),
             style = MaterialTheme.typography.displaySmall,
             fontWeight = FontWeight.SemiBold,
@@ -165,7 +188,6 @@ fun PagerScreen(content: OnboardingScreen) {
         Text(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 40.dp)
                 .padding(top = 10.dp),
             text = stringResource(content.description),
             style = MaterialTheme.typography.bodyLarge,
