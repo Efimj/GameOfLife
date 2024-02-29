@@ -29,7 +29,7 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .background(MaterialTheme.colorScheme.background)
+            .background(MaterialTheme.colorScheme.surface)
             .padding(top = 20.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
@@ -38,7 +38,6 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
             modifier = Modifier
                 .padding(horizontal = 10.dp)
                 .clip(MaterialTheme.shapes.medium)
-                .background(MaterialTheme.colorScheme.secondaryContainer.copy(alpha = .2f))
                 .padding(vertical = 10.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
@@ -124,14 +123,13 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = stringResource(id = R.string.free_soul_mode), color = MaterialTheme.colorScheme.onSurface)
+                Text(text = stringResource(id = R.string.emoji_mode), color = MaterialTheme.colorScheme.onSurface)
                 Switch(
-                    enabled = viewModel.states.value.emojiEnabled,
-                    checked = viewModel.states.value.freeSoulMode,
-                    onCheckedChange = { viewModel.switchFreeSoulMode() },
-                    thumbContent = if (!viewModel.states.value.freeSoulMode) {
+                    checked = viewModel.states.value.emojiEnabled,
+                    onCheckedChange = { viewModel.switchEmojiMode() },
+                    thumbContent = if (viewModel.states.value.emojiEnabled) {
                         {
-                            Text(text = "\uD83D\uDC80")
+                            Text(text = AliveEmojis.random())
                         }
                     } else {
                         null
@@ -145,13 +143,14 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = stringResource(id = R.string.emoji_mode), color = MaterialTheme.colorScheme.onSurface)
+                Text(text = stringResource(id = R.string.free_soul_mode), color = MaterialTheme.colorScheme.onSurface)
                 Switch(
-                    checked = viewModel.states.value.emojiEnabled,
-                    onCheckedChange = { viewModel.switchEmojiMode() },
-                    thumbContent = if (viewModel.states.value.emojiEnabled) {
+                    enabled = viewModel.states.value.emojiEnabled,
+                    checked = viewModel.states.value.freeSoulMode,
+                    onCheckedChange = { viewModel.switchFreeSoulMode() },
+                    thumbContent = if (!viewModel.states.value.freeSoulMode) {
                         {
-                            Text(text = AliveEmojis.random())
+                            Text(text = "\uD83D\uDC80")
                         }
                     } else {
                         null
