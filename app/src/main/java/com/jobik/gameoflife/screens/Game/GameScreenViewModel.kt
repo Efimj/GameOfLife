@@ -63,30 +63,6 @@ class GameScreenViewModel : ViewModel() {
         )
     }
 
-    fun onElementClick(row: Int, column: Int) {
-        val oldList = states.value.currentStep
-        val isEmojiMode = states.value.emojiEnabled
-        if (checkIsOutOfBounds(row, column, oldList)) return
-        val newList = cloneGameState(oldList)
-        newList[row][column] = when (newList[row][column]) {
-            GameOfLifeUnitState.Alive -> GameOfLifeUnitState.Dead
-            GameOfLifeUnitState.Dead -> if (isEmojiMode) GameOfLifeUnitState.Empty else GameOfLifeUnitState.Alive
-            GameOfLifeUnitState.Empty -> GameOfLifeUnitState.Alive
-        }
-        val aliveCount = countAlive(newList)
-        _states.value = states.value.copy(currentStep = newList, alive = aliveCount)
-    }
-
-    private fun checkIsOutOfBounds(
-        row: Int,
-        column: Int,
-        state: List<List<GameOfLifeUnitState>>,
-    ): Boolean {
-        if (row > state.size) return true
-        if (column > state.first().size) return true
-        return false
-    }
-
     private fun startSimulation() {
         simulationJob?.cancel()
 
@@ -167,14 +143,40 @@ class GameScreenViewModel : ViewModel() {
         regenerateGame()
     }
 
+
+
+    fun onElementClick(row: Int, column: Int) {
+        val oldList = states.value.currentStep
+        val isEmojiMode = states.value.emojiEnabled
+        if (checkIsOutOfBounds(row, column, oldList)) return
+        val newList = cloneGameState(oldList)
+        newList[row][column] = when (newList[row][column]) {
+            GameOfLifeUnitState.Alive -> GameOfLifeUnitState.Dead
+            GameOfLifeUnitState.Dead -> if (isEmojiMode) GameOfLifeUnitState.Empty else GameOfLifeUnitState.Alive
+            GameOfLifeUnitState.Empty -> GameOfLifeUnitState.Alive
+        }
+        val aliveCount = countAlive(newList)
+        _states.value = states.value.copy(currentStep = newList, alive = aliveCount, gameResult = null, stepNumber = 0)
+    }
+
+    private fun checkIsOutOfBounds(
+        row: Int,
+        column: Int,
+        state: List<List<GameOfLifeUnitState>>,
+    ): Boolean {
+        if (row > state.size) return true
+        if (column > state.first().size) return true
+        return false
+    }
+
     fun setFullAlive() {
         val list = generateTwoDimList(
             rows = states.value.rows,
             cols = states.value.cols,
-            initialValue = GameOfLifeUnitState.Alive
+            initialValue = GameOfLifeUnitState.Alive,
         )
 
-        _states.value = states.value.copy(currentStep = list)
+        _states.value = states.value.copy(currentStep = list, gameResult = null, stepNumber = 0)
     }
 
     fun setFullDeath() {
@@ -183,7 +185,7 @@ class GameScreenViewModel : ViewModel() {
             cols = states.value.cols,
             initialValue = GameOfLifeUnitState.Dead
         )
-        _states.value = states.value.copy(currentStep = list)
+        _states.value = states.value.copy(currentStep = list, gameResult = null, stepNumber = 0)
     }
 
     fun setFullEmpty() {
@@ -192,7 +194,7 @@ class GameScreenViewModel : ViewModel() {
             cols = states.value.cols,
             initialValue = GameOfLifeUnitState.Empty
         )
-        _states.value = states.value.copy(currentStep = list, alive = 0)
+        _states.value = states.value.copy(currentStep = list, alive = 0, gameResult = null, stepNumber = 0)
     }
 
     fun turnOnSimulation() {
@@ -222,7 +224,7 @@ class GameScreenViewModel : ViewModel() {
         if (matrixRows == states.value.rows) return
 
         if (matrixRows >= 1)
-            _states.value = states.value.copy(rows = matrixRows)
+            _states.value = states.value.copy(rows = matrixRows, gameResult = null, stepNumber = 0)
         regenerateGame()
     }
 
@@ -231,7 +233,7 @@ class GameScreenViewModel : ViewModel() {
         if (matrixCols == states.value.cols) return
 
         if (matrixCols >= 1)
-            _states.value = states.value.copy(cols = matrixCols)
+            _states.value = states.value.copy(cols = matrixCols, gameResult = null, stepNumber = 0)
         regenerateGame()
     }
 }
