@@ -54,7 +54,7 @@ fun GameContent(viewModel: GameScreenViewModel) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 10.dp, bottom = 5.dp),
+                    .padding(top = 10.dp, bottom = 10.dp),
                 horizontalArrangement = Arrangement.Center
             ) {
                 Text(
