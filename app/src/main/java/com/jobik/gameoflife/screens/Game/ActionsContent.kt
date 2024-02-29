@@ -1,5 +1,6 @@
 package com.jobik.gameoflife.screens.Game
 
+import androidx.compose.animation.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -20,6 +21,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
+import com.jobik.gameoflife.screens.Onboarding.OnboardingScreen
 import com.jobik.gameoflife.ui.composables.*
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 
@@ -45,7 +47,6 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 10.dp),
-                horizontalArrangement = Arrangement.spacedBy(10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Button(
@@ -58,6 +59,7 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 ) {
                     Text(text = stringResource(id = R.string.clear), overflow = TextOverflow.Ellipsis, maxLines = 1)
                 }
+                Spacer(modifier = Modifier.width(10.dp))
                 FilledIconButton(
                     modifier = Modifier,
                     onClick = viewModel::setFullAlive,
@@ -68,15 +70,30 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 ) {
                     Text(text = AliveEmojis.random(), overflow = TextOverflow.Ellipsis, maxLines = 1)
                 }
-                FilledIconButton(
-                    modifier = Modifier,
-                    onClick = viewModel::setFullDeath,
-                    colors = IconButtonDefaults.filledIconButtonColors(
-                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
-                    )
+                AnimatedVisibility(
+                    visible = viewModel.states.value.emojiEnabled,
+                    enter = slideInHorizontally { it / 2 } + expandHorizontally(
+                        expandFrom = Alignment.Start,
+                        clip = false
+                    ) + fadeIn(),
+                    exit = slideOutHorizontally { -it / 2 } + shrinkHorizontally(
+                        shrinkTowards = Alignment.Start,
+                        clip = false
+                    ) + fadeOut(),
                 ) {
-                    Text(text = DeadEmojis.random(), overflow = TextOverflow.Ellipsis, maxLines = 1)
+                    Row {
+                        Spacer(modifier = Modifier.width(10.dp))
+                        FilledIconButton(
+                            modifier = Modifier,
+                            onClick = viewModel::setFullDeath,
+                            colors = IconButtonDefaults.filledIconButtonColors(
+                                containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                                contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                            )
+                        ) {
+                            Text(text = DeadEmojis.random(), overflow = TextOverflow.Ellipsis, maxLines = 1)
+                        }
+                    }
                 }
             }
             Row(
