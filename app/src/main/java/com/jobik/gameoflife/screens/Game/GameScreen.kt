@@ -16,7 +16,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
 import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
-import com.jobik.gameoflife.ui.helpers.verticalWindowInsetsPadding
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable

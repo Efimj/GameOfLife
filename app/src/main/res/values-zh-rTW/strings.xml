@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">生命遊戲</string>
+
+    <string name="GameOfLife">生命遊戲</string>
+    <string name="Settings">設定</string>
+    <string name="Onboarding">入職</string>
+    <string name="drawer_GameOfLife_description">生命的遊戲</string>
+    <string name="drawer_Settings_description">設定</string>
+    <string name="drawer_Onboarding_description">介紹</string>
+
+    <string name="speed_value_100ms">100毫秒</string>
+    <string name="speed_value_250ms">250毫秒</string>
+    <string name="speed_value_500ms">500毫秒</string>
+    <string name="speed_value_1s">1秒</string>
+
+    <string name="start_game">開始遊戲</string>
+    <string name="menu_button">選單按鈕</string>
+    <string name="clear">清除</string>
+    <string name="free_soul_mode">自由靈魂模式</string>
+    <string name="emoji_mode">表情符號模式</string>
+    <string name="restart">重新開始</string>
+    <string name="stable_combination">穩定的組合🎉</string>
+    <string name="no_one_survived">無一人倖存💀</string>
+    <string name="alive">活</string>
+    <string name="deaths">死亡人數</string>
+    <string name="revivals">復興</string>
+    <string name="switch_running_simulation">開關運行模擬</string>
+    <string name="set_field_dimensions">設定字段尺寸</string>
+    <string name="rows">行數</string>
+    <string name="columns">列</string>
+
+
+    <string name="onb_1_headline">約翰·康威博士</string>
+    <string name="onb_1_description">1970 年設計了這種元胞自動機進化模擬，稱為“遊戲”
+        of Life”，遊戲場上的每個單元都遵循簡單的規則</string>
+    <string name="onb_2_headline">規則1</string>
+    <string name="onb_2_description">在一個空的（死的）細胞中，如果剛好有三個活著的鄰居，那麼生命就是
+        出生</string>
+    <string name="onb_3_headline">規則2</string>
+    <string name="onb_3_description">如果一個活細胞有兩個或三個活的鄰居，它就會繼續活下去；
+        否則，細胞就會死亡（由於「孤獨」或「過度擁擠」）</string>
+
+</resources>
