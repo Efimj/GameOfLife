@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
@@ -30,14 +31,13 @@ fun SettingsContent() {
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
             .padding(vertical = 20.dp),
-        verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         val context = LocalContext.current
         SettingsItem(icon = Icons.Outlined.LightMode, text = stringResource(id = R.string.change_theme), action = {}) {
             AppThemeUtil.update(context = context, isDarkTheme = AppThemeUtil.isDarkMode.value.not())
         }
         SettingsItem(icon = Icons.Outlined.Language, text = stringResource(id = R.string.language), action = {
-            Text(text = "Language", color = MaterialTheme.colorScheme.onPrimary)
+            Text(text = "English", color = MaterialTheme.colorScheme.onSurface, textAlign = TextAlign.Right)
         }) {
 
         }
@@ -69,14 +69,24 @@ private fun SettingsItem(
     )
     {
         if (icon != null) {
-            Icon(imageVector = icon, contentDescription = null, tint = MaterialTheme.colorScheme.secondary)
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary
+            )
             Spacer(modifier = Modifier.width(20.dp))
         }
-        Text(modifier = Modifier.weight(1f, fill = true), text = text, maxLines = 1, overflow = TextOverflow.Ellipsis)
+        Text(
+            modifier = Modifier.weight(1f),
+            text = text,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            color = MaterialTheme.colorScheme.onSurface
+        )
         if (action != null) {
             Spacer(modifier = Modifier.width(20.dp))
             Row(
-                modifier = Modifier.weight(1f, fill = false)
+                modifier = Modifier
             ) {
                 action()
             }
