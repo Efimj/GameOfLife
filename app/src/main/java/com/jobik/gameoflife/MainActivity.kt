@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.jobik.gameoflife.screens.AppLayout.AppLayout
+import com.jobik.gameoflife.ui.theme.AppThemeUtil
 import com.jobik.gameoflife.ui.theme.GameOfLifeTheme
 
 class MainActivity : ComponentActivity() {
@@ -15,9 +16,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         actionBar?.hide()
         installSplashScreen()
+        AppThemeUtil.restore(this)
 
         setContent {
-            GameOfLifeTheme {
+            GameOfLifeTheme(darkTheme = AppThemeUtil.isDarkMode.value) {
                 AppLayout()
             }
         }

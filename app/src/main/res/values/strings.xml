@@ -28,6 +28,8 @@
     <string name="set_field_dimensions">Set field dimensions</string>
     <string name="rows">Rows</string>
     <string name="columns">columns</string>
+    <string name="language">Language</string>
+    <string name="change_theme">Change theme</string>
 
 
     <string name="onb_1_headline">Dr. John Conway</string>

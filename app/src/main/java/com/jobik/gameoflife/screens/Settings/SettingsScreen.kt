@@ -1,6 +1,8 @@
 package com.jobik.gameoflife.screens.Settings
 
+import androidx.compose.foundation.background
 import androidx.compose.material3.DrawerState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
@@ -14,7 +16,9 @@ fun SettingsScreen(drawerState: DrawerState) {
     val collapsingToolbarScaffold = rememberCollapsingToolbarScaffoldState()
 
     CollapsingToolbarScaffold(
-        modifier = Modifier.horizontalWindowInsetsPadding(),
+        modifier = Modifier
+            .background(MaterialTheme.colorScheme.surface)
+            .horizontalWindowInsetsPadding(),
         state = collapsingToolbarScaffold,
         scrollStrategy = ScrollStrategy.EnterAlways,
         enabledWhenBodyUnfilled = false,
