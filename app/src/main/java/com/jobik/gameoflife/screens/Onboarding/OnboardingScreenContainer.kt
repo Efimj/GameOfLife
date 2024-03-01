@@ -6,7 +6,6 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.PageSize
 import androidx.compose.foundation.pager.PagerState
@@ -19,10 +18,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -46,9 +43,9 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun OnboardingScreenContainer(navController: NavHostController) {
+fun OnboardingScreen(navController: NavHostController) {
     val pagerState = rememberPagerState {
-        OnboardingScreen.PageList.Count
+        Onboarding.PageList.Count
     }
 
     Box(
@@ -67,7 +64,7 @@ fun OnboardingScreenContainer(navController: NavHostController) {
             beyondBoundsPageCount = 0,
             pageSize = PageSize.Fill,
         ) {
-            PagerScreen(OnboardingScreen.PageList.PageList[it])
+            PagerScreen(Onboarding.PageList.PageList[it])
         }
         NavigationContent(pagerState = pagerState, navController = navController)
     }
@@ -99,7 +96,7 @@ private fun BoxScope.NavigationContent(pagerState: PagerState, navController: Na
                 Text(text = stringResource(id = R.string.start_game))
             }
             AnimatedVisibility(
-                visible = pagerState.currentPage < OnboardingScreen.PageList.Count - 1,
+                visible = pagerState.currentPage < Onboarding.PageList.Count - 1,
                 enter = slideInHorizontally() + expandHorizontally(clip = false) + fadeIn(),
                 exit = slideOutHorizontally() + shrinkHorizontally(clip = false) + fadeOut(),
             ) {
@@ -144,7 +141,7 @@ private fun BoxScope.IndicatorContent(pagerState: PagerState) {
 }
 
 @Composable
-fun PagerScreen(content: OnboardingScreen) {
+fun PagerScreen(content: Onboarding) {
     Column(
         modifier = Modifier
             .fillMaxSize()
