@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.LightMode
 import androidx.compose.material3.Card
@@ -33,7 +34,10 @@ fun SettingsContent() {
             .padding(vertical = 20.dp),
     ) {
         val context = LocalContext.current
-        SettingsItem(icon = Icons.Outlined.LightMode, text = stringResource(id = R.string.change_theme), action = {}) {
+        SettingsItem(
+            icon = if (AppThemeUtil.isDarkMode.value) Icons.Outlined.LightMode else Icons.Outlined.DarkMode,
+            text = stringResource(id = R.string.change_theme),
+            action = {}) {
             AppThemeUtil.update(context = context, isDarkTheme = AppThemeUtil.isDarkMode.value.not())
         }
         SettingsItem(icon = Icons.Outlined.Language, text = stringResource(id = R.string.language), action = {
