@@ -56,7 +56,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3:1.2.0")
-    implementation ("androidx.compose.material:material:1.6.1")
+    implementation("androidx.compose.material:material:1.6.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -74,10 +74,15 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.7.7")
 
     // Splash API
-    implementation ("androidx.core:core-splashscreen:1.0.1")
+    implementation("androidx.core:core-splashscreen:1.0.1")
 
     // Coil to async images and graphics
     implementation("io.coil-kt:coil-compose:2.6.0")
     implementation("io.coil-kt:coil-gif:2.6.0")
+
+    // Compose collapsing toolbar (Official latest update in 2022)
+    // implementation("me.onebone:toolbar-compose:2.3.5")
+    // Compose collapsing toolbar (nonofficial)
+    implementation("com.github.GIGAMOLE:ComposeCollapsingToolbar:1.0.8")
 
 }
