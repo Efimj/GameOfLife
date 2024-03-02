@@ -8,7 +8,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.LightMode
-import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -21,8 +20,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.jobik.gameoflife.BuildConfig
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
+import com.jobik.gameoflife.ui.helpers.bottomWindowInsetsPadding
 import com.jobik.gameoflife.ui.theme.AppThemeUtil
 
 @Composable
@@ -31,7 +32,7 @@ fun SettingsContent() {
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(vertical = 20.dp),
+            .padding(bottom = 20.dp),
     ) {
         val context = LocalContext.current
         SettingsItem(
@@ -44,13 +45,6 @@ fun SettingsContent() {
             Text(text = "English", color = MaterialTheme.colorScheme.onSurface, textAlign = TextAlign.Right)
         }) {
 
-        }
-        repeat(30) {
-            Card {
-                Row(modifier = Modifier.padding(40.dp)) {
-
-                }
-            }
         }
         BottomWindowInsetsSpacer()
     }

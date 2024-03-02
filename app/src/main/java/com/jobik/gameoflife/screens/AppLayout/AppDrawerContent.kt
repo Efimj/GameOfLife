@@ -24,10 +24,12 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.jobik.gameoflife.BuildConfig
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.navigation.Screen
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.TopWindowInsetsSpacer
+import com.jobik.gameoflife.ui.helpers.bottomWindowInsetsPadding
 import com.jobik.gameoflife.ui.helpers.startWindowInsetsPadding
 import kotlinx.coroutines.launch
 
@@ -89,6 +91,7 @@ fun AppDrawerContent(
         Surface(color = MaterialTheme.colorScheme.background) {
             Column(
                 modifier = Modifier
+                    .fillMaxHeight()
                     .verticalScroll(rememberScrollState())
                     .startWindowInsetsPadding(),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -102,7 +105,10 @@ fun AppDrawerContent(
                     painter = painterResource(id = R.drawable.icon),
                     contentDescription = "Main app icon"
                 )
-                Column(modifier = Modifier.padding(horizontal = 10.dp)) {
+                Column(
+                    modifier = Modifier
+                        .padding(horizontal = 10.dp)
+                ) {
                     for (button in DrawerParams.drawerButtons) {
                         AppDrawerItem(
                             title = button.title,
@@ -120,6 +126,18 @@ fun AppDrawerContent(
                             }
                         )
                     }
+                }
+                Spacer(modifier = Modifier.weight(1f, fill = true))
+                Row(
+                    modifier = Modifier.padding(bottom = 5.dp),
+                    verticalAlignment = Alignment.Bottom,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.app_version_text) + BuildConfig.VERSION_NAME,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = .7f),
+                        style = MaterialTheme.typography.labelMedium
+                    )
                 }
                 BottomWindowInsetsSpacer()
             }

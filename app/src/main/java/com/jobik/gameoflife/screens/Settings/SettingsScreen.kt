@@ -20,7 +20,7 @@ fun SettingsScreen(drawerState: DrawerState) {
             .background(MaterialTheme.colorScheme.surface)
             .horizontalWindowInsetsPadding(),
         state = collapsingToolbarScaffold,
-        scrollStrategy = ScrollStrategy.EnterAlways,
+        scrollStrategy = ScrollStrategy.EnterAlwaysCollapsed,
         enabledWhenBodyUnfilled = false,
         snapConfig = SnapConfig(), // "collapseThreshold = 0.5" by default
         toolbar = {
