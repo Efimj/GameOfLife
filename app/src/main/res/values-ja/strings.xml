@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+
+    <string name="app_name">人生ゲーム</string>
+
+    <string name="GameOfLife">人生ゲーム</string>
+
+    <string name="Settings">設定</string>
+
+    <string name="Onboarding">オンボーディング</string>
+
+    <string name="drawer_GameOfLife_description">人生ゲーム</string>
+
+    <string name="drawer_Settings_description">設定</string>
+
+    <string name="drawer_Onboarding_description">導入</string>
+
+    <string name="speed_value_100ms">100 ミリ秒</string>
+
+    <string name="speed_value_250ms">250 ミリ秒</string>
+
+    <string name="speed_value_500ms">500 ミリ秒</string>
+
+    <string name="speed_value_1s">1 秒</string>
+
+    <string name="start_game">ゲームをスタート</string>
+
+    <string name="menu_button">メニューボタン</string>
+
+    <string name="clear">クリア</string>
+
+    <string name="free_soul_mode">フリーソウルモード</string>
+
+    <string name="emoji_mode">絵文字モード</string>
+
+    <string name="restart">再起動</string>
+
+    <string name="stable_combination">安定の組み合わせ&#127881;?</string>
+
+    <string name="no_one_survived">誰も生き残れませんでした&#128128;?</string>
+
+    <string name="alive">生きている</string>
+
+    <string name="deaths">死亡者（数</string>
+
+    <string name="revivals">リバイバルズ</string>
+
+    <string name="switch_running_simulation">スイッチ走行シミュレーション</string>
+
+    <string name="set_field_dimensions">フィールドの寸法を設定する</string>
+
+    <string name="rows">行</string>
+
+    <string name="columns">列</string>
+
+    <string name="language">言語</string>
+
+    <string name="change_theme">テーマの変更</string>
+
+    <string name="onb_1_headline">ジョン・コンウェイ博士</string>
+
+    <string name="onb_1_description">1970 年に「ライフ ゲーム」と呼ばれるセル オートマトンの進化のシミュレーションを考案しました。ゲーム フィールド上の各セルは単純なルールに従います。</string>
+
+    <string name="onb_2_headline">ルール 1</string>
+
+    <string name="onb_2_description">空の（死んだ）独房に、生きている隣人がちょうど 3 人いる場合、生命が誕生します。</string>
+
+    <string name="onb_3_headline">ルール 2</string>
+
+    <string name="onb_3_description">生きているセルに 2 つまたは 3 つの生きている隣接セルがある場合、そのセルは生き続けます。そうしないと、細胞が死んでしまいます（孤独または過密により）</string>
+
+</resources>

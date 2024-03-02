@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+
+    <string name="app_name">Permainan Kehidupan</string>
+
+    <string name="GameOfLife">Permainan Kehidupan</string>
+
+    <string name="Settings">Pengaturan</string>
+
+    <string name="Onboarding">Orientasi</string>
+
+    <string name="drawer_GameOfLife_description">Permainan kehidupan</string>
+
+    <string name="drawer_Settings_description">Pengaturan</string>
+
+    <string name="drawer_Onboarding_description">Perkenalan</string>
+
+    <string name="speed_value_100ms">100 md</string>
+
+    <string name="speed_value_250ms">250 md</string>
+
+    <string name="speed_value_500ms">500 md</string>
+
+    <string name="speed_value_1s">1 detik</string>
+
+    <string name="start_game">Memulai permainan</string>
+
+    <string name="menu_button">Tombol menu</string>
+
+    <string name="clear">Jernih</string>
+
+    <string name="free_soul_mode">Mode jiwa bebas</string>
+
+    <string name="emoji_mode">Modus emoji</string>
+
+    <string name="restart">Mengulang kembali</string>
+
+    <string name="stable_combination">Kombinasi yang stabil &#127881;</string>
+
+    <string name="no_one_survived">Tidak ada yang selamat &#128128;</string>
+
+    <string name="alive">Hidup</string>
+
+    <string name="deaths">Meninggal</string>
+
+    <string name="revivals">Kebangkitan</string>
+
+    <string name="switch_running_simulation">Ganti simulasi yang sedang berjalan</string>
+
+    <string name="set_field_dimensions">Tetapkan dimensi bidang</string>
+
+    <string name="rows">Baris</string>
+
+    <string name="columns">kolom</string>
+
+    <string name="language">Bahasa</string>
+
+    <string name="change_theme">Ubah tema</string>
+
+    <string name="onb_1_headline">Dr. John Conway</string>
+
+    <string name="onb_1_description">Merancang simulasi evolusi automata seluler pada tahun 1970, yang disebut \"Game of Life\", di mana setiap sel di bidang permainan mengikuti aturan sederhana</string>
+
+    <string name="onb_2_headline">Aturan 1</string>
+
+    <string name="onb_2_description">Di sel yang kosong (mati), jika ada tepat tiga tetangga yang hidup, maka kehidupan akan lahir</string>
+
+    <string name="onb_3_headline">Aturan 2</string>
+
+    <string name="onb_3_description">Jika sebuah sel hidup memiliki dua atau tiga tetangga yang hidup, sel tersebut akan terus hidup; jika tidak, sel akan mati (karena kesepian atau kepadatan yang berlebihan)</string>
+
+</resources>

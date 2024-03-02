@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+
+    <string name="app_name">生命游戏</string>
+
+    <string name="GameOfLife">生命游戏</string>
+
+    <string name="Settings">设置</string>
+
+    <string name="Onboarding">入职</string>
+
+    <string name="drawer_GameOfLife_description">生命的游戏</string>
+
+    <string name="drawer_Settings_description">设置</string>
+
+    <string name="drawer_Onboarding_description">介绍</string>
+
+    <string name="speed_value_100ms">100 毫秒</string>
+
+    <string name="speed_value_250ms">250 毫秒</string>
+
+    <string name="speed_value_500ms">500 毫秒</string>
+
+    <string name="speed_value_1s">1 秒</string>
+
+    <string name="start_game">开始游戏</string>
+
+    <string name="menu_button">菜单按钮</string>
+
+    <string name="clear">清除</string>
+
+    <string name="free_soul_mode">自由灵魂模式</string>
+
+    <string name="emoji_mode">表情符号模式</string>
+
+    <string name="restart">重新开始</string>
+
+    <string name="stable_combination">稳定的组合&#127881;?</string>
+
+    <string name="no_one_survived">无一人幸存&#128128;?</string>
+
+    <string name="alive">活</string>
+
+    <string name="deaths">死亡人数</string>
+
+    <string name="revivals">复兴</string>
+
+    <string name="switch_running_simulation">开关运行模拟</string>
+
+    <string name="set_field_dimensions">设置字段尺寸</string>
+
+    <string name="rows">行数</string>
+
+    <string name="columns">列</string>
+
+    <string name="language">语言</string>
+
+    <string name="change_theme">改变主题</string>
+
+    <string name="onb_1_headline">约翰·康威博士</string>
+
+    <string name="onb_1_description">1970 年设计了这种细胞自动机进化模拟，称为“生命游戏”，游戏场上的每个细胞都遵循简单的规则</string>
+
+    <string name="onb_2_headline">规则 1</string>
+
+    <string name="onb_2_description">在空（死）细胞中，如果恰好有三个活着的邻居，生命就会诞生</string>
+
+    <string name="onb_3_headline">规则 2</string>
+
+    <string name="onb_3_description">如果一个活细胞有两个或三个活的邻居，它就会继续活下去；否则，细胞就会死亡（由于孤独或过度拥挤）</string>
+
+</resources>

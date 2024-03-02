@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+
+    <string name="app_name">Jogo da vida</string>
+
+    <string name="GameOfLife">Jogo da vida</string>
+
+    <string name="Settings">Configurações</string>
+
+    <string name="Onboarding">Integração</string>
+
+    <string name="drawer_GameOfLife_description">Jogo da vida</string>
+
+    <string name="drawer_Settings_description">Configurações</string>
+
+    <string name="drawer_Onboarding_description">Introdução</string>
+
+    <string name="speed_value_100ms">100ms</string>
+
+    <string name="speed_value_250ms">250ms</string>
+
+    <string name="speed_value_500ms">500ms</string>
+
+    <string name="speed_value_1s">1s</string>
+
+    <string name="start_game">Começar o jogo</string>
+
+    <string name="menu_button">Botão de menu</string>
+
+    <string name="clear">Claro</string>
+
+    <string name="free_soul_mode">Modo alma grátis</string>
+
+    <string name="emoji_mode">Modo emoji</string>
+
+    <string name="restart">Reiniciar</string>
+
+    <string name="stable_combination">Combinação estável &#127881;</string>
+
+    <string name="no_one_survived">Ninguém sobreviveu &#128128;</string>
+
+    <string name="alive">Vivo</string>
+
+    <string name="deaths">Mortes</string>
+
+    <string name="revivals">Reavivamentos</string>
+
+    <string name="switch_running_simulation">Simulação de comutação em execução</string>
+
+    <string name="set_field_dimensions">Definir dimensões do campo</string>
+
+    <string name="rows">Linhas</string>
+
+    <string name="columns">colunas</string>
+
+    <string name="language">Linguagem</string>
+
+    <string name="change_theme">Mudar tema</string>
+
+    <string name="onb_1_headline">Dr.</string>
+
+    <string name="onb_1_description">Criou esta simulação da evolução dos autômatos celulares em 1970, chamada de \"Jogo da Vida\", onde cada célula no campo de jogo segue regras simples</string>
+
+    <string name="onb_2_headline">Regra 1</string>
+
+    <string name="onb_2_description">Em uma cela vazia (morta), se houver exatamente três vizinhos vivos, nasce a vida</string>
+
+    <string name="onb_3_headline">Regra 2</string>
+
+    <string name="onb_3_description">Se uma célula viva tiver dois ou três vizinhos vivos, ela continuará viva; caso contrário, a célula morre (devido à solidão ou superlotação)</string>
+
+</resources>

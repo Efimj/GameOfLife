@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+
+    <string name="app_name">เกมแห่งชีวิต</string>
+
+    <string name="GameOfLife">เกมแห่งชีวิต</string>
+
+    <string name="Settings">การตั้งค่า</string>
+
+    <string name="Onboarding">การเริ่มต้นใช้งาน</string>
+
+    <string name="drawer_GameOfLife_description">เกมแห่งชีวิต</string>
+
+    <string name="drawer_Settings_description">การตั้งค่า</string>
+
+    <string name="drawer_Onboarding_description">การแนะนำ</string>
+
+    <string name="speed_value_100ms">100ms</string>
+
+    <string name="speed_value_250ms">250ms</string>
+
+    <string name="speed_value_500ms">500ms</string>
+
+    <string name="speed_value_1s">1 วินาที</string>
+
+    <string name="start_game">เริ่มเกมส์</string>
+
+    <string name="menu_button">ปุ่มเมนู</string>
+
+    <string name="clear">ชัดเจน</string>
+
+    <string name="free_soul_mode">โหมดวิญญาณฟรี</string>
+
+    <string name="emoji_mode">โหมดอิโมจิ</string>
+
+    <string name="restart">เริ่มต้นใหม่</string>
+
+    <string name="stable_combination">การรวมกันที่มั่นคง &#127881;</string>
+
+    <string name="no_one_survived">ไม่มีใครรอด &#127875;</string>
+
+    <string name="alive">มีชีวิตอยู่</string>
+
+    <string name="deaths">ผู้เสียชีวิต</string>
+
+    <string name="revivals">การฟื้นฟู</string>
+
+    <string name="switch_running_simulation">สลับการจำลองการทำงาน</string>
+
+    <string name="set_field_dimensions">กำหนดขนาดฟิลด์</string>
+
+    <string name="rows">แถว</string>
+
+    <string name="columns">คอลัมน์</string>
+
+    <string name="language">ภาษา</string>
+
+    <string name="change_theme">เปลี่ยนธีม</string>
+
+    <string name="onb_1_headline">ดร. จอห์น คอนเวย์</string>
+
+    <string name="onb_1_description">คิดค้นการจำลองวิวัฒนาการของออโตมาตะระดับเซลล์ในปี 1970 ที่เรียกว่า \"เกมแห่งชีวิต\" โดยแต่ละเซลล์ในสนามเกมจะปฏิบัติตามกฎง่ายๆ</string>
+
+    <string name="onb_2_headline">กฎข้อที่ 1</string>
+
+    <string name="onb_2_description">ในห้องขังที่ว่างเปล่า (ตาย) หากมีเพื่อนบ้านที่ยังมีชีวิตอยู่อยู่สามคน ชีวิตก็ถือกำเนิดขึ้น</string>
+
+    <string name="onb_3_headline">กฎข้อที่ 2</string>
+
+    <string name="onb_3_description">ถ้าเซลล์ที่มีชีวิตมีเพื่อนบ้านที่มีชีวิตสองหรือสามคน มันก็จะมีชีวิตอยู่ต่อไป มิฉะนั้นเซลล์จะตาย (เนื่องจากความเหงาหรือความแออัดยัดเยียด)</string>
+
+</resources>

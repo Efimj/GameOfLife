@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+
+    <string name="app_name">Le jeu de la vie</string>
+
+    <string name="GameOfLife">Le jeu de la vie</string>
+
+    <string name="Settings">Paramètres</string>
+
+    <string name="Onboarding">Intégration</string>
+
+    <string name="drawer_GameOfLife_description">Le jeu de la vie</string>
+
+    <string name="drawer_Settings_description">Paramètres</string>
+
+    <string name="drawer_Onboarding_description">Introduction</string>
+
+    <string name="speed_value_100ms">100ms</string>
+
+    <string name="speed_value_250ms">250ms</string>
+
+    <string name="speed_value_500ms">500ms</string>
+
+    <string name="speed_value_1s">1s</string>
+
+    <string name="start_game">Démarrer jeu</string>
+
+    <string name="menu_button">Bouton de menu</string>
+
+    <string name="clear">Clair</string>
+
+    <string name="free_soul_mode">Mode âme gratuit</string>
+
+    <string name="emoji_mode">Mode émoji</string>
+
+    <string name="restart">Redémarrage</string>
+
+    <string name="stable_combination">Combinaison stable &#127881;</string>
+
+    <string name="no_one_survived">Personne n\'a survécu &#128128;</string>
+
+    <string name="alive">Vivant</string>
+
+    <string name="deaths">Décès</string>
+
+    <string name="revivals">Réveils</string>
+
+    <string name="switch_running_simulation">Changer de simulation de course</string>
+
+    <string name="set_field_dimensions">Définir les dimensions du champ</string>
+
+    <string name="rows">Lignes</string>
+
+    <string name="columns">Colonnes</string>
+
+    <string name="language">Langue</string>
+
+    <string name="change_theme">Change le thème</string>
+
+    <string name="onb_1_headline">Dr John Conway</string>
+
+    <string name="onb_1_description">A conçu cette simulation de l\'évolution des automates cellulaires en 1970, appelée \"Jeu de la vie\", où chaque cellule sur le terrain de jeu suit des règles simples.</string>
+
+    <string name="onb_2_headline">Règle 1</string>
+
+    <string name="onb_2_description">Dans une cellule vide (morte), s\'il y a exactement trois voisins vivants, la vie naît</string>
+
+    <string name="onb_3_headline">Règle 2</string>
+
+    <string name="onb_3_description">Si une cellule vivante a deux ou trois voisins vivants, elle continue à vivre ; sinon, la cellule meurt (à cause de la solitude ou du surpeuplement)</string>
+
+</resources>
