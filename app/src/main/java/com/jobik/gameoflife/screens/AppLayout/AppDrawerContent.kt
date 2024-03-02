@@ -93,15 +93,24 @@ fun AppDrawerContent(
                 modifier = Modifier
                     .fillMaxHeight()
                     .verticalScroll(rememberScrollState())
-                    .startWindowInsetsPadding(),
+                    .startWindowInsetsPadding()
+                    .widthIn(max = 280.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 TopWindowInsetsSpacer()
+                Text(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 10.dp),
+                    text = stringResource(id = R.string.GameOfLife),
+                    color = MaterialTheme.colorScheme.onSurface,
+                    style = MaterialTheme.typography.headlineMedium,
+                )
                 Image(
                     modifier = Modifier
                         .size(150.dp)
-                        .padding(bottom = 20.dp),
+                        .padding(vertical = 20.dp),
                     painter = painterResource(id = R.drawable.icon),
                     contentDescription = "Main app icon"
                 )
@@ -129,7 +138,9 @@ fun AppDrawerContent(
                 }
                 Spacer(modifier = Modifier.weight(1f, fill = true))
                 Row(
-                    modifier = Modifier.padding(bottom = 5.dp),
+                    modifier = Modifier
+                        .padding(bottom = 5.dp)
+                        .padding(horizontal = 10.dp),
                     verticalAlignment = Alignment.Bottom,
                     horizontalArrangement = Arrangement.Center
                 ) {
@@ -163,9 +174,7 @@ fun AppDrawerItem(
     Surface(
         color = backgroundColor,
         contentColor = contentColor,
-        modifier = Modifier
-            .widthIn(max = 260.dp)
-            .fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth(),
         onClick = onClick,
         shape = CircleShape,
     ) {
