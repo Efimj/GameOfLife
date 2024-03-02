@@ -5,6 +5,7 @@ import androidx.compose.material3.DrawerState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
 import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
 import me.onebone.toolbar.CollapsingToolbarScaffold
 import me.onebone.toolbar.ScrollStrategy
@@ -12,7 +13,7 @@ import me.onebone.toolbar.SnapConfig
 import me.onebone.toolbar.rememberCollapsingToolbarScaffoldState
 
 @Composable
-fun SettingsScreen(drawerState: DrawerState) {
+fun SettingsScreen(drawerState: DrawerState, navController: NavHostController) {
     val collapsingToolbarScaffold = rememberCollapsingToolbarScaffoldState()
 
     CollapsingToolbarScaffold(
@@ -27,7 +28,7 @@ fun SettingsScreen(drawerState: DrawerState) {
             SettingsAppBar(drawerState)
         },
     ) {
-        SettingsContent()
+        SettingsContent(navController)
     }
 }
 

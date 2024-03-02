@@ -8,6 +8,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.DarkMode
 import androidx.compose.material.icons.outlined.Language
 import androidx.compose.material.icons.outlined.LightMode
+import androidx.compose.material.icons.outlined.Lightbulb
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -20,12 +21,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.jobik.gameoflife.R
+import com.jobik.gameoflife.navigation.Screen
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.theme.AppThemeUtil
 
 @Composable
-fun SettingsContent() {
+fun SettingsContent(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -43,6 +46,12 @@ fun SettingsContent() {
             Text(text = "English", color = MaterialTheme.colorScheme.onSurface, textAlign = TextAlign.Right)
         }) {
 
+        }
+        SettingsItem(
+            icon = Icons.Outlined.Lightbulb,
+            text = stringResource(id = R.string.Onboarding)
+        ) {
+            navController.navigate(Screen.Onboarding.name)
         }
         BottomWindowInsetsSpacer()
     }

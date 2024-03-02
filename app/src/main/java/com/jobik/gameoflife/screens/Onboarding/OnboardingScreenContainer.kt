@@ -89,9 +89,7 @@ private fun BoxScope.NavigationContent(pagerState: PagerState, navController: Na
                 .height(50.dp)
                 .zIndex(3f),
                 onClick = {
-                    navController.navigate(Screen.Game.name) {
-                        popUpTo(Screen.Game.name)
-                    }
+                    navController.navigate(Screen.Game.name)
                 }) {
                 Text(text = stringResource(id = R.string.start_game))
             }

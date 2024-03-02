@@ -26,7 +26,7 @@ fun AppNavHost(
             OnboardingScreen(navController)
         }
         composable(NavigationItem.Settings.route) {
-            SettingsScreen(drawerState)
+            SettingsScreen(drawerState, navController)
         }
     }
 }

@@ -19,7 +19,6 @@ enum class Localization(val localeKey: String) {
     UK("uk"),
     ZH("zh");
 
-
     fun getLocalizedValue(context: Context): String {
         val string: String = when (name) {
             EN.name -> context.getString(R.string.en)
