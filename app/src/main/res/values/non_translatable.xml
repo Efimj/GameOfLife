@@ -1,0 +1,17 @@
+<resources>
+    <!--    Languages   -->
+    <string name="en" translatable="false">English</string>
+    <string name="uk" translatable="false">Український</string>
+    <string name="ru" translatable="false">Русский</string>
+    <string name="de" translatable="false">Deutsch</string>
+    <string name="in" translatable="false">Bahasa Indonesia</string>
+    <string name="es" translatable="false">Español</string>
+    <string name="it" translatable="false">Italiano</string>
+    <string name="zh" translatable="false">简体中文 (Chinese Simplified)</string>
+    <string name="pt" translatable="false">Português</string>
+    <string name="th" translatable="false">ไทย (Thai)</string>
+    <string name="fr" translatable="false">Français</string>
+    <string name="ja" translatable="false">日本語 (Japanese)</string>
+
+    <string name="app_version_text" translatable="false">«Game of Life» store bundled v</string>
+</resources>

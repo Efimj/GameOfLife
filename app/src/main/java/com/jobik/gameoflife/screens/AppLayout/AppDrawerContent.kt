@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -99,20 +100,22 @@ fun AppDrawerContent(
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 TopWindowInsetsSpacer()
-                Text(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 10.dp),
-                    text = stringResource(id = R.string.GameOfLife),
-                    color = MaterialTheme.colorScheme.onSurface,
-                    style = MaterialTheme.typography.headlineMedium,
-                )
                 Image(
                     modifier = Modifier
                         .size(150.dp)
                         .padding(vertical = 20.dp),
                     painter = painterResource(id = R.drawable.icon),
                     contentDescription = "Main app icon"
+                )
+                Text(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 10.dp)
+                        .padding(bottom = 5.dp),
+                    text = stringResource(id = R.string.GameOfLife),
+                    color = MaterialTheme.colorScheme.onSurface,
+                    style = MaterialTheme.typography.headlineMedium,
+                    fontWeight = FontWeight.SemiBold
                 )
                 Column(
                     modifier = Modifier

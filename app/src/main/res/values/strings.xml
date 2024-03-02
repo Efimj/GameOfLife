@@ -30,7 +30,6 @@
     <string name="columns">columns</string>
     <string name="language">Language</string>
     <string name="change_theme">Change theme</string>
-    <string name="app_version_text" translatable="false">«Game of Life» store bundled v</string>
 
     <string name="onb_1_headline">Dr. John Conway</string>
     <string name="onb_1_description">Devised this simulation of cellular automata evolution in 1970, called the \"Game
