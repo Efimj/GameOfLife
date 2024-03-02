@@ -1,3 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Игра Жизни</string>
+
+    <string name="GameOfLife">Игра Жизни</string>
+    <string name="Settings">Настройки</string>
+    <string name="Onboarding">Регистрация</string>
+    <string name="drawer_GameOfLife_description">Игра жизни</string>
+    <string name="drawer_Settings_description">Настройки</string>
+    <string name="drawer_Onboarding_description">Введение</string>
+
+    <string name="speed_value_100ms">100 мс</string>
+    <string name="speed_value_250ms">250 мс</string>
+    <string name="speed_value_500ms">500 мс</string>
+    <string name="speed_value_1s">1 с</string>
+
+    <string name="start_game">Начать игру</string>
+    <string name="menu_button">Кнопка меню</string>
+    <string name="clear">Прозрачный</string>
+    <string name="free_soul_mode">Бесплатный режим души</string>
+    <string name="emoji_mode">Режим эмодзи</string>
+    <string name="restart">Перезапуск</string>
+    <string name="stable_combination">Стабильное сочетание 🎉</string>
+    <string name="no_one_survived">Никто не выжил 💀</string>
+    <string name="alive">Живой</string>
+    <string name="deaths">Летальные исходы</string>
+    <string name="revivals">возрождения</string>
+    <string name="switch_running_simulation">Переключить симуляцию бега</string>
+    <string name="set_field_dimensions">Установить размеры поля</string>
+    <string name="rows">Строки</string>
+    <string name="columns">столбцы</string>
+    <string name="language">Язык</string>
+    <string name="change_theme">Менять тему</string>
+
+    <string name="onb_1_headline">Доктор Джон Конвей</string>
+    <string name="onb_1_description">В 1970 году разработал эту симуляцию эволюции клеточных автоматов, названную «Игра».
+        Жизни», где каждая клетка игрового поля подчиняется простым правилам</string>
+    <string name="onb_2_headline">Правило 1</string>
+    <string name="onb_2_description">В пустой (мертвой) клетке, если живых соседей ровно три, жизнь
+        рожденный</string>
+    <string name="onb_3_headline">Правило 2</string>
+    <string name="onb_3_description">Если у живой клетки есть два или три живых соседа, она продолжает жить;
+        в противном случае клетка погибает (из-за «одиночества» или «перенаселенности»)</string>
+
 </resources>

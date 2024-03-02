@@ -1,3 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Гра життя</string>
+
+    <string name="GameOfLife">Гра життя</string>
+    <string name="Settings">Налаштування</string>
+    <string name="Onboarding">Онбордінг</string>
+    <string name="drawer_GameOfLife_description">Гра життя</string>
+    <string name="drawer_Settings_description">Налаштування</string>
+    <string name="drawer_Onboarding_description">вступ</string>
+
+    <string name="speed_value_100ms">100 мс</string>
+    <string name="speed_value_250ms">250 мс</string>
+    <string name="speed_value_500ms">500 мс</string>
+    <string name="speed_value_1s">1с</string>
+
+    <string name="start_game">Почни гру</string>
+    <string name="menu_button">Кнопка меню</string>
+    <string name="clear">ясно</string>
+    <string name="free_soul_mode">Безкоштовний режим душі</string>
+    <string name="emoji_mode">Режим Emoji</string>
+    <string name="restart">Перезапустіть</string>
+    <string name="stable_combination">Стійке поєднання🎉</string>
+    <string name="no_one_survived">Ніхто не вижив 💀</string>
+    <string name="alive">Живий</string>
+    <string name="deaths">Смерті</string>
+    <string name="revivals">Відродження</string>
+    <string name="switch_running_simulation">Симуляція бігу</string>
+    <string name="set_field_dimensions">Встановіть розміри поля</string>
+    <string name="rows">рядки</string>
+    <string name="columns">колонки</string>
+    <string name="language">Мова</string>
+    <string name="change_theme">Змінити тему</string>
+
+    <string name="onb_1_headline">Доктор Джон Конвей</string>
+    <string name="onb_1_description">Розробив цю симуляцію еволюції клітинних автоматів у 1970 році під назвою \\"Game
+        of Life\\", де кожна клітинка на ігровому полі відповідає простим правилам</string>
+    <string name="onb_2_headline">Правило 1</string>
+    <string name="onb_2_description">У порожній (мертвій) клітині, якщо живих сусідів рівно три, життя є
+        народився</string>
+    <string name="onb_3_headline">Правило 2</string>
+    <string name="onb_3_description">Якщо жива клітина має двох або трьох живих сусідів, вона продовжує жити;
+        інакше клітина гине (через «самотність» або «перенаселеність»)</string>
+
 </resources>
