@@ -1,7 +1,7 @@
 <resources>
     <!--    Languages   -->
     <string name="en" translatable="false">English</string>
-    <string name="uk" translatable="false">Український</string>
+    <string name="uk" translatable="false">Українська</string>
     <string name="ru" translatable="false">Русский</string>
     <string name="de" translatable="false">Deutsch</string>
     <string name="in" translatable="false">Bahasa Indonesia</string>
