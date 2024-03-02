@@ -104,7 +104,7 @@ fun GameOfLifeTheme(
             val window = (view.context as Activity).window
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme.not()
             WindowCompat.getInsetsController(window, view).isAppearanceLightNavigationBars = darkTheme.not()
-            window.navigationBarColor = colorScheme.surface.copy(.8f).toArgb()
+            window.navigationBarColor = colorScheme.surface.copy(.0f).toArgb()
         }
     }
 
