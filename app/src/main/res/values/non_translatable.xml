@@ -14,19 +14,19 @@
     <string name="zh" translatable="false">简体中文 (Chinese Simplified)</string>
     <string name="th" translatable="false">ไทย (Thai)</string>
 
-    <string name="de_name" translatable="false">German</string>
-    <string name="en_name" translatable="false">English</string>
-    <string name="es_name" translatable="false">Spanish</string>
-    <string name="fr_name" translatable="false">French</string>
-    <string name="hi_name" translatable="false">Hindi</string>
-    <string name="in_name" translatable="false">Indonesian</string>
-    <string name="it_name" translatable="false">Italian</string>
-    <string name="ja_name" translatable="false">Japanese</string>
-    <string name="pt_name" translatable="false">Portuguese</string>
-    <string name="ru_name" translatable="false">Russian</string>
-    <string name="uk_name" translatable="false">Ukrainian</string>
-    <string name="zh_name" translatable="false">Chinese Simplified</string>
-    <string name="th_name" translatable="false">Thai</string>
+    <string name="de_language" translatable="false">German</string>
+    <string name="en_language" translatable="false">English</string>
+    <string name="es_language" translatable="false">Spanish</string>
+    <string name="fr_language" translatable="false">French</string>
+    <string name="hi_language" translatable="false">Hindi</string>
+    <string name="in_language" translatable="false">Indonesian</string>
+    <string name="it_language" translatable="false">Italian</string>
+    <string name="ja_language" translatable="false">Japanese</string>
+    <string name="pt_language" translatable="false">Portuguese</string>
+    <string name="ru_language" translatable="false">Russian</string>
+    <string name="uk_language" translatable="false">Ukrainian</string>
+    <string name="zh_language" translatable="false">Chinese Simplified</string>
+    <string name="th_language" translatable="false">Thai</string>
 
     <string name="app_version_text" translatable="false">«Game of Life» store bundled v</string>
 </resources>

@@ -4,6 +4,11 @@ import android.content.Context
 import androidx.annotation.Keep
 import com.jobik.gameoflife.R
 
+data class LocaleData(
+    val name: String,
+    val language: String
+)
+
 @Keep
 enum class Localization(val localeKey: String) {
     DE("de"),
@@ -20,23 +25,74 @@ enum class Localization(val localeKey: String) {
     UK("uk"),
     ZH("zh");
 
-    fun getLocalizedValue(context: Context): String {
-        val string: String = when (name) {
-            EN.name -> context.getString(R.string.en)
-            DE.name -> context.getString(R.string.de)
-            ES.name -> context.getString(R.string.es)
-            FR.name -> context.getString(R.string.fr)
-            HI.name -> context.getString(R.string.hi)
-            IN.name -> context.getString(R.string.`in`)
-            IT.name -> context.getString(R.string.it)
-            JA.name -> context.getString(R.string.ja)
-            PT.name -> context.getString(R.string.pt)
-            RU.name -> context.getString(R.string.ru)
-            TH.name -> context.getString(R.string.th)
-            UK.name -> context.getString(R.string.uk)
-            ZH.name -> context.getString(R.string.zh)
+    fun getLocalizedValue(context: Context): LocaleData {
+        val string: LocaleData = when (name) {
+            EN.name -> LocaleData(
+                name = context.getString(R.string.en),
+                language = context.getString(R.string.en_language)
+            )
 
-            else -> ""
+            DE.name -> LocaleData(
+                name = context.getString(R.string.de),
+                language = context.getString(R.string.de_language)
+            )
+
+            ES.name -> LocaleData(
+                name = context.getString(R.string.es),
+                language = context.getString(R.string.es_language)
+            )
+
+            FR.name -> LocaleData(
+                name = context.getString(R.string.fr),
+                language = context.getString(R.string.fr_language)
+            )
+
+            HI.name -> LocaleData(
+                name = context.getString(R.string.hi),
+                language = context.getString(R.string.hi_language)
+            )
+
+            IN.name -> LocaleData(
+                name = context.getString(R.string.`in`),
+                language = context.getString(R.string.in_language)
+            )
+
+            IT.name -> LocaleData(
+                name = context.getString(R.string.it),
+                language = context.getString(R.string.it_language)
+            )
+
+            JA.name -> LocaleData(
+                name = context.getString(R.string.ja),
+                language = context.getString(R.string.ja_language)
+            )
+
+            PT.name -> LocaleData(
+                name = context.getString(R.string.pt),
+                language = context.getString(R.string.pt_language)
+            )
+
+            RU.name -> LocaleData(
+                name = context.getString(R.string.ru),
+                language = context.getString(R.string.ru_language)
+            )
+
+            TH.name -> LocaleData(
+                name = context.getString(R.string.th),
+                language = context.getString(R.string.th_language)
+            )
+
+            UK.name -> LocaleData(
+                name = context.getString(R.string.uk),
+                language = context.getString(R.string.uk_language)
+            )
+
+            ZH.name -> LocaleData(
+                name = context.getString(R.string.zh),
+                language = context.getString(R.string.zh_language)
+            )
+
+            else -> LocaleData(name = "NOT SUPPORTED", language = "NOT SUPPORTED")
         }
         return string
     }
