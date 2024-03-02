@@ -18,8 +18,7 @@ fun SettingsScreen(drawerState: DrawerState, navController: NavHostController) {
 
     CollapsingToolbarScaffold(
         modifier = Modifier
-            .background(MaterialTheme.colorScheme.surface)
-            .horizontalWindowInsetsPadding(),
+            .background(MaterialTheme.colorScheme.surface),
         state = collapsingToolbarScaffold,
         scrollStrategy = ScrollStrategy.ExitUntilCollapsed,
         enabledWhenBodyUnfilled = false,

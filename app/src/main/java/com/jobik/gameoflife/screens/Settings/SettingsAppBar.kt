@@ -11,6 +11,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.jobik.gameoflife.R
+import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
 import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
 import kotlinx.coroutines.launch
 
@@ -22,6 +23,7 @@ fun SettingsAppBar(drawerState: DrawerState) {
     TopAppBar(
         modifier = Modifier
             .background(MaterialTheme.colorScheme.secondaryContainer)
+            .horizontalWindowInsetsPadding()
             .topWindowInsetsPadding(),
         title = {
             Text(

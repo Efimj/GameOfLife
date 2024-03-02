@@ -25,6 +25,7 @@ import androidx.navigation.NavHostController
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.navigation.Screen
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
+import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
 import com.jobik.gameoflife.ui.theme.AppThemeUtil
 
 @Composable
@@ -32,8 +33,9 @@ fun SettingsContent(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .horizontalWindowInsetsPadding()
             .verticalScroll(rememberScrollState())
-            .padding(bottom = 20.dp),
+            .padding(bottom = 20.dp, top = 10.dp),
     ) {
         val context = LocalContext.current
         SettingsItem(
