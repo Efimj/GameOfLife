@@ -106,13 +106,14 @@ fun LocalizationSelector(
                         isSelected = currentLocale.name == locale.name,
                         locale = locale
                     ) {
-                        if (currentLocale.name == locale.name) return@LanguageItem
                         scope
                             .launch {
                                 sheetState.hide()
                             }
                             .invokeOnCompletion {
                                 isOpen.value = false
+                                if (currentLocale.name == locale.name) return@invokeOnCompletion
+
                                 selectLocalization(index, context)
                                 (context as? Activity)?.recreate()
                             }
