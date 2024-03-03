@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
 import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
@@ -27,7 +28,9 @@ fun SettingsAppBar(drawerState: DrawerState) {
             .topWindowInsetsPadding(),
         title = {
             Text(
-                text = "Text"
+                text = stringResource(id = R.string.Settings),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
             )
         },
         windowInsets = WindowInsets.ime,

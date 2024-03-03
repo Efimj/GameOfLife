@@ -49,6 +49,7 @@ fun SettingsContent(navController: NavHostController) {
             .verticalScroll(rememberScrollState())
             .padding(bottom = 20.dp, top = 10.dp),
     ) {
+        GroupHeader(stringResource(id = R.string.application))
         SettingsItem(
             icon = if (AppThemeUtil.isDarkMode.value) Icons.Outlined.LightMode else Icons.Outlined.DarkMode,
             text = stringResource(id = R.string.change_theme)
@@ -87,6 +88,7 @@ fun SettingsContent(navController: NavHostController) {
             }) {
             isLanguageSelectorOpen.value = true
         }
+        GroupHeader(stringResource(id = R.string.other))
         SettingsItem(
             icon = Icons.Outlined.Lightbulb,
             text = stringResource(id = R.string.Onboarding)
@@ -94,5 +96,27 @@ fun SettingsContent(navController: NavHostController) {
             navController.navigate(Screen.Onboarding.name)
         }
         BottomWindowInsetsSpacer()
+    }
+}
+
+@Composable
+fun GroupHeader(text: String) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 20.dp)
+            .padding(top = 10.dp, bottom = 5.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    )
+    {
+        Text(
+            modifier = Modifier.weight(1f),
+            text = text,
+            style = MaterialTheme.typography.titleLarge,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            textAlign = TextAlign.Start,
+            color = MaterialTheme.colorScheme.onSurface
+        )
     }
 }
