@@ -13,7 +13,7 @@
             android:theme="@style/Theme.GameOfLife"
             tools:targetApi="31">
         <activity
-                android:name="com.jobik.gameoflife.MainActivity"
+                android:name="com.jobik.gameoflife.activity.MainActivity"
                 android:exported="true"
                 android:label="@string/app_name"
                 android:theme="@style/Theme.GameOfLife.Splash">

@@ -9,4 +9,5 @@ object SharedPreferencesKeys {
 
     // Attribute key
     const val IsDarkTheme = "IsDarkTheme"
+    const val Localization = "Localization"
 }
