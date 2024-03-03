@@ -101,8 +101,6 @@ fun LocalizationSelector(
                     .padding(horizontal = 20.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                TopWindowInsetsSpacer()
-
                 localizations.value.forEachIndexed { index, locale ->
                     LanguageItem(
                         isSelected = currentLocale.name == locale.name,
@@ -128,6 +126,7 @@ fun LocalizationSelector(
 
 @Composable
 private fun Header(scroll: ScrollState) {
+    TopWindowInsetsSpacer()
     Row(
         modifier = Modifier
             .fillMaxWidth()
