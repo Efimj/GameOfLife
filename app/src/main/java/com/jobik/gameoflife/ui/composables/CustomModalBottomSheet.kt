@@ -19,15 +19,6 @@ fun CustomModalBottomSheet(
     dragHandle: @Composable() (() -> Unit)? = { BottomSheetDefaults.DragHandle() },
     content: @Composable() (ColumnScope.() -> Unit)
 ) {
-//    val coroutineScope = rememberCoroutineScope()
-//    BackHandler(
-//        enabled = state.isVisible,
-//    ) {
-//        coroutineScope.launch {
-//            onCancel()
-//        }
-//    }
-
     ModalBottomSheet(
         sheetState = state,
         onDismissRequest = onCancel,
