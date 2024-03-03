@@ -3,39 +3,42 @@ package com.jobik.gameoflife.screens.Settings
 import android.app.Activity
 import android.content.Context
 import android.util.Log
-import androidx.compose.foundation.clickable
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.ScrollState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.GameOfLifeApplication
+import com.jobik.gameoflife.R
 import com.jobik.gameoflife.services.localization.LocaleData
 import com.jobik.gameoflife.services.localization.Localization
 import com.jobik.gameoflife.services.localization.LocalizationHelper
 import com.jobik.gameoflife.ui.composables.CustomModalBottomSheet
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
+import com.jobik.gameoflife.ui.helpers.TopWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
 import kotlinx.coroutines.launch
 
 private fun getLocalizationList(localContext: Context): List<LocaleData> {
-    return Localization.entries.filter { it.name != GameOfLifeApplication.currentLanguage.name }
-        .map { it.getLocalizedValue(localContext) }
+    return Localization.entries.map { it.getLocalizedValue(localContext) }
 }
 
 private fun selectLocalization(selectedIndex: Int, context: Context) {
     try {
-        val newLocalization: Localization =
-            Localization.entries.filter { it.name != GameOfLifeApplication.currentLanguage.name }[selectedIndex]
+        val newLocalization: Localization = Localization.entries[selectedIndex]
         LocalizationHelper.setLocale(context.applicationContext, newLocalization)
     } catch (e: Exception) {
         Log.d("ChangeLocalizationError", e.message.toString())
@@ -49,6 +52,7 @@ fun LocalizationSelector(
 ) {
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
+    val currentLocale = GameOfLifeApplication.currentLanguage.getLocalizedValue(context)
 
     val localizations = remember {
         mutableStateOf(getLocalizationList(context))
@@ -87,36 +91,99 @@ fun LocalizationSelector(
                 }
             }
         ) {
+            val scroll = rememberScrollState()
+            Header(scroll)
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .verticalScroll(rememberScrollState())
+                    .verticalScroll(scroll)
                     .horizontalWindowInsetsPadding()
+                    .padding(horizontal = 20.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
+                TopWindowInsetsSpacer()
+
                 localizations.value.forEachIndexed { index, locale ->
-                    Row(modifier = Modifier
-                        .fillMaxWidth()
-                        .height(60.dp)
-                        .clickable {
-                            scope
-                                .launch {
-                                    sheetState.hide()
-                                }
-                                .invokeOnCompletion {
-                                    isOpen.value = false
-                                    selectLocalization(index, context)
-                                    (context as? Activity)?.recreate()
-                                }
-                        }) {
-                        Text(
-                            text = locale.name,
-                            color = MaterialTheme.colorScheme.onSurface,
-                            textAlign = TextAlign.Right
-                        )
+                    LanguageItem(
+                        isSelected = currentLocale.name == locale.name,
+                        locale = locale
+                    ) {
+                        if (currentLocale.name == locale.name) return@LanguageItem
+                        scope
+                            .launch {
+                                sheetState.hide()
+                            }
+                            .invokeOnCompletion {
+                                isOpen.value = false
+                                selectLocalization(index, context)
+                                (context as? Activity)?.recreate()
+                            }
                     }
                 }
                 BottomWindowInsetsSpacer()
             }
+        }
+    }
+}
+
+@Composable
+private fun Header(scroll: ScrollState) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 40.dp, vertical = 12.dp)
+    ) {
+        Text(
+            text = stringResource(id = R.string.language),
+            style = MaterialTheme.typography.headlineSmall,
+            textAlign = TextAlign.Right,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            fontWeight = FontWeight.SemiBold,
+        )
+    }
+}
+
+@Composable
+private fun LanguageItem(
+    isSelected: Boolean = false,
+    locale: LocaleData,
+    onClick: () -> Unit,
+) {
+    val backgroundColorValue = if (isSelected) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent
+    val backgroundColor by animateColorAsState(targetValue = backgroundColorValue, label = "backgroundColor")
+
+    val contentColorValue =
+        if (isSelected) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onBackground
+    val contentColor by animateColorAsState(targetValue = contentColorValue, label = "backgroundColor")
+
+    Surface(
+        color = backgroundColor,
+        contentColor = contentColor,
+        modifier = Modifier.fillMaxWidth(),
+        onClick = onClick,
+        shape = CircleShape,
+    ) {
+        Column(
+            horizontalAlignment = Alignment.Start,
+            verticalArrangement = Arrangement.spacedBy(2.dp),
+            modifier = Modifier.padding(horizontal = 20.dp, vertical = 6.dp)
+        ) {
+            Text(
+                text = locale.name,
+                style = MaterialTheme.typography.bodyLarge,
+                textAlign = TextAlign.Right,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+            Text(
+                text = locale.language,
+                style = MaterialTheme.typography.bodySmall,
+                textAlign = TextAlign.Right,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = .6f)
+            )
         }
     }
 }

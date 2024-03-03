@@ -62,11 +62,28 @@ fun SettingsContent(navController: NavHostController) {
             icon = Icons.Outlined.Language,
             text = stringResource(id = R.string.language),
             action = {
-                Text(
-                    text = GameOfLifeApplication.currentLanguage.getLocalizedValue(context).name,
-                    color = MaterialTheme.colorScheme.onSurface,
-                    textAlign = TextAlign.Right
-                )
+                Column(
+                    horizontalAlignment = Alignment.Start,
+                    verticalArrangement = Arrangement.spacedBy(2.dp),
+                    modifier = Modifier.padding(horizontal = 20.dp, vertical = 6.dp)
+                ) {
+                    val currentLocale = GameOfLifeApplication.currentLanguage.getLocalizedValue(context)
+                    Text(
+                        text = currentLocale.name,
+                        style = MaterialTheme.typography.bodyLarge,
+                        textAlign = TextAlign.Right,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    Text(
+                        text = currentLocale.language,
+                        style = MaterialTheme.typography.bodySmall,
+                        textAlign = TextAlign.Right,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = .6f)
+                    )
+                }
             }) {
             isLanguageSelectorOpen.value = true
         }

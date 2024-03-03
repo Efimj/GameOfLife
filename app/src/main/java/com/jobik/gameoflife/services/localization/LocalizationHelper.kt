@@ -1,6 +1,7 @@
 package com.jobik.gameoflife.services.localization
 
 import android.content.Context
+import android.util.Log
 import com.jobik.gameoflife.GameOfLifeApplication
 import com.jobik.gameoflife.SharedPreferencesKeys
 import java.util.*
