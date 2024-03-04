@@ -31,6 +31,7 @@
     <string name="language">Language</string>
     <string name="change_theme">Change theme</string>
     <string name="application">Application</string>
+    <string name="information">Information</string>
     <string name="other">Other</string>
 
     <string name="onb_1_headline">Dr. John Conway</string>

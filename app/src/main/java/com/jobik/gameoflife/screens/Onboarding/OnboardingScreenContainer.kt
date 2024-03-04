@@ -34,6 +34,7 @@ import coil.decode.ImageDecoderDecoder
 import coil.request.ImageRequest
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.navigation.Screen
+import com.jobik.gameoflife.navigation.canNavigate
 import com.jobik.gameoflife.ui.composables.VerticalIndicator
 import com.jobik.gameoflife.ui.helpers.bottomWindowInsetsPadding
 import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
@@ -89,6 +90,7 @@ private fun BoxScope.NavigationContent(pagerState: PagerState, navController: Na
                 .height(50.dp)
                 .zIndex(3f),
                 onClick = {
+                    if (navController.canNavigate().not()) return@Button
                     navController.navigate(Screen.Game.name) {
                         popUpTo(Screen.Game.name)
                     }

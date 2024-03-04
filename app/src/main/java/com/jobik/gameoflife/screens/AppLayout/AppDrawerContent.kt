@@ -12,7 +12,9 @@ import androidx.compose.material.icons.automirrored.outlined.HelpOutline
 import androidx.compose.material.icons.outlined.Casino
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,14 +25,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.jobik.gameoflife.BuildConfig
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.navigation.Screen
+import com.jobik.gameoflife.navigation.canNavigate
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.TopWindowInsetsSpacer
-import com.jobik.gameoflife.ui.helpers.bottomWindowInsetsPadding
 import com.jobik.gameoflife.ui.helpers.startWindowInsetsPadding
 import kotlinx.coroutines.launch
 
@@ -38,13 +41,12 @@ import kotlinx.coroutines.launch
  * base data container for the button creation
  * takes in the resources IDs
  */
-data class AppDrawerItemInfo<T>(
-    val drawerOption: T,
+data class AppDrawerItemInfo(
+    val route: Screen,
     @StringRes val title: Int,
     val icon: ImageVector,
     @StringRes val description: Int,
     val enabled: Boolean = false,
-    val route: Screen,
 )
 
 
@@ -54,25 +56,22 @@ data class AppDrawerItemInfo<T>(
 object DrawerParams {
     val drawerButtons = listOf(
         AppDrawerItemInfo(
-            drawerOption = Screen.Game,
+            route = Screen.Game,
             title = R.string.GameOfLife,
             icon = Icons.Outlined.Casino,
             description = R.string.drawer_GameOfLife_description,
-            route = Screen.Game
         ),
         AppDrawerItemInfo(
-            drawerOption = Screen.Onboarding,
-            title = R.string.Onboarding,
+            route = Screen.Information,
+            title = R.string.information,
             icon = Icons.AutoMirrored.Outlined.HelpOutline,
-            description = R.string.drawer_Onboarding_description,
-            route = Screen.Onboarding
+            description = R.string.information,
         ),
         AppDrawerItemInfo(
-            drawerOption = Screen.Settings,
+            route = Screen.Settings,
             title = R.string.Settings,
             icon = Icons.Outlined.Settings,
             description = R.string.drawer_Settings_description,
-            route = Screen.Settings
         ),
     )
 }
@@ -126,11 +125,13 @@ fun AppDrawerContent(
                             title = button.title,
                             contentDescription = button.description,
                             icon = button.icon,
-                            enabled = button.route.name == currentRoute,
+                            isActive = button.route.name == currentRoute,
                             onClick = {
                                 coroutineScope.launch {
                                     drawerState.close()
                                 }
+                                if (button.route.name == currentRoute) return@AppDrawerItem
+                                if (navController.canNavigate().not()) return@AppDrawerItem
                                 navController.navigate(button.route.name) {
                                     // pops the route to root and places new screen
                                     popUpTo(button.route.name)
@@ -164,14 +165,14 @@ fun AppDrawerItem(
     icon: ImageVector,
     @StringRes title: Int,
     @StringRes contentDescription: Int,
-    enabled: Boolean,
+    isActive: Boolean,
     onClick: () -> Unit
 ) {
-    val backgroundColorValue = if (enabled) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent
+    val backgroundColorValue = if (isActive) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent
     val backgroundColor by animateColorAsState(targetValue = backgroundColorValue, label = "backgroundColor")
 
     val contentColorValue =
-        if (enabled) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onBackground
+        if (isActive) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onBackground
     val contentColor by animateColorAsState(targetValue = contentColorValue, label = "backgroundColor")
 
     Surface(

@@ -24,6 +24,7 @@ import androidx.navigation.NavHostController
 import com.jobik.gameoflife.GameOfLifeApplication
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.navigation.Screen
+import com.jobik.gameoflife.navigation.canNavigate
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
 import com.jobik.gameoflife.ui.theme.AppThemeUtil
@@ -83,6 +84,7 @@ fun SettingsContent(navController: NavHostController) {
             icon = Icons.Outlined.Lightbulb,
             text = stringResource(id = R.string.Onboarding)
         ) {
+            if (navController.canNavigate().not()) return@SettingsItem
             navController.navigate(Screen.Onboarding.name)
         }
         BottomWindowInsetsSpacer()
