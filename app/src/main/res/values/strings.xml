@@ -33,6 +33,13 @@
     <string name="application">Application</string>
     <string name="information">Information</string>
     <string name="other">Other</string>
+    <string name="open_in_wikipedia">Open in wikipedia</string>
+    <string name="JohnHortonConway">John Horton Conway</string>
+    <string name="JohnHortonConway_card_description">John Horton Conway, an English mathematician, has made significant
+        contributions to finite groups, knot theory, number theory, combinatorial game theory, and coding theory.
+        Notably, he is known for inventing the cellular automaton called the Game of Life in recreational mathematics
+    </string>
+
 
     <string name="onb_1_headline">Dr. John Conway</string>
     <string name="onb_1_description">Devised this simulation of cellular automata evolution in 1970, called the \"Game
