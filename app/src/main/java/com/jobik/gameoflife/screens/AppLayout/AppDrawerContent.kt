@@ -25,13 +25,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.jobik.gameoflife.BuildConfig
 import com.jobik.gameoflife.R
+import com.jobik.gameoflife.navigation.NavigationHelpers.Companion.canNavigate
 import com.jobik.gameoflife.navigation.Screen
-import com.jobik.gameoflife.navigation.canNavigate
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.TopWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.startWindowInsetsPadding

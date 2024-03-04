@@ -33,8 +33,8 @@ import coil.decode.GifDecoder
 import coil.decode.ImageDecoderDecoder
 import coil.request.ImageRequest
 import com.jobik.gameoflife.R
+import com.jobik.gameoflife.navigation.NavigationHelpers.Companion.canNavigate
 import com.jobik.gameoflife.navigation.Screen
-import com.jobik.gameoflife.navigation.canNavigate
 import com.jobik.gameoflife.ui.composables.VerticalIndicator
 import com.jobik.gameoflife.ui.helpers.bottomWindowInsetsPadding
 import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding

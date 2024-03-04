@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.jobik.gameoflife.GameOfLifeApplication
 import com.jobik.gameoflife.R
+import com.jobik.gameoflife.navigation.NavigationHelpers.Companion.canNavigate
 import com.jobik.gameoflife.navigation.Screen
-import com.jobik.gameoflife.navigation.canNavigate
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
 import com.jobik.gameoflife.ui.theme.AppThemeUtil

@@ -35,7 +35,3 @@ fun AppNavHost(
         }
     }
 }
-
-fun NavHostController.canNavigate(): Boolean {
-    return this.currentBackStackEntry?.lifecycle?.currentState == Lifecycle.State.RESUMED
-}
