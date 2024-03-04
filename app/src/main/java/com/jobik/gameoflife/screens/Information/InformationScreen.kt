@@ -22,8 +22,9 @@ fun InformationScreen(drawerState: DrawerState) {
         enabledWhenBodyUnfilled = false,
         snapConfig = SnapConfig(), // "collapseThreshold = 0.5" by default
         toolbar = {
+            InformationAppBar(drawerState)
         },
     ) {
-
+        InformationContent()
     }
 }
