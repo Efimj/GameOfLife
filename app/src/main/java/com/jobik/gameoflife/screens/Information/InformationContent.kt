@@ -1,5 +1,6 @@
 package com.jobik.gameoflife.screens.Information
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
@@ -24,6 +25,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
@@ -48,18 +50,30 @@ private fun JohnConwayCard() {
     val uriHandler = LocalUriHandler.current
     var isExpanded by rememberSaveable() { mutableStateOf(false) }
 
+    val containerColorValue =
+        if (isExpanded) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainerHigh
+    val containerColorState = animateColorAsState(targetValue = containerColorValue, label = "contentColorState")
+
+    val contentColorValue =
+        if (isExpanded) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface
+    val contentColorState = animateColorAsState(targetValue = contentColorValue, label = "contentColorState")
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(MaterialTheme.shapes.medium)
+            .clip(MaterialTheme.shapes.large)
             .clickable {
                 isExpanded = isExpanded.not()
-            }
+            },
+        colors = CardDefaults.cardColors(
+            containerColor = containerColorState.value,
+            contentColor = contentColorState.value
+        )
     ) {
         Image(
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(MaterialTheme.shapes.medium),
+                .clip(MaterialTheme.shapes.large),
             painter = painterResource(id = R.drawable.john_horton_conway_poster),
             contentScale = ContentScale.FillWidth,
             contentDescription = null
@@ -72,7 +86,9 @@ private fun JohnConwayCard() {
             ) {
                 Text(
                     text = stringResource(id = R.string.JohnHortonConway),
-                    style = MaterialTheme.typography.titleLarge
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.SemiBold,
+                    color = contentColorState.value
                 )
                 Column(
                     modifier = Modifier.weight(1f),
@@ -88,7 +104,8 @@ private fun JohnConwayCard() {
                         onClick = { isExpanded = isExpanded.not() }) {
                         Icon(
                             imageVector = Icons.Outlined.ExpandMore,
-                            contentDescription = null
+                            contentDescription = null,
+                            tint = contentColorState.value.copy(alpha = .8f)
                         )
                     }
                 }
@@ -98,14 +115,18 @@ private fun JohnConwayCard() {
                 text = stringResource(id = R.string.JohnHortonConway_card_description),
                 style = MaterialTheme.typography.bodyMedium,
                 overflow = TextOverflow.Ellipsis,
-                maxLines = if (isExpanded) Int.MAX_VALUE else 3
+                maxLines = if (isExpanded) Int.MAX_VALUE else 3,
+                color = contentColorState.value.copy(alpha = .8f)
             )
             Row {
                 val uri = stringResource(id = R.string.JohnHortonConway_wiki_uri)
                 Button(onClick = {
                     uriHandler.openUri(uri)
                 }) {
-                    Text(text = stringResource(id = R.string.open_in_wikipedia), maxLines = 1)
+                    Text(
+                        text = stringResource(id = R.string.open_in_wikipedia),
+                        maxLines = 1,
+                    )
                 }
             }
         }
