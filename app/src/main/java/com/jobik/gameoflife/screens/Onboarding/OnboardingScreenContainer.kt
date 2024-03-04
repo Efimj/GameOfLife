@@ -1,6 +1,8 @@
 package com.jobik.gameoflife.screens.Onboarding
 
+import android.content.Context
 import android.os.Build.VERSION.SDK_INT
+import android.util.Log
 import androidx.compose.animation.*
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
@@ -33,6 +35,8 @@ import coil.decode.GifDecoder
 import coil.decode.ImageDecoderDecoder
 import coil.request.ImageRequest
 import com.jobik.gameoflife.R
+import com.jobik.gameoflife.SharedPreferencesKeys
+import com.jobik.gameoflife.SharedPreferencesKeys.OnboardingFinishedData
 import com.jobik.gameoflife.navigation.NavigationHelpers.Companion.canNavigate
 import com.jobik.gameoflife.navigation.Screen
 import com.jobik.gameoflife.ui.composables.VerticalIndicator
@@ -71,10 +75,26 @@ fun OnboardingScreen(navController: NavHostController) {
     }
 }
 
+fun onFinished(context: Context, navController: NavHostController) {
+    try {
+        val sharedPreferences =
+            context.getSharedPreferences(SharedPreferencesKeys.AppSettings, Context.MODE_PRIVATE)
+        sharedPreferences.edit().putString(SharedPreferencesKeys.CurrentOnboardingFinishedData, OnboardingFinishedData)
+            .apply()
+    } catch (e: Exception) {
+        Log.i("onboarding - onFinished", e.toString())
+    }
+    if (navController.canNavigate().not()) return
+    navController.navigate(Screen.Game.name) {
+        popUpTo(Screen.Game.name)
+    }
+}
+
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun BoxScope.NavigationContent(pagerState: PagerState, navController: NavHostController) {
     val coroutineScope = rememberCoroutineScope()
+    val context = LocalContext.current
 
     Box(modifier = Modifier.align(Alignment.BottomCenter), contentAlignment = Alignment.BottomCenter) {
         Row(
@@ -90,10 +110,7 @@ private fun BoxScope.NavigationContent(pagerState: PagerState, navController: Na
                 .height(50.dp)
                 .zIndex(3f),
                 onClick = {
-                    if (navController.canNavigate().not()) return@Button
-                    navController.navigate(Screen.Game.name) {
-                        popUpTo(Screen.Game.name)
-                    }
+                    onFinished(context = context, navController = navController)
                 }) {
                 Text(text = stringResource(id = R.string.start_game))
             }
