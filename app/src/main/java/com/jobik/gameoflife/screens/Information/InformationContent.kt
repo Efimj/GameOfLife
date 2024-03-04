@@ -86,7 +86,7 @@ private fun JohnConwayCard() {
             ) {
                 Text(
                     text = stringResource(id = R.string.JohnHortonConway),
-                    style = MaterialTheme.typography.titleLarge,
+                    style = MaterialTheme.typography.headlineSmall,
                     fontWeight = FontWeight.SemiBold,
                     color = contentColorState.value
                 )
@@ -113,10 +113,10 @@ private fun JohnConwayCard() {
             Text(
                 modifier = Modifier.animateContentSize(),
                 text = stringResource(id = R.string.JohnHortonConway_card_description),
-                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.bodyLarge,
                 overflow = TextOverflow.Ellipsis,
                 maxLines = if (isExpanded) Int.MAX_VALUE else 3,
-                color = contentColorState.value.copy(alpha = .8f)
+                color = MaterialTheme.colorScheme.onSurface,
             )
             Row {
                 val uri = stringResource(id = R.string.JohnHortonConway_wiki_uri)
