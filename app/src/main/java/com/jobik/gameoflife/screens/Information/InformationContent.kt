@@ -18,5 +18,7 @@ fun InformationContent() {
             .horizontalWindowInsetsPadding()
             .verticalScroll(rememberScrollState())
             .padding(bottom = 20.dp, top = 10.dp),
-    ) {}
+    ) {
+
+    }
 }

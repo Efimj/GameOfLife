@@ -57,7 +57,7 @@ fun SettingsContent(navController: NavHostController) {
                 Column(
                     horizontalAlignment = Alignment.Start,
                     verticalArrangement = Arrangement.spacedBy(2.dp),
-                    modifier = Modifier.padding(horizontal = 20.dp, vertical = 6.dp)
+                    modifier = Modifier.padding(vertical = 6.dp)
                 ) {
                     val currentLocale = GameOfLifeApplication.currentLanguage.getLocalizedValue(context)
                     Text(
