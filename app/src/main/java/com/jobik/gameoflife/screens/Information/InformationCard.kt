@@ -4,7 +4,9 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -41,72 +43,75 @@ fun InformationCard(@DrawableRes image: Int, @StringRes title: Int, @StringRes b
         if (isExpanded) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface
     val contentColorState = animateColorAsState(targetValue = contentColorValue, label = "contentColorState")
 
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(MaterialTheme.shapes.large)
+    val elevationValue = if (isExpanded) 6.dp else 0.dp
+    val elevationState = animateDpAsState(targetValue = elevationValue, label = "elevationState")
+
+    Surface(
+        shape = MaterialTheme.shapes.large,
+        shadowElevation = elevationState.value,
+        border = CardDefaults.outlinedCardBorder(),
+        color = containerColorState.value,
+        contentColor = contentColorState.value
+    ) {
+        Column(modifier = Modifier
             .clickable {
                 isExpanded = isExpanded.not()
-            },
-        colors = CardDefaults.cardColors(
-            containerColor = containerColorState.value,
-            contentColor = contentColorState.value
-        )
-    ) {
-        Image(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clip(MaterialTheme.shapes.large),
-            painter = painterResource(id = image),
-            contentScale = ContentScale.FillWidth,
-            contentDescription = null
-        )
-        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(
-                    text = stringResource(id = title),
-                    style = MaterialTheme.typography.headlineSmall,
-                    fontWeight = FontWeight.SemiBold,
-                    color = contentColorState.value
-                )
-                Column(
-                    modifier = Modifier.weight(1f),
-                    verticalArrangement = Arrangement.Top,
-                    horizontalAlignment = Alignment.End
+            }) {
+            Image(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(MaterialTheme.shapes.large),
+                painter = painterResource(id = image),
+                contentScale = ContentScale.FillWidth,
+                contentDescription = null
+            )
+            Column(modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    val rotatingValue = if (isExpanded) 180f else 0f
-                    val rotatingState = animateFloatAsState(targetValue = rotatingValue, label = "rotatingState")
-                    IconButton(
-                        modifier = Modifier
-                            .size(30.dp)
-                            .rotate(rotatingState.value),
-                        onClick = { isExpanded = isExpanded.not() }) {
-                        Icon(
-                            imageVector = Icons.Outlined.ExpandMore,
-                            contentDescription = null,
-                            tint = contentColorState.value.copy(alpha = .8f)
-                        )
+                    Text(
+                        text = stringResource(id = title),
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontWeight = FontWeight.SemiBold,
+                        color = contentColorState.value
+                    )
+                    Column(
+                        modifier = Modifier.weight(1f),
+                        verticalArrangement = Arrangement.Top,
+                        horizontalAlignment = Alignment.End
+                    ) {
+                        val rotatingValue = if (isExpanded) 180f else 0f
+                        val rotatingState = animateFloatAsState(targetValue = rotatingValue, label = "rotatingState")
+                        IconButton(
+                            modifier = Modifier
+                                .size(30.dp)
+                                .rotate(rotatingState.value),
+                            onClick = { isExpanded = isExpanded.not() }) {
+                            Icon(
+                                imageVector = Icons.Outlined.ExpandMore,
+                                contentDescription = null,
+                                tint = contentColorState.value.copy(alpha = .8f)
+                            )
+                        }
                     }
                 }
-            }
-            Text(
-                text = stringResource(id = body),
-                modifier = Modifier.animateContentSize(),
-                style = MaterialTheme.typography.bodyLarge,
-                overflow = TextOverflow.Ellipsis,
-                maxLines = if (isExpanded) Int.MAX_VALUE else 3,
-                color = MaterialTheme.colorScheme.onSurface,
-            )
-            Row {
-                Button(onClick = button.onClick) {
-                    Text(
-                        text = stringResource(id = button.text),
-                        maxLines = 1,
-                    )
+                Text(
+                    text = stringResource(id = body),
+                    modifier = Modifier.animateContentSize(),
+                    style = MaterialTheme.typography.bodyLarge,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = if (isExpanded) Int.MAX_VALUE else 3,
+                    color = MaterialTheme.colorScheme.onSurface,
+                )
+                Row {
+                    Button(onClick = button.onClick) {
+                        Text(
+                            text = stringResource(id = button.text),
+                            maxLines = 1,
+                        )
+                    }
                 }
             }
         }
