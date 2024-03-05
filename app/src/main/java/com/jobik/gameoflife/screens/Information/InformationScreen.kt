@@ -18,7 +18,7 @@ fun InformationScreen(drawerState: DrawerState) {
         modifier = Modifier
             .background(MaterialTheme.colorScheme.surface),
         state = collapsingToolbarScaffold,
-        scrollStrategy = ScrollStrategy.ExitUntilCollapsed,
+        scrollStrategy = ScrollStrategy.EnterAlways,
         enabledWhenBodyUnfilled = false,
         snapConfig = SnapConfig(), // "collapseThreshold = 0.5" by default
         toolbar = {

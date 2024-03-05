@@ -43,7 +43,7 @@ fun InformationContent() {
             .verticalScroll(rememberScrollState())
             .padding(bottom = 20.dp, top = 20.dp)
             .padding(horizontal = 20.dp),
-        verticalArrangement = Arrangement.spacedBy(10.dp)
+        verticalArrangement = Arrangement.spacedBy(15.dp)
     ) {
         val johnConwayUri = stringResource(id = R.string.JohnHortonConway_wiki_uri)
         InformationCard(
