@@ -23,8 +23,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.mohamedrejeb.richeditor.model.rememberRichTextState
-import com.mohamedrejeb.richeditor.ui.material3.RichText
 
 data class CardButton(
     @StringRes val text: Int,
@@ -95,14 +93,8 @@ fun InformationCard(@DrawableRes image: Int, @StringRes title: Int, @StringRes b
                     }
                 }
             }
-            val richTextState = rememberRichTextState()
-            val markdownText = stringResource(id = body)
-            LaunchedEffect(markdownText){
-                richTextState.setMarkdown(markdownText)
-            }
-
-            RichText(
-                state = richTextState,
+            Text(
+                text = stringResource(id = body),
                 modifier = Modifier.animateContentSize(),
                 style = MaterialTheme.typography.bodyLarge,
                 overflow = TextOverflow.Ellipsis,

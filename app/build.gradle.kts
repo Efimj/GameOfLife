@@ -102,7 +102,4 @@ dependencies {
     // Compose collapsing toolbar (nonofficial)
     implementation("com.github.GIGAMOLE:ComposeCollapsingToolbar:1.0.8")
 
-    // Rick text markdown
-    implementation("com.mohamedrejeb.richeditor:richeditor-compose:1.0.0-rc01")
-
 }
