@@ -1,5 +1,7 @@
 package com.jobik.gameoflife.screens.Information
 
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
@@ -9,7 +11,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.ExpandLess
 import androidx.compose.material.icons.outlined.ExpandMore
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -33,6 +34,8 @@ import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
 
 @Composable
 fun InformationContent() {
+    val uriHandler = LocalUriHandler.current
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -41,94 +44,25 @@ fun InformationContent() {
             .padding(bottom = 20.dp, top = 20.dp)
             .padding(horizontal = 20.dp),
     ) {
-        JohnConwayCard()
-    }
-}
-
-@Composable
-private fun JohnConwayCard() {
-    val uriHandler = LocalUriHandler.current
-    var isExpanded by rememberSaveable() { mutableStateOf(false) }
-
-    val containerColorValue =
-        if (isExpanded) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainerHigh
-    val containerColorState = animateColorAsState(targetValue = containerColorValue, label = "contentColorState")
-
-    val contentColorValue =
-        if (isExpanded) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface
-    val contentColorState = animateColorAsState(targetValue = contentColorValue, label = "contentColorState")
-
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(MaterialTheme.shapes.large)
-            .clickable {
-                isExpanded = isExpanded.not()
-            },
-        colors = CardDefaults.cardColors(
-            containerColor = containerColorState.value,
-            contentColor = contentColorState.value
-        )
-    ) {
-        Image(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clip(MaterialTheme.shapes.large),
-            painter = painterResource(id = R.drawable.john_horton_conway_poster),
-            contentScale = ContentScale.FillWidth,
-            contentDescription = null
-        )
-        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(
-                    text = stringResource(id = R.string.JohnHortonConway),
-                    style = MaterialTheme.typography.headlineSmall,
-                    fontWeight = FontWeight.SemiBold,
-                    color = contentColorState.value
-                )
-                Column(
-                    modifier = Modifier.weight(1f),
-                    verticalArrangement = Arrangement.Top,
-                    horizontalAlignment = Alignment.End
-                ) {
-                    val rotatingValue = if (isExpanded) 180f else 0f
-                    val rotatingState = animateFloatAsState(targetValue = rotatingValue, label = "rotatingState")
-                    IconButton(
-                        modifier = Modifier
-                            .size(30.dp)
-                            .rotate(rotatingState.value),
-                        onClick = { isExpanded = isExpanded.not() }) {
-                        Icon(
-                            imageVector = Icons.Outlined.ExpandMore,
-                            contentDescription = null,
-                            tint = contentColorState.value.copy(alpha = .8f)
-                        )
-                    }
-                }
-            }
-            Text(
-                modifier = Modifier.animateContentSize(),
-                text = stringResource(id = R.string.JohnHortonConway_card_description),
-                style = MaterialTheme.typography.bodyLarge,
-                overflow = TextOverflow.Ellipsis,
-                maxLines = if (isExpanded) Int.MAX_VALUE else 3,
-                color = MaterialTheme.colorScheme.onSurface,
+        val johnConwayUri = stringResource(id = R.string.JohnHortonConway_wiki_uri)
+        InformationCard(
+            image = R.drawable.john_horton_conway_poster,
+            title = R.string.JohnHortonConway,
+            body = R.string.JohnHortonConway_card_description,
+            button = CardButton(
+                text = R.string.open_in_wikipedia,
+                onClick = { uriHandler.openUri(johnConwayUri) }
             )
-            Row {
-                val uri = stringResource(id = R.string.JohnHortonConway_wiki_uri)
-                Button(onClick = {
-                    uriHandler.openUri(uri)
-                }) {
-                    Text(
-                        text = stringResource(id = R.string.open_in_wikipedia),
-                        maxLines = 1,
-                    )
-                }
-            }
-        }
+        )
+        val gameOfLifeUri = stringResource(id = R.string.GameOfLife_wiki_uri)
+        InformationCard(
+            image = R.drawable.john_horton_conway_poster,
+            title = R.string.JohnHortonConway,
+            body = R.string.JohnHortonConway_card_description,
+            button = CardButton(
+                text = R.string.open_in_wikipedia,
+                onClick = { uriHandler.openUri(gameOfLifeUri) }
+            )
+        )
     }
 }
