@@ -40,6 +40,24 @@
         Notably, he is known for inventing the cellular automaton called the Game of Life in recreational mathematics
     </string>
 
+    <string name="the_game_of_life">The Game of Life</string>
+    <string name="GameOfLife_large_description">The **Game of Life**, also known simply as "Life," is a cellular
+        automaton developed in 1970. It is a zero-player game, indicating that its evolution is solely determined by its
+        initial state and does not necessitate additional actions. Players engage with the Game of Life by creating an
+        initial configuration and observing its development. Notably, it is Turing complete, allowing it to model a
+        universal constructor or any other Turing machine.
+        \n\n## Universe Description
+        \n\nThe universe of the Game of Life is an infinite, two-dimensional orthogonal grid consisting of square cells.
+        Each cell can exist in one of two states: live or dead (or populated and unpopulated, respectively). Interaction
+        takes place between each cell and its eight neighbors, encompassing cells that are horizontally, vertically, or
+        diagonally adjacent.
+        \n\n## Evolution Rules
+        \n\nAt each step in time, the following transitions occur:
+        \n\n- Any live cell with fewer than two live neighbors dies, as if by underpopulation.
+        \n\n- Any live cell with two or three live neighbors lives on to the next generation.
+        \n\n- Any live cell with more than three live neighbors dies, as if by overpopulation.
+        \n\n- Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+    </string>
 
     <string name="onb_1_headline">Dr. John Conway</string>
     <string name="onb_1_description">Devised this simulation of cellular automata evolution in 1970, called the \"Game

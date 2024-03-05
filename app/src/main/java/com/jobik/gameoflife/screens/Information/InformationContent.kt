@@ -43,6 +43,7 @@ fun InformationContent() {
             .verticalScroll(rememberScrollState())
             .padding(bottom = 20.dp, top = 20.dp)
             .padding(horizontal = 20.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         val johnConwayUri = stringResource(id = R.string.JohnHortonConway_wiki_uri)
         InformationCard(
@@ -56,9 +57,9 @@ fun InformationContent() {
         )
         val gameOfLifeUri = stringResource(id = R.string.GameOfLife_wiki_uri)
         InformationCard(
-            image = R.drawable.john_horton_conway_poster,
-            title = R.string.JohnHortonConway,
-            body = R.string.JohnHortonConway_card_description,
+            image = R.drawable.game_of_life_poster,
+            title = R.string.the_game_of_life,
+            body = R.string.GameOfLife_large_description,
             button = CardButton(
                 text = R.string.open_in_wikipedia,
                 onClick = { uriHandler.openUri(gameOfLifeUri) }
