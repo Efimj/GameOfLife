@@ -48,26 +48,34 @@ fun InformationContent() {
             )
         )
         if (isWidth(WindowWidthSizeClass.Compact)) {
-            SmallInformationCard(image = R.drawable.github_icon,
-                title = R.string.the_game_of_life,
-                body = R.string.GameOfLife_large_description, {})
             SmallInformationCard(
                 image = R.drawable.telegram_icon,
-                title = R.string.JohnHortonConway,
-                body = R.string.JohnHortonConway_card_description, {})
+                title = R.string.telegram_community,
+                body = R.string.telegram_community_description
+            ) {}
+            SmallInformationCard(
+                image = R.drawable.github_icon,
+                title = R.string.open_source_project,
+                body = R.string.open_source_project_description
+            ) {}
+
         } else {
-            Row (horizontalArrangement = Arrangement.spacedBy(20.dp)){
-                Box(modifier = Modifier.weight(1f)) {
-                    SmallInformationCard(image = R.drawable.github_icon,
-                        title = R.string.the_game_of_life,
-                        body = R.string.GameOfLife_large_description, {})
-                }
+            Row(horizontalArrangement = Arrangement.spacedBy(20.dp)) {
                 Box(modifier = Modifier.weight(1f)) {
                     SmallInformationCard(
                         image = R.drawable.telegram_icon,
-                        title = R.string.JohnHortonConway,
-                        body = R.string.JohnHortonConway_card_description, {})
+                        title = R.string.telegram_community,
+                        body = R.string.telegram_community_description
+                    ) {}
                 }
+                Box(modifier = Modifier.weight(1f)) {
+                    SmallInformationCard(
+                        image = R.drawable.github_icon,
+                        title = R.string.open_source_project,
+                        body = R.string.open_source_project_description
+                    ) {}
+                }
+
             }
         }
         BottomWindowInsetsSpacer()

@@ -67,14 +67,14 @@ fun SmallInformationCard(@DrawableRes image: Int, @StringRes title: Int, @String
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
+                    modifier = Modifier.weight(1f, true),
                     text = stringResource(id = title),
                     style = MaterialTheme.typography.headlineSmall,
                     fontWeight = FontWeight.SemiBold,
                     color = contentColorState.value,
-                    maxLines = 2
+                    overflow = TextOverflow.Ellipsis
                 )
                 Column(
-                    modifier = Modifier.weight(1f),
                     verticalArrangement = Arrangement.Top,
                     horizontalAlignment = Alignment.End
                 ) {
@@ -90,7 +90,6 @@ fun SmallInformationCard(@DrawableRes image: Int, @StringRes title: Int, @String
                 text = stringResource(id = body),
                 style = MaterialTheme.typography.bodyLarge,
                 overflow = TextOverflow.Ellipsis,
-                maxLines = 3,
                 color = MaterialTheme.colorScheme.onSurface,
             )
         }

@@ -48,6 +48,12 @@
         machine
     </string>
 
+    <string name="open_source_project">Open source project</string>
+    <string name="open_source_project_description">You can find the entire source code on GitHub ⭐️</string>
+
+    <string name="telegram_community">Join the Telegram Community</string>
+    <string name="telegram_community_description">Stay tuned with app updates, get early builds, and help out testing new features. Suggest your ideas, ask questions and get fast answers</string>
+
     <string name="onb_1_headline">Dr. John Conway</string>
     <string name="onb_1_description">Devised this simulation of cellular automata evolution in 1970, called the \"Game
         of Life\", where each cell on the game field follows simple rules
