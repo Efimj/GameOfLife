@@ -6,7 +6,6 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -32,7 +31,7 @@ data class CardButton(
 )
 
 @Composable
-fun InformationCard(@DrawableRes image: Int, @StringRes title: Int, @StringRes body: Int, button: CardButton) {
+fun LargeInformationCard(@DrawableRes image: Int, @StringRes title: Int, @StringRes body: Int, button: CardButton) {
     var isExpanded by rememberSaveable() { mutableStateOf(false) }
 
     val containerColorValue =
@@ -46,10 +45,13 @@ fun InformationCard(@DrawableRes image: Int, @StringRes title: Int, @StringRes b
     val elevationValue = if (isExpanded) 6.dp else 0.dp
     val elevationState = animateDpAsState(targetValue = elevationValue, label = "elevationState")
 
+    val borderWidthValue = if (isExpanded) 0.dp else 1.dp
+    val borderWidthState = animateDpAsState(targetValue = borderWidthValue, label = "borderWidthState")
+
     Surface(
         shape = MaterialTheme.shapes.large,
         shadowElevation = elevationState.value,
-        border = CardDefaults.outlinedCardBorder(),
+        border = CardDefaults.outlinedCardBorder().copy(borderWidthState.value),
         color = containerColorState.value,
         contentColor = contentColorState.value
     ) {
