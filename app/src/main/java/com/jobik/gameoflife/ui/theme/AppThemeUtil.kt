@@ -8,6 +8,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import com.example.compose.Palette
 import com.jobik.gameoflife.SharedPreferencesKeys
+import java.lang.Exception
 
 object AppThemeUtil {
     private var _isDarkMode: MutableState<Boolean> = mutableStateOf(false)
@@ -33,7 +34,11 @@ object AppThemeUtil {
         val restoredPaletteName =
             store.getString(SharedPreferencesKeys.SelectedPalette, defaultPalette.name) ?: defaultPalette.name
 
-        palette.value = Palette.valueOf(restoredPaletteName)
+        try {
+            palette.value = Palette.valueOf(restoredPaletteName)
+        } catch (e: Exception) {
+            palette.value = Palette.DynamicPalette
+        }
     }
 
     fun update(context: Context, isDarkTheme: Boolean) {
