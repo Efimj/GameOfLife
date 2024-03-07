@@ -32,5 +32,8 @@
 
     <string name="JohnHortonConway_wiki_uri" translatable="false">https://wikipedia.org/wiki/John_Horton_Conway</string>
     <string name="GameOfLife_wiki_uri" translatable="false">https://wikipedia.org/wiki/Conway%27s_Game_of_Life</string>
+    <string name="telegram_group_url" translatable="false">https://t.me/efim_mobile_projects</string>
+    <string name="github_repository_url" translatable="false">https://github.com/Efimj/GameOfLife</string>
+
 
 </resources>

@@ -47,18 +47,25 @@ fun InformationContent() {
                 onClick = { uriHandler.openUri(gameOfLifeUri) }
             )
         )
+
+        val telegramGroupUri = stringResource(id = R.string.telegram_group_url)
+        val githubRepositoryUri = stringResource(id = R.string.github_repository_url)
+
         if (isWidth(WindowWidthSizeClass.Compact)) {
             SmallInformationCard(
                 image = R.drawable.telegram_icon,
                 title = R.string.telegram_community,
                 body = R.string.telegram_community_description
-            ) {}
+            ) {
+                uriHandler.openUri(telegramGroupUri)
+            }
             SmallInformationCard(
                 image = R.drawable.github_icon,
                 title = R.string.open_source_project,
                 body = R.string.open_source_project_description
-            ) {}
-
+            ) {
+                uriHandler.openUri(githubRepositoryUri)
+            }
         } else {
             Row(horizontalArrangement = Arrangement.spacedBy(20.dp)) {
                 Box(modifier = Modifier.weight(1f)) {
@@ -66,14 +73,18 @@ fun InformationContent() {
                         image = R.drawable.telegram_icon,
                         title = R.string.telegram_community,
                         body = R.string.telegram_community_description
-                    ) {}
+                    ) {
+                        uriHandler.openUri(telegramGroupUri)
+                    }
                 }
                 Box(modifier = Modifier.weight(1f)) {
                     SmallInformationCard(
                         image = R.drawable.github_icon,
                         title = R.string.open_source_project,
                         body = R.string.open_source_project_description
-                    ) {}
+                    ) {
+                        uriHandler.openUri(githubRepositoryUri)
+                    }
                 }
 
             }
