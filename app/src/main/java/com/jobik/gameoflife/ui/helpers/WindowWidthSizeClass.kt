@@ -21,6 +21,30 @@ enum class WindowHeightSizeClass(val minValue: Int) {
 }
 
 @Composable
+fun currentWidthSizeClass(): WindowWidthSizeClass {
+    val configuration = LocalConfiguration.current
+    val widthInDp = configuration.screenWidthDp.dp
+
+    return when {
+        widthInDp >= WindowWidthSizeClass.Expanded.minValue.dp -> WindowWidthSizeClass.Expanded
+        widthInDp >= WindowWidthSizeClass.Medium.minValue.dp -> WindowWidthSizeClass.Medium
+        else -> WindowWidthSizeClass.Compact
+    }
+}
+
+@Composable
+fun currentHeightSizeClass(): WindowHeightSizeClass {
+    val configuration = LocalConfiguration.current
+    val heightInDp = configuration.screenHeightDp.dp
+
+    return when {
+        heightInDp >= WindowHeightSizeClass.Expanded.minValue.dp -> WindowHeightSizeClass.Expanded
+        heightInDp >= WindowHeightSizeClass.Medium.minValue.dp -> WindowHeightSizeClass.Medium
+        else -> WindowHeightSizeClass.Compact
+    }
+}
+
+@Composable
 fun isWidth(sizeClass: WindowWidthSizeClass): Boolean {
     val configuration = LocalConfiguration.current
     val widthInDp = configuration.screenWidthDp.dp
