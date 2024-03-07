@@ -45,6 +45,7 @@ object AppThemeUtil {
     }
 
     fun update(context: Context, newPalette: Palette) {
+        palette.value = newPalette
         val sharedPreferences = context.getSharedPreferences(SharedPreferencesKeys.AppSettings, Context.MODE_PRIVATE)
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
         editor.putString(SharedPreferencesKeys.SelectedPalette, newPalette.name)
