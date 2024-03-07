@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AppThemeUtil.restore(context = this, defaultValue = isSystemInDarkTheme())
 
-            GameOfLifeTheme(darkTheme = AppThemeUtil.isDarkMode.value, ) {
+            GameOfLifeTheme(darkTheme = AppThemeUtil.isDarkMode.value, palette = AppThemeUtil.palette.value) {
                 AppLayout()
             }
         }

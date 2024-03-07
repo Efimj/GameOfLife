@@ -9,6 +9,7 @@ object SharedPreferencesKeys {
 
     // Attribute key
     const val IsDarkTheme = "IsDarkTheme"
+    const val SelectedPalette = "SelectedPalette"
     const val Localization = "Localization"
     const val OnboardingFinishedData = "1"
     const val CurrentOnboardingFinishedData = "OnboardingPageFinishedData"
