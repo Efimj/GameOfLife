@@ -24,14 +24,6 @@ import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
 
 @Composable
 fun GameContent(viewModel: GameScreenViewModel) {
-    val containerColorTarget = when {
-        viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.secondary
-        viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.error
-        viewModel.states.value.gameResult != null -> MaterialTheme.colorScheme.primary
-        else -> MaterialTheme.colorScheme.surface
-    }
-    val containerColor by animateColorAsState(targetValue = containerColorTarget, label = "containerColor")
-
     val contentColorTarget = when {
         viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.onSecondary
         viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.onError
@@ -40,11 +32,7 @@ fun GameContent(viewModel: GameScreenViewModel) {
     }
     val contentColor by animateColorAsState(targetValue = contentColorTarget, label = "contentColor")
 
-    Column(
-        modifier = Modifier
-            .clip(RoundedCornerShape(bottomEnd = 12.dp, bottomStart = 12.dp))
-            .background(containerColor)
-    ) {
+    Column {
         AnimatedVisibility(
             visible = viewModel.states.value.gameResult != null,
             enter = slideInVertically() + expandVertically(expandFrom = Alignment.Top) + fadeIn(initialAlpha = 0.3f),
@@ -69,7 +57,9 @@ fun GameContent(viewModel: GameScreenViewModel) {
             }
         }
         Box(
-            modifier = Modifier.weight(1f, fill = false).fillMaxWidth(),
+            modifier = Modifier
+                .weight(1f, fill = false)
+                .fillMaxWidth(),
             contentAlignment = Alignment.TopCenter
         ) {
             Box(

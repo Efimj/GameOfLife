@@ -31,6 +31,14 @@ fun GameScreen(
     val localDensity = LocalDensity.current
     val backdropScaffoldState = rememberBackdropScaffoldState(BackdropValue.Revealed)
 
+    val containerColorTarget = when {
+        viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.secondary
+        viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.error
+        viewModel.states.value.gameResult != null -> MaterialTheme.colorScheme.primary
+        else -> MaterialTheme.colorScheme.surface
+    }
+    val containerColor by animateColorAsState(targetValue = containerColorTarget, label = "containerColor")
+
     LaunchedEffect(backdropScaffoldState.currentValue) {
         if (backdropScaffoldState.currentValue == BackdropValue.Concealed)
             viewModel.turnOffSimulation()
@@ -68,7 +76,15 @@ fun GameScreen(
                 frontLayerBackgroundColor = MaterialTheme.colorScheme.background,
                 backLayerBackgroundColor = MaterialTheme.colorScheme.surface,
                 backLayerContent = {
-                    Box(modifier = Modifier.heightIn(max = maxGameHeight)) {
+                    Box(
+                        modifier = Modifier
+
+                            .clip(RoundedCornerShape(bottomEnd = 12.dp, bottomStart = 12.dp))
+                            .background(containerColor)
+                            .topWindowInsetsPadding()
+                            .heightIn(max = maxGameHeight)
+
+                    ) {
                         GameContent(viewModel = viewModel)
                     }
                 },
@@ -79,15 +95,6 @@ fun GameScreen(
 
         WindowWidthSizeClass.Expanded -> {
             var wideScreenHeight by remember { mutableStateOf(0.dp) }
-
-            val containerColorTarget = when {
-                viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.secondary
-                viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.error
-                viewModel.states.value.gameResult != null -> MaterialTheme.colorScheme.primary
-                else -> MaterialTheme.colorScheme.surface
-            }
-            val containerColor by animateColorAsState(targetValue = containerColorTarget, label = "containerColor")
-
 
             Row(
                 modifier = Modifier
