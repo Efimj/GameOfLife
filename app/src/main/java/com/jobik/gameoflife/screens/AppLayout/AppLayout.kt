@@ -1,9 +1,6 @@
 package com.jobik.gameoflife.screens.AppLayout
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -16,8 +13,7 @@ import androidx.navigation.compose.rememberNavController
 import com.jobik.gameoflife.navigation.AppNavHost
 import com.jobik.gameoflife.navigation.NavigationHelpers.Companion.canNavigate
 import com.jobik.gameoflife.navigation.NavigationHelpers.Companion.findStartDestination
-import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
-import com.jobik.gameoflife.ui.helpers.currentWidthSizeClass
+import com.jobik.gameoflife.ui.helpers.*
 import kotlinx.coroutines.launch
 
 /**
@@ -30,7 +26,6 @@ enum class AppNavigationType {
 @Composable
 fun AppLayout(
     navController: NavHostController = rememberNavController(),
-    drawerState: DrawerState = rememberDrawerState(initialValue = DrawerValue.Closed),
 ) {
     val context = LocalContext.current
 
@@ -54,24 +49,10 @@ fun AppLayout(
         }
     }
 
-    Surface {
+    Surface(color = MaterialTheme.colorScheme.surfaceContainer) {
         when (navigationType) {
             AppNavigationType.DRAWER_NAVIGATION -> {
-                ModalNavigationDrawer(
-                    drawerState = drawerState,
-                    drawerContent = {
-                        AppDrawerContent(
-                            navController = navController,
-                            drawerState = drawerState,
-                        )
-                    }
-                ) {
-                    AppNavHost(
-                        drawerState = drawerState,
-                        navController = navController,
-                        startDestination = findStartDestination(context = context)
-                    )
-                }
+                LayoutWithModalDrawerSheet(navController = navController)
             }
 
             AppNavigationType.NAVIGATION_RAIL -> {
@@ -85,7 +66,6 @@ fun AppLayout(
                                 selected = button.route.name == currentRoute,
                                 onClick = {
                                     coroutineScope.launch {
-                                        drawerState.close()
                                     }
                                     if (button.route.name == currentRoute) return@NavigationRailItem
                                     if (navController.canNavigate().not()) return@NavigationRailItem
@@ -110,7 +90,6 @@ fun AppLayout(
                             .fillMaxSize()
                     ) {
                         AppNavHost(
-                            drawerState = drawerState,
                             navController = navController,
                             startDestination = findStartDestination(context = context)
                         )
@@ -119,9 +98,8 @@ fun AppLayout(
             }
 
             AppNavigationType.PERMANENT_NAVIGATION_DRAWER -> {
-
+                LayoutWithPermanentNavigationDrawer(navController = navController)
             }
         }
-
     }
 }

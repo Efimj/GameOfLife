@@ -16,9 +16,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun GameAppBar(
-    drawerState: DrawerState,
-) {
+fun GameAppBar() {
     val coroutineScope = rememberCoroutineScope()
 
     TopAppBar(
@@ -37,7 +35,7 @@ fun GameAppBar(
         navigationIcon = {
             IconButton(onClick = {
                 coroutineScope.launch {
-                    drawerState.open()
+//                    drawerState.open()
                 }
             }) {
                 Icon(

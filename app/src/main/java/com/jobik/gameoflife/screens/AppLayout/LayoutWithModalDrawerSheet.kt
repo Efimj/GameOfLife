@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -29,6 +30,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.jobik.gameoflife.BuildConfig
 import com.jobik.gameoflife.R
+import com.jobik.gameoflife.navigation.AppNavHost
+import com.jobik.gameoflife.navigation.NavigationHelpers
 import com.jobik.gameoflife.navigation.NavigationHelpers.Companion.canNavigate
 import com.jobik.gameoflife.navigation.Screen
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
@@ -75,6 +78,27 @@ object DrawerParams {
     )
 }
 
+@Composable
+fun LayoutWithModalDrawerSheet(navController: NavHostController) {
+    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    val context = LocalContext.current
+
+    ModalNavigationDrawer(
+        drawerState = drawerState,
+        drawerContent = {
+            AppDrawerContent(
+                navController = navController,
+                drawerState = drawerState,
+            )
+        }
+    ) {
+        AppNavHost(
+            navController = navController,
+            startDestination = NavigationHelpers.findStartDestination(context = context)
+        )
+    }
+}
+
 /**
  * T for generic type to be used for the picking
  */
@@ -87,7 +111,7 @@ fun AppDrawerContent(
     val coroutineScope = rememberCoroutineScope()
 
     ModalDrawerSheet(windowInsets = WindowInsets.ime) {
-        Surface(color = MaterialTheme.colorScheme.background) {
+        Surface(color = MaterialTheme.colorScheme.surfaceContainer) {
             Column(
                 modifier = Modifier
                     .fillMaxHeight()
@@ -119,7 +143,7 @@ fun AppDrawerContent(
                     modifier = Modifier
                         .padding(horizontal = 10.dp)
                 ) {
-                    for (button in DrawerParams.drawerButtons) {
+                    DrawerParams.drawerButtons.forEach { button ->
                         AppDrawerItem(
                             title = button.title,
                             contentDescription = button.description,

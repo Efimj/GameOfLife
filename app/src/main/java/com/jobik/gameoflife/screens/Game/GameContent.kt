@@ -44,8 +44,6 @@ fun GameContent(viewModel: GameScreenViewModel) {
         modifier = Modifier
             .clip(RoundedCornerShape(bottomEnd = 12.dp, bottomStart = 12.dp))
             .background(containerColor)
-            .topWindowInsetsPadding()
-            .padding(top = 10.dp)
     ) {
         AnimatedVisibility(
             visible = viewModel.states.value.gameResult != null,
@@ -72,7 +70,7 @@ fun GameContent(viewModel: GameScreenViewModel) {
         }
         Box(
             modifier = Modifier.weight(1f, fill = false).fillMaxWidth(),
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.TopCenter
         ) {
             Box(
                 modifier = Modifier

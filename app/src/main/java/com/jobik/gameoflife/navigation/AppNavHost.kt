@@ -13,7 +13,6 @@ import com.jobik.gameoflife.screens.Settings.SettingsScreen
 
 @Composable
 fun AppNavHost(
-    drawerState: DrawerState,
     navController: NavHostController,
     startDestination: String = NavigationItem.Game.route,
 ) {
@@ -25,13 +24,13 @@ fun AppNavHost(
             OnboardingScreen(navController)
         }
         composable(NavigationItem.Game.route) {
-            GameScreen(drawerState)
+            GameScreen()
         }
         composable(NavigationItem.Information.route) {
-            InformationScreen(drawerState)
+            InformationScreen()
         }
         composable(NavigationItem.Settings.route) {
-            SettingsScreen(drawerState, navController)
+            SettingsScreen(navController)
         }
     }
 }

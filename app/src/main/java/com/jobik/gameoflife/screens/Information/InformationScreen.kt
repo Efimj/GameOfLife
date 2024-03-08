@@ -11,7 +11,7 @@ import me.onebone.toolbar.SnapConfig
 import me.onebone.toolbar.rememberCollapsingToolbarScaffoldState
 
 @Composable
-fun InformationScreen(drawerState: DrawerState) {
+fun InformationScreen() {
     val collapsingToolbarScaffold = rememberCollapsingToolbarScaffoldState()
 
     CollapsingToolbarScaffold(
@@ -22,7 +22,7 @@ fun InformationScreen(drawerState: DrawerState) {
         enabledWhenBodyUnfilled = false,
         snapConfig = SnapConfig(), // "collapseThreshold = 0.5" by default
         toolbar = {
-            InformationAppBar(drawerState)
+            InformationAppBar()
         },
     ) {
         InformationContent()

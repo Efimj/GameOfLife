@@ -12,7 +12,7 @@ import me.onebone.toolbar.SnapConfig
 import me.onebone.toolbar.rememberCollapsingToolbarScaffoldState
 
 @Composable
-fun SettingsScreen(drawerState: DrawerState, navController: NavHostController) {
+fun SettingsScreen(navController: NavHostController) {
     val collapsingToolbarScaffold = rememberCollapsingToolbarScaffoldState()
 
     CollapsingToolbarScaffold(
@@ -23,7 +23,7 @@ fun SettingsScreen(drawerState: DrawerState, navController: NavHostController) {
         enabledWhenBodyUnfilled = false,
         snapConfig = SnapConfig(), // "collapseThreshold = 0.5" by default
         toolbar = {
-            SettingsAppBar(drawerState)
+            SettingsAppBar()
         },
     ) {
         SettingsContent(navController)
