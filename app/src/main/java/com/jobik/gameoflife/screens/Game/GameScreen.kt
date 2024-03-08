@@ -1,5 +1,6 @@
 package com.jobik.gameoflife.screens.Game
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -18,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
+import com.jobik.gameoflife.gameOfLife.GameOfLife
 import com.jobik.gameoflife.ui.helpers.*
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -78,6 +80,15 @@ fun GameScreen(
         WindowWidthSizeClass.Expanded -> {
             var wideScreenHeight by remember { mutableStateOf(0.dp) }
 
+            val containerColorTarget = when {
+                viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.secondary
+                viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.error
+                viewModel.states.value.gameResult != null -> MaterialTheme.colorScheme.primary
+                else -> MaterialTheme.colorScheme.surface
+            }
+            val containerColor by animateColorAsState(targetValue = containerColorTarget, label = "containerColor")
+
+
             Row(
                 modifier = Modifier
                     .allWindowInsetsPadding()
@@ -100,6 +111,9 @@ fun GameScreen(
                     modifier = Modifier
                         .weight(.6f)
                         .clip(RoundedCornerShape(12.dp))
+                        .fillMaxHeight()
+                        .background(containerColor),
+                    verticalArrangement = Arrangement.Center
                 ) {
                     GameContent(viewModel = viewModel)
                 }

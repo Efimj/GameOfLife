@@ -28,7 +28,7 @@ fun GameContent(viewModel: GameScreenViewModel) {
         viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.secondary
         viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.error
         viewModel.states.value.gameResult != null -> MaterialTheme.colorScheme.primary
-        else -> MaterialTheme.colorScheme.surfaceContainer
+        else -> MaterialTheme.colorScheme.surface
     }
     val containerColor by animateColorAsState(targetValue = containerColorTarget, label = "containerColor")
 

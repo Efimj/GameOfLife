@@ -29,23 +29,17 @@ fun AppLayout(
 ) {
     val context = LocalContext.current
 
-    val navigationType: AppNavigationType
-
-    when (currentWidthSizeClass()) {
+    val navigationType: AppNavigationType = when (currentWidthSizeClass()) {
         WindowWidthSizeClass.Compact -> {
-            navigationType = AppNavigationType.DRAWER_NAVIGATION
+            AppNavigationType.DRAWER_NAVIGATION
         }
 
         WindowWidthSizeClass.Medium -> {
-            navigationType = AppNavigationType.NAVIGATION_RAIL
+            AppNavigationType.NAVIGATION_RAIL
         }
 
         WindowWidthSizeClass.Expanded -> {
-            navigationType = AppNavigationType.PERMANENT_NAVIGATION_DRAWER
-        }
-
-        else -> {
-            navigationType = AppNavigationType.DRAWER_NAVIGATION
+            AppNavigationType.PERMANENT_NAVIGATION_DRAWER
         }
     }
 
