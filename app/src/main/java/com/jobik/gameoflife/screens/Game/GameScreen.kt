@@ -9,7 +9,6 @@ import androidx.compose.material.BackdropScaffold
 import androidx.compose.material.BackdropValue
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.rememberBackdropScaffoldState
-import androidx.compose.material3.DrawerState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment

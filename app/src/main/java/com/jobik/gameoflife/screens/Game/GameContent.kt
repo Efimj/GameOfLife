@@ -1,10 +1,8 @@
 package com.jobik.gameoflife.screens.Game
 
-import android.util.Log
 import androidx.compose.animation.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,7 +18,6 @@ import com.jobik.gameoflife.R
 import com.jobik.gameoflife.gameOfLife.GameOfLife
 import com.jobik.gameoflife.ui.composables.Counter
 import com.jobik.gameoflife.ui.composables.GridForGame
-import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
 
 @Composable
 fun GameContent(viewModel: GameScreenViewModel) {
