@@ -1,5 +1,6 @@
 package com.jobik.gameoflife.screens.Game
 
+import android.util.Log
 import androidx.compose.animation.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -70,16 +71,22 @@ fun GameContent(viewModel: GameScreenViewModel) {
             }
         }
         Box(
-            modifier = Modifier
-                .padding(4.dp)
-                .clip(MaterialTheme.shapes.medium)
-                .background(MaterialTheme.colorScheme.surface)
+            modifier = Modifier.weight(1f, fill = false).fillMaxWidth(),
+            contentAlignment = Alignment.Center
         ) {
-            GridForGame(
-                array = viewModel.states.value.currentStep,
-                emojiMode = viewModel.states.value.emojiEnabled,
-                onElementClick = viewModel::onElementClick
-            )
+            Box(
+                modifier = Modifier
+                    .aspectRatio(1f, matchHeightConstraintsFirst = true)
+                    .padding(4.dp)
+                    .clip(MaterialTheme.shapes.medium)
+                    .background(MaterialTheme.colorScheme.surface)
+            ) {
+                GridForGame(
+                    array = viewModel.states.value.currentStep,
+                    emojiMode = viewModel.states.value.emojiEnabled,
+                    onElementClick = viewModel::onElementClick
+                )
+            }
         }
         Row(
             modifier = Modifier
