@@ -78,12 +78,10 @@ fun GameScreen(
                 backLayerContent = {
                     Box(
                         modifier = Modifier
-
                             .clip(RoundedCornerShape(bottomEnd = 12.dp, bottomStart = 12.dp))
                             .background(containerColor)
                             .topWindowInsetsPadding()
                             .heightIn(max = maxGameHeight)
-
                     ) {
                         GameContent(viewModel = viewModel)
                     }
