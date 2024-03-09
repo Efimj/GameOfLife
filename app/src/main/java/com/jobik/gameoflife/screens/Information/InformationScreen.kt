@@ -23,7 +23,6 @@ fun InformationScreen() {
     CollapsingToolbarScaffold(
         modifier = Modifier
             .fillMaxSize()
-            .clip(RoundedCornerShape(12.dp))
             .background(MaterialTheme.colorScheme.surface),
         state = collapsingToolbarScaffold,
         scrollStrategy = ScrollStrategy.EnterAlways,
