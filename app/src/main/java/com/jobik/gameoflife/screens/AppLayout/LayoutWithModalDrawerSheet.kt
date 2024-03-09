@@ -13,6 +13,7 @@ import androidx.compose.material.icons.outlined.Casino
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -79,16 +80,15 @@ object DrawerParams {
 }
 
 @Composable
-fun LayoutWithModalDrawerSheet(navController: NavHostController) {
-    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+fun LayoutWithModalDrawerSheet(navController: NavHostController, modalDrawer: ModalDrawer = ModalDrawerImplementation) {
     val context = LocalContext.current
 
     ModalNavigationDrawer(
-        drawerState = drawerState,
+        drawerState = modalDrawer.drawerState,
         drawerContent = {
             AppDrawerContent(
                 navController = navController,
-                drawerState = drawerState,
+                drawerState = modalDrawer.drawerState,
             )
         }
     ) {

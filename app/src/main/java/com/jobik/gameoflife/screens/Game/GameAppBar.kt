@@ -11,12 +11,14 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.jobik.gameoflife.R
+import com.jobik.gameoflife.screens.AppLayout.ModalDrawer
+import com.jobik.gameoflife.screens.AppLayout.ModalDrawerImplementation
 import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun GameAppBar() {
+fun GameAppBar(modalDrawer: ModalDrawer = ModalDrawerImplementation) {
     val coroutineScope = rememberCoroutineScope()
 
     TopAppBar(
@@ -35,7 +37,7 @@ fun GameAppBar() {
         navigationIcon = {
             IconButton(onClick = {
                 coroutineScope.launch {
-//                    drawerState.open()
+                    modalDrawer.drawerState.open()
                 }
             }) {
                 Icon(

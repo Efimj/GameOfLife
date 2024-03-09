@@ -20,7 +20,7 @@ import com.jobik.gameoflife.navigation.NavigationHelpers.Companion.canNavigate
 import kotlinx.coroutines.launch
 
 @Composable
-fun LayoutWithNavigationRail(navController: NavHostController) {
+fun LayoutWithNavigationRail(navController: NavHostController, modalDrawer: ModalDrawer = ModalDrawerImplementation) {
     val context = LocalContext.current
 
     Row(modifier = Modifier.fillMaxSize()) {
@@ -33,6 +33,7 @@ fun LayoutWithNavigationRail(navController: NavHostController) {
                     selected = button.route.name == currentRoute,
                     onClick = {
                         coroutineScope.launch {
+                            modalDrawer.drawerState.open()
                         }
                         if (button.route.name == currentRoute) return@NavigationRailItem
                         if (navController.canNavigate().not()) return@NavigationRailItem
