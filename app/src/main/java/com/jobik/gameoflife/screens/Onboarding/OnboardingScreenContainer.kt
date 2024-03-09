@@ -148,7 +148,7 @@ private fun BoxScope.NavigationContent(pagerState: PagerState, navController: Na
                     }
                 }
             } else {
-                val nextButtonWeight = if (pagerState.currentPage < Onboarding.PageList.Count - 1) 1f else .1f
+                val nextButtonWeight = if (pagerState.currentPage < Onboarding.PageList.Count - 1) 1f else .3f
                 val nextButtonWeightState =
                     animateFloatAsState(targetValue = nextButtonWeight, label = "startGameButtonWeightState")
 
