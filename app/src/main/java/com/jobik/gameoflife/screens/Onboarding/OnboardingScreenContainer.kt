@@ -5,6 +5,7 @@ import android.os.Build.VERSION.SDK_INT
 import android.util.Log
 import androidx.compose.animation.*
 import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -110,39 +111,71 @@ private fun BoxScope.NavigationContent(pagerState: PagerState, navController: Na
                 .padding(bottom = 20.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Button(modifier = Modifier
-                .weight(1f)
-                .height(50.dp)
-                .zIndex(3f),
-                onClick = {
-                    onFinished(context = context, navController = navController)
-                }) {
-                Text(text = stringResource(id = R.string.start_game))
-            }
-            AnimatedVisibility(
-                visible = pagerState.currentPage < Onboarding.PageList.Count - 1,
-                enter = slideInHorizontally() + expandHorizontally(clip = false) + fadeIn(),
-                exit = slideOutHorizontally() + shrinkHorizontally(clip = false) + fadeOut(),
-            ) {
-                Row(
-                    modifier = Modifier
-                        .padding(start = 10.dp)
+            if (currentWidthSizeClass().name == WindowWidthSizeClass.Compact.name) {
+                Button(modifier = Modifier
+                    .weight(1f)
+                    .height(50.dp)
+                    .zIndex(3f),
+                    onClick = {
+                        onFinished(context = context, navController = navController)
+                    }) {
+                    Text(text = stringResource(id = R.string.start_game))
+                }
+                AnimatedVisibility(
+                    visible = pagerState.currentPage < Onboarding.PageList.Count - 1,
+                    enter = slideInHorizontally() + expandHorizontally(clip = false) + fadeIn(),
+                    exit = slideOutHorizontally() + shrinkHorizontally(clip = false) + fadeOut(),
                 ) {
-                    OutlinedButton(
+                    Row(
                         modifier = Modifier
-                            .height(50.dp),
-                        onClick = {
-                            coroutineScope.launch {
-                                pagerState.animateScrollToPage(
-                                    pagerState.currentPage + 1, animationSpec = spring(
-                                        dampingRatio = Spring.DampingRatioNoBouncy,
-                                        stiffness = Spring.StiffnessLow
+                            .padding(start = 10.dp)
+                    ) {
+                        OutlinedButton(
+                            modifier = Modifier
+                                .height(50.dp),
+                            onClick = {
+                                coroutineScope.launch {
+                                    pagerState.animateScrollToPage(
+                                        pagerState.currentPage + 1, animationSpec = spring(
+                                            dampingRatio = Spring.DampingRatioNoBouncy,
+                                            stiffness = Spring.StiffnessLow
+                                        )
                                     )
-                                )
-                            }
-                        }) {
-                        Icon(imageVector = Icons.AutoMirrored.Outlined.ArrowForward, contentDescription = "")
+                                }
+                            }) {
+                            Icon(imageVector = Icons.AutoMirrored.Outlined.ArrowForward, contentDescription = "")
+                        }
                     }
+                }
+            } else {
+                val nextButtonWeight = if (pagerState.currentPage < Onboarding.PageList.Count - 1) 1f else .1f
+                val nextButtonWeightState =
+                    animateFloatAsState(targetValue = nextButtonWeight, label = "startGameButtonWeightState")
+
+                OutlinedButton(
+                    modifier = Modifier
+                        .weight(nextButtonWeightState.value)
+                        .padding(end = 10.dp)
+                        .height(50.dp),
+                    onClick = {
+                        coroutineScope.launch {
+                            pagerState.animateScrollToPage(
+                                pagerState.currentPage + 1, animationSpec = spring(
+                                    dampingRatio = Spring.DampingRatioNoBouncy,
+                                    stiffness = Spring.StiffnessLow
+                                )
+                            )
+                        }
+                    }) {
+                    Icon(imageVector = Icons.AutoMirrored.Outlined.ArrowForward, contentDescription = "")
+                }
+                Button(modifier = Modifier
+                    .weight(1f)
+                    .height(50.dp),
+                    onClick = {
+                        onFinished(context = context, navController = navController)
+                    }) {
+                    Text(text = stringResource(id = R.string.start_game))
                 }
             }
         }
