@@ -1,14 +1,19 @@
 package com.jobik.gameoflife.screens.Information
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
+import com.jobik.gameoflife.ui.composables.ScreenOnePaneWrapper
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
 import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
@@ -18,11 +23,9 @@ import com.jobik.gameoflife.ui.helpers.isWidth
 fun InformationContent() {
     val uriHandler = LocalUriHandler.current
 
-    Column(
+    ScreenOnePaneWrapper(
         modifier = Modifier
-            .fillMaxSize()
             .horizontalWindowInsetsPadding()
-            .verticalScroll(rememberScrollState())
             .padding(bottom = 20.dp, top = 20.dp)
             .padding(horizontal = 20.dp),
         verticalArrangement = Arrangement.spacedBy(20.dp)

@@ -21,9 +21,7 @@ import com.jobik.gameoflife.R
 import com.jobik.gameoflife.navigation.AppNavHost
 import com.jobik.gameoflife.navigation.NavigationHelpers
 import com.jobik.gameoflife.navigation.NavigationHelpers.Companion.canNavigate
-import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
-import com.jobik.gameoflife.ui.helpers.TopWindowInsetsSpacer
-import com.jobik.gameoflife.ui.helpers.startWindowInsetsPadding
+import com.jobik.gameoflife.ui.helpers.*
 import kotlinx.coroutines.launch
 
 @Composable
@@ -110,6 +108,8 @@ fun LayoutWithPermanentNavigationDrawer(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
+                    .verticalWindowInsetsPadding()
+                    .endWindowInsetsPadding()
                     .padding(vertical = 20.dp)
                     .padding(end = 20.dp)
             ) {

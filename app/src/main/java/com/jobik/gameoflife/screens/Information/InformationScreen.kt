@@ -1,10 +1,16 @@
 package com.jobik.gameoflife.screens.Information
 
 import androidx.compose.foundation.background
-import androidx.compose.material3.DrawerState
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.unit.dp
+import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
+import com.jobik.gameoflife.ui.helpers.allWindowInsetsPadding
+import com.jobik.gameoflife.ui.helpers.isWidth
 import me.onebone.toolbar.CollapsingToolbarScaffold
 import me.onebone.toolbar.ScrollStrategy
 import me.onebone.toolbar.SnapConfig
@@ -16,13 +22,16 @@ fun InformationScreen() {
 
     CollapsingToolbarScaffold(
         modifier = Modifier
+            .fillMaxSize()
+            .clip(RoundedCornerShape(12.dp))
             .background(MaterialTheme.colorScheme.surface),
         state = collapsingToolbarScaffold,
         scrollStrategy = ScrollStrategy.EnterAlways,
         enabledWhenBodyUnfilled = false,
         snapConfig = SnapConfig(), // "collapseThreshold = 0.5" by default
         toolbar = {
-            InformationAppBar()
+            if (isWidth(sizeClass = WindowWidthSizeClass.Compact))
+                InformationAppBar()
         },
     ) {
         InformationContent()
