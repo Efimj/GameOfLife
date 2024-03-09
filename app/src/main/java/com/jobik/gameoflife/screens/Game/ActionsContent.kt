@@ -159,12 +159,8 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
             ) {
                 AnimatedVisibility(
                     visible = viewModel.states.value.emojiEnabled,
-                    enter = slideInVertically() + expandVertically(
-//                        clip = false
-                    ) + fadeIn(),
-                    exit = slideOutVertically() + shrinkVertically(
-//                        clip = false
-                    ) + fadeOut(),
+                    enter = slideInVertically() + expandVertically() + fadeIn(),
+                    exit = slideOutVertically() + shrinkVertically() + fadeOut(),
                 ) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
