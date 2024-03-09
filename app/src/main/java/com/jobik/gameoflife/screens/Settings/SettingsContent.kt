@@ -45,7 +45,7 @@ fun SettingsContent(navController: NavHostController) {
             .fillMaxSize()
             .horizontalWindowInsetsPadding()
             .verticalScroll(rememberScrollState())
-            .padding(bottom = 20.dp, top = 10.dp),
+            .padding(vertical = 20.dp),
     ) {
         GroupHeader(stringResource(id = R.string.application))
         SettingsItem(

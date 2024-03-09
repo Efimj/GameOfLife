@@ -26,7 +26,7 @@ fun InformationContent() {
     ScreenOnePaneWrapper(
         modifier = Modifier
             .horizontalWindowInsetsPadding()
-            .padding(bottom = 20.dp, top = 20.dp)
+            .padding(vertical = 20.dp)
             .padding(horizontal = 20.dp),
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
