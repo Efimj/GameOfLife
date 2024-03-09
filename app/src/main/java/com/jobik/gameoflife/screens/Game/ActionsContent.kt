@@ -156,22 +156,39 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 20.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = stringResource(id = R.string.free_soul_mode), color = MaterialTheme.colorScheme.onSurface)
-                Switch(
-                    enabled = viewModel.states.value.emojiEnabled,
-                    checked = viewModel.states.value.freeSoulMode,
-                    onCheckedChange = { viewModel.switchFreeSoulMode() },
-                    thumbContent = if (!viewModel.states.value.freeSoulMode) {
-                        {
-                            Text(text = "\uD83D\uDC80")
-                        }
-                    } else {
-                        null
-                    },
-                )
+                AnimatedVisibility(
+                    visible = viewModel.states.value.emojiEnabled,
+                    enter = slideInVertically() + expandVertically(
+//                        clip = false
+                    ) + fadeIn(),
+                    exit = slideOutVertically() + shrinkVertically(
+//                        clip = false
+                    ) + fadeOut(),
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = stringResource(id = R.string.free_soul_mode),
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                        Switch(
+                            enabled = viewModel.states.value.emojiEnabled,
+                            checked = viewModel.states.value.freeSoulMode,
+                            onCheckedChange = { viewModel.switchFreeSoulMode() },
+                            thumbContent = if (!viewModel.states.value.freeSoulMode) {
+                                {
+                                    Text(text = "\uD83D\uDC80")
+                                }
+                            } else {
+                                null
+                            },
+                        )
+                    }
+                }
             }
             ChangeGameFieldDimension(viewModel)
         }
