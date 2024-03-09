@@ -3,12 +3,14 @@ package com.jobik.gameoflife.screens.AppLayout
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -112,6 +114,8 @@ fun LayoutWithPermanentNavigationDrawer(
                     .endWindowInsetsPadding()
                     .padding(vertical = 20.dp)
                     .padding(end = 20.dp)
+                    .clip(RoundedCornerShape(12.dp))
+
             ) {
                 AppNavHost(
                     navController = navController,

@@ -42,7 +42,7 @@ fun GameScreen(
     }
 
     when (currentWidthSizeClass()) {
-        WindowWidthSizeClass.Compact, WindowWidthSizeClass.Medium -> {
+        WindowWidthSizeClass.Compact,WindowWidthSizeClass.Medium  -> {
             CompactGameScreen(
                 backdropScaffoldState,
                 containerColor,
