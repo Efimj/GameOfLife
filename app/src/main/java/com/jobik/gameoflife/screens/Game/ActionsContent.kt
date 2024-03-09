@@ -173,32 +173,42 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                     },
                 )
             }
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp),
-                horizontalArrangement = Arrangement.spacedBy(10.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
+            ChangeGameFieldDimension(viewModel)
+        }
+        BottomWindowInsetsSpacer()
+    }
+}
 
-                var isRelated by rememberSaveable { mutableStateOf(true) }
-                val rows = remember { mutableStateOf(viewModel.states.value.rows.toString()) }
-                val cols = remember { mutableStateOf(viewModel.states.value.cols.toString()) }
+@Composable
+private fun ChangeGameFieldDimension(viewModel: GameScreenViewModel) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 20.dp),
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
 
-                LaunchedEffect(rows.value, cols.value, isRelated) {
-                    if (rows.value.isBlank() || cols.value.isBlank()) return@LaunchedEffect
-                    viewModel.setRows(rows.value)
-                    if (isRelated) {
-                        cols.value = rows.value
-                    }
-                    viewModel.setColumns(cols.value)
-                }
+        var isRelated by rememberSaveable { mutableStateOf(true) }
+        val rows = remember { mutableStateOf(viewModel.states.value.rows.toString()) }
+        val cols = remember { mutableStateOf(viewModel.states.value.cols.toString()) }
 
-                Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
-                    Text(
-                        text = stringResource(id = R.string.set_field_dimensions),
-                        style = MaterialTheme.typography.titleMedium,
-                    )
+        LaunchedEffect(rows.value, cols.value, isRelated) {
+            if (rows.value.isBlank() || cols.value.isBlank()) return@LaunchedEffect
+            viewModel.setRows(rows.value)
+            if (isRelated) {
+                cols.value = rows.value
+            }
+            viewModel.setColumns(cols.value)
+        }
+
+        Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
+            Text(
+                text = stringResource(id = R.string.set_field_dimensions),
+                style = MaterialTheme.typography.titleMedium,
+            )
+            BoxWithConstraints {
+                if (maxWidth > 250.dp) {
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(10.dp),
                         verticalAlignment = Alignment.CenterVertically
@@ -238,10 +248,53 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                             }
                         )
                     }
+                } else {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(10.dp)
+                    ) {
+                        OutlinedTextField(
+                            value = rows.value,
+                            onValueChange = { rows.value = it },
+                            label = {
+                                Text(text = stringResource(id = R.string.rows))
+                            },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                        )
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(10.dp)
+                        ) {
+                            OutlinedTextField(
+                                modifier = Modifier.weight(1f),
+                                value = cols.value,
+                                onValueChange = { cols.value = it },
+                                label = {
+                                    Text(text = stringResource(id = R.string.columns))
+                                },
+                                enabled = !isRelated,
+                                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                            )
+                            Switch(
+                                checked = isRelated,
+                                onCheckedChange = { isRelated = !isRelated },
+                                thumbContent = if (isRelated) {
+                                    {
+                                        Icon(
+                                            imageVector = Icons.Outlined.Link,
+                                            contentDescription = null,
+                                            modifier = Modifier.size(SwitchDefaults.IconSize),
+                                        )
+                                    }
+                                } else {
+                                    null
+                                }
+                            )
+                        }
+                    }
                 }
             }
         }
-        BottomWindowInsetsSpacer()
     }
 }
 
