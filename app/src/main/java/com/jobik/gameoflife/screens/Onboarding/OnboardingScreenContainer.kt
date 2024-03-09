@@ -8,6 +8,7 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.PageSize
 import androidx.compose.foundation.pager.PagerState
@@ -40,10 +41,7 @@ import com.jobik.gameoflife.SharedPreferencesKeys.OnboardingFinishedData
 import com.jobik.gameoflife.navigation.NavigationHelpers.Companion.canNavigate
 import com.jobik.gameoflife.navigation.Screen
 import com.jobik.gameoflife.ui.composables.VerticalIndicator
-import com.jobik.gameoflife.ui.helpers.bottomWindowInsetsPadding
-import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
-import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
-import com.jobik.gameoflife.ui.helpers.verticalWindowInsetsPadding
+import com.jobik.gameoflife.ui.helpers.*
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -56,6 +54,7 @@ fun OnboardingScreen(navController: NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .background(MaterialTheme.colorScheme.surface)
             .horizontalWindowInsetsPadding()
     ) {
         IndicatorContent(pagerState)
@@ -96,11 +95,17 @@ private fun BoxScope.NavigationContent(pagerState: PagerState, navController: Na
     val coroutineScope = rememberCoroutineScope()
     val context = LocalContext.current
 
+    val bottomPaddings = if (WindowWidthSizeClass.Compact.name == currentWidthSizeClass().name) {
+        Modifier.bottomWindowInsetsPadding()
+    } else {
+        Modifier
+    }
+
     Box(modifier = Modifier.align(Alignment.BottomCenter), contentAlignment = Alignment.BottomCenter) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .bottomWindowInsetsPadding()
+                .then(bottomPaddings)
                 .padding(horizontal = 40.dp)
                 .padding(bottom = 20.dp),
             verticalAlignment = Alignment.CenterVertically,
@@ -124,7 +129,8 @@ private fun BoxScope.NavigationContent(pagerState: PagerState, navController: Na
                         .padding(start = 10.dp)
                 ) {
                     OutlinedButton(
-                        modifier = Modifier.height(50.dp),
+                        modifier = Modifier
+                            .height(50.dp),
                         onClick = {
                             coroutineScope.launch {
                                 pagerState.animateScrollToPage(
@@ -146,10 +152,16 @@ private fun BoxScope.NavigationContent(pagerState: PagerState, navController: Na
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun BoxScope.IndicatorContent(pagerState: PagerState) {
+    val topPaddings = if (WindowWidthSizeClass.Compact.name == currentWidthSizeClass().name) {
+        Modifier.topWindowInsetsPadding()
+    } else {
+        Modifier
+    }
+
     Box(modifier = Modifier.align(Alignment.TopStart), contentAlignment = Alignment.CenterStart) {
         Column(
             modifier = Modifier
-                .topWindowInsetsPadding()
+                .then(topPaddings)
                 .padding(top = 20.dp)
                 .width(40.dp),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -161,10 +173,17 @@ private fun BoxScope.IndicatorContent(pagerState: PagerState) {
 
 @Composable
 fun PagerScreen(content: Onboarding) {
+    val verticalPaddings = if (WindowWidthSizeClass.Compact.name == currentWidthSizeClass().name) {
+        Modifier.verticalWindowInsetsPadding()
+    } else {
+        Modifier
+
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .verticalWindowInsetsPadding()
+            .then(verticalPaddings)
             .padding(bottom = 90.dp)
             .padding(horizontal = 40.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
