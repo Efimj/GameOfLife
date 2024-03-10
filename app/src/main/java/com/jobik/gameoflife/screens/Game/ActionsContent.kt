@@ -25,6 +25,8 @@ import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.ui.composables.*
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
+import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
+import com.jobik.gameoflife.ui.helpers.isWidth
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -35,7 +37,7 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
             .clip(MaterialTheme.shapes.medium)
             .verticalScroll(rememberScrollState())
             .background(MaterialTheme.colorScheme.surface)
-            .padding(top = 20.dp),
+            .padding(vertical = 20.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         MainActions(viewModel)
@@ -148,6 +150,66 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 }
             }
         }
+        SettingsGroup(headline = "Rules") {
+            SettingsItemWrapper(
+                modifier = Modifier
+                    .horizontalScroll(rememberScrollState()),
+                headline = "To survives",
+                horizontalArrangement = Arrangement.Center
+            ) {
+
+                val buttonValues = (1..10).toList()
+                val checkedList = remember { mutableStateListOf<Int>() }
+
+                MultiChoiceSegmentedButtonRow {
+                    buttonValues.forEachIndexed { index, value ->
+                        SegmentedButton(
+                            shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
+                            onCheckedChange = {
+                                if (index in checkedList) {
+                                    checkedList.remove(index)
+                                } else {
+                                    checkedList.add(index)
+                                }
+                            },
+                            checked = index in checkedList,
+                            colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
+                        ) {
+                            Text(value.toString())
+                        }
+                    }
+                }
+            }
+            SettingsItemWrapper(
+                modifier = Modifier
+                    .horizontalScroll(rememberScrollState()),
+                headline = "To born",
+                horizontalArrangement = Arrangement.Center
+            ) {
+
+                val buttonValues = (1..10).toList()
+                val checkedList = remember { mutableStateListOf<Int>() }
+
+                MultiChoiceSegmentedButtonRow {
+                    buttonValues.forEachIndexed { index, value ->
+                        SegmentedButton(
+                            shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
+                            onCheckedChange = {
+                                if (index in checkedList) {
+                                    checkedList.remove(index)
+                                } else {
+                                    checkedList.add(index)
+                                }
+                            },
+                            checked = index in checkedList,
+                            colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
+                        ) {
+                            Text(value.toString())
+                        }
+                    }
+                }
+            }
+        }
 
         SettingsGroup(headline = stringResource(id = R.string.simulation_settings)) {
             SettingsItemWrapper(
@@ -187,8 +249,11 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
             }
             ChangeGameFieldDimension(viewModel)
         }
+
+        if (isWidth(sizeClass = WindowWidthSizeClass.Expanded).not()) {
+            BottomWindowInsetsSpacer()
+        }
     }
-    BottomWindowInsetsSpacer()
 }
 
 @Composable
