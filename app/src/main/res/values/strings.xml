@@ -34,6 +34,11 @@
     <string name="simulation_settings">Simulation settings</string>
     <string name="language">Language</string>
     <string name="game_settings">Game settings</string>
+    <string name="neighbors_for_reviving">Neighbors for reviving</string>
+    <string name="minimum_neighbors_for_surviving">Minimum neighbors for survival</string>
+    <string name="maximum_neighbors_for_surviving">Maximum neighbors for survival</string>
+    <string name="rules">Rules</string>
+
     <string name="change_theme">Change theme</string>
     <string name="application">Application</string>
     <string name="information">Information</string>
@@ -57,7 +62,9 @@
     <string name="open_source_project_description">You can find the entire source code on GitHub ⭐️</string>
 
     <string name="telegram_community">Join the Telegram Community</string>
-    <string name="telegram_community_description">Stay tuned with app updates, get early builds, and help out testing new features. Suggest your ideas, ask questions and get fast answers</string>
+    <string name="telegram_community_description">Stay tuned with app updates, get early builds, and help out testing
+        new features. Suggest your ideas, ask questions and get fast answers
+    </string>
 
     <string name="onb_1_headline">Dr. John Conway</string>
     <string name="onb_1_description">Devised this simulation of cellular automata evolution in 1970, called the \"Game

@@ -150,66 +150,6 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 }
             }
         }
-        SettingsGroup(headline = "Rules") {
-            SettingsItemWrapper(
-                modifier = Modifier
-                    .horizontalScroll(rememberScrollState()),
-                headline = "To survives",
-                horizontalArrangement = Arrangement.Center
-            ) {
-
-                val buttonValues = (1..10).toList()
-                val checkedList = remember { mutableStateListOf<Int>() }
-
-                MultiChoiceSegmentedButtonRow {
-                    buttonValues.forEachIndexed { index, value ->
-                        SegmentedButton(
-                            shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
-                            onCheckedChange = {
-                                if (index in checkedList) {
-                                    checkedList.remove(index)
-                                } else {
-                                    checkedList.add(index)
-                                }
-                            },
-                            checked = index in checkedList,
-                            colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
-                        ) {
-                            Text(value.toString())
-                        }
-                    }
-                }
-            }
-            SettingsItemWrapper(
-                modifier = Modifier
-                    .horizontalScroll(rememberScrollState()),
-                headline = "To born",
-                horizontalArrangement = Arrangement.Center
-            ) {
-
-                val buttonValues = (1..10).toList()
-                val checkedList = remember { mutableStateListOf<Int>() }
-
-                MultiChoiceSegmentedButtonRow {
-                    buttonValues.forEachIndexed { index, value ->
-                        SegmentedButton(
-                            shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
-                            onCheckedChange = {
-                                if (index in checkedList) {
-                                    checkedList.remove(index)
-                                } else {
-                                    checkedList.add(index)
-                                }
-                            },
-                            checked = index in checkedList,
-                            colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
-                        ) {
-                            Text(value.toString())
-                        }
-                    }
-                }
-            }
-        }
 
         SettingsGroup(headline = stringResource(id = R.string.simulation_settings)) {
             SettingsItemWrapper(
@@ -248,6 +188,96 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 }
             }
             ChangeGameFieldDimension(viewModel)
+        }
+
+        SettingsGroup(headline = stringResource(id = R.string.rules)) {
+            SettingsItemWrapper(
+                modifier = Modifier
+                    .horizontalScroll(rememberScrollState()),
+                headline = stringResource(id = R.string.neighbors_for_reviving),
+                horizontalArrangement = Arrangement.Center
+            ) {
+
+                val buttonValues = (1..10).toList()
+                val checkedList = remember { mutableStateListOf<Int>() }
+
+                MultiChoiceSegmentedButtonRow {
+                    buttonValues.forEachIndexed { index, value ->
+                        SegmentedButton(
+                            shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
+                            onCheckedChange = {
+                                if (index in checkedList) {
+                                    checkedList.remove(index)
+                                } else {
+                                    checkedList.add(index)
+                                }
+                            },
+                            checked = index in checkedList,
+                            colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
+                        ) {
+                            Text(value.toString())
+                        }
+                    }
+                }
+            }
+            SettingsItemWrapper(
+                modifier = Modifier
+                    .horizontalScroll(rememberScrollState()),
+                headline = stringResource(id = R.string.maximum_neighbors_for_surviving),
+                horizontalArrangement = Arrangement.Center
+            ) {
+
+                val buttonValues = (1..10).toList()
+                val checkedList = remember { mutableStateListOf<Int>() }
+
+                MultiChoiceSegmentedButtonRow {
+                    buttonValues.forEachIndexed { index, value ->
+                        SegmentedButton(
+                            shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
+                            onCheckedChange = {
+                                if (index in checkedList) {
+                                    checkedList.remove(index)
+                                } else {
+                                    checkedList.add(index)
+                                }
+                            },
+                            checked = index in checkedList,
+                            colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
+                        ) {
+                            Text(value.toString())
+                        }
+                    }
+                }
+            }
+            SettingsItemWrapper(
+                modifier = Modifier
+                    .horizontalScroll(rememberScrollState()),
+                headline = stringResource(id = R.string.minimum_neighbors_for_surviving),
+                horizontalArrangement = Arrangement.Center
+            ) {
+
+                val buttonValues = (1..10).toList()
+                val checkedList = remember { mutableStateListOf<Int>() }
+
+                MultiChoiceSegmentedButtonRow {
+                    buttonValues.forEachIndexed { index, value ->
+                        SegmentedButton(
+                            shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
+                            onCheckedChange = {
+                                if (index in checkedList) {
+                                    checkedList.remove(index)
+                                } else {
+                                    checkedList.add(index)
+                                }
+                            },
+                            checked = index in checkedList,
+                            colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
+                        ) {
+                            Text(value.toString())
+                        }
+                    }
+                }
+            }
         }
 
         if (isWidth(sizeClass = WindowWidthSizeClass.Expanded).not()) {

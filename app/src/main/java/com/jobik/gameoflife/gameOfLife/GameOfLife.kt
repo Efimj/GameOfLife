@@ -21,6 +21,12 @@ class GameOfLife {
             NoOneSurvived,
         }
 
+        data class GameOfLifeStepSettings(
+            val neighborsForReviving: Int = 3,
+            val minimumNeighborsForAlive: Int = 2,
+            val maximumNeighborsForAlive: Int = 3,
+        )
+
         fun getNumberOfNeighbors(row: Int, col: Int, list: List<List<GameOfLifeUnitState>>): Int {
             val rowStart = maxOf(0, row - 1)
             val rowEnd = minOf(list.size - 1, row + 1)
@@ -38,12 +44,6 @@ class GameOfLife {
 
             return neighbors
         }
-
-        data class GameOfLifeStepSettings(
-            val neighborsForReviving: Int = 3,
-            val minimumNeighborsForAlive: Int = 2,
-            val maximumNeighborsForAlive: Int = 3,
-        )
 
         fun makeOneStepGameOfLife(
             currentState: List<List<GameOfLifeUnitState>>,
