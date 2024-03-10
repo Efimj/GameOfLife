@@ -17,7 +17,9 @@
     <string name="menu_button">Menu button</string>
     <string name="clear">Clear</string>
     <string name="free_soul_mode">Free soul mode</string>
+    <string name="free_soul_mode_description">Indicates whether dead cells should be cleared</string>
     <string name="emoji_mode">Emoji mode</string>
+    <string name="emoji_mode_description">Instead of fill, a set of emoji icons is used</string>
     <string name="restart">Restart</string>
     <string name="stable_combination">Stable combination 🎉</string>
     <string name="no_one_survived">No one survived 💀</string>
@@ -27,8 +29,11 @@
     <string name="switch_running_simulation">Switch running simulation</string>
     <string name="set_field_dimensions">Set field dimensions</string>
     <string name="rows">Rows</string>
-    <string name="columns">columns</string>
+    <string name="columns">Columns</string>
+    <string name="one_step_duration">One step duration</string>
+    <string name="simulation_settings">Simulation settings</string>
     <string name="language">Language</string>
+    <string name="game_settings">Game settings</string>
     <string name="change_theme">Change theme</string>
     <string name="application">Application</string>
     <string name="information">Information</string>

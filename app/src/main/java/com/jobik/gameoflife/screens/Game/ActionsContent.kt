@@ -6,7 +6,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.RestartAlt
+import androidx.compose.material.icons.outlined.Cached
 import androidx.compose.material.icons.outlined.Link
+import androidx.compose.material.icons.outlined.Mood
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -92,9 +94,18 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
             }
         }
 
-        SettingsGroup(headline = "Game settings") {
+        SettingsGroup(headline = stringResource(id = R.string.game_settings)) {
             SettingsItemWrapper(onClick = viewModel::switchEmojiMode) {
-                Text(text = stringResource(id = R.string.emoji_mode), color = MaterialTheme.colorScheme.onSurface)
+                Icon(
+                    imageVector = Icons.Outlined.Mood,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+
+                    )
+                SettingsItemContent(
+                    title = stringResource(id = R.string.emoji_mode),
+                    description = stringResource(id = R.string.emoji_mode_description)
+                )
                 Switch(
                     checked = viewModel.states.value.emojiEnabled,
                     onCheckedChange = { viewModel.switchEmojiMode() },
@@ -113,9 +124,14 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 exit = slideOutVertically() + shrinkVertically() + fadeOut(),
             ) {
                 SettingsItemWrapper(onClick = viewModel::switchFreeSoulMode) {
-                    Text(
-                        text = stringResource(id = R.string.free_soul_mode),
-                        color = MaterialTheme.colorScheme.onSurface
+                    Icon(
+                        imageVector = Icons.Outlined.Cached,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary
+                    )
+                    SettingsItemContent(
+                        title = stringResource(id = R.string.free_soul_mode),
+                        description = stringResource(id = R.string.free_soul_mode_description)
                     )
                     Switch(
                         enabled = viewModel.states.value.emojiEnabled,
@@ -133,12 +149,11 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
             }
         }
 
-        SettingsGroup(headline = "Simulation settings") {
-
+        SettingsGroup(headline = stringResource(id = R.string.simulation_settings)) {
             SettingsItemWrapper(
                 modifier = Modifier
                     .horizontalScroll(rememberScrollState()),
-                headline = "One step duration",
+                headline = stringResource(id = R.string.one_step_duration),
                 horizontalArrangement = Arrangement.Center
             ) {
 
@@ -174,6 +189,32 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
         }
     }
     BottomWindowInsetsSpacer()
+}
+
+@Composable
+private fun RowScope.SettingsItemContent(title: String, description: String) {
+    Spacer(modifier = Modifier.width(20.dp))
+    Column(
+        modifier = Modifier.Companion
+            .weight(1f)
+            .padding(vertical = 4.dp),
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = title,
+            color = MaterialTheme.colorScheme.onSurface,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
+        Text(
+            text = description,
+            maxLines = 3,
+            overflow = TextOverflow.Ellipsis,
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = .6f)
+        )
+    }
+    Spacer(modifier = Modifier.width(20.dp))
 }
 
 @Composable
@@ -341,7 +382,7 @@ private fun SettingsGroup(headline: String, content: @Composable() (ColumnScope.
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             textAlign = TextAlign.Start,
-            color = MaterialTheme.colorScheme.onSurface.copy(alpha = .8f)
+            color = MaterialTheme.colorScheme.onPrimaryContainer
         )
         Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
             content()
@@ -381,7 +422,7 @@ private fun SettingsItemWrapper(
                 .fillMaxWidth()
                 .then(onClickModifier)
                 .padding(paddings)
-                .height(60.dp),
+                .heightIn(min = 60.dp),
             verticalAlignment = verticalAlignment,
             horizontalArrangement = horizontalArrangement
         )
