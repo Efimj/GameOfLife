@@ -208,7 +208,7 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 ) {
 
                     val buttonValues = (1..10).toList()
-                    val checkedList = remember { mutableStateListOf<Int>() }
+                    val checkedList = remember { mutableStateListOf(3) }
 
                     MultiChoiceSegmentedButtonRow {
                         buttonValues.forEachIndexed { index, value ->
@@ -237,7 +237,7 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 ) {
 
                     val buttonValues = (1..10).toList()
-                    val checkedList = remember { mutableStateListOf<Int>() }
+                    val checkedList = remember { mutableStateListOf(2, 3) }
 
                     MultiChoiceSegmentedButtonRow {
                         buttonValues.forEachIndexed { index, value ->
