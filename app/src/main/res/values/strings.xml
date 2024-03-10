@@ -35,10 +35,9 @@
     <string name="language">Language</string>
     <string name="game_settings">Game settings</string>
     <string name="neighbors_for_reviving">Neighbors for reviving</string>
-    <string name="minimum_neighbors_for_surviving">Minimum neighbors for survival</string>
-    <string name="maximum_neighbors_for_surviving">Maximum neighbors for survival</string>
+    <string name="neighbors_for_surviving">Neighbors for survival</string>
     <string name="rules">Rules</string>
-
+    <string name="to_default">To default</string>
     <string name="change_theme">Change theme</string>
     <string name="application">Application</string>
     <string name="information">Information</string>

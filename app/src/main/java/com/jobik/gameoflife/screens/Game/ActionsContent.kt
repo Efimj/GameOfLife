@@ -3,6 +3,7 @@ package com.jobik.gameoflife.screens.Game
 import androidx.compose.animation.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.RestartAlt
@@ -31,257 +32,252 @@ import com.jobik.gameoflife.ui.helpers.isWidth
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ActionsContent(viewModel: GameScreenViewModel) {
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .clip(MaterialTheme.shapes.medium)
-            .verticalScroll(rememberScrollState())
-            .background(MaterialTheme.colorScheme.surface)
-            .padding(vertical = 20.dp),
+            .background(MaterialTheme.colorScheme.surface),
+        contentPadding = PaddingValues(vertical = 20.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        MainActions(viewModel)
+        item {
+            MainActions(viewModel)
+        }
 
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 20.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Button(
-                modifier = Modifier.weight(1f),
-                onClick = viewModel::setFullEmpty,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer
-                )
+        item {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = stringResource(id = R.string.clear), overflow = TextOverflow.Ellipsis, maxLines = 1)
-            }
-            Spacer(modifier = Modifier.width(10.dp))
-            FilledIconButton(
-                modifier = Modifier,
-                onClick = viewModel::setFullAlive,
-                colors = IconButtonDefaults.filledIconButtonColors(
-                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer
-                )
-            ) {
-                Text(text = AliveEmojis.random(), overflow = TextOverflow.Ellipsis, maxLines = 1)
-            }
-            AnimatedVisibility(
-                visible = viewModel.states.value.emojiEnabled,
-                enter = slideInHorizontally { it / 2 } + expandHorizontally(
-                    expandFrom = Alignment.Start,
-                    clip = false
-                ) + fadeIn(),
-                exit = slideOutHorizontally { -it / 2 } + shrinkHorizontally(
-                    shrinkTowards = Alignment.Start,
-                    clip = false
-                ) + fadeOut(),
-            ) {
-                Row {
-                    Spacer(modifier = Modifier.width(10.dp))
-                    FilledIconButton(
-                        modifier = Modifier,
-                        onClick = viewModel::setFullDeath,
-                        colors = IconButtonDefaults.filledIconButtonColors(
-                            containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                            contentColor = MaterialTheme.colorScheme.onSecondaryContainer
-                        )
-                    ) {
-                        Text(text = DeadEmojis.random(), overflow = TextOverflow.Ellipsis, maxLines = 1)
+                Button(
+                    modifier = Modifier.weight(1f),
+                    onClick = viewModel::setFullEmpty,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                ) {
+                    Text(text = stringResource(id = R.string.clear), overflow = TextOverflow.Ellipsis, maxLines = 1)
+                }
+                Spacer(modifier = Modifier.width(10.dp))
+                FilledIconButton(
+                    modifier = Modifier,
+                    onClick = viewModel::setFullAlive,
+                    colors = IconButtonDefaults.filledIconButtonColors(
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                ) {
+                    Text(text = AliveEmojis.random(), overflow = TextOverflow.Ellipsis, maxLines = 1)
+                }
+                AnimatedVisibility(
+                    visible = viewModel.states.value.emojiEnabled,
+                    enter = slideInHorizontally { it / 2 } + expandHorizontally(
+                        expandFrom = Alignment.Start,
+                        clip = false
+                    ) + fadeIn(),
+                    exit = slideOutHorizontally { -it / 2 } + shrinkHorizontally(
+                        shrinkTowards = Alignment.Start,
+                        clip = false
+                    ) + fadeOut(),
+                ) {
+                    Row {
+                        Spacer(modifier = Modifier.width(10.dp))
+                        FilledIconButton(
+                            modifier = Modifier,
+                            onClick = viewModel::setFullDeath,
+                            colors = IconButtonDefaults.filledIconButtonColors(
+                                containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                                contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                            )
+                        ) {
+                            Text(text = DeadEmojis.random(), overflow = TextOverflow.Ellipsis, maxLines = 1)
+                        }
                     }
                 }
             }
         }
 
-        SettingsGroup(headline = stringResource(id = R.string.game_settings)) {
-            SettingsItemWrapper(onClick = viewModel::switchEmojiMode) {
-                Icon(
-                    imageVector = Icons.Outlined.Mood,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary,
-
-                    )
-                SettingsItemContent(
-                    title = stringResource(id = R.string.emoji_mode),
-                    description = stringResource(id = R.string.emoji_mode_description)
-                )
-                Switch(
-                    checked = viewModel.states.value.emojiEnabled,
-                    onCheckedChange = { viewModel.switchEmojiMode() },
-                    thumbContent = if (viewModel.states.value.emojiEnabled) {
-                        {
-                            Text(text = AliveEmojis.random())
-                        }
-                    } else {
-                        null
-                    },
-                )
-            }
-            AnimatedVisibility(
-                visible = viewModel.states.value.emojiEnabled,
-                enter = slideInVertically() + expandVertically() + fadeIn(),
-                exit = slideOutVertically() + shrinkVertically() + fadeOut(),
-            ) {
-                SettingsItemWrapper(onClick = viewModel::switchFreeSoulMode) {
+        item {
+            SettingsGroup(headline = stringResource(id = R.string.game_settings)) {
+                SettingsItemWrapper(onClick = viewModel::switchEmojiMode) {
                     Icon(
-                        imageVector = Icons.Outlined.Cached,
+                        imageVector = Icons.Outlined.Mood,
                         contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary
-                    )
+                        tint = MaterialTheme.colorScheme.primary,
+
+                        )
                     SettingsItemContent(
-                        title = stringResource(id = R.string.free_soul_mode),
-                        description = stringResource(id = R.string.free_soul_mode_description)
+                        title = stringResource(id = R.string.emoji_mode),
+                        description = stringResource(id = R.string.emoji_mode_description)
                     )
                     Switch(
-                        enabled = viewModel.states.value.emojiEnabled,
-                        checked = viewModel.states.value.freeSoulMode,
-                        onCheckedChange = { viewModel.switchFreeSoulMode() },
-                        thumbContent = if (!viewModel.states.value.freeSoulMode) {
+                        checked = viewModel.states.value.emojiEnabled,
+                        onCheckedChange = { viewModel.switchEmojiMode() },
+                        thumbContent = if (viewModel.states.value.emojiEnabled) {
                             {
-                                Text(text = "\uD83D\uDC80")
+                                Text(text = AliveEmojis.random())
                             }
                         } else {
                             null
                         },
                     )
                 }
-            }
-        }
-
-        SettingsGroup(headline = stringResource(id = R.string.simulation_settings)) {
-            SettingsItemWrapper(
-                modifier = Modifier
-                    .horizontalScroll(rememberScrollState()),
-                headline = stringResource(id = R.string.one_step_duration),
-                horizontalArrangement = Arrangement.Center
-            ) {
-
-                val buttonValues = listOf(
-                    100L,
-                    250L,
-                    500L,
-                    1000L,
-                )
-                val buttonTitles = listOf(
-                    stringResource(id = R.string.speed_value_100ms),
-                    stringResource(id = R.string.speed_value_250ms),
-                    stringResource(id = R.string.speed_value_500ms),
-                    stringResource(id = R.string.speed_value_1s),
-                )
-
-                SingleChoiceSegmentedButtonRow {
-                    buttonValues.forEachIndexed { index, value ->
-                        SegmentedButton(
-                            shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
-                            onClick = {
-                                viewModel.changeStepDuration(value)
-                            },
-                            selected = value == viewModel.states.value.oneStepDurationMills,
-                            colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
-                        ) {
-                            Text(buttonTitles[index])
-                        }
-                    }
-                }
-            }
-            ChangeGameFieldDimension(viewModel)
-        }
-
-        SettingsGroup(headline = stringResource(id = R.string.rules)) {
-            SettingsItemWrapper(
-                modifier = Modifier
-                    .horizontalScroll(rememberScrollState()),
-                headline = stringResource(id = R.string.neighbors_for_reviving),
-                horizontalArrangement = Arrangement.Center
-            ) {
-
-                val buttonValues = (1..10).toList()
-                val checkedList = remember { mutableStateListOf<Int>() }
-
-                MultiChoiceSegmentedButtonRow {
-                    buttonValues.forEachIndexed { index, value ->
-                        SegmentedButton(
-                            shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
-                            onCheckedChange = {
-                                if (index in checkedList) {
-                                    checkedList.remove(index)
-                                } else {
-                                    checkedList.add(index)
+                AnimatedVisibility(
+                    visible = viewModel.states.value.emojiEnabled,
+                    enter = slideInVertically() + expandVertically() + fadeIn(),
+                    exit = slideOutVertically() + shrinkVertically() + fadeOut(),
+                ) {
+                    SettingsItemWrapper(onClick = viewModel::switchFreeSoulMode) {
+                        Icon(
+                            imageVector = Icons.Outlined.Cached,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary
+                        )
+                        SettingsItemContent(
+                            title = stringResource(id = R.string.free_soul_mode),
+                            description = stringResource(id = R.string.free_soul_mode_description)
+                        )
+                        Switch(
+                            enabled = viewModel.states.value.emojiEnabled,
+                            checked = viewModel.states.value.freeSoulMode,
+                            onCheckedChange = { viewModel.switchFreeSoulMode() },
+                            thumbContent = if (!viewModel.states.value.freeSoulMode) {
+                                {
+                                    Text(text = "\uD83D\uDC80")
                                 }
+                            } else {
+                                null
                             },
-                            checked = index in checkedList,
-                            colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
-                        ) {
-                            Text(value.toString())
-                        }
-                    }
-                }
-            }
-            SettingsItemWrapper(
-                modifier = Modifier
-                    .horizontalScroll(rememberScrollState()),
-                headline = stringResource(id = R.string.maximum_neighbors_for_surviving),
-                horizontalArrangement = Arrangement.Center
-            ) {
-
-                val buttonValues = (1..10).toList()
-                val checkedList = remember { mutableStateListOf<Int>() }
-
-                MultiChoiceSegmentedButtonRow {
-                    buttonValues.forEachIndexed { index, value ->
-                        SegmentedButton(
-                            shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
-                            onCheckedChange = {
-                                if (index in checkedList) {
-                                    checkedList.remove(index)
-                                } else {
-                                    checkedList.add(index)
-                                }
-                            },
-                            checked = index in checkedList,
-                            colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
-                        ) {
-                            Text(value.toString())
-                        }
-                    }
-                }
-            }
-            SettingsItemWrapper(
-                modifier = Modifier
-                    .horizontalScroll(rememberScrollState()),
-                headline = stringResource(id = R.string.minimum_neighbors_for_surviving),
-                horizontalArrangement = Arrangement.Center
-            ) {
-
-                val buttonValues = (1..10).toList()
-                val checkedList = remember { mutableStateListOf<Int>() }
-
-                MultiChoiceSegmentedButtonRow {
-                    buttonValues.forEachIndexed { index, value ->
-                        SegmentedButton(
-                            shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
-                            onCheckedChange = {
-                                if (index in checkedList) {
-                                    checkedList.remove(index)
-                                } else {
-                                    checkedList.add(index)
-                                }
-                            },
-                            checked = index in checkedList,
-                            colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
-                        ) {
-                            Text(value.toString())
-                        }
+                        )
                     }
                 }
             }
         }
 
-        if (isWidth(sizeClass = WindowWidthSizeClass.Expanded).not()) {
-            BottomWindowInsetsSpacer()
+        item {
+            SettingsGroup(headline = stringResource(id = R.string.simulation_settings)) {
+                SettingsItemWrapper(
+                    modifier = Modifier
+                        .horizontalScroll(rememberScrollState()),
+                    headline = stringResource(id = R.string.one_step_duration),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+
+                    val buttonValues = listOf(
+                        100L,
+                        250L,
+                        500L,
+                        1000L,
+                    )
+                    val buttonTitles = listOf(
+                        stringResource(id = R.string.speed_value_100ms),
+                        stringResource(id = R.string.speed_value_250ms),
+                        stringResource(id = R.string.speed_value_500ms),
+                        stringResource(id = R.string.speed_value_1s),
+                    )
+
+                    SingleChoiceSegmentedButtonRow {
+                        buttonValues.forEachIndexed { index, value ->
+                            SegmentedButton(
+                                shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
+                                onClick = {
+                                    viewModel.changeStepDuration(value)
+                                },
+                                selected = value == viewModel.states.value.oneStepDurationMills,
+                                colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
+                            ) {
+                                Text(buttonTitles[index])
+                            }
+                        }
+                    }
+                }
+                ChangeGameFieldDimension(viewModel)
+            }
+        }
+
+        item {
+            SettingsGroup(headline = stringResource(id = R.string.rules)) {
+                SettingsItemWrapper(
+                    modifier = Modifier
+                        .horizontalScroll(rememberScrollState()),
+                    headline = stringResource(id = R.string.neighbors_for_reviving),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+
+                    val buttonValues = (1..10).toList()
+                    val checkedList = remember { mutableStateListOf<Int>() }
+
+                    MultiChoiceSegmentedButtonRow {
+                        buttonValues.forEachIndexed { index, value ->
+                            SegmentedButton(
+                                shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
+                                onCheckedChange = {
+                                    if (index in checkedList) {
+                                        checkedList.remove(index)
+                                    } else {
+                                        checkedList.add(index)
+                                    }
+                                },
+                                checked = index in checkedList,
+                                colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
+                            ) {
+                                Text(value.toString())
+                            }
+                        }
+                    }
+                }
+                SettingsItemWrapper(
+                    modifier = Modifier
+                        .horizontalScroll(rememberScrollState()),
+                    headline = stringResource(id = R.string.neighbors_for_surviving),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+
+                    val buttonValues = (1..10).toList()
+                    val checkedList = remember { mutableStateListOf<Int>() }
+
+                    MultiChoiceSegmentedButtonRow {
+                        buttonValues.forEachIndexed { index, value ->
+                            SegmentedButton(
+                                shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
+                                onCheckedChange = {
+                                    if (index in checkedList) {
+                                        checkedList.remove(index)
+                                    } else {
+                                        checkedList.add(index)
+                                    }
+                                },
+                                checked = index in checkedList,
+                                colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
+                            ) {
+                                Text(value.toString())
+                            }
+                        }
+                    }
+                }
+                Row(
+                    modifier = Modifier.padding(
+                        start = 20.dp
+                    )
+                ) {
+                    Button(onClick = { /*TODO*/ }) {
+                        Text(
+                            text = stringResource(id = R.string.to_default),
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                    }
+                }
+            }
+        }
+
+        item {
+            if (isWidth(sizeClass = WindowWidthSizeClass.Expanded).not()) {
+                BottomWindowInsetsSpacer()
+            }
         }
     }
 }
