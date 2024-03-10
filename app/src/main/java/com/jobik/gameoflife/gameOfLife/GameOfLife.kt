@@ -22,9 +22,13 @@ class GameOfLife {
         }
 
         data class GameOfLifeStepSettings(
-            val neighborsForReviving: Int = 3,
-            val minimumNeighborsForAlive: Int = 2,
-            val maximumNeighborsForAlive: Int = 3,
+            val neighborsForReviving: Set<Int> = setOf(3),
+            val neighborsForAlive: Set<Int> = setOf(2, 3),
+        )
+
+        val GameOfLifeStepSettingsDefault = GameOfLifeStepSettings(
+            neighborsForReviving = setOf(3),
+            neighborsForAlive = setOf(2, 3),
         )
 
         fun getNumberOfNeighbors(row: Int, col: Int, list: List<List<GameOfLifeUnitState>>): Int {
@@ -53,12 +57,10 @@ class GameOfLife {
             for (row in currentState.indices) {
                 for (col in currentState[row].indices) {
                     val numberOfNeighbors = getNumberOfNeighbors(list = currentState, row = row, col = col)
-                    if (numberOfNeighbors > settings.maximumNeighborsForAlive || numberOfNeighbors < settings.minimumNeighborsForAlive) {
-                        if (newState[row][col] == GameOfLifeUnitState.Alive)
-                            newState[row][col] = GameOfLifeUnitState.Dead
-                    } else if (numberOfNeighbors == settings.neighborsForReviving) {
-                        newState[row][col] =
-                            GameOfLifeUnitState.Alive
+                    if (newState[row][col] == GameOfLifeUnitState.Alive && numberOfNeighbors !in settings.neighborsForAlive) {
+                        newState[row][col] = GameOfLifeUnitState.Dead
+                    } else if (newState[row][col] != GameOfLifeUnitState.Alive && numberOfNeighbors in settings.neighborsForReviving) {
+                        newState[row][col] = GameOfLifeUnitState.Alive
                     }
                 }
             }
