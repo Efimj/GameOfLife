@@ -2,6 +2,7 @@ package com.jobik.gameoflife.screens.Game
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
@@ -24,6 +25,7 @@ import com.jobik.gameoflife.R
 import com.jobik.gameoflife.ui.composables.*
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ActionsContent(viewModel: GameScreenViewModel) {
     Column(
@@ -96,41 +98,39 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                 }
             }
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .horizontalScroll(rememberScrollState()),
                 horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),
                 verticalAlignment = Alignment.CenterVertically
             ) {
 
-                val tabs = listOf(
+                val buttonValues = listOf(
+                    100L,
+                    250L,
+                    500L,
+                    1000L,
+                )
+                val buttonTitles = listOf(
                     stringResource(id = R.string.speed_value_100ms),
                     stringResource(id = R.string.speed_value_250ms),
                     stringResource(id = R.string.speed_value_500ms),
                     stringResource(id = R.string.speed_value_1s),
                 )
 
-                CustomTab(
-                    tabWidth = 80.dp,
-                    items = tabs,
-                    selectedItemIndex =
-                    when (viewModel.states.value.oneStepDurationMills) {
-                        100L -> 0
-                        250L -> 1
-                        500L -> 2
-                        1000L -> 3
-                        else -> 0
-                    },
-                    onClick = {
-                        viewModel.changeStepDuration(
-                            duration = when (it) {
-                                0 -> 100L
-                                1 -> 250L
-                                2 -> 500L
-                                3 -> 1000L
-                                else -> 100L
-                            }
-                        )
-                    },
-                )
+                SingleChoiceSegmentedButtonRow {
+                    buttonValues.forEachIndexed { index, value ->
+                        SegmentedButton(
+                            shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
+                            onClick = {
+                                viewModel.changeStepDuration(value)
+                            },
+                            selected = value == viewModel.states.value.oneStepDurationMills
+                        ) {
+                            Text(buttonTitles[index])
+                        }
+                    }
+                }
             }
             Row(
                 modifier = Modifier
