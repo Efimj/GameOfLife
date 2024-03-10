@@ -42,7 +42,7 @@ fun GameScreen(
     }
 
     when (currentWidthSizeClass()) {
-        WindowWidthSizeClass.Compact,WindowWidthSizeClass.Medium  -> {
+        WindowWidthSizeClass.Compact, WindowWidthSizeClass.Medium -> {
             CompactGameScreen(
                 backdropScaffoldState,
                 containerColor,
@@ -110,6 +110,14 @@ private fun CompactGameScreen(
     val gameContentPercentageOfHeight = 0.65
     val maxGameHeight by remember(screenHeight) { mutableStateOf((screenHeight.value * gameContentPercentageOfHeight).dp) }
 
+    val isTopInsets = isWidth(sizeClass = WindowWidthSizeClass.Compact)
+
+    val topInsets = if (isTopInsets) {
+        Modifier.topWindowInsetsPadding()
+    } else {
+        Modifier
+    }
+
     BackdropScaffold(
         modifier = Modifier
             .horizontalWindowInsetsPadding()
@@ -127,7 +135,7 @@ private fun CompactGameScreen(
         appBar = {
             GameAppBar()
         },
-        peekHeight = topWindowInsetsPadding() + 64.dp,
+        peekHeight = if (isTopInsets) topWindowInsetsPadding() + 64.dp else 64.dp,
         persistentAppBar = false,
         frontLayerScrimColor = Color.Unspecified,
         frontLayerBackgroundColor = MaterialTheme.colorScheme.background,
@@ -137,7 +145,7 @@ private fun CompactGameScreen(
                 modifier = Modifier
                     .clip(RoundedCornerShape(bottomEnd = 12.dp, bottomStart = 12.dp))
                     .background(containerColor)
-                    .topWindowInsetsPadding()
+                    .then(topInsets)
                     .heightIn(max = maxGameHeight)
             ) {
                 GameContent(viewModel = viewModel)

@@ -13,6 +13,8 @@ import androidx.compose.ui.res.stringResource
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.screens.AppLayout.ModalDrawer
 import com.jobik.gameoflife.screens.AppLayout.ModalDrawerImplementation
+import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
+import com.jobik.gameoflife.ui.helpers.isWidth
 import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
 import kotlinx.coroutines.launch
 
@@ -21,10 +23,16 @@ import kotlinx.coroutines.launch
 fun GameAppBar(modalDrawer: ModalDrawer = ModalDrawerImplementation) {
     val coroutineScope = rememberCoroutineScope()
 
+    val topInsets = if (isWidth(sizeClass = WindowWidthSizeClass.Compact)) {
+        Modifier.topWindowInsetsPadding()
+    } else {
+        Modifier
+    }
+
     TopAppBar(
         modifier = Modifier
             .background(MaterialTheme.colorScheme.secondaryContainer)
-            .topWindowInsetsPadding(),
+            .then(topInsets),
         title = {
             Text(text = stringResource(id = R.string.GameOfLife))
         },
