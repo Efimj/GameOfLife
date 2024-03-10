@@ -1,25 +1,29 @@
 package com.jobik.gameoflife.screens.AppLayout
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationRail
-import androidx.compose.material3.NavigationRailItem
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.jobik.gameoflife.BuildConfig
+import com.jobik.gameoflife.R
 import com.jobik.gameoflife.navigation.AppNavHost
 import com.jobik.gameoflife.navigation.NavigationHelpers
 import com.jobik.gameoflife.navigation.NavigationHelpers.Companion.canNavigate
-import com.jobik.gameoflife.ui.helpers.endWindowInsetsPadding
-import com.jobik.gameoflife.ui.helpers.verticalWindowInsetsPadding
+import com.jobik.gameoflife.ui.helpers.*
 import kotlinx.coroutines.launch
 
 @Composable
@@ -28,35 +32,71 @@ fun LayoutWithNavigationRail(navController: NavHostController, modalDrawer: Moda
 
     Row(modifier = Modifier.fillMaxSize()) {
         NavigationRail(
-            modifier = Modifier.fillMaxHeight(),
-            containerColor = MaterialTheme.colorScheme.surfaceContainer
+            containerColor = MaterialTheme.colorScheme.surfaceContainer,
+            windowInsets = WindowInsets.ime
         ) {
-            val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
-            val coroutineScope = rememberCoroutineScope()
+            Column(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .verticalScroll(rememberScrollState())
+                    .startWindowInsetsPadding(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
+                val coroutineScope = rememberCoroutineScope()
+                TopWindowInsetsSpacer()
 
-            for (button in DrawerParams.drawerButtons) {
-                NavigationRailItem(
-                    selected = button.route.name == currentRoute,
-                    onClick = {
-                        coroutineScope.launch {
-                            modalDrawer.drawerState.open()
-                        }
-                        if (button.route.name == currentRoute) return@NavigationRailItem
-                        if (navController.canNavigate().not()) return@NavigationRailItem
-                        navController.navigate(button.route.name) {
-                            // pops the route to root and places new screen
-                            popUpTo(button.route.name)
-                        }
-                    },
-                    icon = {
-                        Icon(
-                            imageVector = button.icon,
-                            contentDescription = stringResource(
-                                id = button.description
-                            )
+                Image(
+                    modifier = Modifier
+                        .size(80.0.dp)
+                        .padding(vertical = 20.dp)
+                        .padding(top = 10.dp),
+                    painter = painterResource(id = R.drawable.icon),
+                    contentDescription = "Main app icon",
+                    contentScale = ContentScale.FillWidth
+                )
+
+                Column {
+                    for (button in DrawerParams.drawerButtons) {
+                        NavigationRailItem(
+                            selected = button.route.name == currentRoute,
+                            onClick = {
+                                coroutineScope.launch {
+                                    modalDrawer.drawerState.open()
+                                }
+                                if (button.route.name == currentRoute) return@NavigationRailItem
+                                if (navController.canNavigate().not()) return@NavigationRailItem
+                                navController.navigate(button.route.name) {
+                                    // pops the route to root and places new screen
+                                    popUpTo(button.route.name)
+                                }
+                            },
+                            icon = {
+                                Icon(
+                                    imageVector = button.icon,
+                                    contentDescription = stringResource(
+                                        id = button.description
+                                    )
+                                )
+                            }
                         )
                     }
-                )
+                }
+                Spacer(modifier = Modifier.weight(1f, fill = true))
+                Row(
+                    modifier = Modifier
+                        .padding(bottom = 5.dp),
+                    verticalAlignment = Alignment.Bottom,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        text = "v${BuildConfig.VERSION_NAME}",
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = .7f),
+                        style = MaterialTheme.typography.labelMedium
+                    )
+                }
+                BottomWindowInsetsSpacer()
             }
         }
         Column(

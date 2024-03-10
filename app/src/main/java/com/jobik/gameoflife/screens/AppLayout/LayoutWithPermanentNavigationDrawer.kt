@@ -65,9 +65,7 @@ fun LayoutWithPermanentNavigationDrawer(
                         style = MaterialTheme.typography.headlineMedium,
                         fontWeight = FontWeight.SemiBold
                     )
-                    Column(
-                        modifier = Modifier
-                    ) {
+                    Column {
                         DrawerParams.drawerButtons.forEach { button ->
                             NavigationDrawerItem(
                                 icon = { Icon(button.icon, contentDescription = null) },
@@ -88,7 +86,6 @@ fun LayoutWithPermanentNavigationDrawer(
                             )
                         }
                     }
-                    BottomWindowInsetsSpacer()
                     Spacer(modifier = Modifier.weight(1f, fill = true))
                     Row(
                         modifier = Modifier
