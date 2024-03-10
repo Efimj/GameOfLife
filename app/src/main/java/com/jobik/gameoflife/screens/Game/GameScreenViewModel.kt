@@ -6,12 +6,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.GameOfLifeUnitState
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.GameOfLifeResult
+import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.GameOfLifeStepSettingsDefault
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.cloneGameState
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.countAlive
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.countDeaths
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.countRevives
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.makeOneStepGameOfLife
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.makeRandomStartStates
+import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.GameOfLifeStepSettings
 import com.jobik.gameoflife.helpers.ArrayHelper.Companion.generateTwoDimList
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -30,6 +32,7 @@ data class GameScreenStates(
     val currentStep: List<List<GameOfLifeUnitState>> = List(rows) { List(cols) { GameOfLifeUnitState.Empty } },
     val previousStep: List<List<GameOfLifeUnitState>> = emptyList(),
     val gameResult: GameOfLifeResult? = null,
+    val gameOfLifeStepRules: GameOfLifeStepSettings = GameOfLifeStepSettingsDefault,
     val oneStepDurationMills: Long = 250,
 )
 
@@ -69,7 +72,10 @@ class GameScreenViewModel : ViewModel() {
         simulationJob = viewModelScope.launch {
             while (true) {
                 delay(states.value.oneStepDurationMills)
-                var nextStep = makeOneStepGameOfLife(currentState = states.value.currentStep)
+                var nextStep = makeOneStepGameOfLife(
+                    currentState = states.value.currentStep,
+                    settings = states.value.gameOfLifeStepRules
+                )
 
                 val gameResult = checkIsGameFinishedResult(nextStep, states.value.previousStep)
                 if (gameResult != null) {
@@ -142,7 +148,6 @@ class GameScreenViewModel : ViewModel() {
     fun dropGame() {
         regenerateGame()
     }
-
 
 
     fun onElementClick(row: Int, column: Int) {
@@ -235,5 +240,20 @@ class GameScreenViewModel : ViewModel() {
         if (matrixCols >= 1)
             _states.value = states.value.copy(cols = matrixCols, gameResult = null, stepNumber = 0)
         regenerateGame()
+    }
+
+    fun updateGameRules(
+        neighborsForReviving: Set<Int> = states.value.gameOfLifeStepRules.neighborsForReviving,
+        neighborsForAlive: Set<Int> = states.value.gameOfLifeStepRules.neighborsForAlive
+    ) {
+        val newRules = states.value.gameOfLifeStepRules.copy(
+            neighborsForReviving = neighborsForReviving,
+            neighborsForAlive = neighborsForAlive
+        )
+        _states.value = states.value.copy(gameOfLifeStepRules = newRules)
+    }
+
+    fun gameRulesToDefault() {
+        _states.value = states.value.copy(gameOfLifeStepRules = GameOfLifeStepSettingsDefault)
     }
 }

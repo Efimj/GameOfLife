@@ -24,6 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
+import com.jobik.gameoflife.gameOfLife.GameOfLife
 import com.jobik.gameoflife.ui.composables.*
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
@@ -158,6 +159,92 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
         }
 
         item {
+            SettingsGroup(headline = stringResource(id = R.string.rules)) {
+                SettingsItemWrapper(
+                    modifier = Modifier
+                        .horizontalScroll(rememberScrollState()),
+                    headline = stringResource(id = R.string.neighbors_for_reviving),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+
+                    val buttonValues = (0..9).toList()
+
+                    MultiChoiceSegmentedButtonRow {
+                        buttonValues.forEachIndexed { index, value ->
+                            SegmentedButton(
+                                shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
+                                onCheckedChange = {
+                                    val newRule =
+                                        if (it) viewModel.states.value.gameOfLifeStepRules.neighborsForReviving.plus(
+                                            value
+                                        )
+                                        else viewModel.states.value.gameOfLifeStepRules.neighborsForReviving.minus(value)
+                                    viewModel.updateGameRules(neighborsForReviving = newRule)
+                                },
+                                checked = value in viewModel.states.value.gameOfLifeStepRules.neighborsForReviving,
+                                colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
+                            ) {
+                                Text(value.toString())
+                            }
+                        }
+                    }
+                }
+                SettingsItemWrapper(
+                    modifier = Modifier
+                        .horizontalScroll(rememberScrollState()),
+                    headline = stringResource(id = R.string.neighbors_for_surviving),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+
+                    val buttonValues = (0..9).toList()
+
+                    MultiChoiceSegmentedButtonRow {
+                        buttonValues.forEachIndexed { index, value ->
+                            SegmentedButton(
+                                shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
+                                onCheckedChange = {
+                                    val newRule =
+                                        if (it) viewModel.states.value.gameOfLifeStepRules.neighborsForAlive.plus(value)
+                                        else viewModel.states.value.gameOfLifeStepRules.neighborsForAlive.minus(value)
+                                    viewModel.updateGameRules(neighborsForAlive = newRule)
+                                },
+                                checked = value in viewModel.states.value.gameOfLifeStepRules.neighborsForAlive,
+                                colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
+                            ) {
+                                Text(value.toString())
+                            }
+                        }
+                    }
+                }
+                Row(
+                    modifier = Modifier.padding(
+                        start = 20.dp
+                    )
+                ) {
+                    val enabled = remember(viewModel.states.value.gameOfLifeStepRules) {
+                        mutableStateOf(checkIsRulesNotDefault(viewModel))
+                    }
+                    AnimatedVisibility(
+                        visible = enabled.value,
+                        enter = slideInVertically() + expandVertically() + fadeIn(),
+                        exit = slideOutVertically() + shrinkVertically() + fadeOut()
+                    ) {
+                        Button(
+                            onClick = { viewModel.gameRulesToDefault() },
+                            enabled = enabled.value
+                        ) {
+                            Text(
+                                text = stringResource(id = R.string.to_default),
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                        }
+                    }
+                }
+            }
+        }
+
+        item {
             SettingsGroup(headline = stringResource(id = R.string.simulation_settings)) {
                 SettingsItemWrapper(
                     modifier = Modifier
@@ -199,88 +286,15 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
         }
 
         item {
-            SettingsGroup(headline = stringResource(id = R.string.rules)) {
-                SettingsItemWrapper(
-                    modifier = Modifier
-                        .horizontalScroll(rememberScrollState()),
-                    headline = stringResource(id = R.string.neighbors_for_reviving),
-                    horizontalArrangement = Arrangement.Center
-                ) {
-
-                    val buttonValues = (1..10).toList()
-                    val checkedList = remember { mutableStateListOf(3) }
-
-                    MultiChoiceSegmentedButtonRow {
-                        buttonValues.forEachIndexed { index, value ->
-                            SegmentedButton(
-                                shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
-                                onCheckedChange = {
-                                    if (index in checkedList) {
-                                        checkedList.remove(index)
-                                    } else {
-                                        checkedList.add(index)
-                                    }
-                                },
-                                checked = index in checkedList,
-                                colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
-                            ) {
-                                Text(value.toString())
-                            }
-                        }
-                    }
-                }
-                SettingsItemWrapper(
-                    modifier = Modifier
-                        .horizontalScroll(rememberScrollState()),
-                    headline = stringResource(id = R.string.neighbors_for_surviving),
-                    horizontalArrangement = Arrangement.Center
-                ) {
-
-                    val buttonValues = (1..10).toList()
-                    val checkedList = remember { mutableStateListOf(2, 3) }
-
-                    MultiChoiceSegmentedButtonRow {
-                        buttonValues.forEachIndexed { index, value ->
-                            SegmentedButton(
-                                shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
-                                onCheckedChange = {
-                                    if (index in checkedList) {
-                                        checkedList.remove(index)
-                                    } else {
-                                        checkedList.add(index)
-                                    }
-                                },
-                                checked = index in checkedList,
-                                colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
-                            ) {
-                                Text(value.toString())
-                            }
-                        }
-                    }
-                }
-                Row(
-                    modifier = Modifier.padding(
-                        start = 20.dp
-                    )
-                ) {
-                    Button(onClick = { /*TODO*/ }) {
-                        Text(
-                            text = stringResource(id = R.string.to_default),
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                    }
-                }
-            }
-        }
-
-        item {
             if (isWidth(sizeClass = WindowWidthSizeClass.Expanded).not()) {
                 BottomWindowInsetsSpacer()
             }
         }
     }
 }
+
+private fun checkIsRulesNotDefault(viewModel: GameScreenViewModel) =
+    GameOfLife.GameOfLifeStepSettingsDefault.neighborsForReviving != viewModel.states.value.gameOfLifeStepRules.neighborsForReviving || GameOfLife.GameOfLifeStepSettingsDefault.neighborsForAlive != viewModel.states.value.gameOfLifeStepRules.neighborsForAlive
 
 @Composable
 private fun RowScope.SettingsItemContent(title: String, description: String) {
