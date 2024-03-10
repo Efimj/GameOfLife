@@ -376,7 +376,7 @@ private fun SettingsGroup(headline: String, content: @Composable() (ColumnScope.
         Text(
             modifier = Modifier
                 .padding(horizontal = 20.dp)
-                .padding(bottom = 5.dp),
+                .padding(top = 10.dp, bottom = 5.dp),
             text = headline,
             style = MaterialTheme.typography.titleLarge,
             maxLines = 1,
