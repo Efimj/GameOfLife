@@ -21,10 +21,7 @@ import com.jobik.gameoflife.R
 import com.jobik.gameoflife.screens.Game.GameRuleSet
 import com.jobik.gameoflife.screens.Game.GameRules
 import com.jobik.gameoflife.ui.composables.CustomModalBottomSheet
-import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
-import com.jobik.gameoflife.ui.helpers.TopWindowInsetsSpacer
-import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
-import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
+import com.jobik.gameoflife.ui.helpers.*
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -50,7 +47,7 @@ fun SelectGameRuleSet(isOpen: MutableState<Boolean>, selectedRules: GameRules?, 
     }
 
     val topInsetsPaddings = topWindowInsetsPadding()
-    val bottomInsetsPaddings = topWindowInsetsPadding()
+    val bottomInsetsPaddings = bottomWindowInsetsPadding()
 
     if (showBottomSheet.value) {
         CustomModalBottomSheet(

@@ -26,10 +26,7 @@ import com.jobik.gameoflife.services.localization.LocaleData
 import com.jobik.gameoflife.services.localization.Localization
 import com.jobik.gameoflife.services.localization.LocalizationHelper
 import com.jobik.gameoflife.ui.composables.CustomModalBottomSheet
-import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
-import com.jobik.gameoflife.ui.helpers.TopWindowInsetsSpacer
-import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
-import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
+import com.jobik.gameoflife.ui.helpers.*
 import kotlinx.coroutines.launch
 
 private fun getLocalizationList(localContext: Context): List<LocaleData> {
@@ -77,7 +74,7 @@ fun LocalizationSelector(
     }
 
     val topInsetsPaddings = topWindowInsetsPadding()
-    val bottomInsetsPaddings = topWindowInsetsPadding()
+    val bottomInsetsPaddings = bottomWindowInsetsPadding()
 
     if (showBottomSheet.value) {
         CustomModalBottomSheet(
