@@ -167,7 +167,7 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                     horizontalArrangement = Arrangement.Center
                 ) {
 
-                    val buttonValues = (0..9).toList()
+                    val buttonValues = (0..8).toList()
 
                     MultiChoiceSegmentedButtonRow {
                         buttonValues.forEachIndexed { index, value ->
@@ -196,7 +196,7 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                     horizontalArrangement = Arrangement.Center
                 ) {
 
-                    val buttonValues = (0..9).toList()
+                    val buttonValues = (0..8).toList()
 
                     MultiChoiceSegmentedButtonRow {
                         buttonValues.forEachIndexed { index, value ->
@@ -257,12 +257,15 @@ fun ActionsContent(viewModel: GameScreenViewModel) {
                         100L,
                         250L,
                         500L,
+                        750L,
                         1000L,
                     )
+
                     val buttonTitles = listOf(
                         stringResource(id = R.string.speed_value_100ms),
                         stringResource(id = R.string.speed_value_250ms),
                         stringResource(id = R.string.speed_value_500ms),
+                        stringResource(id = R.string.speed_value_750ms),
                         stringResource(id = R.string.speed_value_1s),
                     )
 

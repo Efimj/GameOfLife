@@ -11,6 +11,7 @@
     <string name="speed_value_100ms">100ms</string>
     <string name="speed_value_250ms">250ms</string>
     <string name="speed_value_500ms">500ms</string>
+    <string name="speed_value_750ms">750ms</string>
     <string name="speed_value_1s">1s</string>
 
     <string name="start_game">Start game</string>
