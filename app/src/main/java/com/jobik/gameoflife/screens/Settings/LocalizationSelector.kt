@@ -29,6 +29,7 @@ import com.jobik.gameoflife.ui.composables.CustomModalBottomSheet
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.TopWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
+import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
 import kotlinx.coroutines.launch
 
 private fun getLocalizationList(localContext: Context): List<LocaleData> {
@@ -75,6 +76,9 @@ fun LocalizationSelector(
         }
     }
 
+    val topInsetsPaddings = topWindowInsetsPadding()
+    val bottomInsetsPaddings = topWindowInsetsPadding()
+
     if (showBottomSheet.value) {
         CustomModalBottomSheet(
             state = sheetState,
@@ -90,6 +94,8 @@ fun LocalizationSelector(
                 }
             }
         ) {
+            Spacer(modifier = Modifier.height(topInsetsPaddings))
+
             val scroll = rememberScrollState()
             Header(scroll)
             Column(
@@ -118,7 +124,7 @@ fun LocalizationSelector(
                             }
                     }
                 }
-                BottomWindowInsetsSpacer()
+                Spacer(modifier = Modifier.height(bottomInsetsPaddings))
             }
         }
     }
@@ -126,7 +132,6 @@ fun LocalizationSelector(
 
 @Composable
 private fun Header(scroll: ScrollState) {
-    TopWindowInsetsSpacer()
     Row(
         modifier = Modifier
             .fillMaxWidth()

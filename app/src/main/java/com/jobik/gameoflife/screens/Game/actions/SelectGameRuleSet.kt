@@ -24,6 +24,7 @@ import com.jobik.gameoflife.ui.composables.CustomModalBottomSheet
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.TopWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
+import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -48,6 +49,9 @@ fun SelectGameRuleSet(isOpen: MutableState<Boolean>, selectedRules: GameRules, o
         }
     }
 
+    val topInsetsPaddings = topWindowInsetsPadding()
+    val bottomInsetsPaddings = topWindowInsetsPadding()
+
     if (showBottomSheet.value) {
         CustomModalBottomSheet(
             state = sheetState,
@@ -63,6 +67,8 @@ fun SelectGameRuleSet(isOpen: MutableState<Boolean>, selectedRules: GameRules, o
                 }
             }
         ) {
+            Spacer(modifier = Modifier.height(topInsetsPaddings))
+
             val scroll = rememberScrollState()
             Header(scroll)
             Column(
@@ -72,7 +78,6 @@ fun SelectGameRuleSet(isOpen: MutableState<Boolean>, selectedRules: GameRules, o
                     .horizontalWindowInsetsPadding()
                     .padding(horizontal = 20.dp)
                     .padding(bottom = 20.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 GameRuleSet.forEachIndexed { index, rules ->
                     val isSelected = selectedRules.title == rules.title
@@ -92,7 +97,8 @@ fun SelectGameRuleSet(isOpen: MutableState<Boolean>, selectedRules: GameRules, o
                             }
                     }
                 }
-                BottomWindowInsetsSpacer()
+
+                Spacer(modifier = Modifier.height(bottomInsetsPaddings))
             }
         }
     }
@@ -100,7 +106,6 @@ fun SelectGameRuleSet(isOpen: MutableState<Boolean>, selectedRules: GameRules, o
 
 @Composable
 private fun Header(scroll: ScrollState) {
-    TopWindowInsetsSpacer()
     Row(
         modifier = Modifier
             .fillMaxWidth()
