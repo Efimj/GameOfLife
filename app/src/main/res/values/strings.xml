@@ -45,6 +45,18 @@
     <string name="rules_set">Rules set</string>
     <string name="rules_set_description">Choose different rulesets to see different game scenarios</string>
     <string name="other">Other</string>
+
+    STABLE.name -> context.getString(R.string.stable)
+    CHAOTIC.name -> context.getString(R.string.chaotic)
+    EXPLODING.name -> context.getString(R.string.exploding)
+    else -> context.getString(R.string.no_one)
+
+    <string name="stable">stable</string>
+    <string name="chaotic">chaotic</string>
+    <string name="exploding">exploding</string>
+    <string name="undefined">undefined</string>
+
+
     <string name="open_in_wikipedia">Open in wikipedia</string>
     <string name="JohnHortonConway">John Horton Conway</string>
     <string name="JohnHortonConway_card_description">English mathematician, has made significant

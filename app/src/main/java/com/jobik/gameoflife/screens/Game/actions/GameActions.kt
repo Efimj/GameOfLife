@@ -23,6 +23,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.gameOfLife.GameOfLife
+import com.jobik.gameoflife.screens.Game.GameRuleSet
 import com.jobik.gameoflife.screens.Game.GameScreenViewModel
 import com.jobik.gameoflife.ui.composables.*
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
@@ -170,7 +171,7 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     )
                 }
 
-                SelectGameRuleSet(isOpen = ruleSetDialogVisible)
+                SelectGameRuleSet(isOpen = ruleSetDialogVisible, selectedRules = GameRuleSet.first(), onClick = {})
             }
         }
 

@@ -1,6 +1,5 @@
 package com.jobik.gameoflife.screens.Game.actions
 
-import android.app.Activity
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.*
@@ -19,7 +18,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
-import com.jobik.gameoflife.services.localization.LocaleData
+import com.jobik.gameoflife.screens.Game.GameRuleSet
+import com.jobik.gameoflife.screens.Game.GameRules
 import com.jobik.gameoflife.ui.composables.CustomModalBottomSheet
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.TopWindowInsetsSpacer
@@ -28,9 +28,8 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SelectGameRuleSet(isOpen: MutableState<Boolean>) {
+fun SelectGameRuleSet(isOpen: MutableState<Boolean>, selectedRules: GameRules, onClick: (rules: GameRules) -> Unit) {
     val scope = rememberCoroutineScope()
-    val context = LocalContext.current
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     val showBottomSheet = remember { mutableStateOf(false) }
 
@@ -71,27 +70,28 @@ fun SelectGameRuleSet(isOpen: MutableState<Boolean>) {
                     .fillMaxWidth()
                     .verticalScroll(scroll)
                     .horizontalWindowInsetsPadding()
-                    .padding(horizontal = 20.dp),
+                    .padding(horizontal = 20.dp)
+                    .padding(bottom = 20.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-//                localizations.value.forEachIndexed { index, locale ->
-//                    RulesItem(
-//                        isSelected = currentLocale.name == locale.name,
-//                        locale = locale
-//                    ) {
-//                        scope
-//                            .launch {
-//                                sheetState.hide()
-//                            }
-//                            .invokeOnCompletion {
-//                                isOpen.value = false
-//                                if (currentLocale.name == locale.name) return@invokeOnCompletion
-//
-//                                selectLocalization(index, context)
-//                                (context as? Activity)?.recreate()
-//                            }
-//                    }
-//                }
+                GameRuleSet.forEachIndexed { index, rules ->
+                    val isSelected = selectedRules.title == rules.title
+                    RulesItem(
+                        isSelected = isSelected,
+                        rules = rules
+                    ) {
+                        scope
+                            .launch {
+                                sheetState.hide()
+                            }
+                            .invokeOnCompletion {
+                                isOpen.value = false
+                                if (isSelected) return@invokeOnCompletion
+
+                                onClick(rules)
+                            }
+                    }
+                }
                 BottomWindowInsetsSpacer()
             }
         }
@@ -120,9 +120,10 @@ private fun Header(scroll: ScrollState) {
 @Composable
 private fun RulesItem(
     isSelected: Boolean = false,
-    locale: LocaleData,
+    rules: GameRules,
     onClick: () -> Unit,
 ) {
+    val context = LocalContext.current
     val backgroundColorValue = if (isSelected) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent
     val backgroundColor by animateColorAsState(targetValue = backgroundColorValue, label = "backgroundColor")
 
@@ -137,25 +138,26 @@ private fun RulesItem(
         onClick = onClick,
         shape = CircleShape,
     ) {
-        Column(
-            horizontalAlignment = Alignment.Start,
-            verticalArrangement = Arrangement.spacedBy(2.dp),
-            modifier = Modifier.padding(horizontal = 20.dp, vertical = 6.dp)
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.padding(horizontal = 20.dp, vertical = 16.dp)
         ) {
             Text(
-                text = locale.name,
+                text = stringResource(id = rules.title),
                 style = MaterialTheme.typography.bodyLarge,
                 textAlign = TextAlign.Right,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
+            Spacer(modifier = Modifier.width(20.dp))
             Text(
-                text = locale.language,
-                style = MaterialTheme.typography.bodySmall,
+                text = rules.type.getLocalizedValue(context),
+                style = MaterialTheme.typography.bodyMedium,
                 textAlign = TextAlign.Right,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = .6f)
+                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = .76f)
             )
         }
     }
