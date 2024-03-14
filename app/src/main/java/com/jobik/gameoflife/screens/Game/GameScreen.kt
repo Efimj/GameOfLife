@@ -14,10 +14,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.unit.Density
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.gameOfLife.GameOfLife
+import com.jobik.gameoflife.screens.Game.actions.GameActions
 import com.jobik.gameoflife.ui.helpers.*
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -79,7 +78,7 @@ private fun ExpandedGameScreen(
                 .clip(RoundedCornerShape(12.dp))
                 .background(MaterialTheme.colorScheme.surface)
         ) {
-            ActionsContent(viewModel = viewModel)
+            GameActions(viewModel = viewModel)
         }
         Column(
             modifier = Modifier
@@ -152,6 +151,6 @@ private fun CompactGameScreen(
             }
         },
         frontLayerContent = {
-            ActionsContent(viewModel = viewModel)
+            GameActions(viewModel = viewModel)
         })
 }

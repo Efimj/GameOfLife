@@ -42,6 +42,8 @@
     <string name="change_theme">Change theme</string>
     <string name="application">Application</string>
     <string name="information">Information</string>
+    <string name="rules_set">Rules set</string>
+    <string name="rules_set_description">Choose different rulesets to see different game scenarios</string>
     <string name="other">Other</string>
     <string name="open_in_wikipedia">Open in wikipedia</string>
     <string name="JohnHortonConway">John Horton Conway</string>
