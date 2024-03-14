@@ -1,31 +1,37 @@
 package com.jobik.gameoflife.screens.Game.actions
 
 import androidx.compose.animation.*
-import androidx.compose.foundation.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.RestartAlt
-import androidx.compose.material.icons.outlined.*
+import androidx.compose.material.icons.outlined.Book
+import androidx.compose.material.icons.outlined.Cached
+import androidx.compose.material.icons.outlined.Mood
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.gameOfLife.GameOfLife
 import com.jobik.gameoflife.screens.Game.GameRuleSet
+import com.jobik.gameoflife.screens.Game.GameRules
 import com.jobik.gameoflife.screens.Game.GameScreenViewModel
-import com.jobik.gameoflife.ui.composables.*
+import com.jobik.gameoflife.ui.composables.AliveEmojis
+import com.jobik.gameoflife.ui.composables.DeadEmojis
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
 import com.jobik.gameoflife.ui.helpers.isWidth
@@ -169,9 +175,69 @@ fun GameActions(viewModel: GameScreenViewModel) {
                         description = stringResource(id = R.string.rules_set_description),
                         paddings = PaddingValues(start = 20.dp, top = 4.dp, bottom = 4.dp)
                     )
+
+                    val selectedRules = remember { mutableStateOf<GameRules?>(null) }
+                    val context = LocalContext.current
+
+                    LaunchedEffect(
+                        viewModel.states.value.gameOfLifeStepRules.neighborsForAlive,
+                        viewModel.states.value.gameOfLifeStepRules.neighborsForReviving
+                    ) {
+                        val currentRules = viewModel.states.value.gameOfLifeStepRules
+                        GameRuleSet.forEach { rules ->
+                            if (currentRules.neighborsForAlive == rules.rules.neighborsForAlive && currentRules.neighborsForReviving == rules.rules.neighborsForReviving) {
+                                selectedRules.value = rules
+                                return@LaunchedEffect
+                            }
+                        }
+                        selectedRules.value = null
+                    }
+
+                    AnimatedContent(targetState = selectedRules.value, label = "") { rules ->
+                        if (rules != null) {
+                            Column(
+                                horizontalAlignment = Alignment.Start,
+                                verticalArrangement = Arrangement.spacedBy(2.dp),
+                                modifier = Modifier.padding(start = 20.dp)
+                            ) {
+                                Text(
+                                    text = stringResource(id = rules.title),
+                                    style = MaterialTheme.typography.bodyLarge,
+                                    textAlign = TextAlign.Right,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                                Text(
+                                    text = rules.type.getLocalizedValue(context),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    textAlign = TextAlign.Right,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = .6f)
+                                )
+                            }
+                        } else {
+                            Column(
+                                horizontalAlignment = Alignment.Start,
+                                verticalArrangement = Arrangement.Center,
+                                modifier = Modifier.padding(start = 20.dp)
+                            ) {
+                                Text(
+                                    text = stringResource(id = R.string.custom_rules),
+                                    style = MaterialTheme.typography.bodyLarge,
+                                    textAlign = TextAlign.Right,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            }
+                        }
+                    }
                 }
 
-                SelectGameRuleSet(isOpen = ruleSetDialogVisible, selectedRules = GameRuleSet.first(), onClick = {})
+                SelectGameRuleSet(
+                    isOpen = ruleSetDialogVisible,
+                    selectedRules = GameRuleSet.first(),
+                    onClick = { rules -> viewModel.setRules(rules) })
             }
         }
 
@@ -195,7 +261,9 @@ fun GameActions(viewModel: GameScreenViewModel) {
                                         if (it) viewModel.states.value.gameOfLifeStepRules.neighborsForReviving.plus(
                                             value
                                         )
-                                        else viewModel.states.value.gameOfLifeStepRules.neighborsForReviving.minus(value)
+                                        else viewModel.states.value.gameOfLifeStepRules.neighborsForReviving.minus(
+                                            value
+                                        )
                                     viewModel.updateGameRules(neighborsForReviving = newRule)
                                 },
                                 checked = value in viewModel.states.value.gameOfLifeStepRules.neighborsForReviving,
@@ -221,8 +289,12 @@ fun GameActions(viewModel: GameScreenViewModel) {
                                 shape = SegmentedButtonDefaults.itemShape(index = index, count = buttonValues.size),
                                 onCheckedChange = {
                                     val newRule =
-                                        if (it) viewModel.states.value.gameOfLifeStepRules.neighborsForAlive.plus(value)
-                                        else viewModel.states.value.gameOfLifeStepRules.neighborsForAlive.minus(value)
+                                        if (it) viewModel.states.value.gameOfLifeStepRules.neighborsForAlive.plus(
+                                            value
+                                        )
+                                        else viewModel.states.value.gameOfLifeStepRules.neighborsForAlive.minus(
+                                            value
+                                        )
                                     viewModel.updateGameRules(neighborsForAlive = newRule)
                                 },
                                 checked = value in viewModel.states.value.gameOfLifeStepRules.neighborsForAlive,

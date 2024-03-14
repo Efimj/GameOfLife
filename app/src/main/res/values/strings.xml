@@ -43,6 +43,7 @@
     <string name="application">Application</string>
     <string name="information">Information</string>
     <string name="rules_set">Rules set</string>
+    <string name="custom_rules">Custom rules</string>
     <string name="rules_set_description">Choose different rulesets to see different game scenarios</string>
     <string name="other">Other</string>
 
