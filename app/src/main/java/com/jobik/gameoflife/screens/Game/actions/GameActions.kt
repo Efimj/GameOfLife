@@ -155,9 +155,9 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     }
                 }
 
-                var ruleSetDialogVisible by remember { mutableStateOf(false) }
+                val ruleSetDialogVisible = remember { mutableStateOf(false) }
 
-                SettingsItemWrapper(onClick = { ruleSetDialogVisible = ruleSetDialogVisible.not() }) {
+                SettingsItemWrapper(onClick = { ruleSetDialogVisible.value = ruleSetDialogVisible.value.not() }) {
                     Icon(
                         imageVector = Icons.Outlined.Book,
                         contentDescription = null,
@@ -170,7 +170,7 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     )
                 }
 
-
+                SelectGameRuleSet(isOpen = ruleSetDialogVisible)
             }
         }
 
