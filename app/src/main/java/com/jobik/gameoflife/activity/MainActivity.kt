@@ -11,6 +11,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.jobik.gameoflife.GameOfLifeApplication
 import com.jobik.gameoflife.screens.AppLayout.AppLayout
 import com.jobik.gameoflife.services.localization.LocalizationHelper
+import com.jobik.gameoflife.services.rate.RateDialogProvider
 import com.jobik.gameoflife.ui.theme.AppThemeUtil
 import com.jobik.gameoflife.ui.theme.GameOfLifeTheme
 
@@ -31,7 +32,12 @@ class MainActivity : ComponentActivity() {
             AppThemeUtil.restore(context = this, defaultValue = isSystemInDarkTheme())
 
             GameOfLifeTheme(darkTheme = AppThemeUtil.isDarkMode.value, palette = AppThemeUtil.palette.value) {
+
+                // Main application
                 AppLayout()
+
+                // Rate dialog
+                RateDialogProvider()
             }
         }
     }
