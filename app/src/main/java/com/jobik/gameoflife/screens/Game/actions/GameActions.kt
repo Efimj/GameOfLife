@@ -232,12 +232,12 @@ fun GameActions(viewModel: GameScreenViewModel) {
                             }
                         }
                     }
-                }
 
-                SelectGameRuleSet(
-                    isOpen = ruleSetDialogVisible,
-                    selectedRules = GameRuleSet.first(),
-                    onClick = { rules -> viewModel.setRules(rules) })
+                    SelectGameRuleSet(
+                        isOpen = ruleSetDialogVisible,
+                        selectedRules = selectedRules.value,
+                        onClick = { rules -> viewModel.setRules(rules) })
+                }
             }
         }
 

@@ -29,7 +29,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SelectGameRuleSet(isOpen: MutableState<Boolean>, selectedRules: GameRules, onClick: (rules: GameRules) -> Unit) {
+fun SelectGameRuleSet(isOpen: MutableState<Boolean>, selectedRules: GameRules?, onClick: (rules: GameRules) -> Unit) {
     val scope = rememberCoroutineScope()
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     val showBottomSheet = remember { mutableStateOf(false) }
@@ -80,7 +80,7 @@ fun SelectGameRuleSet(isOpen: MutableState<Boolean>, selectedRules: GameRules, o
                     .padding(bottom = 20.dp),
             ) {
                 GameRuleSet.forEachIndexed { index, rules ->
-                    val isSelected = selectedRules.title == rules.title
+                    val isSelected = if (selectedRules == null) false else selectedRules.title == rules.title
                     RulesItem(
                         isSelected = isSelected,
                         rules = rules

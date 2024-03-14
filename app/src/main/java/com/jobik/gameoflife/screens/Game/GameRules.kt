@@ -45,6 +45,12 @@ private fun getRandomStartStates(rows: Int = 15, cols: Int = 15): List<List<Game
 
 val GameRuleSet = listOf(
     GameRules(
+        title = R.string.rs_conways_life,
+        type = GameRulesType.CHAOTIC,
+        firstStep = getRandomStartStates(),
+        rules = GameOfLifeStepSettings(neighborsForReviving = setOf(3), neighborsForAlive = setOf(2, 3)),
+    ),
+    GameRules(
         title = R.string.rs_two_x_two,
         type = GameRulesType.CHAOTIC,
         firstStep = getRandomStartStates(),
@@ -70,12 +76,6 @@ val GameRuleSet = listOf(
             neighborsForReviving = setOf(3, 7, 8),
             neighborsForAlive = setOf(2, 3, 5, 6, 7, 8)
         ),
-    ),
-    GameRules(
-        title = R.string.rs_conways_life,
-        type = GameRulesType.CHAOTIC,
-        firstStep = getRandomStartStates(),
-        rules = GameOfLifeStepSettings(neighborsForReviving = setOf(3), neighborsForAlive = setOf(2, 3)),
     ),
     GameRules(
         title = R.string.rs_coral,
