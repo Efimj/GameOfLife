@@ -102,4 +102,7 @@ dependencies {
     // Compose collapsing toolbar (nonofficial)
     implementation("com.github.GIGAMOLE:ComposeCollapsingToolbar:1.0.8")
 
+    // Jetpack lifecycle observer
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
+
 }
