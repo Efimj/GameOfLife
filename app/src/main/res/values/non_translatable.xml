@@ -35,5 +35,29 @@
     <string name="telegram_group_url" translatable="false">https://t.me/efim_mobile_projects</string>
     <string name="github_repository_url" translatable="false">https://github.com/Efimj/GameOfLife</string>
 
+    <!--    game settings  rs - rule set -->
+    <string name="rs_two_x_two" translatable="false">2x2</string>
+    <string name="rs_thirty_four_life" translatable="false">34 life</string>
+    <string name="rs_amoeba" translatable="false">Amoeba</string>
+    <string name="rs_assimilation" translatable="false">Assimilation</string>
+    <string name="rs_coagulations" translatable="false">Coagulations</string>
+    <string name="rs_conways_life" translatable="false">Conway`s life</string>
+    <string name="rs_coral" translatable="false">Coral</string>
+    <string name="rs_day_and_night" translatable="false">Day &amp; Night</string>
+    <string name="rs_diamoeba" translatable="false">Diamoeba</string>
+    <string name="rs_flakes" translatable="false">Flakes</string>
+    <string name="rs_gnarl" translatable="false">Gnarl</string>
+    <string name="rs_high_life" translatable="false">High life</string>
+    <string name="rs_inverse_life" translatable="false">Inverse life</string>
+    <string name="rs_long_life" translatable="false">Long life</string>
+    <string name="rs_maze" translatable="false">Maze</string>
+    <string name="rs_mazectric" translatable="false">Mazectric</string>
+    <string name="rs_move" translatable="false">Move</string>
+    <string name="rs_pseudo_life" translatable="false">Pseudo life</string>
+    <string name="rs_replicator" translatable="false">Replicator</string>
+    <string name="rs_seeds" translatable="false">Seeds</string>
+    <string name="rs_serviettes" translatable="false">Serviettes</string>
+    <string name="rs_stains" translatable="false">Stains</string>
+    <string name="rs_walled_cities" translatable="false">Walled cities</string>
 
 </resources>
