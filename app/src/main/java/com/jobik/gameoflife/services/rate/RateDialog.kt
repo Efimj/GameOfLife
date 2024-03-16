@@ -26,7 +26,11 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RateDialog(isOpen: MutableState<Boolean>) {
+fun RateDialog(
+    isOpen: MutableState<Boolean>,
+    onCancel: (dontAskAgain: Boolean) -> Unit,
+    onRate: (dontAskAgain: Boolean) -> Unit
+) {
     val scope = rememberCoroutineScope()
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     val showBottomSheet = remember { mutableStateOf(false) }
@@ -121,7 +125,7 @@ fun RateDialog(isOpen: MutableState<Boolean>) {
                 ) {
                     TextButton(
                         modifier = Modifier.weight(1f),
-                        onClick = { /*TODO*/ }) {
+                        onClick = { onCancel(dontShowAgain.value) }) {
                         Text(
                             text = stringResource(id = R.string.later),
                             maxLines = 1,
@@ -130,7 +134,7 @@ fun RateDialog(isOpen: MutableState<Boolean>) {
                     }
                     Button(
                         modifier = Modifier.weight(1f),
-                        onClick = { /*TODO*/ }) {
+                        onClick = { onRate(dontShowAgain.value) }) {
                         Text(
                             text = stringResource(id = R.string.rate),
                             maxLines = 1,

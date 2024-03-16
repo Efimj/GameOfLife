@@ -13,4 +13,7 @@ object SharedPreferencesKeys {
     const val Localization = "Localization"
     const val OnboardingFinishedData = "1"
     const val CurrentOnboardingFinishedData = "OnboardingPageFinishedData"
+    const val OnCreateCounter = "OnCreateCounter"
+    const val DontAskRate = "DontAskRate"
+
 }

@@ -2,10 +2,7 @@ package com.jobik.gameoflife.ui.composables
 
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.material3.BottomSheetDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.SheetState
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Shape
 
@@ -16,6 +13,7 @@ fun CustomModalBottomSheet(
     onCancel: () -> Unit = {},
     shape: Shape = BottomSheetDefaults.ExpandedShape,
     windowInsets: WindowInsets = BottomSheetDefaults.windowInsets,
+    properties: ModalBottomSheetProperties = ModalBottomSheetDefaults.properties(),
     dragHandle: @Composable() (() -> Unit)? = { BottomSheetDefaults.DragHandle() },
     content: @Composable() (ColumnScope.() -> Unit)
 ) {
@@ -25,6 +23,7 @@ fun CustomModalBottomSheet(
         shape = shape,
         dragHandle = dragHandle,
         windowInsets = windowInsets,
+        properties = properties
     ) {
         content()
     }
