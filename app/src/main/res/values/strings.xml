@@ -43,6 +43,13 @@
     <string name="application">Application</string>
     <string name="information">Information</string>
     <string name="rules_set">Rules set</string>
+    <string name="rate_dialog_title">Did you like this app?</string>
+    <string name="rate_dialog_description">Please share your opinion about the application by leaving a review. Your
+        rating will help us improve our application for all users
+    </string>
+    <string name="dont_ask_again">Don\'t ask again</string>
+    <string name="later">Later</string>
+    <string name="rate">Rate!</string>
     <string name="custom_rules">Custom rules</string>
     <string name="rules_set_description">Choose different rulesets to see different game scenarios</string>
     <string name="other">Other</string>

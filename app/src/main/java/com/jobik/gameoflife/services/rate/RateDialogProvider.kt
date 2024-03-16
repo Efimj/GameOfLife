@@ -12,7 +12,7 @@ const val numberOfStart = 3
 
 @Composable
 fun RateDialogProvider() {
-    val isOpen = remember { mutableStateOf(false) }
+    val isOpen = rememberSaveable { mutableStateOf(false) }
 
     val counter = rememberSaveable { mutableIntStateOf(0) }
 
