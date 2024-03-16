@@ -2,6 +2,7 @@ package com.jobik.gameoflife.screens.Information
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateDpAsState
@@ -37,7 +38,7 @@ fun LargeInformationCard(
     @StringRes title: Int,
     @StringRes body: Int,
     imageWithTint: Boolean = false,
-    button: CardButton
+    button: CardButton,
 ) {
     var isExpanded by rememberSaveable() { mutableStateOf(false) }
 
@@ -115,12 +116,14 @@ fun LargeInformationCard(
                     maxLines = if (isExpanded) Int.MAX_VALUE else 3,
                     color = MaterialTheme.colorScheme.onSurface,
                 )
-                Row {
-                    Button(onClick = button.onClick) {
-                        Text(
-                            text = stringResource(id = button.text),
-                            maxLines = 1,
-                        )
+                AnimatedVisibility(visible = isExpanded) {
+                    Row {
+                        Button(onClick = button.onClick) {
+                            Text(
+                                text = stringResource(id = button.text),
+                                maxLines = 1,
+                            )
+                        }
                     }
                 }
             }

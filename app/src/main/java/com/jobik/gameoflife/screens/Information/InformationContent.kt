@@ -4,11 +4,13 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
+import com.jobik.gameoflife.services.rate.RateService
 import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
 import com.jobik.gameoflife.ui.helpers.currentWidthSizeClass
 
@@ -57,6 +59,21 @@ fun InformationContent() {
                 button = CardButton(
                     text = R.string.open_in_wikipedia,
                     onClick = { uriHandler.openUri(gameOfLifeUri) }
+                ),
+            )
+        }
+        item {
+            val context = LocalContext.current
+            LargeInformationCard(
+                image = R.drawable.three_stars_v2,
+                title = R.string.rate_dialog_title,
+                body = R.string.rate_dialog_description,
+                imageWithTint = true,
+                button = CardButton(
+                    text = R.string.rate,
+                    onClick = {
+                        RateService(context).openAppRating()
+                    }
                 ),
             )
         }
