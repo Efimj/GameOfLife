@@ -1,12 +1,9 @@
 package com.jobik.gameoflife.screens.Onboarding
 
 import android.content.Context
-import android.os.Build.VERSION.SDK_INT
 import android.util.Log
 import androidx.compose.animation.*
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.*
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -18,12 +15,13 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowForward
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -31,11 +29,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavHostController
-import coil.ImageLoader
-import coil.compose.rememberAsyncImagePainter
-import coil.decode.GifDecoder
-import coil.decode.ImageDecoderDecoder
-import coil.request.ImageRequest
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.SharedPreferencesKeys
 import com.jobik.gameoflife.SharedPreferencesKeys.OnboardingFinishedData
@@ -43,6 +36,7 @@ import com.jobik.gameoflife.navigation.NavigationHelpers.Companion.canNavigate
 import com.jobik.gameoflife.navigation.Screen
 import com.jobik.gameoflife.ui.composables.VerticalIndicator
 import com.jobik.gameoflife.ui.helpers.*
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -223,27 +217,31 @@ fun PagerScreen(content: Onboarding) {
         verticalArrangement = Arrangement.Center,
     ) {
 
-        val imageLoader = ImageLoader.Builder(LocalContext.current)
-            .components {
-                if (SDK_INT >= 28) {
-                    add(ImageDecoderDecoder.Factory())
-                } else {
-                    add(GifDecoder.Factory())
-                }
-            }
-            .build()
+        var index by remember { mutableIntStateOf(0) }
+        val currentDrawable = remember { mutableIntStateOf(content.images[index]) }
 
-        Image(
-            modifier = Modifier.weight(1f),
-            painter = rememberAsyncImagePainter(
-                ImageRequest.Builder(LocalContext.current)
-                    .data(data = content.image)
-                    .build(),
-                imageLoader = imageLoader
-            ),
-            contentScale = ContentScale.Fit,
-            contentDescription = stringResource(R.string.Onboarding)
-        )
+        LaunchedEffect(Unit) {
+            while (true) {
+                delay(1000)
+                index = (index + 1) % content.images.size
+                currentDrawable.intValue = content.images[index]
+            }
+        }
+        Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
+            Crossfade(
+                targetState = currentDrawable.intValue,
+                animationSpec = tween(durationMillis = 500),
+                label = "crossfade"
+            ) { targetDrawable ->
+                Image(
+                    alignment = Alignment.Center,
+                    painter = painterResource(id = targetDrawable),
+                    contentScale = ContentScale.Fit,
+                    contentDescription = stringResource(R.string.Onboarding),
+                    colorFilter = if (content.images.size == 1) null else ColorFilter.tint(MaterialTheme.colorScheme.onPrimaryContainer)
+                )
+            }
+        }
         Text(
             modifier = Modifier
                 .fillMaxWidth(),
