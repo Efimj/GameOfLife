@@ -45,10 +45,11 @@ fun InformationContent() {
             image = R.drawable.game_of_life_poster,
             title = R.string.the_game_of_life,
             body = R.string.GameOfLife_large_description,
+            imageWithTint = true,
             button = CardButton(
                 text = R.string.open_in_wikipedia,
                 onClick = { uriHandler.openUri(gameOfLifeUri) }
-            )
+            ),
         )
 
         val telegramGroupUri = stringResource(id = R.string.telegram_group_url)

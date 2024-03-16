@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -31,7 +32,13 @@ data class CardButton(
 )
 
 @Composable
-fun LargeInformationCard(@DrawableRes image: Int, @StringRes title: Int, @StringRes body: Int, button: CardButton) {
+fun LargeInformationCard(
+    @DrawableRes image: Int,
+    @StringRes title: Int,
+    @StringRes body: Int,
+    imageWithTint: Boolean = false,
+    button: CardButton
+) {
     var isExpanded by rememberSaveable() { mutableStateOf(false) }
 
     val containerColorValue =
@@ -65,7 +72,8 @@ fun LargeInformationCard(@DrawableRes image: Int, @StringRes title: Int, @String
                     .clip(MaterialTheme.shapes.large),
                 painter = painterResource(id = image),
                 contentScale = ContentScale.FillWidth,
-                contentDescription = null
+                contentDescription = null,
+                colorFilter = if (imageWithTint) ColorFilter.tint(MaterialTheme.colorScheme.onPrimaryContainer) else null
             )
             Column(modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 Row(
