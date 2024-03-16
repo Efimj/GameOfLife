@@ -164,6 +164,12 @@ fun GameActions(viewModel: GameScreenViewModel) {
 
                 val ruleSetDialogVisible = remember { mutableStateOf(false) }
 
+                LaunchedEffect(ruleSetDialogVisible.value) {
+                    if (ruleSetDialogVisible.value) {
+                        viewModel.turnOffSimulation()
+                    }
+                }
+
                 SettingsItemWrapper(onClick = { ruleSetDialogVisible.value = ruleSetDialogVisible.value.not() }) {
                     Icon(
                         imageVector = Icons.Outlined.Book,
