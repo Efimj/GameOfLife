@@ -258,17 +258,29 @@ class GameScreenViewModel : ViewModel() {
     }
 
     fun setRules(rules: GameRules) {
-        _states.value = states.value.copy(
-            gameOfLifeStepRules = rules.rules,
-            isSimulationRunning = false,
-            rows = rules.firstStep.size,
-            cols = rules.firstStep.first().size,
-            alive = 0,
-            deaths = 0,
-            revivals = 0,
-            stepNumber = 0,
-            previousStep = emptyList(),
-            currentStep = rules.firstStep
-        )
+        if (rules.firstStep == null) {
+            _states.value = states.value.copy(
+                gameOfLifeStepRules = rules.rules,
+                isSimulationRunning = false,
+                alive = 0,
+                deaths = 0,
+                revivals = 0,
+                stepNumber = 0,
+                previousStep = emptyList(),
+            )
+        } else {
+            _states.value = states.value.copy(
+                gameOfLifeStepRules = rules.rules,
+                isSimulationRunning = false,
+                rows = rules.firstStep.size,
+                cols = rules.firstStep.first().size,
+                alive = 0,
+                deaths = 0,
+                revivals = 0,
+                stepNumber = 0,
+                previousStep = emptyList(),
+                currentStep = rules.firstStep
+            )
+        }
     }
 }
