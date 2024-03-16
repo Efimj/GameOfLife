@@ -251,7 +251,8 @@ fun PagerScreen(content: Onboarding) {
             style = MaterialTheme.typography.displaySmall,
             fontWeight = FontWeight.SemiBold,
             textAlign = TextAlign.Start,
-            overflow = TextOverflow.Ellipsis
+            overflow = TextOverflow.Ellipsis,
+            color = MaterialTheme.colorScheme.onSecondaryContainer,
         )
         Text(
             modifier = Modifier
@@ -260,7 +261,6 @@ fun PagerScreen(content: Onboarding) {
             text = stringResource(content.description),
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Start,
-            color = MaterialTheme.colorScheme.onSecondaryContainer,
             overflow = TextOverflow.Ellipsis
         )
     }
