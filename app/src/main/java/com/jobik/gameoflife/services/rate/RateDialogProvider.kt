@@ -8,7 +8,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import com.jobik.gameoflife.services.app.AppCounter
 
-private const val numberOfStart = 7
+private const val numberOfStart = 9
 
 @Composable
 fun RateDialogProvider() {

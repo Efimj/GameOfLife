@@ -74,7 +74,7 @@ fun LargeInformationCard(
                 painter = painterResource(id = image),
                 contentScale = ContentScale.FillWidth,
                 contentDescription = null,
-                colorFilter = if (imageWithTint) ColorFilter.tint(MaterialTheme.colorScheme.onPrimaryContainer) else null
+                colorFilter = if (imageWithTint) ColorFilter.tint(MaterialTheme.colorScheme.primary) else null
             )
             Column(modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 Row(

@@ -238,7 +238,7 @@ fun PagerScreen(content: Onboarding) {
                     painter = painterResource(id = targetDrawable),
                     contentScale = ContentScale.Fit,
                     contentDescription = stringResource(R.string.Onboarding),
-                    colorFilter = if (content.images.size == 1) null else ColorFilter.tint(MaterialTheme.colorScheme.onPrimaryContainer)
+                    colorFilter = if (content.images.size == 1) null else ColorFilter.tint(MaterialTheme.colorScheme.primary)
                 )
             }
         }

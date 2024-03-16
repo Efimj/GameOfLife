@@ -1,6 +1,7 @@
 package com.jobik.gameoflife.services.rate
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -9,6 +10,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -89,7 +91,7 @@ fun RateDialog(
                     contentDescription = null,
                     alignment = Alignment.Center,
                     contentScale = ContentScale.Fit,
-                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimaryContainer)
+                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
                 )
                 Text(
                     modifier = Modifier.fillMaxWidth(),
@@ -107,7 +109,13 @@ fun RateDialog(
                     overflow = TextOverflow.Ellipsis,
                 )
                 val dontShowAgain = rememberSaveable { mutableStateOf(false) }
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(MaterialTheme.shapes.medium)
+                        .clickable { dontShowAgain.value = dontShowAgain.value.not() },
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     Checkbox(
                         modifier = Modifier.offset(x = (-12).dp),
                         checked = dontShowAgain.value,
