@@ -8,7 +8,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import com.jobik.gameoflife.services.app.AppCounter
 
-const val numberOfStart = 3
+private const val numberOfStart = 7
 
 @Composable
 fun RateDialogProvider() {
@@ -16,10 +16,30 @@ fun RateDialogProvider() {
     val isOpen = rememberSaveable { mutableStateOf(false) }
 
     LifecycleEventEffect(Lifecycle.Event.ON_CREATE) {
+        val rateService = RateService(context)
         val numberOnCreate = AppCounter(context).getOnCreateNumber()
-        if (numberOnCreate % numberOfStart == 0)
+        if (rateService.getCanAskRate() && numberOnCreate % numberOfStart == 0)
             isOpen.value = true
     }
 
-    RateDialog(isOpen = isOpen, onCancel = { isOpen.value = false }, onRate = { isOpen.value = false })
+    val onRate = { dontAskAgain: Boolean ->
+        val rateService = RateService(context)
+        rateService.openAppRating()
+        isOpen.value = false
+        if (dontAskAgain)
+            rateService.updateCanAskRate(false)
+    }
+
+    val onCancel = { dontAskAgain: Boolean ->
+        val rateService = RateService(context)
+        isOpen.value = false
+        if (dontAskAgain)
+            rateService.updateCanAskRate(false)
+    }
+
+    RateDialog(
+        isOpen = isOpen,
+        onCancel = onCancel,
+        onRate = onRate
+    )
 }

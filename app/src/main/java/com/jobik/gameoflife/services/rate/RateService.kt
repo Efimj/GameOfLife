@@ -1,45 +1,76 @@
 package com.jobik.gameoflife.services.rate
 
+import android.content.ComponentName
 import android.content.Context
-import com.jobik.gameoflife.GameOfLifeApplication
+import android.content.Intent
+import android.net.Uri
 import com.jobik.gameoflife.SharedPreferencesKeys
-import com.jobik.gameoflife.services.localization.Localization
-import java.util.*
 
-class RateService {
-    fun setLocale(context: Context, localization: Localization): Context? {
-        GameOfLifeApplication.currentLanguage = localization
-        saveLocalization(context, localization)
-        return updateResources(context, localization)
+class RateService(val context: Context) {
+    private val appId: String = context.packageName
+
+    fun getCanAskRate(): Boolean {
+        val sharedPreferences = context.getSharedPreferences(SharedPreferencesKeys.AppSettings, Context.MODE_PRIVATE)
+        return sharedPreferences.getBoolean(SharedPreferencesKeys.CanAskRate, true)
     }
 
-    private fun saveLocalization(context: Context, localization: Localization) {
+    fun updateCanAskRate(canAsk: Boolean) {
         val sharedPreferences =
             context.getSharedPreferences(SharedPreferencesKeys.AppSettings, Context.MODE_PRIVATE)
-        sharedPreferences.edit().putString(SharedPreferencesKeys.Localization, localization.name).apply()
+        sharedPreferences.edit().putBoolean(SharedPreferencesKeys.CanAskRate, canAsk).apply()
     }
 
-    fun getSavedLocalization(context: Context): Localization? {
-        val sharedPreferences =
-            context.getSharedPreferences(SharedPreferencesKeys.AppSettings, Context.MODE_PRIVATE)
-        val notSelected = "NotSelected"
-        val language = sharedPreferences.getString(SharedPreferencesKeys.Localization, notSelected)
-        if (language == notSelected || language == null) {
-            return null
+    fun openAppRating() {
+        // you can also use BuildConfig.APPLICATION_ID
+        val uri = Uri.parse("market://details?id=$appId")
+
+        val intent = Intent(
+            Intent.ACTION_VIEW,
+            uri
+        )
+
+        var marketFound = false
+
+        // find all applications able to handle our rateIntent
+        val otherApps = context.packageManager.queryIntentActivities(intent, 0)
+        for (otherApp in otherApps) {
+            // look for Google Play application
+            if (otherApp.activityInfo.applicationInfo.packageName
+                == "com.android.vending"
+            ) {
+                val otherAppActivity = otherApp.activityInfo
+                val componentName = ComponentName(
+                    otherAppActivity.applicationInfo.packageName,
+                    otherAppActivity.name
+                )
+                // make sure it does NOT open in the stack of your activity
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                // task reparenting if needed
+                intent.addFlags(Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED)
+                // if the Google Play was already open in a search result
+                //  this make sure it still go to the app page you requested
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                // this make sure only the Google Play app is allowed to
+                // intercept the intent
+                intent.setComponent(componentName)
+                context.startActivity(intent)
+                marketFound = true
+                break
+            }
         }
-        return Localization.entries.find { it.name == language }
+
+        // if GP not present on device, open web browser
+        if (!marketFound)
+            openBrowserForRate()
     }
 
-    fun getDeviceLocalization(): Localization? {
-        return Localization.entries.find { (Locale.getDefault().language.equals(Locale(it.name).language)) }
-    }
-
-    private fun updateResources(context: Context, language: Localization): Context? {
-        val locale = Locale(language.localeKey)
-        Locale.setDefault(locale)
-        val configuration = context.resources.configuration
-        configuration.setLocale(locale)
-        configuration.setLayoutDirection(locale)
-        return context.createConfigurationContext(configuration)
+    private fun openBrowserForRate() {
+        val uri = Uri.parse("https://play.google.com/store/apps/details?id=${context.packageName}")
+        val intent = Intent(
+            Intent.ACTION_VIEW,
+            uri
+        )
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        context.startActivity(intent)
     }
 }
