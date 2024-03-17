@@ -19,6 +19,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -126,7 +127,8 @@ fun AppDrawerContent(
                     modifier = Modifier
                         .size(150.dp)
                         .padding(vertical = 20.dp),
-                    painter = painterResource(id = R.drawable.icon),
+                    painter = painterResource(id = R.drawable.icon_for_tint),
+                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary),
                     contentDescription = "Main app icon"
                 )
                 Text(

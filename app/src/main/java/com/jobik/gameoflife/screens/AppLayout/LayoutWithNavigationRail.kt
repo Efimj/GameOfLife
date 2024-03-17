@@ -11,6 +11,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -52,9 +53,11 @@ fun LayoutWithNavigationRail(navController: NavHostController, modalDrawer: Moda
                         .size(80.0.dp)
                         .padding(vertical = 20.dp)
                         .padding(top = 10.dp),
-                    painter = painterResource(id = R.drawable.icon),
+                    painter = painterResource(id = R.drawable.icon_for_tint),
                     contentDescription = "Main app icon",
-                    contentScale = ContentScale.FillWidth
+                    contentScale = ContentScale.Fit,
+                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
+
                 )
 
                 Column {
