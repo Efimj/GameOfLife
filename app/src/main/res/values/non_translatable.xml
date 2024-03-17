@@ -28,7 +28,7 @@
     <string name="zh_language" translatable="false">Chinese Simplified</string>
     <string name="th_language" translatable="false">Thai</string>
 
-    <string name="app_version_text" translatable="false">«Game of Life» store bundled v</string>
+    <string name="app_version_text" translatable="false">Made by Efim v</string>
 
     <string name="JohnHortonConway_wiki_uri" translatable="false">https://wikipedia.org/wiki/John_Horton_Conway</string>
     <string name="GameOfLife_wiki_uri" translatable="false">https://wikipedia.org/wiki/Conway%27s_Game_of_Life</string>
