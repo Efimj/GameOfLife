@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+      
+  <string name="app_name">인생의 게임</string>
+      
+  <string name="GameOfLife">인생의 게임</string>
+      
+  <string name="Settings">설정</string>
+      
+  <string name="Onboarding">온보딩</string>
+      
+  <string name="drawer_GameOfLife_description">인생의 게임</string>
+      
+  <string name="drawer_Settings_description">설정</string>
+      
+  <string name="drawer_Onboarding_description">소개</string>
+      
+  <string name="speed_value_100ms">100ms</string>
+      
+  <string name="speed_value_250ms">250ms</string>
+      
+  <string name="speed_value_500ms">500ms</string>
+      
+  <string name="speed_value_750ms">750ms</string>
+      
+  <string name="speed_value_1s">1초</string>
+      
+  <string name="start_game">게임을 시작하다</string>
+      
+  <string name="menu_button">메뉴 버튼</string>
+      
+  <string name="clear">분명한</string>
+      
+  <string name="free_soul_mode">자유로운 영혼 모드</string>
+      
+  <string name="free_soul_mode_description">죽은 셀을 지워야 하는지 여부를 나타냅니다.</string>
+      
+  <string name="emoji_mode">이모티콘 모드</string>
+      
+  <string name="emoji_mode_description">채우기 대신 이모티콘 아이콘 세트가 사용됩니다.</string>
+      
+  <string name="restart">재시작</string>
+      
+  <string name="stable_combination">안정적인 조합 &#127881;</string>
+      
+  <string name="no_one_survived">아무도 살아남지 못했어요 &#128128;</string>
+      
+  <string name="alive">살아 있는</string>
+      
+  <string name="deaths">사망자</string>
+      
+  <string name="revivals">부흥</string>
+      
+  <string name="switch_running_simulation">스위치 실행 시뮬레이션</string>
+      
+  <string name="set_field_dimensions">필드 크기 설정</string>
+      
+  <string name="rows">행</string>
+      
+  <string name="columns">열</string>
+      
+  <string name="one_step_duration">한 단계 지속 시간</string>
+      
+  <string name="simulation_settings">시뮬레이션 설정</string>
+      
+  <string name="language">언어</string>
+      
+  <string name="game_settings">게임 설정</string>
+      
+  <string name="neighbors_for_reviving">부흥을 위한 이웃</string>
+      
+  <string name="neighbors_for_surviving">생존을 위한 이웃</string>
+      
+  <string name="rules">규칙</string>
+      
+  <string name="to_default">기본값으로</string>
+      
+  <string name="change_theme">테마 변경</string>
+      
+  <string name="application">애플리케이션</string>
+      
+  <string name="information">정보</string>
+      
+  <string name="rules_set">규칙 세트</string>
+      
+  <string name="rate_dialog_title">이 앱이 마음에 드셨나요?</string>
+      
+  <string name="rate_dialog_description">리뷰를 남겨 애플리케이션에 대한 의견을 공유해주세요. 귀하의 평가는 모든 사용자를 위해 애플리케이션을 개선하는 데 도움이 됩니다.</string>
+      
+  <string name="dont_ask_again">다시 묻지 마세요</string>
+      
+  <string name="later">나중에</string>
+      
+  <string name="rate">비율!</string>
+      
+  <string name="custom_rules">맞춤 규칙</string>
+      
+  <string name="rules_set_description">다양한 게임 시나리오를 보려면 다양한 규칙 세트를 선택하세요.</string>
+      
+  <string name="other">다른</string>
+      
+  <string name="stable">안정적인</string>
+      
+  <string name="chaotic">혼란스러운</string>
+      
+  <string name="exploding">폭발하다</string>
+      
+  <string name="undefined">한정되지 않은</string>
+      
+  <string name="open_in_wikipedia">위키피디아에서 열기</string>
+      
+  <string name="JohnHortonConway">존 호튼 콘웨이</string>
+      
+  <string name="JohnHortonConway_card_description">영국의 수학자로서 유한군, 매듭 이론, 수론, 조합 게임 이론, 코딩 이론에 지대한 공헌을 했습니다. 특히 그는 레크리에이션 수학에서 생명의 게임(Game of Life)이라고 불리는 세포 자동 장치를 발명한 것으로 유명합니다.</string>
+      
+  <string name="the_game_of_life">인생의 게임</string>
+      
+  <string name="GameOfLife_large_description">라이프(Life)라고도 알려진 게임 오브 라이프(Game of Life)는 1970년에 개발된 세포 자동 장치입니다. 이는 제로 플레이어 게임입니다. 즉, 초기 상태에 따라 진화가 결정되며 추가 작업이 필요하지 않습니다. 사람은 Game of Life와 상호 작용하여 초기 구성을 만들고 그것이 어떻게 발전하는지 관찰합니다. 튜링 완전체이며 범용 생성자 또는 기타 튜링 기계를 모델링할 수 있습니다.</string>
+      
+  <string name="open_source_project">오픈소스 프로젝트</string>
+      
+  <string name="open_source_project_description">GitHub ⭐️에서 전체 소스 코드를 찾을 수 있습니다.</string>
+      
+  <string name="telegram_community">텔레그램 커뮤니티에 가입하세요</string>
+      
+  <string name="telegram_community_description">앱 업데이트를 계속 확인하고, 초기 빌드를 받고, 새로운 기능 테스트를 도와주세요. 아이디어를 제안하고, 질문하고, 빠른 답변을 얻으세요.</string>
+      
+  <string name="onb_1_headline">존 콘웨이 박사</string>
+      
+  <string name="onb_1_description">1970년에 게임 필드의 각 셀이 간단한 규칙을 따르는 \"생명의 게임\"이라고 불리는 세포 오토마타 진화 시뮬레이션을 고안했습니다.</string>
+      
+  <string name="onb_2_headline">규칙 1</string>
+      
+  <string name="onb_2_description">빈 (죽은) 셀에 정확히 3명의 이웃이 살아 있으면 생명이 탄생한다</string>
+      
+  <string name="onb_3_headline">규칙 2</string>
+      
+  <string name="onb_3_description">살아있는 세포에 두세 개의 살아있는 이웃이 있으면 계속해서 살아갑니다. 그렇지 않으면 세포가 죽습니다 (외로움이나 과밀로 인해).</string>
+  
+</resources>

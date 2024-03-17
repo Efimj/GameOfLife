@@ -1,71 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?><resources>
-
-    <string name="app_name">人生ゲーム</string>
-
-    <string name="GameOfLife">人生ゲーム</string>
-
-    <string name="Settings">設定</string>
-
-    <string name="Onboarding">オンボーディング</string>
-
-    <string name="drawer_GameOfLife_description">人生ゲーム</string>
-
-    <string name="drawer_Settings_description">設定</string>
-
-    <string name="drawer_Onboarding_description">導入</string>
-
-    <string name="speed_value_100ms">100 ミリ秒</string>
-
-    <string name="speed_value_250ms">250 ミリ秒</string>
-
-    <string name="speed_value_500ms">500 ミリ秒</string>
-
-    <string name="speed_value_1s">1 秒</string>
-
-    <string name="start_game">ゲームをスタート</string>
-
-    <string name="menu_button">メニューボタン</string>
-
-    <string name="clear">クリア</string>
-
-    <string name="free_soul_mode">フリーソウルモード</string>
-
-    <string name="emoji_mode">絵文字モード</string>
-
-    <string name="restart">再起動</string>
-
-    <string name="stable_combination">安定の組み合わせ&#127881;?</string>
-
-    <string name="no_one_survived">誰も生き残れませんでした&#128128;?</string>
-
-    <string name="alive">生きている</string>
-
-    <string name="deaths">死亡者（数</string>
-
-    <string name="revivals">リバイバルズ</string>
-
-    <string name="switch_running_simulation">スイッチ走行シミュレーション</string>
-
-    <string name="set_field_dimensions">フィールドの寸法を設定する</string>
-
-    <string name="rows">行</string>
-
-    <string name="columns">列</string>
-
-    <string name="language">言語</string>
-
-    <string name="change_theme">テーマの変更</string>
-
-    <string name="onb_1_headline">ジョン・コンウェイ博士</string>
-
-    <string name="onb_1_description">1970 年に「ライフ ゲーム」と呼ばれるセル オートマトンの進化のシミュレーションを考案しました。ゲーム フィールド上の各セルは単純なルールに従います。</string>
-
-    <string name="onb_2_headline">ルール 1</string>
-
-    <string name="onb_2_description">空の（死んだ）独房に、生きている隣人がちょうど 3 人いる場合、生命が誕生します。</string>
-
-    <string name="onb_3_headline">ルール 2</string>
-
-    <string name="onb_3_description">生きているセルに 2 つまたは 3 つの生きている隣接セルがある場合、そのセルは生き続けます。そうしないと、細胞が死んでしまいます（孤独または過密により）</string>
-
+      
+  <string name="app_name">人生ゲーム</string>
+      
+  <string name="GameOfLife">人生ゲーム</string>
+      
+  <string name="Settings">設定</string>
+      
+  <string name="Onboarding">オンボーディング</string>
+      
+  <string name="drawer_GameOfLife_description">人生ゲーム</string>
+      
+  <string name="drawer_Settings_description">設定</string>
+      
+  <string name="drawer_Onboarding_description">導入</string>
+      
+  <string name="speed_value_100ms">100 ミリ秒</string>
+      
+  <string name="speed_value_250ms">250 ミリ秒</string>
+      
+  <string name="speed_value_500ms">500 ミリ秒</string>
+      
+  <string name="speed_value_750ms">750 ミリ秒</string>
+      
+  <string name="speed_value_1s">1 秒</string>
+      
+  <string name="start_game">ゲームをスタート</string>
+      
+  <string name="menu_button">メニューボタン</string>
+      
+  <string name="clear">クリア</string>
+      
+  <string name="free_soul_mode">フリーソウルモード</string>
+      
+  <string name="free_soul_mode_description">死んだ細胞を除去する必要があるかどうかを示します</string>
+      
+  <string name="emoji_mode">絵文字モード</string>
+      
+  <string name="emoji_mode_description">塗りつぶしの代わりに、一連の絵文字アイコンが使用されます</string>
+      
+  <string name="restart">再起動</string>
+      
+  <string name="stable_combination">安定の組み合わせ&#127881;?</string>
+      
+  <string name="no_one_survived">誰も生き残れませんでした&#128128;?</string>
+      
+  <string name="alive">生きている</string>
+      
+  <string name="deaths">死亡者（数</string>
+      
+  <string name="revivals">リバイバルズ</string>
+      
+  <string name="switch_running_simulation">スイッチ走行シミュレーション</string>
+      
+  <string name="set_field_dimensions">フィールドの寸法を設定する</string>
+      
+  <string name="rows">行</string>
+      
+  <string name="columns">コラム</string>
+      
+  <string name="one_step_duration">1 ステップの継続時間</string>
+      
+  <string name="simulation_settings">シミュレーション設定</string>
+      
+  <string name="language">言語</string>
+      
+  <string name="game_settings">ゲームの設定</string>
+      
+  <string name="neighbors_for_reviving">復活のための隣人</string>
+      
+  <string name="neighbors_for_surviving">生き残るための隣人</string>
+      
+  <string name="rules">ルール</string>
+      
+  <string name="to_default">デフォルトに戻す</string>
+      
+  <string name="change_theme">テーマの変更</string>
+      
+  <string name="application">応用</string>
+      
+  <string name="information">情報</string>
+      
+  <string name="rules_set">ルールセット</string>
+      
+  <string name="rate_dialog_title">このアプリは気に入りましたか?</string>
+      
+  <string name="rate_dialog_description">レビューを残して、アプリケーションについてのご意見を共有してください。あなたの評価は、すべてのユーザー向けのアプリケーションの改善に役立ちます</string>
+      
+  <string name="dont_ask_again">二度と質問しないでください</string>
+      
+  <string name="later">後で</string>
+      
+  <string name="rate">レート！</string>
+      
+  <string name="custom_rules">カスタムルール</string>
+      
+  <string name="rules_set_description">さまざまなルールセットを選択して、さまざまなゲームシナリオを確認してください</string>
+      
+  <string name="other">他の</string>
+      
+  <string name="stable">安定した</string>
+      
+  <string name="chaotic">混沌としました</string>
+      
+  <string name="exploding">爆発する</string>
+      
+  <string name="undefined">未定義</string>
+      
+  <string name="open_in_wikipedia">ウィキペディアで開く</string>
+      
+  <string name="JohnHortonConway">ジョン・ホートン・コンウェイ</string>
+      
+  <string name="JohnHortonConway_card_description">イギリスの数学者。有限群、結び目理論、数論、組み合わせゲーム理論、コーディング理論に多大な貢献をしている。特に、彼はレクリエーション数学におけるライフ ゲームと呼ばれるセル オートマトンを発明したことで知られています。</string>
+      
+  <string name="the_game_of_life">人生ゲーム</string>
+      
+  <string name="GameOfLife_large_description">単にライフとしても知られるライフ ゲームは、1970 年に開発されたセル オートマトンです。これはプレイヤーがいないゲームです。つまり、その進化は初期状態によって決定され、追加のアクションは必要ありません。人はライフ ゲームと対話し、初期構成を作成し、それがどのように発展するかを観察します。これは完全なチューリングであり、ユニバーサル コンストラクターまたは他のチューリング マシンをモデル化できます。</string>
+      
+  <string name="open_source_project">オープンソースプロジェクト</string>
+      
+  <string name="open_source_project_description">ソースコード全体は GitHub で見つけることができます ⭐️</string>
+      
+  <string name="telegram_community">テレグラムコミュニティに参加する</string>
+      
+  <string name="telegram_community_description">アプリのアップデートに注目し、早期ビルドを入手し、新機能のテストを支援してください。アイデアを提案し、質問し、すぐに答えを得る</string>
+      
+  <string name="onb_1_headline">ジョン・コンウェイ博士</string>
+      
+  <string name="onb_1_description">1970 年に「ライフ ゲーム」と呼ばれるセル オートマトンの進化のシミュレーションを考案しました。ゲーム フィールド上の各セルは単純なルールに従います。</string>
+      
+  <string name="onb_2_headline">ルール 1</string>
+      
+  <string name="onb_2_description">空の（死んだ）独房に、生きている隣人がちょうど 3 人いる場合、生命が誕生します。</string>
+      
+  <string name="onb_3_headline">ルール 2</string>
+      
+  <string name="onb_3_description">生きているセルに 2 つまたは 3 つの生きている隣接セルがある場合、そのセルは生き続けます。そうしないと、細胞が死んでしまいます（孤独または過密により）</string>
+  
 </resources>

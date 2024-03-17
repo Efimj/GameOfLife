@@ -1,71 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?><resources>
-
-    <string name="app_name">เกมแห่งชีวิต</string>
-
-    <string name="GameOfLife">เกมแห่งชีวิต</string>
-
-    <string name="Settings">การตั้งค่า</string>
-
-    <string name="Onboarding">การเริ่มต้นใช้งาน</string>
-
-    <string name="drawer_GameOfLife_description">เกมแห่งชีวิต</string>
-
-    <string name="drawer_Settings_description">การตั้งค่า</string>
-
-    <string name="drawer_Onboarding_description">การแนะนำ</string>
-
-    <string name="speed_value_100ms">100ms</string>
-
-    <string name="speed_value_250ms">250ms</string>
-
-    <string name="speed_value_500ms">500ms</string>
-
-    <string name="speed_value_1s">1 วินาที</string>
-
-    <string name="start_game">เริ่มเกมส์</string>
-
-    <string name="menu_button">ปุ่มเมนู</string>
-
-    <string name="clear">ชัดเจน</string>
-
-    <string name="free_soul_mode">โหมดวิญญาณฟรี</string>
-
-    <string name="emoji_mode">โหมดอิโมจิ</string>
-
-    <string name="restart">เริ่มต้นใหม่</string>
-
-    <string name="stable_combination">การรวมกันที่มั่นคง &#127881;</string>
-
-    <string name="no_one_survived">ไม่มีใครรอด &#127875;</string>
-
-    <string name="alive">มีชีวิตอยู่</string>
-
-    <string name="deaths">ผู้เสียชีวิต</string>
-
-    <string name="revivals">การฟื้นฟู</string>
-
-    <string name="switch_running_simulation">สลับการจำลองการทำงาน</string>
-
-    <string name="set_field_dimensions">กำหนดขนาดฟิลด์</string>
-
-    <string name="rows">แถว</string>
-
-    <string name="columns">คอลัมน์</string>
-
-    <string name="language">ภาษา</string>
-
-    <string name="change_theme">เปลี่ยนธีม</string>
-
-    <string name="onb_1_headline">ดร. จอห์น คอนเวย์</string>
-
-    <string name="onb_1_description">คิดค้นการจำลองวิวัฒนาการของออโตมาตะระดับเซลล์ในปี 1970 ที่เรียกว่า \"เกมแห่งชีวิต\" โดยแต่ละเซลล์ในสนามเกมจะปฏิบัติตามกฎง่ายๆ</string>
-
-    <string name="onb_2_headline">กฎข้อที่ 1</string>
-
-    <string name="onb_2_description">ในห้องขังที่ว่างเปล่า (ตาย) หากมีเพื่อนบ้านที่ยังมีชีวิตอยู่อยู่สามคน ชีวิตก็ถือกำเนิดขึ้น</string>
-
-    <string name="onb_3_headline">กฎข้อที่ 2</string>
-
-    <string name="onb_3_description">ถ้าเซลล์ที่มีชีวิตมีเพื่อนบ้านที่มีชีวิตสองหรือสามคน มันก็จะมีชีวิตอยู่ต่อไป มิฉะนั้นเซลล์จะตาย (เนื่องจากความเหงาหรือความแออัดยัดเยียด)</string>
-
+      
+  <string name="app_name">เกมแห่งชีวิต</string>
+      
+  <string name="GameOfLife">เกมแห่งชีวิต</string>
+      
+  <string name="Settings">การตั้งค่า</string>
+      
+  <string name="Onboarding">การเริ่มต้นใช้งาน</string>
+      
+  <string name="drawer_GameOfLife_description">เกมแห่งชีวิต</string>
+      
+  <string name="drawer_Settings_description">การตั้งค่า</string>
+      
+  <string name="drawer_Onboarding_description">การแนะนำ</string>
+      
+  <string name="speed_value_100ms">100ms</string>
+      
+  <string name="speed_value_250ms">250ms</string>
+      
+  <string name="speed_value_500ms">500ms</string>
+      
+  <string name="speed_value_750ms">750ms</string>
+      
+  <string name="speed_value_1s">1 วินาที</string>
+      
+  <string name="start_game">เริ่มเกมส์</string>
+      
+  <string name="menu_button">ปุ่มเมนู</string>
+      
+  <string name="clear">ชัดเจน</string>
+      
+  <string name="free_soul_mode">โหมดวิญญาณฟรี</string>
+      
+  <string name="free_soul_mode_description">บ่งชี้ว่าควรกำจัดเซลล์ที่ตายแล้วหรือไม่</string>
+      
+  <string name="emoji_mode">โหมดอิโมจิ</string>
+      
+  <string name="emoji_mode_description">แทนที่จะเติมจะใช้ชุดไอคอนอิโมจิ</string>
+      
+  <string name="restart">เริ่มต้นใหม่</string>
+      
+  <string name="stable_combination">การรวมกันที่มั่นคง &#127881;</string>
+      
+  <string name="no_one_survived">ไม่มีใครรอด &#127875;</string>
+      
+  <string name="alive">มีชีวิตอยู่</string>
+      
+  <string name="deaths">ผู้เสียชีวิต</string>
+      
+  <string name="revivals">การฟื้นฟู</string>
+      
+  <string name="switch_running_simulation">สลับการจำลองการทำงาน</string>
+      
+  <string name="set_field_dimensions">กำหนดขนาดฟิลด์</string>
+      
+  <string name="rows">แถว</string>
+      
+  <string name="columns">คอลัมน์</string>
+      
+  <string name="one_step_duration">ระยะเวลาหนึ่งขั้นตอน</string>
+      
+  <string name="simulation_settings">การตั้งค่าการจำลอง</string>
+      
+  <string name="language">ภาษา</string>
+      
+  <string name="game_settings">ตั้งค่าเกม</string>
+      
+  <string name="neighbors_for_reviving">เพื่อนบ้านเพื่อการฟื้นฟู</string>
+      
+  <string name="neighbors_for_surviving">เพื่อนบ้านเพื่อความอยู่รอด</string>
+      
+  <string name="rules">กฎ</string>
+      
+  <string name="to_default">เป็นค่าเริ่มต้น</string>
+      
+  <string name="change_theme">เปลี่ยนธีม</string>
+      
+  <string name="application">แอปพลิเคชัน</string>
+      
+  <string name="information">ข้อมูล</string>
+      
+  <string name="rules_set">กฎเกณฑ์ที่ตั้งไว้</string>
+      
+  <string name="rate_dialog_title">คุณชอบแอพนี้หรือไม่?</string>
+      
+  <string name="rate_dialog_description">กรุณาแบ่งปันความคิดเห็นของคุณเกี่ยวกับแอปพลิเคชันโดยแสดงความคิดเห็น การให้คะแนนของคุณจะช่วยให้เราปรับปรุงแอปพลิเคชันของเราสำหรับผู้ใช้ทุกคน</string>
+      
+  <string name="dont_ask_again">อย่าถามอีก</string>
+      
+  <string name="later">ภายหลัง</string>
+      
+  <string name="rate">ประเมิน!</string>
+      
+  <string name="custom_rules">กฎที่กำหนดเอง</string>
+      
+  <string name="rules_set_description">เลือกกฎเกณฑ์ที่แตกต่างกันเพื่อดูสถานการณ์ของเกมที่แตกต่างกัน</string>
+      
+  <string name="other">อื่น</string>
+      
+  <string name="stable">มั่นคง</string>
+      
+  <string name="chaotic">วุ่นวาย</string>
+      
+  <string name="exploding">ระเบิด</string>
+      
+  <string name="undefined">ไม่ได้กำหนด</string>
+      
+  <string name="open_in_wikipedia">เปิดในวิกิพีเดีย</string>
+      
+  <string name="JohnHortonConway">จอห์น ฮอร์ตัน คอนเวย์</string>
+      
+  <string name="JohnHortonConway_card_description">นักคณิตศาสตร์ชาวอังกฤษ มีส่วนสำคัญต่อกลุ่มที่มีขอบเขตจำกัด ทฤษฎีปม ทฤษฎีจำนวน ทฤษฎีเกมเชิงผสมผสาน และทฤษฎีการเข้ารหัส โดยเฉพาะอย่างยิ่งเขาเป็นที่รู้จักจากการประดิษฐ์หุ่นยนต์เซลลูล่าร์ที่เรียกว่าเกมแห่งชีวิตในวิชาคณิตศาสตร์เพื่อการพักผ่อนหย่อนใจ</string>
+      
+  <string name="the_game_of_life">เกมแห่งชีวิต</string>
+      
+  <string name="GameOfLife_large_description">เกมแห่งชีวิตหรือที่รู้จักกันในชื่อ Life เป็นหุ่นยนต์เซลลูล่าร์ที่พัฒนาขึ้นในปี 1970 เป็นเกมที่ไม่มีผู้เล่น ซึ่งหมายความว่าวิวัฒนาการของเกมจะขึ้นอยู่กับสถานะเริ่มแรก และไม่จำเป็นต้องดำเนินการใดๆ เพิ่มเติม บุคคลโต้ตอบกับ Game of Life โดยสร้างการกำหนดค่าเริ่มต้นและดูว่าเกมพัฒนาไปอย่างไร มันเป็นทัวริงที่สมบูรณ์และสามารถสร้างแบบจำลองตัวสร้างสากลหรือเครื่องจักรทัวริงอื่น ๆ ได้</string>
+      
+  <string name="open_source_project">โครงการโอเพ่นซอร์ส</string>
+      
+  <string name="open_source_project_description">คุณสามารถค้นหาซอร์สโค้ดทั้งหมดได้ที่ GitHub ⭐️</string>
+      
+  <string name="telegram_community">เข้าร่วมชุมชนโทรเลข</string>
+      
+  <string name="telegram_community_description">ติดตามการอัปเดตแอป รับเวอร์ชันก่อนใคร และช่วยเหลือในการทดสอบฟีเจอร์ใหม่ๆ เสนอแนวคิดของคุณ ถามคำถาม และรับคำตอบที่รวดเร็ว</string>
+      
+  <string name="onb_1_headline">ดร. จอห์น คอนเวย์</string>
+      
+  <string name="onb_1_description">คิดค้นการจำลองวิวัฒนาการของออโตมาตะระดับเซลล์ในปี 1970 ที่เรียกว่า \"เกมแห่งชีวิต\" โดยแต่ละเซลล์ในสนามเกมจะปฏิบัติตามกฎง่ายๆ</string>
+      
+  <string name="onb_2_headline">กฎข้อที่ 1</string>
+      
+  <string name="onb_2_description">ในห้องขังที่ว่างเปล่า (ตาย) หากมีเพื่อนบ้านที่ยังมีชีวิตอยู่อยู่สามคน ชีวิตก็ถือกำเนิดขึ้น</string>
+      
+  <string name="onb_3_headline">กฎข้อที่ 2</string>
+      
+  <string name="onb_3_description">ถ้าเซลล์ที่มีชีวิตมีเพื่อนบ้านที่มีชีวิตสองหรือสามคน มันก็จะมีชีวิตอยู่ต่อไป มิฉะนั้นเซลล์จะตาย (เนื่องจากความเหงาหรือความแออัดยัดเยียด)</string>
+  
 </resources>

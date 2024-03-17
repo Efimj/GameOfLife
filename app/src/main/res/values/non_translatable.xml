@@ -8,6 +8,7 @@
     <string name="in" translatable="false">Bahasa Indonesia</string>
     <string name="it" translatable="false">Italiano</string>
     <string name="ja" translatable="false">日本語 (Japanese)</string>
+    <string name="ko" translatable="false">한국어입</string>
     <string name="pt" translatable="false">Português</string>
     <string name="ru" translatable="false">Русский</string>
     <string name="uk" translatable="false">Українська</string>
@@ -22,6 +23,7 @@
     <string name="in_language" translatable="false">Indonesian</string>
     <string name="it_language" translatable="false">Italian</string>
     <string name="ja_language" translatable="false">Japanese</string>
+    <string name="ko_language" translatable="false">Korean</string>
     <string name="pt_language" translatable="false">Portuguese</string>
     <string name="ru_language" translatable="false">Russian</string>
     <string name="uk_language" translatable="false">Ukrainian</string>

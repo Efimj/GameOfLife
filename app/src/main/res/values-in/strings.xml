@@ -20,6 +20,8 @@
 
     <string name="speed_value_500ms">500 md</string>
 
+    <string name="speed_value_750ms">750 md</string>
+
     <string name="speed_value_1s">1 detik</string>
 
     <string name="start_game">Memulai permainan</string>
@@ -30,7 +32,11 @@
 
     <string name="free_soul_mode">Mode jiwa bebas</string>
 
+    <string name="free_soul_mode_description">Menunjukkan apakah sel-sel mati harus dibersihkan</string>
+
     <string name="emoji_mode">Modus emoji</string>
+
+    <string name="emoji_mode_description">Alih-alih mengisi, serangkaian ikon emoji digunakan</string>
 
     <string name="restart">Mengulang kembali</string>
 
@@ -50,11 +56,73 @@
 
     <string name="rows">Baris</string>
 
-    <string name="columns">kolom</string>
+    <string name="columns">Kolom</string>
+
+    <string name="one_step_duration">Durasi satu langkah</string>
+
+    <string name="simulation_settings">Pengaturan simulasi</string>
 
     <string name="language">Bahasa</string>
 
+    <string name="game_settings">Pengaturan permainan</string>
+
+    <string name="neighbors_for_reviving">Tetangga untuk bangkit kembali</string>
+
+    <string name="neighbors_for_surviving">Tetangga untuk bertahan hidup</string>
+
+    <string name="rules">Aturan</string>
+
+    <string name="to_default">Secara default</string>
+
     <string name="change_theme">Ubah tema</string>
+
+    <string name="application">Aplikasi</string>
+
+    <string name="information">Informasi</string>
+
+    <string name="rules_set">Aturan ditetapkan</string>
+
+    <string name="rate_dialog_title">Apakah Anda menyukai aplikasi ini?</string>
+
+    <string name="rate_dialog_description">Silakan bagikan pendapat Anda tentang aplikasi dengan meninggalkan ulasan. Peringkat Anda akan membantu kami meningkatkan aplikasi kami untuk semua pengguna</string>
+
+    <string name="dont_ask_again">Jangan tanya lagi</string>
+
+    <string name="later">Nanti</string>
+
+    <string name="rate">Kecepatan!</string>
+
+    <string name="custom_rules">Aturan adat</string>
+
+    <string name="rules_set_description">Pilih kumpulan aturan yang berbeda untuk melihat skenario permainan yang berbeda</string>
+
+    <string name="other">Lainnya</string>
+
+    <string name="stable">stabil</string>
+
+    <string name="chaotic">kacau</string>
+
+    <string name="exploding">meledak</string>
+
+    <string name="undefined">belum diartikan</string>
+
+    <string name="open_in_wikipedia">Buka di wikipedia</string>
+
+    <string name="JohnHortonConway">John Horton Conway</string>
+
+    <string name="JohnHortonConway_card_description">Matematikawan Inggris, telah memberikan kontribusi signifikan pada grup hingga, teori simpul, teori bilangan, teori permainan kombinatorial, dan teori pengkodean. Khususnya, ia dikenal karena menciptakan robot seluler yang disebut Game of Life dalam matematika rekreasional</string>
+
+    <string name="the_game_of_life">Permainan Kehidupan</string>
+
+    <string name="GameOfLife_large_description">Game of Life, juga dikenal sebagai Life, adalah robot seluler yang dikembangkan pada tahun 1970. Ini adalah permainan tanpa pemain, artinya evolusinya ditentukan oleh keadaan awalnya dan tidak memerlukan tindakan tambahan. Seseorang berinteraksi dengan Game of Life, membuat konfigurasi awal dan mengamati perkembangannya. Ini adalah Turing lengkap dan dapat memodelkan konstruktor universal atau mesin Turing lainnya</string>
+
+    <string name="open_source_project">Proyek sumber terbuka</string>
+
+    <string name="open_source_project_description">Anda dapat menemukan seluruh kode sumber di GitHub ⭐️</string>
+
+    <string name="telegram_community">Bergabunglah dengan Komunitas Telegram</string>
+
+    <string name="telegram_community_description">Pantau terus pembaruan aplikasi, dapatkan versi awal, dan bantu pengujian fitur baru. Sarankan ide Anda, ajukan pertanyaan, dan dapatkan jawaban cepat</string>
 
     <string name="onb_1_headline">Dr. John Conway</string>
 

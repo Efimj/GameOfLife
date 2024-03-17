@@ -1,71 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?><resources>
-
-    <string name="app_name">Gioco della vita</string>
-
-    <string name="GameOfLife">Gioco della vita</string>
-
-    <string name="Settings">Impostazioni</string>
-
-    <string name="Onboarding">Onboarding</string>
-
-    <string name="drawer_GameOfLife_description">Gioco della vita</string>
-
-    <string name="drawer_Settings_description">Impostazioni</string>
-
-    <string name="drawer_Onboarding_description">introduzione</string>
-
-    <string name="speed_value_100ms">100ms</string>
-
-    <string name="speed_value_250ms">250ms</string>
-
-    <string name="speed_value_500ms">500ms</string>
-
-    <string name="speed_value_1s">1 secondo</string>
-
-    <string name="start_game">Inizia il gioco</string>
-
-    <string name="menu_button">Pulsante del menu</string>
-
-    <string name="clear">Chiaro</string>
-
-    <string name="free_soul_mode">Modalità anima libera</string>
-
-    <string name="emoji_mode">Modalità emoji</string>
-
-    <string name="restart">Ricomincia</string>
-
-    <string name="stable_combination">Combinazione stabile &#127881;</string>
-
-    <string name="no_one_survived">Nessuno è sopravvissuto &#128128;</string>
-
-    <string name="alive">Vivo</string>
-
-    <string name="deaths">Deceduti</string>
-
-    <string name="revivals">Revival</string>
-
-    <string name="switch_running_simulation">Cambia l\'esecuzione della simulazione</string>
-
-    <string name="set_field_dimensions">Imposta le dimensioni del campo</string>
-
-    <string name="rows">Righe</string>
-
-    <string name="columns">colonne</string>
-
-    <string name="language">Lingua</string>
-
-    <string name="change_theme">Cambia tema</string>
-
-    <string name="onb_1_headline">Dottor John Conway</string>
-
-    <string name="onb_1_description">Ideato nel 1970 questa simulazione dell\'evoluzione degli automi cellulari, chiamata il \"Gioco della Vita\", in cui ogni cellula sul campo di gioco segue semplici regole</string>
-
-    <string name="onb_2_headline">Regola 1</string>
-
-    <string name="onb_2_description">In una cella vuota (morta), se ci sono esattamente tre vicini viventi, nasce la vita</string>
-
-    <string name="onb_3_headline">Regola 2</string>
-
-    <string name="onb_3_description">Se una cellula vivente ha due o tre vicini viventi, continua a vivere; altrimenti la cellula muore (a causa della solitudine o del sovraffollamento)</string>
-
+      
+  <string name="app_name">Gioco della vita</string>
+      
+  <string name="GameOfLife">Gioco della vita</string>
+      
+  <string name="Settings">Impostazioni</string>
+      
+  <string name="Onboarding">Onboarding</string>
+      
+  <string name="drawer_GameOfLife_description">Gioco della vita</string>
+      
+  <string name="drawer_Settings_description">Impostazioni</string>
+      
+  <string name="drawer_Onboarding_description">introduzione</string>
+      
+  <string name="speed_value_100ms">100ms</string>
+      
+  <string name="speed_value_250ms">250ms</string>
+      
+  <string name="speed_value_500ms">500ms</string>
+      
+  <string name="speed_value_750ms">750ms</string>
+      
+  <string name="speed_value_1s">1 secondo</string>
+      
+  <string name="start_game">Inizia il gioco</string>
+      
+  <string name="menu_button">Pulsante del menu</string>
+      
+  <string name="clear">Chiaro</string>
+      
+  <string name="free_soul_mode">Modalità anima libera</string>
+      
+  <string name="free_soul_mode_description">Indica se le cellule morte devono essere eliminate</string>
+      
+  <string name="emoji_mode">Modalità emoji</string>
+      
+  <string name="emoji_mode_description">Invece del riempimento, viene utilizzato un set di icone emoji</string>
+      
+  <string name="restart">Ricomincia</string>
+      
+  <string name="stable_combination">Combinazione stabile &#127881;</string>
+      
+  <string name="no_one_survived">Nessuno è sopravvissuto &#128128;</string>
+      
+  <string name="alive">Vivo</string>
+      
+  <string name="deaths">Deceduti</string>
+      
+  <string name="revivals">Revival</string>
+      
+  <string name="switch_running_simulation">Cambia l\'esecuzione della simulazione</string>
+      
+  <string name="set_field_dimensions">Imposta le dimensioni del campo</string>
+      
+  <string name="rows">Righe</string>
+      
+  <string name="columns">Colonne</string>
+      
+  <string name="one_step_duration">Durata di un passaggio</string>
+      
+  <string name="simulation_settings">Impostazioni di simulazione</string>
+      
+  <string name="language">Lingua</string>
+      
+  <string name="game_settings">Impostazioni di gioco</string>
+      
+  <string name="neighbors_for_reviving">Vicini per la rianimazione</string>
+      
+  <string name="neighbors_for_surviving">Vicini per la sopravvivenza</string>
+      
+  <string name="rules">Regole</string>
+      
+  <string name="to_default">Di impostazione predefinita</string>
+      
+  <string name="change_theme">Cambia tema</string>
+      
+  <string name="application">Applicazione</string>
+      
+  <string name="information">Informazione</string>
+      
+  <string name="rules_set">Regole stabilite</string>
+      
+  <string name="rate_dialog_title">Ti è piaciuta questa app?</string>
+      
+  <string name="rate_dialog_description">Per favore condividi la tua opinione sull\'applicazione lasciando una recensione. La tua valutazione ci aiuterà a migliorare la nostra applicazione per tutti gli utenti</string>
+      
+  <string name="dont_ask_again">Non chiedere più</string>
+      
+  <string name="later">Dopo</string>
+      
+  <string name="rate">Valutare!</string>
+      
+  <string name="custom_rules">Regole personalizzate</string>
+      
+  <string name="rules_set_description">Scegli diversi set di regole per vedere diversi scenari di gioco</string>
+      
+  <string name="other">Altro</string>
+      
+  <string name="stable">stabile</string>
+      
+  <string name="chaotic">caotico</string>
+      
+  <string name="exploding">esplodendo</string>
+      
+  <string name="undefined">non definito</string>
+      
+  <string name="open_in_wikipedia">Apri su Wikipedia</string>
+      
+  <string name="JohnHortonConway">John Horton Conway</string>
+      
+  <string name="JohnHortonConway_card_description">Matematico inglese, ha dato contributi significativi alla teoria dei gruppi finiti, alla teoria dei nodi, alla teoria dei numeri, alla teoria dei giochi combinatori e alla teoria dei codici. In particolare, è noto per aver inventato l\'automa cellulare chiamato il Gioco della Vita nella matematica ricreativa</string>
+      
+  <string name="the_game_of_life">Il gioco della vita</string>
+      
+  <string name="GameOfLife_large_description">Il Gioco della Vita, conosciuto anche semplicemente come Vita, è un automa cellulare sviluppato nel 1970. È un gioco a zero giocatori, il che significa che la sua evoluzione è determinata dal suo stato iniziale e non richiede azioni aggiuntive. Una persona interagisce con il Gioco della Vita, creando una configurazione iniziale e osservando come si sviluppa. È Turing completo e può modellare un costruttore universale o qualsiasi altra macchina di Turing</string>
+      
+  <string name="open_source_project">Progetto open source</string>
+      
+  <string name="open_source_project_description">Puoi trovare l\'intero codice sorgente su GitHub ⭐️</string>
+      
+  <string name="telegram_community">Unisciti alla community di Telegram</string>
+      
+  <string name="telegram_community_description">Resta sintonizzato con gli aggiornamenti dell\'app, ottieni le prime build e aiuta a testare nuove funzionalità. Suggerisci le tue idee, fai domande e ottieni risposte rapide</string>
+      
+  <string name="onb_1_headline">Dottor John Conway</string>
+      
+  <string name="onb_1_description">Ideato nel 1970 questa simulazione dell\'evoluzione degli automi cellulari, chiamata il \"Gioco della Vita\", in cui ogni cellula sul campo di gioco segue semplici regole</string>
+      
+  <string name="onb_2_headline">Regola 1</string>
+      
+  <string name="onb_2_description">In una cella vuota (morta), se ci sono esattamente tre vicini viventi, nasce la vita</string>
+      
+  <string name="onb_3_headline">Regola 2</string>
+      
+  <string name="onb_3_description">Se una cellula vivente ha due o tre vicini viventi, continua a vivere; altrimenti la cellula muore (a causa della solitudine o del sovraffollamento)</string>
+  
 </resources>

@@ -1,71 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?><resources>
-
-    <string name="app_name">Spiel des Lebens</string>
-
-    <string name="GameOfLife">Spiel des Lebens</string>
-
-    <string name="Settings">Einstellungen</string>
-
-    <string name="Onboarding">Onboarding</string>
-
-    <string name="drawer_GameOfLife_description">Spiel des Lebens</string>
-
-    <string name="drawer_Settings_description">Einstellungen</string>
-
-    <string name="drawer_Onboarding_description">Einführung</string>
-
-    <string name="speed_value_100ms">100ms</string>
-
-    <string name="speed_value_250ms">250ms</string>
-
-    <string name="speed_value_500ms">500ms</string>
-
-    <string name="speed_value_1s">1s</string>
-
-    <string name="start_game">Spiel beginnen</string>
-
-    <string name="menu_button">Menütaste</string>
-
-    <string name="clear">Klar</string>
-
-    <string name="free_soul_mode">Kostenloser Soul-Modus</string>
-
-    <string name="emoji_mode">Emoji-Modus</string>
-
-    <string name="restart">Neu starten</string>
-
-    <string name="stable_combination">Stabile Kombination &#127881;</string>
-
-    <string name="no_one_survived">Niemand hat überlebt &#128128;</string>
-
-    <string name="alive">Lebendig</string>
-
-    <string name="deaths">Todesfälle</string>
-
-    <string name="revivals">Wiederbelebungen</string>
-
-    <string name="switch_running_simulation">Laufende Simulation umschalten</string>
-
-    <string name="set_field_dimensions">Feldabmessungen festlegen</string>
-
-    <string name="rows">Reihen</string>
-
-    <string name="columns">Säulen</string>
-
-    <string name="language">Sprache</string>
-
-    <string name="change_theme">Thema ändern</string>
-
-    <string name="onb_1_headline">John Conway</string>
-
-    <string name="onb_1_description">Entwickelte 1970 diese Simulation der Evolution zellulärer Automaten, genannt „Spiel des Lebens“, bei der jede Zelle auf dem Spielfeld einfachen Regeln folgt</string>
-
-    <string name="onb_2_headline">Regel 1</string>
-
-    <string name="onb_2_description">Wenn in einer leeren (toten) Zelle genau drei lebende Nachbarn sind, entsteht Leben</string>
-
-    <string name="onb_3_headline">Regel 2</string>
-
-    <string name="onb_3_description">Wenn eine lebende Zelle zwei oder drei lebende Nachbarn hat, lebt sie weiter; andernfalls stirbt die Zelle (aufgrund von Einsamkeit oder Überfüllung)</string>
-
+      
+  <string name="app_name">Spiel des Lebens</string>
+      
+  <string name="GameOfLife">Spiel des Lebens</string>
+      
+  <string name="Settings">Einstellungen</string>
+      
+  <string name="Onboarding">Onboarding</string>
+      
+  <string name="drawer_GameOfLife_description">Spiel des Lebens</string>
+      
+  <string name="drawer_Settings_description">Einstellungen</string>
+      
+  <string name="drawer_Onboarding_description">Einführung</string>
+      
+  <string name="speed_value_100ms">100ms</string>
+      
+  <string name="speed_value_250ms">250ms</string>
+      
+  <string name="speed_value_500ms">500ms</string>
+      
+  <string name="speed_value_750ms">750ms</string>
+      
+  <string name="speed_value_1s">1s</string>
+      
+  <string name="start_game">Spiel beginnen</string>
+      
+  <string name="menu_button">Menütaste</string>
+      
+  <string name="clear">Klar</string>
+      
+  <string name="free_soul_mode">Kostenloser Soul-Modus</string>
+      
+  <string name="free_soul_mode_description">Gibt an, ob tote Zellen gelöscht werden sollen</string>
+      
+  <string name="emoji_mode">Emoji-Modus</string>
+      
+  <string name="emoji_mode_description">Anstelle der Füllung wird eine Reihe von Emoji-Symbolen verwendet</string>
+      
+  <string name="restart">Neu starten</string>
+      
+  <string name="stable_combination">Stabile Kombination &#127881;</string>
+      
+  <string name="no_one_survived">Niemand hat überlebt &#128128;</string>
+      
+  <string name="alive">Lebendig</string>
+      
+  <string name="deaths">Todesfälle</string>
+      
+  <string name="revivals">Wiederbelebungen</string>
+      
+  <string name="switch_running_simulation">Laufende Simulation umschalten</string>
+      
+  <string name="set_field_dimensions">Feldabmessungen festlegen</string>
+      
+  <string name="rows">Reihen</string>
+      
+  <string name="columns">Säulen</string>
+      
+  <string name="one_step_duration">Dauer eines Schritts</string>
+      
+  <string name="simulation_settings">Simulationseinstellungen</string>
+      
+  <string name="language">Sprache</string>
+      
+  <string name="game_settings">Spieleinstellungen</string>
+      
+  <string name="neighbors_for_reviving">Nachbarn zur Wiederbelebung</string>
+      
+  <string name="neighbors_for_surviving">Nachbarn zum Überleben</string>
+      
+  <string name="rules">Regeln</string>
+      
+  <string name="to_default">Zur Standardeinstellung</string>
+      
+  <string name="change_theme">Thema ändern</string>
+      
+  <string name="application">Anwendung</string>
+      
+  <string name="information">Information</string>
+      
+  <string name="rules_set">Regeln festgelegt</string>
+      
+  <string name="rate_dialog_title">Hat Ihnen diese App gefallen?</string>
+      
+  <string name="rate_dialog_description">Bitte teilen Sie Ihre Meinung zur Anwendung mit, indem Sie eine Bewertung hinterlassen. Ihre Bewertung hilft uns, unsere Anwendung für alle Benutzer zu verbessern</string>
+      
+  <string name="dont_ask_again">Fragen Sie nicht noch einmal</string>
+      
+  <string name="later">Später</string>
+      
+  <string name="rate">Rate!</string>
+      
+  <string name="custom_rules">Benutzerdefinierte Regeln</string>
+      
+  <string name="rules_set_description">Wählen Sie verschiedene Regelsätze, um verschiedene Spielszenarien anzuzeigen</string>
+      
+  <string name="other">Andere</string>
+      
+  <string name="stable">stabil</string>
+      
+  <string name="chaotic">chaotisch</string>
+      
+  <string name="exploding">explodiert</string>
+      
+  <string name="undefined">nicht definiert</string>
+      
+  <string name="open_in_wikipedia">In Wikipedia öffnen</string>
+      
+  <string name="JohnHortonConway">John Horton Conway</string>
+      
+  <string name="JohnHortonConway_card_description">Der englische Mathematiker hat bedeutende Beiträge zu endlichen Gruppen, zur Knotentheorie, zur Zahlentheorie, zur kombinatorischen Spieltheorie und zur Kodierungstheorie geleistet. Er ist vor allem für die Erfindung des zellulären Automaten namens „Spiel des Lebens“ in der Freizeitmathematik bekannt</string>
+      
+  <string name="the_game_of_life">Das Spiel des Lebens</string>
+      
+  <string name="GameOfLife_large_description">Das Spiel des Lebens, auch einfach als Leben bekannt, ist ein 1970 entwickelter zellularer Automat. Es ist ein Null-Spieler-Spiel, was bedeutet, dass seine Entwicklung durch seinen Ausgangszustand bestimmt wird und keine zusätzlichen Aktionen erforderlich sind. Eine Person interagiert mit dem Spiel des Lebens, erstellt eine anfängliche Konfiguration und beobachtet, wie sie sich entwickelt. Es ist Turing-vollständig und kann einen Universalkonstrukteur oder jede andere Turing-Maschine modellieren</string>
+      
+  <string name="open_source_project">Open-Source-Projekt</string>
+      
+  <string name="open_source_project_description">Den gesamten Quellcode finden Sie auf GitHub ⭐️</string>
+      
+  <string name="telegram_community">Treten Sie der Telegram-Community bei</string>
+      
+  <string name="telegram_community_description">Bleiben Sie mit App-Updates auf dem Laufenden, erhalten Sie frühe Builds und helfen Sie beim Testen neuer Funktionen. Schlagen Sie Ihre Ideen vor, stellen Sie Fragen und erhalten Sie schnelle Antworten</string>
+      
+  <string name="onb_1_headline">John Conway</string>
+      
+  <string name="onb_1_description">Entwickelte 1970 diese Simulation der Evolution zellulärer Automaten, genannt „Spiel des Lebens“, bei der jede Zelle auf dem Spielfeld einfachen Regeln folgt</string>
+      
+  <string name="onb_2_headline">Regel 1</string>
+      
+  <string name="onb_2_description">Wenn in einer leeren (toten) Zelle genau drei lebende Nachbarn sind, entsteht Leben</string>
+      
+  <string name="onb_3_headline">Regel 2</string>
+      
+  <string name="onb_3_description">Wenn eine lebende Zelle zwei oder drei lebende Nachbarn hat, lebt sie weiter; andernfalls stirbt die Zelle (aufgrund von Einsamkeit oder Überfüllung)</string>
+  
 </resources>

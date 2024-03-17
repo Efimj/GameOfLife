@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Game of Life</string>
 
@@ -12,13 +11,16 @@
     <string name="speed_value_100ms">100ms</string>
     <string name="speed_value_250ms">250ms</string>
     <string name="speed_value_500ms">500ms</string>
+    <string name="speed_value_750ms">750ms</string>
     <string name="speed_value_1s">1s</string>
 
     <string name="start_game">Start game</string>
     <string name="menu_button">Menu button</string>
     <string name="clear">Clear</string>
     <string name="free_soul_mode">Free soul mode</string>
+    <string name="free_soul_mode_description">Indicates whether dead cells should be cleared</string>
     <string name="emoji_mode">Emoji mode</string>
+    <string name="emoji_mode_description">Instead of fill, a set of emoji icons is used</string>
     <string name="restart">Restart</string>
     <string name="stable_combination">Stable combination 🎉</string>
     <string name="no_one_survived">No one survived 💀</string>
@@ -28,9 +30,57 @@
     <string name="switch_running_simulation">Switch running simulation</string>
     <string name="set_field_dimensions">Set field dimensions</string>
     <string name="rows">Rows</string>
-    <string name="columns">columns</string>
+    <string name="columns">Columns</string>
+    <string name="one_step_duration">One step duration</string>
+    <string name="simulation_settings">Simulation settings</string>
     <string name="language">Language</string>
+    <string name="game_settings">Game settings</string>
+    <string name="neighbors_for_reviving">Neighbors for reviving</string>
+    <string name="neighbors_for_surviving">Neighbors for survival</string>
+    <string name="rules">Rules</string>
+    <string name="to_default">To default</string>
     <string name="change_theme">Change theme</string>
+    <string name="application">Application</string>
+    <string name="information">Information</string>
+    <string name="rules_set">Rules set</string>
+    <string name="rate_dialog_title">Did you like this app?</string>
+    <string name="rate_dialog_description">Please share your opinion about the application by leaving a review. Your
+        rating will help us improve our application for all users
+    </string>
+    <string name="dont_ask_again">Don\'t ask again</string>
+    <string name="later">Later</string>
+    <string name="rate">Rate!</string>
+    <string name="custom_rules">Custom rules</string>
+    <string name="rules_set_description">Choose different rulesets to see different game scenarios</string>
+    <string name="other">Other</string>
+
+    <string name="stable">stable</string>
+    <string name="chaotic">chaotic</string>
+    <string name="exploding">exploding</string>
+    <string name="undefined">undefined</string>
+
+    <string name="open_in_wikipedia">Open in wikipedia</string>
+    <string name="JohnHortonConway">John Horton Conway</string>
+    <string name="JohnHortonConway_card_description">English mathematician, has made significant
+        contributions to finite groups, knot theory, number theory, combinatorial game theory, and coding theory.
+        Notably, he is known for inventing the cellular automaton called the Game of Life in recreational mathematics
+    </string>
+
+    <string name="the_game_of_life">The Game of Life</string>
+    <string name="GameOfLife_large_description">The Game of Life, also known simply as "Life", is a cellular automaton
+        developed in 1970. It is a zero-player game, meaning that its evolution is determined by its initial state and
+        does not require additional actions. A person interacts with the Game of Life, creating an initial configuration
+        and watching how it develops. It is Turing complete and can model a universal constructor or any other Turing
+        machine
+    </string>
+
+    <string name="open_source_project">Open source project</string>
+    <string name="open_source_project_description">You can find the entire source code on GitHub ⭐️</string>
+
+    <string name="telegram_community">Join the Telegram Community</string>
+    <string name="telegram_community_description">Stay tuned with app updates, get early builds, and help out testing
+        new features. Suggest your ideas, ask questions and get fast answers
+    </string>
 
     <string name="onb_1_headline">Dr. John Conway</string>
     <string name="onb_1_description">Devised this simulation of cellular automata evolution in 1970, called the \"Game

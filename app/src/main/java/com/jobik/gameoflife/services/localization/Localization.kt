@@ -19,6 +19,7 @@ enum class Localization(val localeKey: String) {
     IN("in"),
     IT("it"),
     JA("ja"),
+    KO("ko"),
     PT("pt"),
     RU("ru"),
     TH("th"),
@@ -65,6 +66,11 @@ enum class Localization(val localeKey: String) {
             JA.name -> LocaleData(
                 name = context.getString(R.string.ja),
                 language = context.getString(R.string.ja_language)
+            )
+
+            KO.name -> LocaleData(
+                name = context.getString(R.string.ko),
+                language = context.getString(R.string.ko_language)
             )
 
             PT.name -> LocaleData(
