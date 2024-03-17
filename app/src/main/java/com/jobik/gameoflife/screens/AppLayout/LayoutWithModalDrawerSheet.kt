@@ -125,8 +125,8 @@ fun AppDrawerContent(
                 TopWindowInsetsSpacer()
                 Image(
                     modifier = Modifier
-                        .size(150.dp)
-                        .padding(vertical = 20.dp),
+                        .padding(vertical = 20.dp)
+                        .size(120.dp),
                     painter = painterResource(id = R.drawable.icon_for_tint),
                     colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary),
                     contentDescription = "Main app icon"
