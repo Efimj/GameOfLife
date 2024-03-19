@@ -11,7 +11,7 @@ android {
         applicationId = "com.jobik.gameoflife"
         minSdk = 27
         targetSdk = 34
-        versionCode = 1
+        versionCode = 2
         versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -33,10 +33,13 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             buildConfigField("long", "VERSION_CODE", "${defaultConfig.versionCode}")
             buildConfigField("String", "VERSION_NAME", "\"${defaultConfig.versionName}\"")
+            ndk {
+                debugSymbolLevel = "FULL"
+            }
         }
         debug {
             buildConfigField("long", "VERSION_CODE", "${defaultConfig.versionCode}")
