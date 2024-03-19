@@ -33,7 +33,7 @@ data class GameScreenStates(
     val previousStep: List<List<GameOfLifeUnitState>> = emptyList(),
     val gameResult: GameOfLifeResult? = null,
     val gameOfLifeStepRules: GameOfLifeStepSettings = GameOfLifeStepSettingsDefault,
-    val oneStepDurationMills: Long = 250,
+    val oneStepDurationMills: Long = 500,
 )
 
 class GameScreenViewModel : ViewModel() {
