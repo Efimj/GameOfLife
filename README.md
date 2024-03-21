@@ -12,10 +12,10 @@ developed in 1970. It is a zero-player game, meaning that its evolution is deter
 does not require additional actions. A person interacts with the Game of Life, creating an initial configuration
 and watching how it develops. It is Turing complete and can model a universal constructor or any other Turing
 machine.
-> [!IMPORTANT]\
-> ### Rules
->- In an empty (dead) cell, if there are exactly three living neighbors, life is born
->- If a living cell has two or three living neighbors, it continues to live; otherwise, the cell dies (due to "
+
+### Rules
+- In an empty (dead) cell, if there are exactly three living neighbors, life is born
+- If a living cell has two or three living neighbors, it continues to live; otherwise, the cell dies (due to "
    loneliness" or "overcrowding")
 
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Download from Google Play" height="80">](https://play.google.com/store/apps/details?id=com.jobik.game_of_life)
@@ -50,4 +50,4 @@ machine.
 </div> 
 
 > [!NOTE]\
-> ### ⭐ If you liked the app, star this repository.
+> ⭐ If you liked the app, star this repository.
