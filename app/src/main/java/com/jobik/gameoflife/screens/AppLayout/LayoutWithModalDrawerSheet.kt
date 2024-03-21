@@ -1,5 +1,6 @@
 package com.jobik.gameoflife.screens.AppLayout
 
+import androidx.activity.compose.BackHandler
 import androidx.annotation.StringRes
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.Image
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.BackdropValue
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.HelpOutline
 import androidx.compose.material.icons.outlined.Casino
@@ -83,6 +85,11 @@ object DrawerParams {
 @Composable
 fun LayoutWithModalDrawerSheet(navController: NavHostController, modalDrawer: ModalDrawer = ModalDrawerImplementation) {
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+
+    BackHandler(enabled = modalDrawer.drawerState.currentValue == DrawerValue.Open) {
+        scope.launch { modalDrawer.drawerState.close() }
+    }
 
     ModalNavigationDrawer(
         drawerState = modalDrawer.drawerState,
