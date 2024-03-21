@@ -1,5 +1,7 @@
 package com.jobik.gameoflife.screens.Game
 
+import android.util.Log
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
@@ -18,12 +20,14 @@ import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.gameOfLife.GameOfLife
 import com.jobik.gameoflife.screens.Game.actions.GameActions
 import com.jobik.gameoflife.ui.helpers.*
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun GameScreen(
     viewModel: GameScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
+    val scope = rememberCoroutineScope()
     // Get local density from composable
     val backdropScaffoldState = rememberBackdropScaffoldState(BackdropValue.Revealed)
 
@@ -35,9 +39,17 @@ fun GameScreen(
     }
     val containerColor by animateColorAsState(targetValue = containerColorTarget, label = "containerColor")
 
-    LaunchedEffect(backdropScaffoldState.currentValue) {
-        if (backdropScaffoldState.currentValue == BackdropValue.Concealed)
+    LaunchedEffect(backdropScaffoldState.progress) {
+        if (backdropScaffoldState.progress.fraction > 0f)
             viewModel.turnOffSimulation()
+    }
+
+    BackHandler(enabled = backdropScaffoldState.currentValue == BackdropValue.Concealed) {
+        scope.launch { backdropScaffoldState.reveal() }
+    }
+
+    BackHandler(enabled = viewModel.states.value.isSimulationRunning) {
+        viewModel.turnOffSimulation()
     }
 
     when (currentWidthSizeClass()) {
