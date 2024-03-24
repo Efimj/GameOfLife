@@ -18,7 +18,7 @@ machine.
 - If a living cell has two or three living neighbors, it continues to live; otherwise, the cell dies (due to "
    loneliness" or "overcrowding")
 
-[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Download from Google Play" height="80">](https://play.google.com/store/apps/details?id=com.jobik.game_of_life)
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Download from Google Play" height="80">](https://play.google.com/store/apps/details?id=com.jobik.gameoflife)
 
 ### Key features
 

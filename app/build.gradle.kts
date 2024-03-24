@@ -11,8 +11,8 @@ android {
         applicationId = "com.jobik.gameoflife"
         minSdk = 27
         targetSdk = 34
-        versionCode = 2
-        versionName = "1.0.0"
+        versionCode = 3
+        versionName = "1.0.5"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
