@@ -49,5 +49,9 @@ machine.
    <img src="./assets/large_screen_support_banner.png" width="1920" />
 </div> 
 
-> [!NOTE]\
-> ⭐ If you liked the app, star this repository.
+### Do you like this app? 💜
+
+Support it by joining __[stargazers](https://github.com/Efimj/GameOfLife/stargazers)__ for this repository. ⭐ <br>
+
+<a href="https://www.buymeacoffee.com/efim" target="_blank">Also, support me
+with<img align="right"  src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" height="41" width="174"></a>
