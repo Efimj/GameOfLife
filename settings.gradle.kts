@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Game of Life"
 include(":app")
- 
+include(":baselineprofile")
