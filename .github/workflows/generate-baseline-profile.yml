@@ -24,12 +24,23 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Install GMD image for baseline profile generation
-        run: yes | "$ANDROID_HOME"/cmdline-tools/latest/bin/sdkmanager "system-images;android-33;aosp_atd;x86_64"
+      - name: Start Emulator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 33
+          target: default
+          arch: x86_64
+          profile: Nexus 6
+          emulator-options: '-no-window -no-audio'
+          script: |
+            adb devices
+            adb shell input keyevent 82
+
+#      - name: Install GMD image for baseline profile generation
+#        run: yes | "$ANDROID_HOME"/cmdline-tools/latest/bin/sdkmanager "system-images;android-33;aosp_atd;x86_64"
 
       - name: Accept Android licenses
         run: yes | "$ANDROID_HOME"/cmdline-tools/latest/bin/sdkmanager --licenses || true
 
       - name: Generate profile
-        run: ./gradlew generateBaselineProfile -Pandroid.testoptions.manageddevices.emulator.gpu="swiftshader_indirect" -Pandroid.testInstrumentationRunnerArguments.androidx.benchmark.enabledRules=BaselineProfile -Pandroid.experimental.testOptions.managedDevices.setupTimeoutMinutes=20 -Dorg.gradle.workers.max=4
-
+        run: ./gradlew :app:generateBaselineProfile -Pandroid.testoptions.manageddevices.emulator.gpu="swiftshader_indirect"
