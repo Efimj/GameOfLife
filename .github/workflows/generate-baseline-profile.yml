@@ -1,15 +1,11 @@
 name: baseline-profiles
 
-run-name: ${{ github.actor }} requested a workflow
-
-
 on:
   pull_request:
     branches:
       - master
 
 jobs:
-
   generate-baseline-profiles:
     runs-on: macos-latest
     steps:
@@ -25,6 +21,22 @@ jobs:
       - name: Grant Permissions to gradlew
         run: chmod +x gradlew
 
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+        with:
+          api-level: 30
+          target: android-30
+          ndk: 21.4.7075529
+
+      - name: Start Emulator
+        run: |
+          sudo $ANDROID_HOME/emulator/emulator -list-avds
+          sudo $ANDROID_HOME/emulator/emulator -avd test -no-audio -no-window -gpu swiftshader_indirect -no-snapshot &
+
+      - name: Wait for Emulator
+        run: adb wait-for-device
+        timeout-minutes: 10
+
       # Generates Baseline Profile
       - name: Generate Baseline Profile
         run: ./gradlew generateBaselineProfile -Pandroid.testoptions.manageddevices.emulator.gpu="swiftshader_indirect" -Pandroid.testInstrumentationRunnerArguments.androidx.benchmark.enabledRules=BaselineProfile -Pandroid.experimental.testOptions.managedDevices.setupTimeoutMinutes=20 -Dorg.gradle.workers.max=4
@@ -37,52 +49,3 @@ jobs:
           title: "Generate baseline profiles"
           delete-branch: true
           branch: actions/baseline-profiles
-
-
-#name: Generate Baseline Profile
-#
-#on: pull_request
-#
-#jobs:
-#  build-benchmark-apks:
-#    name: Generate baseline profile
-#    runs-on: macos-latest
-#    timeout-minutes: 20
-#
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v4
-#
-#      - name: Validate Gradle Wrapper
-#        uses: gradle/actions/wrapper-validation@v3
-#
-#      - name: Grant execute permission for gradlew
-#        run: chmod +x ./gradlew
-#
-#      - name: Set up JDK 17
-#        uses: actions/setup-java@v4
-#        with:
-#          java-version: '17'
-#          distribution: 'adopt'
-#
-#      - name: Enable KVM
-#        run: |
-#          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
-#          sudo udevadm control --reload-rules
-#          sudo udevadm trigger --name-match=kvm
-#
-#      - name: run tests
-#        uses: reactivecircus/android-emulator-runner@v2
-#        with:
-#          api-level: 33
-#          script: ./gradlew connectedCheck
-#
-##      - name: Install GMD image for baseline profile generation
-##        run: yes | "$ANDROID_HOME"/cmdline-tools/latest/bin/sdkmanager "system-images;android-33;aosp_atd;x86_64"
-#
-#      - name: Accept Android licenses
-#        run: yes | "$ANDROID_HOME"/cmdline-tools/latest/bin/sdkmanager --licenses || true
-#
-#      - name: Generate profile
-#        run: ./gradlew :app:generateBaselineProfile
-#          -Pandroid.testoptions.manageddevices.emulator.gpu="swiftshader_indirect"
