@@ -25,9 +25,6 @@ jobs:
       - name: Grant Permissions to gradlew
         run: chmod +x gradlew
 
-      - name: Clean Managed Devices
-        run: ./gradlew cleanManagedDevices --unused-only
-
       # Generates Baseline Profile
       - name: Generate Baseline Profile
         run: ./gradlew generateBaselineProfile -Pandroid.testoptions.manageddevices.emulator.gpu="swiftshader_indirect" -Pandroid.testInstrumentationRunnerArguments.androidx.benchmark.enabledRules=BaselineProfile -Pandroid.experimental.testOptions.managedDevices.setupTimeoutMinutes=20 -Dorg.gradle.workers.max=4
