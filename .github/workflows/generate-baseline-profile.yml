@@ -25,9 +25,6 @@ jobs:
       - name: Grant Permissions to gradlew
         run: chmod +x gradlew
 
-      - name: Build app and benchmark
-        run: ./gradlew :app:assembleBenchmark # change the 'app' with your app module's name
-
       - name: Clean Managed Devices
         run: ./gradlew cleanManagedDevices --unused-only
 
