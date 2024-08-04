@@ -93,7 +93,8 @@ class GameScreenViewModel : ViewModel() {
                 }
 
                 if (states.value.freeSoulMode)
-                    nextStep = freeSouls(nextState = nextStep, previousState = states.value.previousStep)
+                    nextStep =
+                        freeSouls(nextState = nextStep, previousState = states.value.previousStep)
 
                 _states.value = states.value.copy(
                     currentStep = nextStep,
@@ -161,7 +162,12 @@ class GameScreenViewModel : ViewModel() {
             GameOfLifeUnitState.Empty -> GameOfLifeUnitState.Alive
         }
         val aliveCount = countAlive(newList)
-        _states.value = states.value.copy(currentStep = newList, alive = aliveCount, gameResult = null, stepNumber = 0)
+        _states.value = states.value.copy(
+            currentStep = newList,
+            alive = aliveCount,
+            gameResult = null,
+            stepNumber = 0
+        )
     }
 
     private fun checkIsOutOfBounds(
@@ -199,7 +205,8 @@ class GameScreenViewModel : ViewModel() {
             cols = states.value.cols,
             initialValue = GameOfLifeUnitState.Empty
         )
-        _states.value = states.value.copy(currentStep = list, alive = 0, gameResult = null, stepNumber = 0)
+        _states.value =
+            states.value.copy(currentStep = list, alive = 0, gameResult = null, stepNumber = 0)
     }
 
     fun turnOnSimulation() {
@@ -224,22 +231,28 @@ class GameScreenViewModel : ViewModel() {
         _states.value = states.value.copy(emojiEnabled = states.value.emojiEnabled.not())
     }
 
-    fun setRows(matrixRowsString: String) {
-        val matrixRows = matrixRowsString.toIntOrNull() ?: return
-        if (matrixRows == states.value.rows) return
+    val MaxGameDimension = 50
 
-        if (matrixRows >= 1)
-            _states.value = states.value.copy(rows = matrixRows, gameResult = null, stepNumber = 0)
+    fun setRows(matrixRowsString: String):Boolean {
+        val matrixRows = matrixRowsString.toIntOrNull() ?: return false
+        if (matrixRows == states.value.rows) return true
+        if (matrixRows < 1) return false
+        if (matrixRows > MaxGameDimension) return false
+
+        _states.value = states.value.copy(rows = matrixRows, gameResult = null, stepNumber = 0)
         regenerateGame()
+        return true
     }
 
-    fun setColumns(matrixColumnsString: String) {
-        val matrixCols = matrixColumnsString.toIntOrNull() ?: return
-        if (matrixCols == states.value.cols) return
+    fun setColumns(matrixColumnsString: String):Boolean {
+        val matrixCols = matrixColumnsString.toIntOrNull() ?: return false
+        if (matrixCols == states.value.cols) return true
+        if (matrixCols < 1) return false
+        if (matrixCols > MaxGameDimension) return false
 
-        if (matrixCols >= 1)
-            _states.value = states.value.copy(cols = matrixCols, gameResult = null, stepNumber = 0)
+        _states.value = states.value.copy(cols = matrixCols, gameResult = null, stepNumber = 0)
         regenerateGame()
+        return true
     }
 
     fun updateGameRules(

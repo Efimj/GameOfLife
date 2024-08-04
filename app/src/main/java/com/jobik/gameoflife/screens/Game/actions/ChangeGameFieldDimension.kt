@@ -28,14 +28,16 @@ fun ChangeGameFieldDimension(viewModel: GameScreenViewModel) {
         var isRelated by rememberSaveable { mutableStateOf(true) }
         val rows = remember { mutableStateOf(viewModel.states.value.rows.toString()) }
         val cols = remember { mutableStateOf(viewModel.states.value.cols.toString()) }
+        var isRowsFieldError by remember { mutableStateOf(false) }
+        var isColsFieldError by remember { mutableStateOf(false) }
 
         LaunchedEffect(rows.value, cols.value, isRelated) {
             if (rows.value.isBlank() || cols.value.isBlank()) return@LaunchedEffect
-            viewModel.setRows(rows.value)
+            isRowsFieldError = viewModel.setRows(rows.value).not()
             if (isRelated) {
                 cols.value = rows.value
             }
-            viewModel.setColumns(cols.value)
+            isColsFieldError = viewModel.setColumns(cols.value).not()
         }
 
         Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
@@ -58,6 +60,7 @@ fun ChangeGameFieldDimension(viewModel: GameScreenViewModel) {
                             label = {
                                 Text(text = stringResource(id = R.string.rows))
                             },
+                            isError = isRowsFieldError,
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
                         )
                         OutlinedTextField(
@@ -68,6 +71,7 @@ fun ChangeGameFieldDimension(viewModel: GameScreenViewModel) {
                                 Text(text = stringResource(id = R.string.columns))
                             },
                             enabled = !isRelated,
+                            isError = isColsFieldError,
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
                         )
                         Switch(
@@ -97,6 +101,7 @@ fun ChangeGameFieldDimension(viewModel: GameScreenViewModel) {
                             label = {
                                 Text(text = stringResource(id = R.string.rows))
                             },
+                            isError = isRowsFieldError,
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
                         )
                         Row(
@@ -111,6 +116,7 @@ fun ChangeGameFieldDimension(viewModel: GameScreenViewModel) {
                                     Text(text = stringResource(id = R.string.columns))
                                 },
                                 enabled = !isRelated,
+                                isError = isColsFieldError,
                                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
                             )
                             Switch(
