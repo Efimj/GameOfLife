@@ -35,9 +35,12 @@ fun GameScreen(
         viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.secondary
         viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.error
         viewModel.states.value.gameResult != null -> MaterialTheme.colorScheme.primary
-        else -> MaterialTheme.colorScheme.surface
+        else -> MaterialTheme.colorScheme.surfaceContainerHigh
     }
-    val containerColor by animateColorAsState(targetValue = containerColorTarget, label = "containerColor")
+    val containerColor by animateColorAsState(
+        targetValue = containerColorTarget,
+        label = "containerColor"
+    )
 
     LaunchedEffect(backdropScaffoldState.progress) {
         if (backdropScaffoldState.progress.fraction > 0f)
@@ -114,7 +117,8 @@ private fun CompactGameScreen(
 ) {
     val localDensity = LocalDensity.current
 
-    val frontCornerValue = if (backdropScaffoldState.currentValue == BackdropValue.Concealed) 0.dp else 12.dp
+    val frontCornerValue =
+        if (backdropScaffoldState.currentValue == BackdropValue.Concealed) 0.dp else 12.dp
     val frontCorner by animateDpAsState(targetValue = frontCornerValue, label = "frontCorner")
 
     var screenHeight by remember { mutableStateOf(0.dp) }
