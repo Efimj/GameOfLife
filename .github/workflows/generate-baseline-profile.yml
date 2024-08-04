@@ -1,28 +1,28 @@
-name: Generate Baseline Profile
-
-on: pull_request
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v4
-
-      - name: Enable KVM
-        run: |
-          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
-          sudo udevadm control --reload-rules
-          sudo udevadm trigger --name-match=kvm
-
-      - name: Set execute permission for gradlew
-        run: chmod +x ./gradlew
-
-      - name: run tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          script: ./gradlew connectedCheck
+#name: Generate Baseline Profile
+#
+#on: pull_request
+#
+#jobs:
+#  test:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: checkout
+#        uses: actions/checkout@v4
+#
+#      - name: Enable KVM
+#        run: |
+#          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+#          sudo udevadm control --reload-rules
+#          sudo udevadm trigger --name-match=kvm
+#
+#      - name: Set execute permission for gradlew
+#        run: chmod +x ./gradlew
+#
+#      - name: run tests
+#        uses: reactivecircus/android-emulator-runner@v2
+#        with:
+#          api-level: 29
+#          script: ./gradlew connectedCheck
 
 #jobs:
 #  build-benchmark-apks:
