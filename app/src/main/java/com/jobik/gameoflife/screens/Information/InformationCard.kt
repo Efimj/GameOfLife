@@ -44,17 +44,20 @@ fun LargeInformationCard(
 
     val containerColorValue =
         if (isExpanded) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainerHigh
-    val containerColorState = animateColorAsState(targetValue = containerColorValue, label = "contentColorState")
+    val containerColorState =
+        animateColorAsState(targetValue = containerColorValue, label = "contentColorState")
 
     val contentColorValue =
         if (isExpanded) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface
-    val contentColorState = animateColorAsState(targetValue = contentColorValue, label = "contentColorState")
+    val contentColorState =
+        animateColorAsState(targetValue = contentColorValue, label = "contentColorState")
 
     val elevationValue = if (isExpanded) 6.dp else 0.dp
     val elevationState = animateDpAsState(targetValue = elevationValue, label = "elevationState")
 
     val borderWidthValue = if (isExpanded) 0.dp else 1.dp
-    val borderWidthState = animateDpAsState(targetValue = borderWidthValue, label = "borderWidthState")
+    val borderWidthState =
+        animateDpAsState(targetValue = borderWidthValue, label = "borderWidthState")
 
     Surface(
         shape = MaterialTheme.shapes.large,
@@ -76,7 +79,9 @@ fun LargeInformationCard(
                 contentDescription = null,
                 colorFilter = if (imageWithTint) ColorFilter.tint(MaterialTheme.colorScheme.primary) else null
             )
-            Column(modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            Column(
+                modifier = Modifier.padding(20.dp),
+            ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically,
@@ -94,7 +99,10 @@ fun LargeInformationCard(
                         horizontalAlignment = Alignment.End
                     ) {
                         val rotatingValue = if (isExpanded) 180f else 0f
-                        val rotatingState = animateFloatAsState(targetValue = rotatingValue, label = "rotatingState")
+                        val rotatingState = animateFloatAsState(
+                            targetValue = rotatingValue,
+                            label = "rotatingState"
+                        )
                         IconButton(
                             modifier = Modifier
                                 .size(30.dp)
@@ -108,6 +116,7 @@ fun LargeInformationCard(
                         }
                     }
                 }
+                Spacer(modifier = Modifier.height(10.dp))
                 Text(
                     text = stringResource(id = body),
                     modifier = Modifier.animateContentSize(),
@@ -117,7 +126,8 @@ fun LargeInformationCard(
                     color = MaterialTheme.colorScheme.onSurface,
                 )
                 AnimatedVisibility(visible = isExpanded) {
-                    Row {
+                    Column {
+                        Spacer(modifier = Modifier.height(10.dp))
                         Button(onClick = button.onClick) {
                             Text(
                                 text = stringResource(id = button.text),
