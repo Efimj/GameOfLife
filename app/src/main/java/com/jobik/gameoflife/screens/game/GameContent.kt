@@ -33,31 +33,6 @@ fun GameContent(modifier: Modifier = Modifier, viewModel: GameScreenViewModel) {
     )
 
     Column(modifier = modifier) {
-        AnimatedVisibility(
-            visible = viewModel.states.value.gameResult != null,
-            enter = slideInVertically() + expandVertically(expandFrom = Alignment.Top) + fadeIn(
-                initialAlpha = 0.3f
-            ),
-            exit = slideOutVertically() + shrinkVertically() + fadeOut()
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 10.dp, bottom = 10.dp),
-                horizontalArrangement = Arrangement.Center
-            ) {
-                Text(
-                    text = when (viewModel.states.value.gameResult) {
-                        GameOfLife.Companion.GameOfLifeResult.StableCombination -> stringResource(id = R.string.stable_combination)
-                        GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> stringResource(id = R.string.no_one_survived)
-                        else -> ""
-                    },
-                    color = contentColor,
-                    style = MaterialTheme.typography.headlineSmall,
-                    fontWeight = FontWeight.Bold,
-                )
-            }
-        }
         Box(
             modifier = Modifier
                 .weight(1f, fill = false)
