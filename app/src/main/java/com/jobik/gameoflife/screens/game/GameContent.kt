@@ -20,7 +20,7 @@ import com.jobik.gameoflife.ui.composables.Counter
 import com.jobik.gameoflife.ui.composables.GridForGame
 
 @Composable
-fun GameContent(viewModel: GameScreenViewModel) {
+fun GameContent(modifier: Modifier = Modifier, viewModel: GameScreenViewModel) {
     val contentColorTarget = when {
         viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.onSecondary
         viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.onError
@@ -32,41 +32,14 @@ fun GameContent(viewModel: GameScreenViewModel) {
         label = "contentColor"
     )
 
-    Column {
-        AnimatedVisibility(
-            visible = viewModel.states.value.gameResult != null,
-            enter = slideInVertically() + expandVertically(expandFrom = Alignment.Top) + fadeIn(
-                initialAlpha = 0.3f
-            ),
-            exit = slideOutVertically() + shrinkVertically() + fadeOut()
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 10.dp, bottom = 10.dp),
-                horizontalArrangement = Arrangement.Center
-            ) {
-                Text(
-                    text = when (viewModel.states.value.gameResult) {
-                        GameOfLife.Companion.GameOfLifeResult.StableCombination -> stringResource(id = R.string.stable_combination)
-                        GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> stringResource(id = R.string.no_one_survived)
-                        else -> ""
-                    },
-                    color = contentColor,
-                    style = MaterialTheme.typography.headlineSmall,
-                    fontWeight = FontWeight.Bold,
-                )
-            }
-        }
+    Column(modifier = modifier) {
         Box(
-            modifier = Modifier
-                .weight(1f, fill = false)
-                .fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
             contentAlignment = Alignment.TopCenter
         ) {
             Box(
                 modifier = Modifier
-                    .aspectRatio(1f, matchHeightConstraintsFirst = true)
+                    .aspectRatio(1f)
                     .padding(4.dp)
                     .clip(MaterialTheme.shapes.medium)
                     .background(MaterialTheme.colorScheme.surface)
@@ -96,7 +69,7 @@ fun GameContent(viewModel: GameScreenViewModel) {
                     maxLines = 1
                 )
                 Counter(
-                    viewModel.states.value.alive,
+                    count = viewModel.states.value.alive,
                     style = MaterialTheme.typography.bodyMedium,
                     color = contentColor
                 )
@@ -114,7 +87,7 @@ fun GameContent(viewModel: GameScreenViewModel) {
                     maxLines = 1
                 )
                 Counter(
-                    viewModel.states.value.deaths,
+                    count = viewModel.states.value.deaths,
                     style = MaterialTheme.typography.bodyMedium,
                     color = contentColor
                 )
@@ -132,7 +105,7 @@ fun GameContent(viewModel: GameScreenViewModel) {
                     maxLines = 1
                 )
                 Counter(
-                    viewModel.states.value.revivals,
+                    count = viewModel.states.value.revivals,
                     style = MaterialTheme.typography.bodyMedium,
                     color = contentColor
                 )

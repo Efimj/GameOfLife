@@ -94,5 +94,6 @@
     <string name="onb_3_description">If a living cell has two or three living neighbors, it continues to live;
         otherwise, the cell dies (due to "loneliness" or "overcrowding")
     </string>
+    <string name="set_field_scale">Field scale</string>
 
 </resources>

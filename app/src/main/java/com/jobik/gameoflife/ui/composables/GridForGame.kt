@@ -49,11 +49,11 @@ fun GridForGame(
     viewModel: GameScreenViewModel,
 ) {
     val state = viewModel.states.value
-    var cellSize by remember(state.scale) { mutableStateOf((20 * state.scale).dp) }
+    val cellSize by remember(state.scale) { mutableStateOf((20 * state.scale).dp) }
     val cellSizePx = with(LocalDensity.current) { cellSize.toPx() }
     val cellSpacing = 1.dp
     val cellSpacingPx = with(LocalDensity.current) { cellSpacing.toPx() }
-    var cellEmojiUnit by remember(state.currentStep) {
+    val cellEmojiUnit by remember(state.currentStep) {
         mutableStateOf(
             Array(state.currentStep.size) { row ->
                 Array(state.currentStep.first().size) { col ->
@@ -127,12 +127,6 @@ fun GridForGame(
                 }
             }
         }
-        Slider(
-            value = state.scale,
-            onValueChange = { viewModel.updateScale(it) },
-            valueRange = .5f..1.5f,
-            steps = 14
-        )
     }
 }
 
