@@ -3,14 +3,12 @@ package com.jobik.gameoflife.activity
 import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.jobik.gameoflife.GameOfLifeApplication
-import com.jobik.gameoflife.SharedPreferencesKeys
-import com.jobik.gameoflife.screens.AppLayout.AppLayout
+import com.jobik.gameoflife.screens.layout.AppLayout
 import com.jobik.gameoflife.services.app.AppCounter
 import com.jobik.gameoflife.services.localization.LocalizationHelper
 import com.jobik.gameoflife.services.rate.RateDialogProvider

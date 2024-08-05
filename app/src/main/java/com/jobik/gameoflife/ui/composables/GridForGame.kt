@@ -1,6 +1,7 @@
 package com.jobik.gameoflife.ui.composables
 
 import android.graphics.Paint
+import androidx.annotation.Keep
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Column
@@ -23,7 +24,25 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.GameOfLifeUnitState
-import com.jobik.gameoflife.screens.Game.GameScreenViewModel
+import com.jobik.gameoflife.screens.game.GameScreenViewModel
+
+@Keep
+val AliveEmojis = listOf(
+    "\uD83D\uDE03",
+    "\uD83D\uDE04",
+    "\uD83D\uDE01",
+    "\uD83D\uDE06",
+    "\uD83D\uDE07",
+    "\uD83D\uDE0D",
+    "\uD83E\uDD29",
+    "\uD83E\uDD11",
+    "\uD83D\uDE0B",
+)
+
+@Keep
+val DeadEmojis = listOf(
+    "\uD83D\uDC80",
+)
 
 @Composable
 fun GridForGame(
