@@ -69,6 +69,7 @@ import com.jobik.gameoflife.ui.composables.DeadEmojis
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
 import com.jobik.gameoflife.ui.helpers.isWidth
+import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -389,25 +390,7 @@ fun GameActions(viewModel: GameScreenViewModel) {
 
 
         SettingsGroup(headline = stringResource(id = R.string.simulation_settings)) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp),
-                verticalArrangement = Arrangement.spacedBy(5.dp),
-            ) {
-                Text(
-                    text = stringResource(id = R.string.set_field_scale),
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-                Slider(
-                    value = viewModel.states.value.scale,
-                    onValueChange = { viewModel.updateScale(it) },
-                    valueRange = .5f..1.5f,
-                    steps = 14
-                )
-            }
+            GameFieldScale(viewModel)
 
             SettingsItemWrapper(
                 modifier = Modifier
@@ -455,6 +438,37 @@ fun GameActions(viewModel: GameScreenViewModel) {
         if (isWidth(sizeClass = WindowWidthSizeClass.Expanded).not()) {
             BottomWindowInsetsSpacer()
         }
+    }
+}
+
+@Composable
+private fun GameFieldScale(viewModel: GameScreenViewModel) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 20.dp),
+        verticalArrangement = Arrangement.spacedBy(5.dp),
+    ) {
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+            Text(
+                text = stringResource(id = R.string.set_field_scale),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Text(
+                text = String.format(Locale.getDefault(), "%.2f", viewModel.states.value.scale),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+        }
+        Slider(
+            value = viewModel.states.value.scale,
+            onValueChange = { viewModel.updateScale(it) },
+            valueRange = .5f..1.5f,
+            steps = 15
+        )
     }
 }
 
