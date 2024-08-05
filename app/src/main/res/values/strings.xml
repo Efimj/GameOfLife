@@ -29,6 +29,7 @@
     <string name="revivals">Revivals</string>
     <string name="switch_running_simulation">Switch running simulation</string>
     <string name="set_field_dimensions">Set field dimensions</string>
+    <string name="set_field_scale">Set field scale</string>
     <string name="rows">Rows</string>
     <string name="columns">Columns</string>
     <string name="one_step_duration">One step duration</string>
