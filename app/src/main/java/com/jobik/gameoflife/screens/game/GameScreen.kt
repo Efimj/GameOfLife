@@ -139,7 +139,11 @@ private fun CompactGameScreen(
 
     Column {
         GameAppBar(title = title, color = contentColor, backgroundColor = containerColor)
-        Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+        Column(
+            modifier = Modifier
+                .verticalScroll(rememberScrollState())
+                .background(MaterialTheme.colorScheme.surface)
+        ) {
             GameContent(
                 modifier = Modifier
                     .clip(RoundedCornerShape(bottomEnd = 12.dp, bottomStart = 12.dp))

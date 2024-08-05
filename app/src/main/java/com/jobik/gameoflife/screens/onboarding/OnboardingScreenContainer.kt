@@ -39,7 +39,6 @@ import com.jobik.gameoflife.ui.helpers.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnboardingScreen(navController: NavHostController) {
     val pagerState = rememberPagerState {
@@ -60,7 +59,6 @@ fun OnboardingScreen(navController: NavHostController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             reverseLayout = false,
             contentPadding = PaddingValues(0.dp),
-            beyondBoundsPageCount = 0,
             pageSize = PageSize.Fill,
         ) {
             PagerScreen(Onboarding.PageList.PageList[it])
