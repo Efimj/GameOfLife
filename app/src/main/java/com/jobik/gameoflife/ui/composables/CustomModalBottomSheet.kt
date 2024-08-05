@@ -22,7 +22,7 @@ fun CustomModalBottomSheet(
         onDismissRequest = onCancel,
         shape = shape,
         dragHandle = dragHandle,
-        windowInsets = windowInsets,
+        contentWindowInsets = { windowInsets },
         properties = properties
     ) {
         content()
