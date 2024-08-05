@@ -34,7 +34,6 @@ import androidx.compose.material.icons.outlined.Cached
 import androidx.compose.material.icons.outlined.Mood
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButtonDefaults
@@ -71,7 +70,6 @@ import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
 import com.jobik.gameoflife.ui.helpers.isWidth
 import java.util.Locale
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GameActions(viewModel: GameScreenViewModel) {
     Column(
@@ -432,7 +430,7 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     }
                 }
             }
-            ChangeGameFieldDimension(viewModel)
+//            ChangeGameFieldDimension(viewModel)
         }
 
         if (isWidth(sizeClass = WindowWidthSizeClass.Expanded).not()) {

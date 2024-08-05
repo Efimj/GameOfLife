@@ -4,16 +4,15 @@ import android.graphics.Paint
 import androidx.annotation.Keep
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Slider
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -68,7 +67,18 @@ fun GridForGame(
 
     val unitColor = MaterialTheme.colorScheme.primary
 
-    Column(modifier = Modifier.padding(bottom = 5.dp)) {
+    BoxWithConstraints {
+        val fieldWidth = with(LocalDensity.current) { maxWidth.toPx() }
+        val gapWidth = with(LocalDensity.current) { 1.dp.toPx() }
+
+
+        LaunchedEffect(cellSize) {
+            val count = fieldWidth / (cellSizePx + gapWidth)
+
+            viewModel.setRows(count.toInt().toString())
+            viewModel.setColumns(count.toInt().toString())
+        }
+
         Canvas(
             modifier = Modifier
                 .fillMaxSize()
