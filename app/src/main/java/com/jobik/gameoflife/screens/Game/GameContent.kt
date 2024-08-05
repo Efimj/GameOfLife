@@ -27,12 +27,17 @@ fun GameContent(viewModel: GameScreenViewModel) {
         viewModel.states.value.gameResult != null -> MaterialTheme.colorScheme.onPrimary
         else -> MaterialTheme.colorScheme.onSurface
     }
-    val contentColor by animateColorAsState(targetValue = contentColorTarget, label = "contentColor")
+    val contentColor by animateColorAsState(
+        targetValue = contentColorTarget,
+        label = "contentColor"
+    )
 
     Column {
         AnimatedVisibility(
             visible = viewModel.states.value.gameResult != null,
-            enter = slideInVertically() + expandVertically(expandFrom = Alignment.Top) + fadeIn(initialAlpha = 0.3f),
+            enter = slideInVertically() + expandVertically(expandFrom = Alignment.Top) + fadeIn(
+                initialAlpha = 0.3f
+            ),
             exit = slideOutVertically() + shrinkVertically() + fadeOut()
         ) {
             Row(
@@ -67,9 +72,7 @@ fun GameContent(viewModel: GameScreenViewModel) {
                     .background(MaterialTheme.colorScheme.surface)
             ) {
                 GridForGame(
-                    array = viewModel.states.value.currentStep,
-                    emojiMode = viewModel.states.value.emojiEnabled,
-                    onElementClick = viewModel::onElementClick
+                    viewModel = viewModel,
                 )
             }
         }

@@ -34,6 +34,7 @@ data class GameScreenStates(
     val gameResult: GameOfLifeResult? = null,
     val gameOfLifeStepRules: GameOfLifeStepSettings = GameOfLifeStepSettingsDefault,
     val oneStepDurationMills: Long = 500,
+    val scale: Float = 1f
 )
 
 class GameScreenViewModel : ViewModel() {
@@ -233,7 +234,7 @@ class GameScreenViewModel : ViewModel() {
 
     val MaxGameDimension = 50
 
-    fun setRows(matrixRowsString: String):Boolean {
+    fun setRows(matrixRowsString: String): Boolean {
         val matrixRows = matrixRowsString.toIntOrNull() ?: return false
         if (matrixRows == states.value.rows) return true
         if (matrixRows < 1) return false
@@ -244,7 +245,7 @@ class GameScreenViewModel : ViewModel() {
         return true
     }
 
-    fun setColumns(matrixColumnsString: String):Boolean {
+    fun setColumns(matrixColumnsString: String): Boolean {
         val matrixCols = matrixColumnsString.toIntOrNull() ?: return false
         if (matrixCols == states.value.cols) return true
         if (matrixCols < 1) return false
@@ -295,5 +296,11 @@ class GameScreenViewModel : ViewModel() {
                 currentStep = rules.firstStep
             )
         }
+    }
+
+    fun updateScale(value: Float) {
+        if (value < 0.5f) return
+        if (value > 1.5f) return
+        _states.value = states.value.copy(scale = value)
     }
 }
