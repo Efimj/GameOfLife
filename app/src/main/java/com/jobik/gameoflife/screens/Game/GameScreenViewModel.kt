@@ -23,8 +23,8 @@ data class GameScreenStates(
     val isSimulationRunning: Boolean = false,
     val freeSoulMode: Boolean = true,
     val emojiEnabled: Boolean = false,
-    val rows: Int = 15,
-    val cols: Int = 15,
+    val rows: Int = 32,
+    val cols: Int = 32,
     val alive: Int = 0,
     val deaths: Int = 0,
     val revivals: Int = 0,
@@ -232,7 +232,7 @@ class GameScreenViewModel : ViewModel() {
         _states.value = states.value.copy(emojiEnabled = states.value.emojiEnabled.not())
     }
 
-    val MaxGameDimension = 1000
+    val MaxGameDimension = 100
 
     fun setRows(matrixRowsString: String): Boolean {
         val matrixRows = matrixRowsString.toIntOrNull() ?: return false
