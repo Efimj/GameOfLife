@@ -34,14 +34,12 @@ fun GameContent(modifier: Modifier = Modifier, viewModel: GameScreenViewModel) {
 
     Column(modifier = modifier) {
         Box(
-            modifier = Modifier
-                .weight(1f, fill = false)
-                .fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
             contentAlignment = Alignment.TopCenter
         ) {
             Box(
                 modifier = Modifier
-                    .aspectRatio(1f, matchHeightConstraintsFirst = true)
+                    .aspectRatio(1f)
                     .padding(4.dp)
                     .clip(MaterialTheme.shapes.medium)
                     .background(MaterialTheme.colorScheme.surface)
@@ -71,7 +69,7 @@ fun GameContent(modifier: Modifier = Modifier, viewModel: GameScreenViewModel) {
                     maxLines = 1
                 )
                 Counter(
-                    viewModel.states.value.alive,
+                    count = viewModel.states.value.alive,
                     style = MaterialTheme.typography.bodyMedium,
                     color = contentColor
                 )
@@ -89,7 +87,7 @@ fun GameContent(modifier: Modifier = Modifier, viewModel: GameScreenViewModel) {
                     maxLines = 1
                 )
                 Counter(
-                    viewModel.states.value.deaths,
+                    count = viewModel.states.value.deaths,
                     style = MaterialTheme.typography.bodyMedium,
                     color = contentColor
                 )
@@ -107,7 +105,7 @@ fun GameContent(modifier: Modifier = Modifier, viewModel: GameScreenViewModel) {
                     maxLines = 1
                 )
                 Counter(
-                    viewModel.states.value.revivals,
+                    count = viewModel.states.value.revivals,
                     style = MaterialTheme.typography.bodyMedium,
                     color = contentColor
                 )

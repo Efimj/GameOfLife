@@ -16,7 +16,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -137,12 +139,14 @@ private fun CompactGameScreen(
 
     Column {
         GameAppBar(title = title, color = contentColor, backgroundColor = containerColor)
-        GameContent(
-            modifier = Modifier
-                .clip(RoundedCornerShape(bottomEnd = 12.dp, bottomStart = 12.dp))
-                .background(containerColor),
-            viewModel = viewModel
-        )
-        GameActions(viewModel = viewModel)
+        Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+            GameContent(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(bottomEnd = 12.dp, bottomStart = 12.dp))
+                    .background(containerColor),
+                viewModel = viewModel
+            )
+            GameActions(viewModel = viewModel)
+        }
     }
 }
