@@ -20,7 +20,7 @@ import com.jobik.gameoflife.ui.composables.Counter
 import com.jobik.gameoflife.ui.composables.GridForGame
 
 @Composable
-fun GameContent(viewModel: GameScreenViewModel) {
+fun GameContent(modifier: Modifier = Modifier, viewModel: GameScreenViewModel) {
     val contentColorTarget = when {
         viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.onSecondary
         viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.onError
@@ -32,7 +32,7 @@ fun GameContent(viewModel: GameScreenViewModel) {
         label = "contentColor"
     )
 
-    Column {
+    Column(modifier = modifier) {
         AnimatedVisibility(
             visible = viewModel.states.value.gameResult != null,
             enter = slideInVertically() + expandVertically(expandFrom = Alignment.Top) + fadeIn(

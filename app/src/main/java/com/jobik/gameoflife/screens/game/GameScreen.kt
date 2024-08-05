@@ -2,27 +2,17 @@ package com.jobik.gameoflife.screens.game
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.BackdropScaffold
-import androidx.compose.material.BackdropScaffoldState
-import androidx.compose.material.BackdropValue
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.rememberBackdropScaffoldState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,19 +26,11 @@ import com.jobik.gameoflife.screens.game.actions.GameActions
 import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
 import com.jobik.gameoflife.ui.helpers.currentWidthSizeClass
 import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
-import com.jobik.gameoflife.ui.helpers.isWidth
-import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
-import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun GameScreen(
     viewModel: GameScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
-    val scope = rememberCoroutineScope()
-    // Get local density from composable
-    val backdropScaffoldState = rememberBackdropScaffoldState(BackdropValue.Revealed)
-
     val containerColorTarget = when {
         viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.secondary
         viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.error
@@ -60,15 +42,6 @@ fun GameScreen(
         label = "containerColor"
     )
 
-    LaunchedEffect(backdropScaffoldState.progress) {
-        if (backdropScaffoldState.progress.fraction > 0f)
-            viewModel.turnOffSimulation()
-    }
-
-    BackHandler(enabled = backdropScaffoldState.currentValue == BackdropValue.Concealed) {
-        scope.launch { backdropScaffoldState.reveal() }
-    }
-
     BackHandler(enabled = viewModel.states.value.isSimulationRunning) {
         viewModel.turnOffSimulation()
     }
@@ -76,7 +49,6 @@ fun GameScreen(
     when (currentWidthSizeClass()) {
         WindowWidthSizeClass.Compact, WindowWidthSizeClass.Medium -> {
             CompactGameScreen(
-                backdropScaffoldState,
                 containerColor,
                 viewModel
             )
@@ -127,64 +99,20 @@ private fun ExpandedGameScreen(
 }
 
 @Composable
-@OptIn(ExperimentalMaterialApi::class)
 private fun CompactGameScreen(
-    backdropScaffoldState: BackdropScaffoldState,
     containerColor: Color,
     viewModel: GameScreenViewModel
 ) {
-    val localDensity = LocalDensity.current
-
-    val frontCornerValue =
-        if (backdropScaffoldState.currentValue == BackdropValue.Concealed) 0.dp else 12.dp
-    val frontCorner by animateDpAsState(targetValue = frontCornerValue, label = "frontCorner")
-
-    var screenHeight by remember { mutableStateOf(0.dp) }
-    val gameContentPercentageOfHeight = 0.65
-    val maxGameHeight by remember(screenHeight) { mutableStateOf((screenHeight.value * gameContentPercentageOfHeight).dp) }
-
-    val isTopInsets = isWidth(sizeClass = WindowWidthSizeClass.Compact)
-
-    val topInsets = if (isTopInsets) {
-        Modifier.topWindowInsetsPadding()
-    } else {
-        Modifier
+    Column(
+        modifier = Modifier.horizontalWindowInsetsPadding()
+    ) {
+        GameAppBar()
+        GameContent(
+            modifier = Modifier
+                .clip(RoundedCornerShape(bottomEnd = 12.dp, bottomStart = 12.dp))
+                .background(containerColor),
+            viewModel = viewModel
+        )
+        GameActions(viewModel = viewModel)
     }
-
-    BackdropScaffold(
-        modifier = Modifier
-            .horizontalWindowInsetsPadding()
-            .onGloballyPositioned { coordinates ->
-                // Set screen height using the LayoutCoordinates
-                screenHeight = with(localDensity) { coordinates.size.height.toDp() }
-            },
-        scaffoldState = backdropScaffoldState,
-        frontLayerShape = RoundedCornerShape(
-            bottomStart = 0.dp,
-            bottomEnd = 0.dp,
-            topStart = frontCorner,
-            topEnd = frontCorner
-        ),
-        appBar = {
-            GameAppBar()
-        },
-        peekHeight = if (isTopInsets) topWindowInsetsPadding() + 64.dp else 64.dp,
-        persistentAppBar = false,
-        frontLayerScrimColor = Color.Unspecified,
-        frontLayerBackgroundColor = MaterialTheme.colorScheme.background,
-        backLayerBackgroundColor = MaterialTheme.colorScheme.surface,
-        backLayerContent = {
-            Box(
-                modifier = Modifier
-                    .clip(RoundedCornerShape(bottomEnd = 12.dp, bottomStart = 12.dp))
-                    .background(containerColor)
-                    .then(topInsets)
-                    .heightIn(max = maxGameHeight)
-            ) {
-                GameContent(viewModel = viewModel)
-            }
-        },
-        frontLayerContent = {
-            GameActions(viewModel = viewModel)
-        })
 }
