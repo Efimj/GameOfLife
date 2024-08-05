@@ -232,12 +232,12 @@ class GameScreenViewModel : ViewModel() {
         _states.value = states.value.copy(emojiEnabled = states.value.emojiEnabled.not())
     }
 
-    val MaxGameDimension = 50
+    val MaxGameDimension = 1000
 
     fun setRows(matrixRowsString: String): Boolean {
         val matrixRows = matrixRowsString.toIntOrNull() ?: return false
         if (matrixRows == states.value.rows) return true
-        if (matrixRows < 1) return false
+        if (matrixRows < 3) return false
         if (matrixRows > MaxGameDimension) return false
 
         _states.value = states.value.copy(rows = matrixRows, gameResult = null, stepNumber = 0)
