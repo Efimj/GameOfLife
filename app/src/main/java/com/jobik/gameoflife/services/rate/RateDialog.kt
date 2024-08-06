@@ -112,8 +112,7 @@ fun RateDialog(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(MaterialTheme.shapes.medium)
-                        .clickable { dontShowAgain.value = dontShowAgain.value.not() },
+                        .clip(MaterialTheme.shapes.medium),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Checkbox(

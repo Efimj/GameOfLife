@@ -4,12 +4,16 @@ import android.content.Context
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.shape.ZeroCornerSize
@@ -20,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,6 +34,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.gigamole.composefadingedges.fill.FadingEdgesFillType
+import com.gigamole.composefadingedges.verticalFadingEdges
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.gameOfLife.GameOfLife
 import com.jobik.gameoflife.screens.game.actions.GameActions
@@ -141,6 +148,7 @@ private fun ExpandedGameScreen(
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun CompactGameScreen(
     viewModel: GameScreenViewModel
@@ -149,7 +157,7 @@ private fun CompactGameScreen(
         viewModel.states.value.isSimulationRunning -> MaterialTheme.colorScheme.secondary
         viewModel.states.value.gameResult == GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> MaterialTheme.colorScheme.error
         viewModel.states.value.gameResult != null -> MaterialTheme.colorScheme.primary
-        else -> MaterialTheme.colorScheme.surfaceContainerHigh
+        else -> MaterialTheme.colorScheme.surfaceContainerHighest
     }
     val containerColor by animateColorAsState(
         targetValue = containerColorTarget,
@@ -169,29 +177,53 @@ private fun CompactGameScreen(
 
     val context = LocalContext.current
 
+    var pinned by rememberSaveable { mutableStateOf(false) }
+
     Column {
         GameAppBar(
             title = getTitleText(context = context, result = viewModel.states.value.gameResult),
             color = contentColor,
-            backgroundColor = containerColor
+            backgroundColor = containerColor,
+            isPinned = pinned,
+            onPin = {
+                pinned = !pinned
+            }
         )
-        Column(
-            modifier = Modifier
-                .verticalScroll(rememberScrollState())
-                .background(MaterialTheme.colorScheme.surface)
+        LazyColumn(
+            modifier = Modifier.background(MaterialTheme.colorScheme.surface)
         ) {
-            GameContent(
-                modifier = Modifier
-                    .clip(
-                        MaterialTheme.shapes.large.copy(
-                            topStart = ZeroCornerSize,
-                            topEnd = ZeroCornerSize
-                        )
+            if (pinned) {
+                stickyHeader {
+                    GameContent(
+                        modifier = Modifier
+                            .clip(
+                                MaterialTheme.shapes.large.copy(
+                                    topStart = ZeroCornerSize,
+                                    topEnd = ZeroCornerSize
+                                )
+                            )
+                            .background(containerColor),
+                        viewModel = viewModel
                     )
-                    .background(containerColor),
-                viewModel = viewModel
-            )
-            GameActions(viewModel = viewModel)
+                }
+            } else {
+                item {
+                    GameContent(
+                        modifier = Modifier
+                            .clip(
+                                MaterialTheme.shapes.large.copy(
+                                    topStart = ZeroCornerSize,
+                                    topEnd = ZeroCornerSize
+                                )
+                            )
+                            .background(containerColor),
+                        viewModel = viewModel
+                    )
+                }
+            }
+            item {
+                GameActions(viewModel = viewModel)
+            }
         }
     }
 }

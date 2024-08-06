@@ -6,7 +6,13 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.ime
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.LockOpen
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.PushPin
+import androidx.compose.material.icons.rounded.Lock
+import androidx.compose.material.icons.rounded.LockOpen
+import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -35,11 +41,16 @@ fun GameAppBar(
     color: Color = MaterialTheme.colorScheme.onSecondaryContainer,
     backgroundColor: Color = MaterialTheme.colorScheme.secondaryContainer,
     title: String = "",
-    modalDrawer: ModalDrawer = ModalDrawerImplementation
+    modalDrawer: ModalDrawer = ModalDrawerImplementation,
+    isPinned: Boolean = false,
+    onPin: () -> Unit = {},
 ) {
     val coroutineScope = rememberCoroutineScope()
+    val isCompact = isWidth(sizeClass = WindowWidthSizeClass.Compact)
+    val isMedium = isWidth(sizeClass = WindowWidthSizeClass.Medium)
 
-    val topInsets = if (isWidth(sizeClass = WindowWidthSizeClass.Compact)) {
+
+    val topInsets = if (isCompact) {
         Modifier.topWindowInsetsPadding()
     } else {
         Modifier
@@ -59,6 +70,7 @@ fun GameAppBar(
             containerColor = backgroundColor,
             navigationIconContentColor = color,
             titleContentColor = color,
+            actionIconContentColor = color
         ),
         navigationIcon = {
             IconButton(onClick = {
@@ -67,10 +79,35 @@ fun GameAppBar(
                 }
             }) {
                 Icon(
-                    Icons.Filled.Menu,
+                    Icons.Rounded.Menu,
                     contentDescription = stringResource(id = R.string.menu_button)
                 )
             }
         },
+        actions = {
+            if (isMedium || isCompact) {
+                AnimatedContent(targetState = isPinned) {
+                    if(it){
+                        IconButton(onClick = {
+                            onPin()
+                        }) {
+                            Icon(
+                                Icons.Rounded.Lock,
+                                contentDescription = stringResource(id = R.string.menu_button)
+                            )
+                        }
+                    }else{
+                        IconButton(onClick = {
+                            onPin()
+                        }) {
+                            Icon(
+                                Icons.Rounded.LockOpen,
+                                contentDescription = stringResource(id = R.string.menu_button)
+                            )
+                        }
+                    }
+                }
+            }
+        }
     )
 }
