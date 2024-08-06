@@ -6,6 +6,8 @@ import androidx.compose.animation.expandHorizontally
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.slideInHorizontally
@@ -16,18 +18,23 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Book
 import androidx.compose.material.icons.outlined.Cached
@@ -47,8 +54,11 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -68,6 +78,8 @@ import com.jobik.gameoflife.ui.composables.DeadEmojis
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
 import com.jobik.gameoflife.ui.helpers.isWidth
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 @Composable
@@ -430,7 +442,6 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     }
                 }
             }
-//            ChangeGameFieldDimension(viewModel)
         }
 
         if (isWidth(sizeClass = WindowWidthSizeClass.Expanded).not()) {
@@ -445,7 +456,6 @@ private fun GameFieldScale(viewModel: GameScreenViewModel) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 20.dp),
-        verticalArrangement = Arrangement.spacedBy(5.dp),
     ) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Text(
@@ -461,11 +471,51 @@ private fun GameFieldScale(viewModel: GameScreenViewModel) {
                 color = MaterialTheme.colorScheme.onSurface
             )
         }
+        Spacer(modifier = Modifier.height(5.dp))
+
+        val scope = rememberCoroutineScope()
+
+        var isVisibleRow by remember { mutableStateOf(false) }
+
+        AnimatedVisibility(
+            visible = isVisibleRow,
+            enter = fadeIn() + slideInVertically { it } + expandVertically(),
+            exit = fadeOut() + slideOutVertically { it } + shrinkVertically()) {
+            Row(
+                modifier = Modifier
+                    .height(40.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                for (v in 0 until viewModel.states.value.cols) {
+                    Box(
+                        modifier = Modifier
+                            .padding(1.dp)
+                            .aspectRatio(1f)
+                            .clip(CircleShape)
+                            .background(MaterialTheme.colorScheme.primary)
+                            .fillMaxHeight()
+                            .weight(1f)
+                    )
+                }
+            }
+        }
+
         Slider(
             value = viewModel.states.value.scale,
-            onValueChange = { viewModel.updateScale(it) },
+            onValueChange = {
+                isVisibleRow = true
+                viewModel.updateScale(it)
+            },
             valueRange = .5f..1.5f,
-            steps = 15
+            steps = 15,
+            onValueChangeFinished = {
+                scope.launch {
+                    delay(1000)
+                    isVisibleRow = false
+                }
+            }
         )
     }
 }
