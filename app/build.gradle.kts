@@ -110,6 +110,6 @@ dependencies {
     // Jetpack lifecycle observer
     implementation(libs.androidx.lifecycle.runtime.compose)
 
-
-
+    api(libs.shadowsPlus)
+    api(libs.fadingEdges)
 }

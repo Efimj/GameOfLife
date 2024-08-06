@@ -9,6 +9,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
@@ -32,6 +33,7 @@ import com.jobik.gameoflife.GameOfLifeApplication
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.navigation.NavigationHelpers.Companion.canNavigate
 import com.jobik.gameoflife.navigation.Screen
+import com.jobik.gameoflife.ui.composables.modifier.fadingEdges
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
 import com.jobik.gameoflife.ui.theme.AppThemeUtil
@@ -52,7 +54,10 @@ fun SettingsContent(navController: NavHostController) {
             icon = if (AppThemeUtil.isDarkMode.value) Icons.Outlined.LightMode else Icons.Outlined.DarkMode,
             text = stringResource(id = R.string.change_theme)
         ) {
-            AppThemeUtil.update(context = context, isDarkTheme = AppThemeUtil.isDarkMode.value.not())
+            AppThemeUtil.update(
+                context = context,
+                isDarkTheme = AppThemeUtil.isDarkMode.value.not()
+            )
         }
         ChangePalette()
 
@@ -67,7 +72,8 @@ fun SettingsContent(navController: NavHostController) {
                     verticalArrangement = Arrangement.spacedBy(2.dp),
                     modifier = Modifier.padding(vertical = 6.dp)
                 ) {
-                    val currentLocale = GameOfLifeApplication.currentLanguage.getLocalizedValue(context)
+                    val currentLocale =
+                        GameOfLifeApplication.currentLanguage.getLocalizedValue(context)
                     Text(
                         text = currentLocale.name,
                         style = MaterialTheme.typography.bodyLarge,
@@ -107,14 +113,21 @@ private fun ChangePalette() {
         if (canRemoveDynamicPalette) Palette.entries.filter { it.name != Palette.DynamicPalette.name } else Palette.entries
     val isDarkMode = AppThemeUtil.isDarkMode.value
 
+    val scroll = rememberLazyListState()
+
     LazyRow(
-        modifier = Modifier.padding(vertical = 10.dp),
+        state = scroll,
+        modifier = Modifier
+            .padding(vertical = 10.dp)
+            .fadingEdges(scroll),
         horizontalArrangement = Arrangement.spacedBy(15.dp),
         contentPadding = PaddingValues(horizontal = 20.dp)
     ) {
         items(palettes) { palette ->
             val paletteValues =
-                if (palette.name == Palette.DynamicPalette.name) if (isDarkMode) dynamicDarkColorScheme(context) else dynamicLightColorScheme(
+                if (palette.name == Palette.DynamicPalette.name && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) if (isDarkMode) dynamicDarkColorScheme(
+                    context
+                ) else dynamicLightColorScheme(
                     context
                 ) else palette.getPalette(isDarkMode)
             val isSelected = palette.name == AppThemeUtil.palette.value.name

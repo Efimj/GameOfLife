@@ -16,18 +16,23 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Book
 import androidx.compose.material.icons.outlined.Cached
@@ -47,8 +52,11 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -65,9 +73,12 @@ import com.jobik.gameoflife.screens.game.GameRules
 import com.jobik.gameoflife.screens.game.GameScreenViewModel
 import com.jobik.gameoflife.ui.composables.AliveEmojis
 import com.jobik.gameoflife.ui.composables.DeadEmojis
+import com.jobik.gameoflife.ui.composables.modifier.fadingEdges
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
 import com.jobik.gameoflife.ui.helpers.isWidth
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 @Composable
@@ -80,74 +91,75 @@ fun GameActions(viewModel: GameScreenViewModel) {
             .padding(bottom = 20.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        MainActions(viewModel)
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 20.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Button(
-                modifier = Modifier.weight(1f),
-                onClick = viewModel::setFullEmpty,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer
-                )
+        Column {
+            MainActions(viewModel)
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 10.dp)
+                    .padding(horizontal = 20.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text = stringResource(id = R.string.clear),
-                    overflow = TextOverflow.Ellipsis,
-                    maxLines = 1
-                )
-            }
-            Spacer(modifier = Modifier.width(10.dp))
-            FilledIconButton(
-                modifier = Modifier,
-                onClick = viewModel::setFullAlive,
-                colors = IconButtonDefaults.filledIconButtonColors(
-                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer
-                )
-            ) {
-                Text(
-                    text = AliveEmojis.random(),
-                    overflow = TextOverflow.Ellipsis,
-                    maxLines = 1
-                )
-            }
-            AnimatedVisibility(
-                visible = viewModel.states.value.emojiEnabled,
-                enter = slideInHorizontally { it / 2 } + expandHorizontally(
-                    expandFrom = Alignment.Start,
-                    clip = false
-                ) + fadeIn(),
-                exit = slideOutHorizontally { -it / 2 } + shrinkHorizontally(
-                    shrinkTowards = Alignment.Start,
-                    clip = false
-                ) + fadeOut(),
-            ) {
-                Row {
-                    Spacer(modifier = Modifier.width(10.dp))
-                    FilledIconButton(
-                        modifier = Modifier,
-                        onClick = viewModel::setFullDeath,
-                        colors = IconButtonDefaults.filledIconButtonColors(
-                            containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                            contentColor = MaterialTheme.colorScheme.onSecondaryContainer
-                        )
-                    ) {
-                        Text(
-                            text = DeadEmojis.random(),
-                            overflow = TextOverflow.Ellipsis,
-                            maxLines = 1
-                        )
+                Button(
+                    modifier = Modifier.weight(1f),
+                    onClick = viewModel::setFullEmpty,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.clear),
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 1
+                    )
+                }
+                Spacer(modifier = Modifier.width(10.dp))
+                FilledIconButton(
+                    modifier = Modifier,
+                    onClick = viewModel::setFullAlive,
+                    colors = IconButtonDefaults.filledIconButtonColors(
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                ) {
+                    Text(
+                        text = AliveEmojis.random(),
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 1
+                    )
+                }
+                AnimatedVisibility(
+                    visible = viewModel.states.value.emojiEnabled,
+                    enter = slideInHorizontally { it / 2 } + expandHorizontally(
+                        expandFrom = Alignment.Start,
+                        clip = false
+                    ) + fadeIn(),
+                    exit = slideOutHorizontally { -it / 2 } + shrinkHorizontally(
+                        shrinkTowards = Alignment.Start,
+                        clip = false
+                    ) + fadeOut(),
+                ) {
+                    Row {
+                        Spacer(modifier = Modifier.width(10.dp))
+                        FilledIconButton(
+                            modifier = Modifier,
+                            onClick = viewModel::setFullDeath,
+                            colors = IconButtonDefaults.filledIconButtonColors(
+                                containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                                contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                            )
+                        ) {
+                            Text(
+                                text = DeadEmojis.random(),
+                                overflow = TextOverflow.Ellipsis,
+                                maxLines = 1
+                            )
+                        }
                     }
                 }
             }
         }
-
 
         SettingsGroup(headline = stringResource(id = R.string.game_settings)) {
             SettingsItemWrapper(onClick = viewModel::switchEmojiMode) {
@@ -173,6 +185,7 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     },
                 )
             }
+            Spacer(modifier = Modifier.height(5.dp))
             AnimatedVisibility(
                 visible = viewModel.states.value.emojiEnabled,
                 enter = slideInVertically() + expandVertically() + fadeIn(),
@@ -202,6 +215,7 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     )
                 }
             }
+            Spacer(modifier = Modifier.height(5.dp))
 
             val ruleSetDialogVisible = remember { mutableStateOf(false) }
 
@@ -289,11 +303,13 @@ fun GameActions(viewModel: GameScreenViewModel) {
             }
         }
 
-
         SettingsGroup(headline = stringResource(id = R.string.rules)) {
+            val scrollRevivingButtons = rememberScrollState()
+
             SettingsItemWrapper(
                 modifier = Modifier
-                    .horizontalScroll(rememberScrollState()),
+                    .fadingEdges(scrollRevivingButtons)
+                    .horizontalScroll(scrollRevivingButtons),
                 headline = stringResource(id = R.string.neighbors_for_reviving),
                 horizontalArrangement = Arrangement.Center
             ) {
@@ -325,9 +341,14 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     }
                 }
             }
+            Spacer(modifier = Modifier.height(5.dp))
+
+            val scrollSurvivalButtons = rememberScrollState()
+
             SettingsItemWrapper(
                 modifier = Modifier
-                    .horizontalScroll(rememberScrollState()),
+                    .fadingEdges(scrollSurvivalButtons)
+                    .horizontalScroll(scrollSurvivalButtons),
                 headline = stringResource(id = R.string.neighbors_for_surviving),
                 horizontalArrangement = Arrangement.Center
             ) {
@@ -386,13 +407,16 @@ fun GameActions(viewModel: GameScreenViewModel) {
             }
         }
 
-
         SettingsGroup(headline = stringResource(id = R.string.simulation_settings)) {
             GameFieldScale(viewModel)
+            Spacer(modifier = Modifier.height(5.dp))
+
+            val scrollTimeButtons = rememberScrollState()
 
             SettingsItemWrapper(
                 modifier = Modifier
-                    .horizontalScroll(rememberScrollState()),
+                    .fadingEdges(scrollTimeButtons)
+                    .horizontalScroll(scrollTimeButtons),
                 headline = stringResource(id = R.string.one_step_duration),
                 horizontalArrangement = Arrangement.Center
             ) {
@@ -430,7 +454,6 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     }
                 }
             }
-//            ChangeGameFieldDimension(viewModel)
         }
 
         if (isWidth(sizeClass = WindowWidthSizeClass.Expanded).not()) {
@@ -445,7 +468,6 @@ private fun GameFieldScale(viewModel: GameScreenViewModel) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 20.dp),
-        verticalArrangement = Arrangement.spacedBy(5.dp),
     ) {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Text(
@@ -461,11 +483,51 @@ private fun GameFieldScale(viewModel: GameScreenViewModel) {
                 color = MaterialTheme.colorScheme.onSurface
             )
         }
+        Spacer(modifier = Modifier.height(5.dp))
+
+        val scope = rememberCoroutineScope()
+
+        var isVisibleRow by remember { mutableStateOf(false) }
+
+        AnimatedVisibility(
+            visible = isVisibleRow,
+            enter = fadeIn() + slideInVertically { it } + expandVertically(),
+            exit = fadeOut() + slideOutVertically { it } + shrinkVertically()) {
+            Row(
+                modifier = Modifier
+                    .height(40.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                for (v in 0 until viewModel.states.value.cols) {
+                    Box(
+                        modifier = Modifier
+                            .padding(1.dp)
+                            .aspectRatio(1f)
+                            .clip(CircleShape)
+                            .background(MaterialTheme.colorScheme.primary)
+                            .fillMaxHeight()
+                            .weight(1f)
+                    )
+                }
+            }
+        }
+
         Slider(
             value = viewModel.states.value.scale,
-            onValueChange = { viewModel.updateScale(it) },
+            onValueChange = {
+                isVisibleRow = true
+                viewModel.updateScale(it)
+            },
             valueRange = .5f..1.5f,
-            steps = 15
+            steps = 15,
+            onValueChangeFinished = {
+                scope.launch {
+                    delay(1000)
+                    isVisibleRow = false
+                }
+            }
         )
     }
 }
@@ -502,12 +564,17 @@ private fun RowScope.SettingsItemContent(
 }
 
 @Composable
-private fun SettingsGroup(headline: String, content: @Composable() (ColumnScope.() -> Unit)) {
-    Column {
+private fun SettingsGroup(headline: String, content: @Composable (ColumnScope.() -> Unit)) {
+    Column(
+        modifier = Modifier
+            .padding(horizontal = 10.dp)
+            .clip(MaterialTheme.shapes.medium)
+            .background(MaterialTheme.colorScheme.surfaceContainerHigh)
+    ) {
         Text(
             modifier = Modifier
                 .padding(horizontal = 20.dp)
-                .padding(top = 10.dp, bottom = 5.dp),
+                .padding(top = 15.dp, bottom = 5.dp),
             text = headline,
             style = MaterialTheme.typography.titleLarge,
             maxLines = 1,
@@ -515,9 +582,10 @@ private fun SettingsGroup(headline: String, content: @Composable() (ColumnScope.
             textAlign = TextAlign.Start,
             color = MaterialTheme.colorScheme.onPrimaryContainer
         )
-        Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
+        Column {
             content()
         }
+        Spacer(modifier = Modifier.height(10.dp))
     }
 }
 
