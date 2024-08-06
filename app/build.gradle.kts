@@ -24,7 +24,7 @@ android {
         }
         android.buildFeatures.buildConfig = true
 
-        archivesName.set("shkiper-$versionName")
+        archivesName.set("game_of_life-$versionName")
     }
 
     bundle {
