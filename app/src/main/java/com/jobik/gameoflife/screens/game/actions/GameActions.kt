@@ -569,7 +569,7 @@ private fun SettingsGroup(headline: String, content: @Composable (ColumnScope.()
         modifier = Modifier
             .padding(horizontal = 10.dp)
             .clip(MaterialTheme.shapes.large)
-            .background(MaterialTheme.colorScheme.surfaceContainerHigh)
+            .background(MaterialTheme.colorScheme.surfaceContainer)
     ) {
         Text(
             modifier = Modifier
