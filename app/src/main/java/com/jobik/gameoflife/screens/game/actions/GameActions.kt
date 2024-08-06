@@ -91,74 +91,75 @@ fun GameActions(viewModel: GameScreenViewModel) {
             .padding(bottom = 20.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        MainActions(viewModel)
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 20.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Button(
-                modifier = Modifier.weight(1f),
-                onClick = viewModel::setFullEmpty,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer
-                )
+        Column {
+            MainActions(viewModel)
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 10.dp)
+                    .padding(horizontal = 20.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text = stringResource(id = R.string.clear),
-                    overflow = TextOverflow.Ellipsis,
-                    maxLines = 1
-                )
-            }
-            Spacer(modifier = Modifier.width(10.dp))
-            FilledIconButton(
-                modifier = Modifier,
-                onClick = viewModel::setFullAlive,
-                colors = IconButtonDefaults.filledIconButtonColors(
-                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer
-                )
-            ) {
-                Text(
-                    text = AliveEmojis.random(),
-                    overflow = TextOverflow.Ellipsis,
-                    maxLines = 1
-                )
-            }
-            AnimatedVisibility(
-                visible = viewModel.states.value.emojiEnabled,
-                enter = slideInHorizontally { it / 2 } + expandHorizontally(
-                    expandFrom = Alignment.Start,
-                    clip = false
-                ) + fadeIn(),
-                exit = slideOutHorizontally { -it / 2 } + shrinkHorizontally(
-                    shrinkTowards = Alignment.Start,
-                    clip = false
-                ) + fadeOut(),
-            ) {
-                Row {
-                    Spacer(modifier = Modifier.width(10.dp))
-                    FilledIconButton(
-                        modifier = Modifier,
-                        onClick = viewModel::setFullDeath,
-                        colors = IconButtonDefaults.filledIconButtonColors(
-                            containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                            contentColor = MaterialTheme.colorScheme.onSecondaryContainer
-                        )
-                    ) {
-                        Text(
-                            text = DeadEmojis.random(),
-                            overflow = TextOverflow.Ellipsis,
-                            maxLines = 1
-                        )
+                Button(
+                    modifier = Modifier.weight(1f),
+                    onClick = viewModel::setFullEmpty,
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.clear),
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 1
+                    )
+                }
+                Spacer(modifier = Modifier.width(10.dp))
+                FilledIconButton(
+                    modifier = Modifier,
+                    onClick = viewModel::setFullAlive,
+                    colors = IconButtonDefaults.filledIconButtonColors(
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                ) {
+                    Text(
+                        text = AliveEmojis.random(),
+                        overflow = TextOverflow.Ellipsis,
+                        maxLines = 1
+                    )
+                }
+                AnimatedVisibility(
+                    visible = viewModel.states.value.emojiEnabled,
+                    enter = slideInHorizontally { it / 2 } + expandHorizontally(
+                        expandFrom = Alignment.Start,
+                        clip = false
+                    ) + fadeIn(),
+                    exit = slideOutHorizontally { -it / 2 } + shrinkHorizontally(
+                        shrinkTowards = Alignment.Start,
+                        clip = false
+                    ) + fadeOut(),
+                ) {
+                    Row {
+                        Spacer(modifier = Modifier.width(10.dp))
+                        FilledIconButton(
+                            modifier = Modifier,
+                            onClick = viewModel::setFullDeath,
+                            colors = IconButtonDefaults.filledIconButtonColors(
+                                containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                                contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                            )
+                        ) {
+                            Text(
+                                text = DeadEmojis.random(),
+                                overflow = TextOverflow.Ellipsis,
+                                maxLines = 1
+                            )
+                        }
                     }
                 }
             }
         }
-
 
         SettingsGroup(headline = stringResource(id = R.string.game_settings)) {
             SettingsItemWrapper(onClick = viewModel::switchEmojiMode) {

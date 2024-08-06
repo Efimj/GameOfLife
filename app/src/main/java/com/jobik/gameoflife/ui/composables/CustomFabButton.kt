@@ -3,14 +3,15 @@ package com.jobik.gameoflife.ui.composables
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -36,7 +37,12 @@ fun CustomFabButton(isRunning: Boolean, onClick: () -> Unit) {
     ) {
         AnimatedContent(targetState = isRunning, label = "") { value ->
             if (value) {
-                CircularProgressIndicator()
+                Text(
+                    modifier = Modifier.padding(horizontal = 5.dp),
+                    text = stringResource(id = R.string.pause),
+                    style = MaterialTheme.typography.titleMedium,
+                    maxLines = 1
+                )
             } else {
                 Icon(
                     imageVector = Icons.Filled.PlayArrow,

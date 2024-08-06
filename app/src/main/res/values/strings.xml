@@ -95,5 +95,7 @@
         otherwise, the cell dies (due to "loneliness" or "overcrowding")
     </string>
     <string name="set_field_scale">Field scale</string>
+    <string name="pause">Pause</string>
+
 
 </resources>
