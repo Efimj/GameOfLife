@@ -17,7 +17,9 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.ZeroCornerSize
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -146,7 +148,12 @@ private fun CompactGameScreen(
         ) {
             GameContent(
                 modifier = Modifier
-                    .clip(RoundedCornerShape(bottomEnd = 12.dp, bottomStart = 12.dp))
+                    .clip(
+                        MaterialTheme.shapes.large.copy(
+                            topStart = ZeroCornerSize,
+                            topEnd = ZeroCornerSize
+                        )
+                    )
                     .background(containerColor),
                 viewModel = viewModel
             )

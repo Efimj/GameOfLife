@@ -41,7 +41,7 @@ fun GameContent(modifier: Modifier = Modifier, viewModel: GameScreenViewModel) {
                 modifier = Modifier
                     .aspectRatio(1f)
                     .padding(4.dp)
-                    .clip(MaterialTheme.shapes.medium)
+                    .clip(MaterialTheme.shapes.large)
                     .background(MaterialTheme.colorScheme.surface)
             ) {
                 GridForGame(
