@@ -6,8 +6,6 @@ import androidx.compose.animation.expandHorizontally
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.scaleIn
-import androidx.compose.animation.scaleOut
 import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.slideInHorizontally
@@ -75,6 +73,7 @@ import com.jobik.gameoflife.screens.game.GameRules
 import com.jobik.gameoflife.screens.game.GameScreenViewModel
 import com.jobik.gameoflife.ui.composables.AliveEmojis
 import com.jobik.gameoflife.ui.composables.DeadEmojis
+import com.jobik.gameoflife.ui.composables.modifier.fadingEdges
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
 import com.jobik.gameoflife.ui.helpers.isWidth
@@ -301,11 +300,13 @@ fun GameActions(viewModel: GameScreenViewModel) {
             }
         }
 
-
         SettingsGroup(headline = stringResource(id = R.string.rules)) {
+            val scrollRevivingButtons = rememberScrollState()
+
             SettingsItemWrapper(
                 modifier = Modifier
-                    .horizontalScroll(rememberScrollState()),
+                    .fadingEdges(scrollRevivingButtons)
+                    .horizontalScroll(scrollRevivingButtons),
                 headline = stringResource(id = R.string.neighbors_for_reviving),
                 horizontalArrangement = Arrangement.Center
             ) {
@@ -337,9 +338,13 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     }
                 }
             }
+
+            val scrollSurvivalButtons = rememberScrollState()
+
             SettingsItemWrapper(
                 modifier = Modifier
-                    .horizontalScroll(rememberScrollState()),
+                    .fadingEdges(scrollSurvivalButtons)
+                    .horizontalScroll(scrollSurvivalButtons),
                 headline = stringResource(id = R.string.neighbors_for_surviving),
                 horizontalArrangement = Arrangement.Center
             ) {
@@ -402,9 +407,12 @@ fun GameActions(viewModel: GameScreenViewModel) {
         SettingsGroup(headline = stringResource(id = R.string.simulation_settings)) {
             GameFieldScale(viewModel)
 
+            val scrollTimeButtons = rememberScrollState()
+
             SettingsItemWrapper(
                 modifier = Modifier
-                    .horizontalScroll(rememberScrollState()),
+                    .fadingEdges(scrollTimeButtons)
+                    .horizontalScroll(scrollTimeButtons),
                 headline = stringResource(id = R.string.one_step_duration),
                 horizontalArrangement = Arrangement.Center
             ) {
