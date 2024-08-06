@@ -184,6 +184,7 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     },
                 )
             }
+            Spacer(modifier = Modifier.height(5.dp))
             AnimatedVisibility(
                 visible = viewModel.states.value.emojiEnabled,
                 enter = slideInVertically() + expandVertically() + fadeIn(),
@@ -213,6 +214,7 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     )
                 }
             }
+            Spacer(modifier = Modifier.height(5.dp))
 
             val ruleSetDialogVisible = remember { mutableStateOf(false) }
 
@@ -338,6 +340,7 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     }
                 }
             }
+            Spacer(modifier = Modifier.height(5.dp))
 
             val scrollSurvivalButtons = rememberScrollState()
 
@@ -403,9 +406,9 @@ fun GameActions(viewModel: GameScreenViewModel) {
             }
         }
 
-
         SettingsGroup(headline = stringResource(id = R.string.simulation_settings)) {
             GameFieldScale(viewModel)
+            Spacer(modifier = Modifier.height(5.dp))
 
             val scrollTimeButtons = rememberScrollState()
 
@@ -560,12 +563,17 @@ private fun RowScope.SettingsItemContent(
 }
 
 @Composable
-private fun SettingsGroup(headline: String, content: @Composable() (ColumnScope.() -> Unit)) {
-    Column {
+private fun SettingsGroup(headline: String, content: @Composable (ColumnScope.() -> Unit)) {
+    Column(
+        modifier = Modifier
+            .padding(horizontal = 10.dp)
+            .clip(MaterialTheme.shapes.medium)
+            .background(MaterialTheme.colorScheme.surfaceContainerHigh)
+    ) {
         Text(
             modifier = Modifier
                 .padding(horizontal = 20.dp)
-                .padding(top = 10.dp, bottom = 5.dp),
+                .padding(top = 15.dp, bottom = 5.dp),
             text = headline,
             style = MaterialTheme.typography.titleLarge,
             maxLines = 1,
@@ -573,9 +581,10 @@ private fun SettingsGroup(headline: String, content: @Composable() (ColumnScope.
             textAlign = TextAlign.Start,
             color = MaterialTheme.colorScheme.onPrimaryContainer
         )
-        Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
+        Column {
             content()
         }
+        Spacer(modifier = Modifier.height(10.dp))
     }
 }
 
