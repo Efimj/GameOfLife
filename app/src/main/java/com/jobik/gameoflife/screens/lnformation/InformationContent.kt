@@ -12,7 +12,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.services.rate.RateService
+import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
+import com.jobik.gameoflife.ui.helpers.bottomWindowInsetsPadding
 import com.jobik.gameoflife.ui.helpers.currentWidthSizeClass
 
 @Composable
@@ -26,15 +28,10 @@ fun InformationContent() {
 
         WindowWidthSizeClass.Expanded -> 3
     }
-    val paddingWithWindowInsets = if (currentWidthSize == WindowWidthSizeClass.Compact) {
-        paddingValuesWithInsets(20)
-    } else {
-        PaddingValues(20.dp)
-    }
 
     LazyVerticalStaggeredGrid(
         columns = StaggeredGridCells.Fixed(countColumns),
-        contentPadding = paddingWithWindowInsets,
+        contentPadding = PaddingValues(20.dp),
         verticalItemSpacing = 10.dp,
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
@@ -105,15 +102,7 @@ fun InformationContent() {
                 uriHandler.openUri(githubRepositoryUri)
             }
         }
+
+        item { BottomWindowInsetsSpacer() }
     }
 }
-
-@Composable
-private fun paddingValuesWithInsets(allPadding: Int) = PaddingValues(
-    top = allPadding.dp,
-    bottom = allPadding.dp + WindowInsets.safeDrawing.asPaddingValues().calculateBottomPadding(),
-    start = allPadding.dp + WindowInsets.safeDrawing.asPaddingValues()
-        .calculateLeftPadding(LocalLayoutDirection.current),
-    end = allPadding.dp + WindowInsets.safeDrawing.asPaddingValues()
-        .calculateRightPadding(LocalLayoutDirection.current),
-)
