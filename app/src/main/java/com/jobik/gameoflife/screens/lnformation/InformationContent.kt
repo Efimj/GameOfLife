@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalUriHandler
@@ -18,14 +19,13 @@ import com.jobik.gameoflife.ui.helpers.currentWidthSizeClass
 fun InformationContent() {
     val uriHandler = LocalUriHandler.current
     val currentWidthSize = currentWidthSizeClass()
-//    val countColumns = when (currentWidthSize) {
-//        WindowWidthSizeClass.Compact -> 1
-//
-//        WindowWidthSizeClass.Medium -> 2
-//
-//        WindowWidthSizeClass.Expanded -> 3
-//    }
-    val countColumns = 2
+    val countColumns = when (currentWidthSize) {
+        WindowWidthSizeClass.Compact -> 1
+
+        WindowWidthSizeClass.Medium -> 2
+
+        WindowWidthSizeClass.Expanded -> 3
+    }
     val paddingWithWindowInsets = if (currentWidthSize == WindowWidthSizeClass.Compact) {
         paddingValuesWithInsets(20)
     } else {
@@ -35,12 +35,13 @@ fun InformationContent() {
     LazyVerticalStaggeredGrid(
         columns = StaggeredGridCells.Fixed(countColumns),
         contentPadding = paddingWithWindowInsets,
-        verticalItemSpacing = 20.dp,
-        horizontalArrangement = Arrangement.spacedBy(20.dp)
+        verticalItemSpacing = 10.dp,
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         item {
             val johnConwayUri = stringResource(id = R.string.JohnHortonConway_wiki_uri)
             LargeInformationCard(
+                modifier = Modifier.animateItem(),
                 image = R.drawable.john_horton_conway_poster,
                 title = R.string.JohnHortonConway,
                 body = R.string.JohnHortonConway_card_description,
@@ -53,6 +54,7 @@ fun InformationContent() {
         item {
             val gameOfLifeUri = stringResource(id = R.string.GameOfLife_wiki_uri)
             LargeInformationCard(
+                modifier = Modifier.animateItem(),
                 image = R.drawable.game_of_life_poster,
                 title = R.string.the_game_of_life,
                 body = R.string.GameOfLife_large_description,
@@ -66,6 +68,7 @@ fun InformationContent() {
         item {
             val context = LocalContext.current
             LargeInformationCard(
+                modifier = Modifier.animateItem(),
                 image = R.drawable.three_stars_v2,
                 title = R.string.rate_dialog_title,
                 body = R.string.rate_dialog_description,
@@ -82,6 +85,7 @@ fun InformationContent() {
             val telegramGroupUri = stringResource(id = R.string.telegram_group_url)
 
             SmallInformationCard(
+                modifier = Modifier.animateItem(),
                 image = R.drawable.telegram_icon,
                 title = R.string.telegram_community,
                 body = R.string.telegram_community_description
@@ -93,6 +97,7 @@ fun InformationContent() {
             val githubRepositoryUri = stringResource(id = R.string.github_repository_url)
 
             SmallInformationCard(
+                modifier = Modifier.animateItem(),
                 image = R.drawable.github_icon,
                 title = R.string.open_source_project,
                 body = R.string.open_source_project_description

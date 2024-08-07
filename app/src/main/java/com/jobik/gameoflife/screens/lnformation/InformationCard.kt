@@ -34,6 +34,7 @@ data class CardButton(
 
 @Composable
 fun LargeInformationCard(
+    modifier: Modifier = Modifier,
     @DrawableRes image: Int,
     @StringRes title: Int,
     @StringRes body: Int,
@@ -55,14 +56,10 @@ fun LargeInformationCard(
     val elevationValue = if (isExpanded) 6.dp else 0.dp
     val elevationState = animateDpAsState(targetValue = elevationValue, label = "elevationState")
 
-    val borderWidthValue = if (isExpanded) 0.dp else 1.dp
-    val borderWidthState =
-        animateDpAsState(targetValue = borderWidthValue, label = "borderWidthState")
-
     Surface(
+        modifier = modifier,
         shape = MaterialTheme.shapes.large,
         shadowElevation = elevationState.value,
-        border = CardDefaults.outlinedCardBorder().copy(borderWidthState.value),
         color = containerColorState.value,
         contentColor = contentColorState.value
     ) {
