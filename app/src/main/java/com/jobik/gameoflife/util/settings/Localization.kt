@@ -1,4 +1,4 @@
-package com.jobik.gameoflife.services.localization
+package com.jobik.gameoflife.util.settings
 
 import android.content.Context
 import androidx.annotation.Keep

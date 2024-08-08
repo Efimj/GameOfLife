@@ -6,6 +6,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -37,7 +38,9 @@ import com.jobik.gameoflife.navigation.Screen
 import com.jobik.gameoflife.ui.composables.modifier.fadingEdges
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
-import com.jobik.gameoflife.ui.theme.AppThemeUtil
+import com.jobik.gameoflife.util.settings.NightMode
+import com.jobik.gameoflife.util.settings.SettingsManager
+import com.jobik.gameoflife.util.settings.SettingsManager.settings
 
 @Composable
 fun SettingsContent(navController: NavHostController) {
@@ -55,12 +58,23 @@ fun SettingsContent(navController: NavHostController) {
             SettingsContainer {
                 GroupHeader(stringResource(id = R.string.application))
                 SettingsItem(
-                    icon = if (AppThemeUtil.isDarkMode.value) Icons.Outlined.LightMode else Icons.Outlined.DarkMode,
+                    icon =
+                    when (settings.nightMode) {
+                        NightMode.Light -> Icons.Outlined.DarkMode
+                        NightMode.Dark -> Icons.Outlined.LightMode
+                        else -> Icons.Outlined.AutoAwesome
+                    },
                     text = stringResource(id = R.string.change_theme)
                 ) {
-                    AppThemeUtil.update(
+                    SettingsManager.update(
                         context = context,
-                        isDarkTheme = AppThemeUtil.isDarkMode.value.not()
+                        settings = settings.copy(
+                            nightMode = when (settings.nightMode) {
+                                NightMode.Light -> NightMode.Dark
+                                NightMode.Dark -> NightMode.System
+                                else -> NightMode.Light
+                            }
+                        )
                     )
                 }
                 ChangePalette()
@@ -76,17 +90,16 @@ fun SettingsContent(navController: NavHostController) {
                             verticalArrangement = Arrangement.spacedBy(2.dp),
                             modifier = Modifier.padding(vertical = 6.dp)
                         ) {
-                            val currentLocale =
-                                GameOfLifeApplication.currentLanguage.getLocalizedValue(context)
+                            val currentLocale = settings.localization
                             Text(
-                                text = currentLocale.name,
+                                text = currentLocale.getLocalizedValue(context).name,
                                 style = MaterialTheme.typography.bodyLarge,
                                 textAlign = TextAlign.Right,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis
                             )
                             Text(
-                                text = currentLocale.language,
+                                text = currentLocale.getLocalizedValue(context).language,
                                 style = MaterialTheme.typography.bodySmall,
                                 textAlign = TextAlign.Right,
                                 maxLines = 1,
@@ -125,7 +138,7 @@ private fun ChangePalette() {
     val canRemoveDynamicPalette = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S).not()
     val palettes =
         if (canRemoveDynamicPalette) Palette.entries.filter { it.name != Palette.DynamicPalette.name } else Palette.entries
-    val isDarkMode = AppThemeUtil.isDarkMode.value
+    val isDarkMode = settings.nightMode == NightMode.Dark
 
     val scroll = rememberLazyListState()
 
@@ -144,14 +157,19 @@ private fun ChangePalette() {
                 ) else dynamicLightColorScheme(
                     context
                 ) else palette.getPalette(isDarkMode)
-            val isSelected = palette.name == AppThemeUtil.palette.value.name
+            val isSelected = palette.name == settings.theme.name
 
             Box(
                 modifier = Modifier
                     .size(60.dp)
                     .clip(CircleShape)
                     .clickable {
-                        AppThemeUtil.update(context = context, newPalette = palette)
+                        SettingsManager.update(
+                            context = context,
+                            settings = settings.copy(
+                                theme = palette
+                            )
+                        )
                     },
                 contentAlignment = Alignment.Center
             ) {

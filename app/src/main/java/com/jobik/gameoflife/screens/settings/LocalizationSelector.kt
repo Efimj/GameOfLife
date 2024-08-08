@@ -22,25 +22,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.GameOfLifeApplication
 import com.jobik.gameoflife.R
-import com.jobik.gameoflife.services.localization.LocaleData
-import com.jobik.gameoflife.services.localization.Localization
-import com.jobik.gameoflife.services.localization.LocalizationHelper
+import com.jobik.gameoflife.util.settings.LocaleData
+import com.jobik.gameoflife.util.settings.Localization
 import com.jobik.gameoflife.ui.composables.CustomModalBottomSheet
 import com.jobik.gameoflife.ui.helpers.*
+import com.jobik.gameoflife.util.settings.SettingsManager
+import com.jobik.gameoflife.util.settings.SettingsManager.settings
 import kotlinx.coroutines.launch
-
-private fun getLocalizationList(localContext: Context): List<LocaleData> {
-    return Localization.entries.map { it.getLocalizedValue(localContext) }
-}
-
-private fun selectLocalization(selectedIndex: Int, context: Context) {
-    try {
-        val newLocalization: Localization = Localization.entries[selectedIndex]
-        LocalizationHelper.setLocale(context.applicationContext, newLocalization)
-    } catch (e: Exception) {
-        Log.d("ChangeLocalizationError", e.message.toString())
-    }
-}
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
@@ -49,11 +37,7 @@ fun LocalizationSelector(
 ) {
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
-    val currentLocale = GameOfLifeApplication.currentLanguage.getLocalizedValue(context)
-
-    val localizations = remember {
-        mutableStateOf(getLocalizationList(context))
-    }
+    val currentLocale = settings.localization
 
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     val showBottomSheet = remember { mutableStateOf(false) }
@@ -103,10 +87,10 @@ fun LocalizationSelector(
                     .padding(horizontal = 20.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                localizations.value.forEachIndexed { index, locale ->
+                Localization.entries.map { locale ->
                     LanguageItem(
                         isSelected = currentLocale.name == locale.name,
-                        locale = locale
+                        locale = locale.getLocalizedValue(context)
                     ) {
                         scope
                             .launch {
@@ -116,7 +100,15 @@ fun LocalizationSelector(
                                 isOpen.value = false
                                 if (currentLocale.name == locale.name) return@invokeOnCompletion
 
-                                selectLocalization(index, context)
+                                try {
+                                    SettingsManager.update(
+                                        context = context,
+                                        settings = settings.copy(localization = locale)
+                                    )
+                                } catch (e: Exception) {
+                                    Log.d("ChangeLocalizationError", e.message.toString())
+                                }
+
                                 (context as? Activity)?.recreate()
                             }
                     }

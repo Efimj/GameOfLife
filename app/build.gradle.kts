@@ -112,4 +112,5 @@ dependencies {
 
     api(libs.shadowsPlus)
     api(libs.fadingEdges)
+    implementation(libs.gson)
 }
