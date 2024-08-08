@@ -17,6 +17,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
@@ -62,6 +63,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -73,6 +75,8 @@ import com.jobik.gameoflife.screens.game.GameRules
 import com.jobik.gameoflife.screens.game.GameScreenViewModel
 import com.jobik.gameoflife.ui.composables.AliveEmojis
 import com.jobik.gameoflife.ui.composables.DeadEmojis
+import com.jobik.gameoflife.ui.composables.DefaultGameGapWidth
+import com.jobik.gameoflife.ui.composables.DefaultGameUnitSize
 import com.jobik.gameoflife.ui.composables.modifier.fadingEdges
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
@@ -493,23 +497,31 @@ private fun GameFieldScale(viewModel: GameScreenViewModel) {
             visible = isVisibleRow,
             enter = fadeIn() + slideInVertically { it } + expandVertically(),
             exit = fadeOut() + slideOutVertically { it } + shrinkVertically()) {
-            Row(
-                modifier = Modifier
-                    .height(40.dp)
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                for (v in 0 until viewModel.states.value.cols) {
-                    Box(
-                        modifier = Modifier
-                            .padding(1.dp)
-                            .aspectRatio(1f)
-                            .clip(CircleShape)
-                            .background(MaterialTheme.colorScheme.primary)
-                            .fillMaxHeight()
-                            .weight(1f)
-                    )
+            BoxWithConstraints {
+                val cellSize by remember(viewModel.states.value.scale) { mutableStateOf((DefaultGameUnitSize * viewModel.states.value.scale).dp) }
+                val cellSizePx = with(LocalDensity.current) { cellSize.toPx() }
+                val fieldWidth = with(LocalDensity.current) { maxWidth.toPx() }
+                val gapWidth = with(LocalDensity.current) { DefaultGameGapWidth.dp.toPx() }
+                val count = fieldWidth / (cellSizePx + gapWidth)
+
+                Row(
+                    modifier = Modifier
+                        .height(40.dp)
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    for (v in 0 until count.toInt()) {
+                        Box(
+                            modifier = Modifier
+                                .padding(1.dp)
+                                .aspectRatio(1f)
+                                .clip(CircleShape)
+                                .background(MaterialTheme.colorScheme.primary)
+                                .fillMaxHeight()
+                                .weight(1f)
+                        )
+                    }
                 }
             }
         }
