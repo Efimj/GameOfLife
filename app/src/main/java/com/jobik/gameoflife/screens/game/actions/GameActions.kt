@@ -134,7 +134,7 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     )
                 }
                 AnimatedVisibility(
-                    visible = viewModel.states.value.emojiEnabled,
+                    visible = viewModel.states.value.gameSettings.emojiEnabled,
                     enter = slideInHorizontally { it / 2 } + expandHorizontally(
                         expandFrom = Alignment.Start,
                         clip = false
@@ -178,9 +178,9 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     description = stringResource(id = R.string.emoji_mode_description)
                 )
                 Switch(
-                    checked = viewModel.states.value.emojiEnabled,
+                    checked = viewModel.states.value.gameSettings.emojiEnabled,
                     onCheckedChange = { viewModel.switchEmojiMode() },
-                    thumbContent = if (viewModel.states.value.emojiEnabled) {
+                    thumbContent = if (viewModel.states.value.gameSettings.emojiEnabled) {
                         {
                             Text(text = AliveEmojis.random())
                         }
@@ -191,7 +191,7 @@ fun GameActions(viewModel: GameScreenViewModel) {
             }
             Spacer(modifier = Modifier.height(5.dp))
             AnimatedVisibility(
-                visible = viewModel.states.value.emojiEnabled,
+                visible = viewModel.states.value.gameSettings.emojiEnabled,
                 enter = slideInVertically() + expandVertically() + fadeIn(),
                 exit = slideOutVertically() + shrinkVertically() + fadeOut(),
             ) {
@@ -206,10 +206,10 @@ fun GameActions(viewModel: GameScreenViewModel) {
                         description = stringResource(id = R.string.free_soul_mode_description)
                     )
                     Switch(
-                        enabled = viewModel.states.value.emojiEnabled,
-                        checked = viewModel.states.value.freeSoulMode,
+                        enabled = viewModel.states.value.gameSettings.emojiEnabled,
+                        checked = viewModel.states.value.gameSettings.freeSoulMode,
                         onCheckedChange = { viewModel.switchFreeSoulMode() },
-                        thumbContent = if (!viewModel.states.value.freeSoulMode) {
+                        thumbContent = if (!viewModel.states.value.gameSettings.freeSoulMode) {
                             {
                                 Text(text = "\uD83D\uDC80")
                             }
@@ -247,10 +247,10 @@ fun GameActions(viewModel: GameScreenViewModel) {
                 val context = LocalContext.current
 
                 LaunchedEffect(
-                    viewModel.states.value.gameOfLifeStepRules.neighborsForAlive,
-                    viewModel.states.value.gameOfLifeStepRules.neighborsForReviving
+                    viewModel.states.value.gameSettings.gameOfLifeStepRules.neighborsForAlive,
+                    viewModel.states.value.gameSettings.gameOfLifeStepRules.neighborsForReviving
                 ) {
-                    val currentRules = viewModel.states.value.gameOfLifeStepRules
+                    val currentRules = viewModel.states.value.gameSettings.gameOfLifeStepRules
                     GameRuleSet.forEach { rules ->
                         if (currentRules.neighborsForAlive == rules.rules.neighborsForAlive && currentRules.neighborsForReviving == rules.rules.neighborsForReviving) {
                             selectedRules.value = rules
@@ -329,15 +329,15 @@ fun GameActions(viewModel: GameScreenViewModel) {
                             ),
                             onCheckedChange = {
                                 val newRule =
-                                    if (it) viewModel.states.value.gameOfLifeStepRules.neighborsForReviving.plus(
+                                    if (it) viewModel.states.value.gameSettings.gameOfLifeStepRules.neighborsForReviving.plus(
                                         value
                                     )
-                                    else viewModel.states.value.gameOfLifeStepRules.neighborsForReviving.minus(
+                                    else viewModel.states.value.gameSettings.gameOfLifeStepRules.neighborsForReviving.minus(
                                         value
                                     )
                                 viewModel.updateGameRules(neighborsForReviving = newRule)
                             },
-                            checked = value in viewModel.states.value.gameOfLifeStepRules.neighborsForReviving,
+                            checked = value in viewModel.states.value.gameSettings.gameOfLifeStepRules.neighborsForReviving,
                             colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
                         ) {
                             Text(value.toString())
@@ -368,15 +368,15 @@ fun GameActions(viewModel: GameScreenViewModel) {
                             ),
                             onCheckedChange = {
                                 val newRule =
-                                    if (it) viewModel.states.value.gameOfLifeStepRules.neighborsForAlive.plus(
+                                    if (it) viewModel.states.value.gameSettings.gameOfLifeStepRules.neighborsForAlive.plus(
                                         value
                                     )
-                                    else viewModel.states.value.gameOfLifeStepRules.neighborsForAlive.minus(
+                                    else viewModel.states.value.gameSettings.gameOfLifeStepRules.neighborsForAlive.minus(
                                         value
                                     )
                                 viewModel.updateGameRules(neighborsForAlive = newRule)
                             },
-                            checked = value in viewModel.states.value.gameOfLifeStepRules.neighborsForAlive,
+                            checked = value in viewModel.states.value.gameSettings.gameOfLifeStepRules.neighborsForAlive,
                             colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
                         ) {
                             Text(value.toString())
@@ -389,7 +389,7 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     start = 20.dp
                 )
             ) {
-                val enabled = remember(viewModel.states.value.gameOfLifeStepRules) {
+                val enabled = remember(viewModel.states.value.gameSettings.gameOfLifeStepRules) {
                     mutableStateOf(checkIsRulesNotDefault(viewModel))
                 }
                 AnimatedVisibility(
@@ -450,7 +450,7 @@ fun GameActions(viewModel: GameScreenViewModel) {
                             onClick = {
                                 viewModel.changeStepDuration(value)
                             },
-                            selected = value == viewModel.states.value.oneStepDurationMills,
+                            selected = value == viewModel.states.value.gameSettings.oneStepDurationMills,
                             colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
                         ) {
                             Text(buttonTitles[index])
@@ -481,7 +481,11 @@ private fun GameFieldScale(viewModel: GameScreenViewModel) {
                 color = MaterialTheme.colorScheme.onSurface
             )
             Text(
-                text = String.format(Locale.getDefault(), "%.2f", viewModel.states.value.scale),
+                text = String.format(
+                    Locale.getDefault(),
+                    "%.2f",
+                    viewModel.states.value.gameSettings.scale
+                ),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 color = MaterialTheme.colorScheme.onSurface
@@ -498,7 +502,11 @@ private fun GameFieldScale(viewModel: GameScreenViewModel) {
             enter = fadeIn() + slideInVertically { it } + expandVertically(),
             exit = fadeOut() + slideOutVertically { it } + shrinkVertically()) {
             BoxWithConstraints {
-                val cellSize by remember(viewModel.states.value.scale) { mutableStateOf((DefaultGameUnitSize * viewModel.states.value.scale).dp) }
+                val cellSize by remember(viewModel.states.value.gameSettings.scale) {
+                    mutableStateOf(
+                        (DefaultGameUnitSize * viewModel.states.value.gameSettings.scale).dp
+                    )
+                }
                 val cellSizePx = with(LocalDensity.current) { cellSize.toPx() }
                 val fieldWidth = with(LocalDensity.current) { maxWidth.toPx() }
                 val gapWidth = with(LocalDensity.current) { DefaultGameGapWidth.dp.toPx() }
@@ -527,7 +535,7 @@ private fun GameFieldScale(viewModel: GameScreenViewModel) {
         }
 
         Slider(
-            value = viewModel.states.value.scale,
+            value = viewModel.states.value.gameSettings.scale,
             onValueChange = {
                 isVisibleRow = true
                 viewModel.updateScale(it)
@@ -545,7 +553,7 @@ private fun GameFieldScale(viewModel: GameScreenViewModel) {
 }
 
 private fun checkIsRulesNotDefault(viewModel: GameScreenViewModel) =
-    GameOfLife.GameOfLifeStepSettingsDefault.neighborsForReviving != viewModel.states.value.gameOfLifeStepRules.neighborsForReviving || GameOfLife.GameOfLifeStepSettingsDefault.neighborsForAlive != viewModel.states.value.gameOfLifeStepRules.neighborsForAlive
+    GameOfLife.GameOfLifeStepSettingsDefault.neighborsForReviving != viewModel.states.value.gameSettings.gameOfLifeStepRules.neighborsForReviving || GameOfLife.GameOfLifeStepSettingsDefault.neighborsForAlive != viewModel.states.value.gameSettings.gameOfLifeStepRules.neighborsForAlive
 
 @Composable
 private fun RowScope.SettingsItemContent(

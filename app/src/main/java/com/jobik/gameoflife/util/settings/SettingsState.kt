@@ -2,6 +2,7 @@ package com.jobik.gameoflife.util.settings
 
 import androidx.annotation.Keep
 import com.example.compose.Palette
+import com.jobik.gameoflife.gameOfLife.GameSettings
 import java.util.Locale
 
 @Keep
@@ -18,7 +19,8 @@ data class SettingsState(
     val secureMode: Boolean = false,
     val nightMode: NightMode = NightMode.System,
     val theme: Palette = Palette.DynamicPalette,
-    val localization: Localization = defaultLocalization()
+    val localization: Localization = defaultLocalization(),
+    val gameSettings: GameSettings = GameSettings(),
 )
 
 private fun defaultLocalization() = Localization.entries.find {

@@ -7,13 +7,11 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.shape.ZeroCornerSize
@@ -21,6 +19,9 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -34,19 +35,24 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.gigamole.composefadingedges.fill.FadingEdgesFillType
-import com.gigamole.composefadingedges.verticalFadingEdges
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LifecycleStartEffect
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.gameOfLife.GameOfLife
 import com.jobik.gameoflife.screens.game.actions.GameActions
 import com.jobik.gameoflife.ui.composables.modifier.fadingEdges
 import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
 import com.jobik.gameoflife.ui.helpers.currentWidthSizeClass
+import com.jobik.gameoflife.util.settings.SettingsManager
+import com.jobik.gameoflife.util.settings.SettingsManager.settings
 
 @Composable
 fun GameScreen(
     viewModel: GameScreenViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
+    val context = LocalContext.current
+
     BackHandler(enabled = viewModel.states.value.isSimulationRunning) {
         viewModel.turnOffSimulation()
     }
@@ -58,6 +64,26 @@ fun GameScreen(
 
         WindowWidthSizeClass.Expanded -> {
             ExpandedGameScreen(viewModel)
+        }
+    }
+
+    DisposableEffect(Unit) {
+        onDispose {
+            SettingsManager.update(
+                context = context,
+                settings = settings.copy(gameSettings = viewModel.states.value.gameSettings)
+            )
+        }
+    }
+
+    LifecycleStartEffect(Unit) {
+        // ON_START code is executed here
+
+        onStopOrDispose {
+            SettingsManager.update(
+                context = context,
+                settings = settings.copy(gameSettings = viewModel.states.value.gameSettings)
+            )
         }
     }
 }
