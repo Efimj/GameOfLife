@@ -7,6 +7,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -42,66 +43,79 @@ import com.jobik.gameoflife.ui.theme.AppThemeUtil
 fun SettingsContent(navController: NavHostController) {
     val context = LocalContext.current
 
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .horizontalWindowInsetsPadding()
-            .verticalScroll(rememberScrollState())
-            .padding(vertical = 20.dp),
+            .padding(vertical = 10.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+        contentPadding = PaddingValues(10.dp)
     ) {
-        GroupHeader(stringResource(id = R.string.application))
-        SettingsItem(
-            icon = if (AppThemeUtil.isDarkMode.value) Icons.Outlined.LightMode else Icons.Outlined.DarkMode,
-            text = stringResource(id = R.string.change_theme)
-        ) {
-            AppThemeUtil.update(
-                context = context,
-                isDarkTheme = AppThemeUtil.isDarkMode.value.not()
-            )
-        }
-        ChangePalette()
-
-        val isLanguageSelectorOpen = remember { mutableStateOf(false) }
-        LocalizationSelector(isLanguageSelectorOpen)
-        SettingsItem(
-            icon = Icons.Outlined.Language,
-            text = stringResource(id = R.string.language),
-            action = {
-                Column(
-                    horizontalAlignment = Alignment.Start,
-                    verticalArrangement = Arrangement.spacedBy(2.dp),
-                    modifier = Modifier.padding(vertical = 6.dp)
+        item {
+            SettingsContainer {
+                GroupHeader(stringResource(id = R.string.application))
+                SettingsItem(
+                    icon = if (AppThemeUtil.isDarkMode.value) Icons.Outlined.LightMode else Icons.Outlined.DarkMode,
+                    text = stringResource(id = R.string.change_theme)
                 ) {
-                    val currentLocale =
-                        GameOfLifeApplication.currentLanguage.getLocalizedValue(context)
-                    Text(
-                        text = currentLocale.name,
-                        style = MaterialTheme.typography.bodyLarge,
-                        textAlign = TextAlign.Right,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                    Text(
-                        text = currentLocale.language,
-                        style = MaterialTheme.typography.bodySmall,
-                        textAlign = TextAlign.Right,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = .6f)
+                    AppThemeUtil.update(
+                        context = context,
+                        isDarkTheme = AppThemeUtil.isDarkMode.value.not()
                     )
                 }
-            }) {
-            isLanguageSelectorOpen.value = true
+                ChangePalette()
+
+                val isLanguageSelectorOpen = remember { mutableStateOf(false) }
+                LocalizationSelector(isLanguageSelectorOpen)
+                SettingsItem(
+                    icon = Icons.Outlined.Language,
+                    text = stringResource(id = R.string.language),
+                    action = {
+                        Column(
+                            horizontalAlignment = Alignment.Start,
+                            verticalArrangement = Arrangement.spacedBy(2.dp),
+                            modifier = Modifier.padding(vertical = 6.dp)
+                        ) {
+                            val currentLocale =
+                                GameOfLifeApplication.currentLanguage.getLocalizedValue(context)
+                            Text(
+                                text = currentLocale.name,
+                                style = MaterialTheme.typography.bodyLarge,
+                                textAlign = TextAlign.Right,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                            Text(
+                                text = currentLocale.language,
+                                style = MaterialTheme.typography.bodySmall,
+                                textAlign = TextAlign.Right,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                                color = MaterialTheme.colorScheme.onSurface.copy(alpha = .6f)
+                            )
+                        }
+                    }) {
+                    isLanguageSelectorOpen.value = true
+                }
+            }
         }
-        GroupHeader(stringResource(id = R.string.other))
-        SettingsItem(
-            icon = Icons.Outlined.Lightbulb,
-            text = stringResource(id = R.string.Onboarding)
-        ) {
-            if (navController.canNavigate().not()) return@SettingsItem
-            navController.navigate(Screen.Onboarding.name)
+
+        item {
+            SettingsContainer {
+                GroupHeader(stringResource(id = R.string.other))
+                SettingsItem(
+                    icon = Icons.Outlined.Lightbulb,
+                    text = stringResource(id = R.string.Onboarding)
+                ) {
+                    if (navController.canNavigate().not()) return@SettingsItem
+                    navController.navigate(Screen.Onboarding.name)
+                }
+            }
         }
-        BottomWindowInsetsSpacer()
+
+        item {
+            BottomWindowInsetsSpacer()
+        }
     }
 }
 
@@ -183,6 +197,17 @@ private fun ChangePalette() {
                 }
             }
         }
+    }
+}
+
+@Composable
+fun SettingsContainer(content: @Composable () -> Unit) {
+    Column(
+        modifier = Modifier
+            .clip(MaterialTheme.shapes.large)
+            .background(MaterialTheme.colorScheme.surfaceContainerHigh)
+    ) {
+        content()
     }
 }
 
