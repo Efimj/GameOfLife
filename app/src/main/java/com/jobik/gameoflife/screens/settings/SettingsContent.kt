@@ -228,7 +228,7 @@ fun GroupHeader(text: String) {
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             textAlign = TextAlign.Start,
-            color = MaterialTheme.colorScheme.onSurface
+            color = MaterialTheme.colorScheme.onPrimaryContainer
         )
     }
 }
