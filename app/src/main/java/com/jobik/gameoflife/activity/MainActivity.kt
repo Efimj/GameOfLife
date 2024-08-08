@@ -7,18 +7,22 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.jobik.gameoflife.GameOfLifeApplication
 import com.jobik.gameoflife.screens.layout.AppLayout
 import com.jobik.gameoflife.services.app.AppCounter
-import com.jobik.gameoflife.services.localization.LocalizationHelper
 import com.jobik.gameoflife.services.rate.RateDialogProvider
-import com.jobik.gameoflife.ui.theme.AppThemeUtil
 import com.jobik.gameoflife.ui.theme.GameOfLifeTheme
+import com.jobik.gameoflife.util.ContextUtils
+import com.jobik.gameoflife.util.settings.NightMode
+import com.jobik.gameoflife.util.settings.SettingsManager
 
 class MainActivity : ComponentActivity() {
     override fun attachBaseContext(newBase: Context) {
+        SettingsManager.init(newBase)
         super.attachBaseContext(
-            LocalizationHelper.setLocale(newBase, GameOfLifeApplication.currentLanguage)
+            ContextUtils.setLocale(
+                context = newBase,
+                language = SettingsManager.settings.localization
+            )
         )
     }
 
@@ -29,9 +33,13 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
 
         setContent {
-            AppThemeUtil.restore(context = this, defaultValue = isSystemInDarkTheme())
-
-            GameOfLifeTheme(darkTheme = AppThemeUtil.isDarkMode.value, palette = AppThemeUtil.palette.value) {
+            GameOfLifeTheme(
+                darkTheme = when (SettingsManager.settings.nightMode) {
+                    NightMode.Light -> false
+                    NightMode.Dark -> true
+                    else -> isSystemInDarkTheme()
+                }, palette = SettingsManager.settings.theme
+            ) {
 
                 // Main application
                 AppLayout()

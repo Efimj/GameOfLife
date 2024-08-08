@@ -1,5 +1,6 @@
 package com.jobik.gameoflife.screens.settings
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Icon
@@ -26,14 +27,17 @@ fun SettingsItem(
             .padding(horizontal = 20.dp)
             .height(60.dp),
         verticalAlignment = Alignment.CenterVertically,
-    )
-    {
+    ) {
+        AnimatedContent(icon, label = "") {
+            if (it != null) {
+                Icon(
+                    imageVector = it,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary
+                )
+            }
+        }
         if (icon != null) {
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary
-            )
             Spacer(modifier = Modifier.width(20.dp))
         }
         Text(
