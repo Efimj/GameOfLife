@@ -7,7 +7,6 @@ import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -26,27 +25,32 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun SmallInformationCard(@DrawableRes image: Int, @StringRes title: Int, @StringRes body: Int, onClick: () -> Unit) {
+fun SmallInformationCard(
+    modifier: Modifier = Modifier,
+    @DrawableRes image: Int,
+    @StringRes title: Int,
+    @StringRes body: Int,
+    onClick: () -> Unit
+) {
     var isExpanded by rememberSaveable() { mutableStateOf(false) }
 
     val containerColorValue =
         if (isExpanded) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceContainerHigh
-    val containerColorState = animateColorAsState(targetValue = containerColorValue, label = "contentColorState")
+    val containerColorState =
+        animateColorAsState(targetValue = containerColorValue, label = "contentColorState")
 
     val contentColorValue =
         if (isExpanded) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurface
-    val contentColorState = animateColorAsState(targetValue = contentColorValue, label = "contentColorState")
+    val contentColorState =
+        animateColorAsState(targetValue = contentColorValue, label = "contentColorState")
 
     val elevationValue = if (isExpanded) 6.dp else 0.dp
     val elevationState = animateDpAsState(targetValue = elevationValue, label = "elevationState")
 
-    val borderWidthValue = if (isExpanded) 0.dp else 1.dp
-    val borderWidthState = animateDpAsState(targetValue = borderWidthValue, label = "borderWidthState")
-
     Surface(
+        modifier = modifier,
         shape = MaterialTheme.shapes.large,
         shadowElevation = elevationState.value,
-        border = CardDefaults.outlinedCardBorder().copy(borderWidthState.value),
         color = containerColorState.value,
         contentColor = contentColorState.value
     ) {
