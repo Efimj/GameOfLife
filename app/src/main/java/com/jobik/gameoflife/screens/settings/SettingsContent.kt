@@ -121,7 +121,7 @@ fun SettingsContent(navController: NavHostController) {
                     text = stringResource(id = R.string.Onboarding)
                 ) {
                     if (navController.canNavigate().not()) return@SettingsItem
-                    navController.navigate(Screen.Onboarding.name)
+                    navController.navigate(Screen.Onboarding)
                 }
             }
         }

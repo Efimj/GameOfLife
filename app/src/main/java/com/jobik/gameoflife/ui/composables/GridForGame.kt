@@ -51,7 +51,7 @@ fun GridForGame(
     viewModel: GameScreenViewModel,
 ) {
     val state = viewModel.states.value
-    val cellSize by remember(state.scale) { mutableStateOf((DefaultGameUnitSize * state.scale).dp) }
+    val cellSize by remember(state.gameSettings.scale) { mutableStateOf((DefaultGameUnitSize * state.gameSettings.scale).dp) }
     val cellSizePx = with(LocalDensity.current) { cellSize.toPx() }
     val cellSpacingPx = with(LocalDensity.current) { DefaultGameGapWidth.dp.toPx() }
     val cellEmojiUnit by remember(state.currentStep) {
@@ -112,7 +112,7 @@ fun GridForGame(
                 for (y in 0 until state.currentStep.first().size) {
                     val cell = state.currentStep[x][y]
 
-                    if (state.emojiEnabled) {
+                    if (state.gameSettings.emojiEnabled) {
                         EmojiUnit(
                             emoji = cellEmojiUnit[x][y],
                             cellSizePx = cellSizePx,

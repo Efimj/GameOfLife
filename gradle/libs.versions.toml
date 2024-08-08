@@ -1,16 +1,16 @@
 [versions]
+foundationAndroid = "1.7.0-beta07"
 versionName = "1.1.0-alpha01"
 versionCode = "4"
 
 androidMinSdk = "27"
-androidTargetSdk = "34"
-androidCompileSdk = "34"
+androidTargetSdk = "35"
+androidCompileSdk = "35"
 
 jvmTarget = "17"
 compose-compiler = "1.5.14"
 
 activityCompose = "1.9.1"
-composeBom = "2024.06.00"
 composecollapsingtoolbar = "1.0.8"
 coreKtx = "1.13.1"
 coreSplashscreen = "1.0.1"
@@ -21,18 +21,21 @@ lifecycleRuntimeKtx = "2.8.4"
 lifecycleViewmodelCompose = "2.8.4"
 material = "1.6.8"
 material3 = "1.3.0-beta05"
-navigationCompose = "2.7.7"
+navigationCompose = "2.8.0-beta07"
 profileinstaller = "1.3.1"
 shadowsPlus = "1.0.4"
 fadingEdges = "1.0.4"
 gson = "2.10.1"
+kotlinxSerializationJson = "1.6.3"
+navigationComposeVersion = "2.7.7"
 
 [libraries]
+androidx-foundation-android = { module = "androidx.compose.foundation:foundation-android", version.ref = "foundationAndroid" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 fadingEdges = { module = "com.github.t8rin:ComposeFadingEdges", version.ref = "fadingEdges" }
 shadowsPlus = { module = "com.github.GIGAMOLE:ComposeShadowsPlus", version.ref = "shadowsPlus" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
-androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
@@ -43,7 +46,7 @@ androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-
 androidx-material = { module = "androidx.compose.material:material", version.ref = "material" }
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
 androidx-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
-androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-runtime-ktx", version.ref = "navigationCompose" }
 androidx-profileinstaller = { module = "androidx.profileinstaller:profileinstaller", version.ref = "profileinstaller" }
 androidx-ui = { module = "androidx.compose.ui:ui" }
 androidx-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
@@ -53,3 +56,4 @@ androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 composecollapsingtoolbar = { module = "com.github.GIGAMOLE:ComposeCollapsingToolbar", version.ref = "composecollapsingtoolbar" }
 junit = { module = "junit:junit", version.ref = "junit" }
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationComposeVersion" }

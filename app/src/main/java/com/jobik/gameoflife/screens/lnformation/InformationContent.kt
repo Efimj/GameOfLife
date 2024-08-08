@@ -1,5 +1,6 @@
 package com.jobik.gameoflife.screens.lnformation
 
+import androidx.activity.compose.BackHandler
 import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
@@ -190,6 +191,10 @@ fun InformationContent() {
                 selectedCard = null
             }
         )
+    }
+
+    BackHandler(enabled = selectedCard != null) {
+        selectedCard = null
     }
 }
 

@@ -1,22 +1,23 @@
 package com.jobik.gameoflife.navigation
 
 import androidx.annotation.Keep
+import kotlinx.serialization.Serializable
 
 @Keep
-enum class Screen {
-    Onboarding,
-    Game,
-    Information,
-    Settings,
-}
+@Serializable
+sealed class Screen {
 
-sealed class NavigationItem(val route: String) {
-    object Onboarding : NavigationItem(Screen.Onboarding.name)
-    object Game : NavigationItem(Screen.Game.name)
-    object Information : NavigationItem(Screen.Information.name)
-    object Settings : NavigationItem(Screen.Settings.name)
+    @Serializable
+    data object Onboarding : Screen()
 
-    companion object {
-        val List = listOf(Onboarding, Game, Information, Settings)
-    }
+    @Serializable
+    data object Game : Screen()
+
+    @Serializable
+    data object Information : Screen()
+
+    @Serializable
+    data object Settings : Screen()
+
+    val values = listOf(Onboarding, Game, Information, Settings)
 }
