@@ -77,8 +77,8 @@ fun onFinished(context: Context, navController: NavHostController) {
         Log.i("onboarding - onFinished", e.toString())
     }
     if (navController.canNavigate().not()) return
-    navController.navigate(Screen.Game.name) {
-        popUpTo(Screen.Game.name)
+    navController.navigate(Screen.Game) {
+        popUpTo(Screen.Game)
     }
 }
 

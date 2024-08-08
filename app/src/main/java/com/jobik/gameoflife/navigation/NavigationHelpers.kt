@@ -11,15 +11,21 @@ class NavigationHelpers {
             return this.currentBackStackEntry?.lifecycle?.currentState == Lifecycle.State.RESUMED
         }
 
-        fun findStartDestination(context: Context): String {
+        fun findStartDestination(context: Context): Screen {
             val sharedPreferences =
-                context.getSharedPreferences(SharedPreferencesKeys.AppSettings, Context.MODE_PRIVATE)
-            val default = Screen.Onboarding.name
-            val finishedData = sharedPreferences.getString(SharedPreferencesKeys.CurrentOnboardingFinishedData, default)
+                context.getSharedPreferences(
+                    SharedPreferencesKeys.AppSettings,
+                    Context.MODE_PRIVATE
+                )
+            val default = Screen.Onboarding
+            val finishedData = sharedPreferences.getString(
+                SharedPreferencesKeys.CurrentOnboardingFinishedData,
+                null
+            ) ?: default
             return if (finishedData == SharedPreferencesKeys.OnboardingFinishedData) {
-                Screen.Game.name
+                Screen.Game
             } else {
-                Screen.Onboarding.name
+                Screen.Onboarding
             }
         }
     }

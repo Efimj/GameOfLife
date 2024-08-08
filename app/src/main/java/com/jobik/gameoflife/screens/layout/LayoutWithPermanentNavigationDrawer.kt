@@ -17,6 +17,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavDestination.Companion.hasRoute
+import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.jobik.gameoflife.BuildConfig
@@ -72,17 +74,21 @@ fun LayoutWithPermanentNavigationDrawer(
                             NavigationDrawerItem(
                                 icon = { Icon(button.icon, contentDescription = null) },
                                 label = { Text(text = stringResource(id = button.title)) },
-                                selected = button.route.name == currentRoute,
+                                selected = navController.currentDestination?.hierarchy?.any {
+                                    it.hasRoute(button.route::class)
+                                } == true,
                                 colors = NavigationDrawerItemDefaults.colors(unselectedContainerColor = MaterialTheme.colorScheme.surfaceContainer),
                                 onClick = {
                                     coroutineScope.launch {
                                         drawerState.close()
                                     }
-                                    if (button.route.name == currentRoute) return@NavigationDrawerItem
+                                    if (navController.currentDestination?.hierarchy?.any {
+                                            it.hasRoute(button.route::class)
+                                        } == true) return@NavigationDrawerItem
                                     if (navController.canNavigate().not()) return@NavigationDrawerItem
-                                    navController.navigate(button.route.name) {
+                                    navController.navigate(button.route) {
                                         // pops the route to root and places new screen
-                                        popUpTo(button.route.name)
+                                        popUpTo(button.route)
                                     }
                                 },
                             )

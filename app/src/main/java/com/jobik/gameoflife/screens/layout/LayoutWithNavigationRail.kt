@@ -17,6 +17,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavDestination.Companion.hasRoute
+import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.jobik.gameoflife.BuildConfig
@@ -28,7 +30,10 @@ import com.jobik.gameoflife.ui.helpers.*
 import kotlinx.coroutines.launch
 
 @Composable
-fun LayoutWithNavigationRail(navController: NavHostController, modalDrawer: ModalDrawer = ModalDrawerImplementation) {
+fun LayoutWithNavigationRail(
+    navController: NavHostController,
+    modalDrawer: ModalDrawer = ModalDrawerImplementation
+) {
     val context = LocalContext.current
 
     Row(modifier = Modifier.fillMaxSize()) {
@@ -44,7 +49,8 @@ fun LayoutWithNavigationRail(navController: NavHostController, modalDrawer: Moda
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
+                val currentRoute =
+                    navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
                 val coroutineScope = rememberCoroutineScope()
                 TopWindowInsetsSpacer()
 
@@ -64,16 +70,20 @@ fun LayoutWithNavigationRail(navController: NavHostController, modalDrawer: Moda
                 Column {
                     for (button in DrawerParams.drawerButtons) {
                         NavigationRailItem(
-                            selected = button.route.name == currentRoute,
+                            selected = navController.currentDestination?.hierarchy?.any {
+                                it.hasRoute(button.route::class)
+                            } == true,
                             onClick = {
                                 coroutineScope.launch {
                                     modalDrawer.drawerState.open()
                                 }
-                                if (button.route.name == currentRoute) return@NavigationRailItem
+                                if (navController.currentDestination?.hierarchy?.any {
+                                        it.hasRoute(button.route::class)
+                                    } == true) return@NavigationRailItem
                                 if (navController.canNavigate().not()) return@NavigationRailItem
-                                navController.navigate(button.route.name) {
+                                navController.navigate(button.route) {
                                     // pops the route to root and places new screen
-                                    popUpTo(button.route.name)
+                                    popUpTo(button.route)
                                 }
                             },
                             icon = {
