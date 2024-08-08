@@ -20,6 +20,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -63,12 +64,13 @@ fun GameScreen(
         }
     }
 
+    LaunchedEffect(viewModel.states.value.gameSettings) {
+        saveGameSettings(context, viewModel)
+    }
+
     DisposableEffect(Unit) {
         onDispose {
-            SettingsManager.update(
-                context = context,
-                settings = settings.copy(gameSettings = viewModel.states.value.gameSettings)
-            )
+            saveGameSettings(context, viewModel)
         }
     }
 
@@ -76,12 +78,19 @@ fun GameScreen(
         // ON_START code is executed here
 
         onStopOrDispose {
-            SettingsManager.update(
-                context = context,
-                settings = settings.copy(gameSettings = viewModel.states.value.gameSettings)
-            )
+            saveGameSettings(context, viewModel)
         }
     }
+}
+
+private fun saveGameSettings(
+    context: Context,
+    viewModel: GameScreenViewModel
+) {
+    SettingsManager.update(
+        context = context,
+        settings = settings.copy(gameSettings = viewModel.states.value.gameSettings)
+    )
 }
 
 @Composable
