@@ -60,7 +60,7 @@ fun SettingsContent(navController: NavHostController) {
                         NightMode.Dark -> Icons.Outlined.LightMode
                         else -> Icons.Outlined.AutoAwesome
                     },
-                    text = stringResource(id = R.string.change_theme)
+                    title = stringResource(id = R.string.change_theme)
                 ) {
                     SettingsManager.update(
                         context = context,
@@ -79,7 +79,7 @@ fun SettingsContent(navController: NavHostController) {
                 LocalizationSelector(isLanguageSelectorOpen)
                 SettingsItem(
                     icon = Icons.Outlined.Language,
-                    text = stringResource(id = R.string.language),
+                    title = stringResource(id = R.string.language),
                     action = {
                         Column(
                             horizontalAlignment = Alignment.Start,
@@ -114,10 +114,34 @@ fun SettingsContent(navController: NavHostController) {
                 GroupHeader(stringResource(id = R.string.other))
                 SettingsItem(
                     icon = Icons.Outlined.Lightbulb,
-                    text = stringResource(id = R.string.Onboarding)
+                    title = stringResource(id = R.string.Onboarding)
                 ) {
                     if (navController.canNavigate().not()) return@SettingsItem
                     navController.navigate(Screen.Onboarding)
+                }
+            }
+        }
+
+        item {
+            SettingsContainer {
+                GroupHeader(stringResource(R.string.security))
+                SettingsItem(
+                    icon = Icons.Outlined.Security,
+                    title = stringResource(R.string.secure_mode),
+                    description = stringResource(R.string.hides_content_prohibits_screen_recording),
+                    action = {
+                        Switch(checked = settings.secureMode, onCheckedChange = {
+                            SettingsManager.update(
+                                context = context,
+                                settings = settings.copy(secureMode = settings.secureMode.not())
+                            )
+                        })
+                    }
+                ) {
+                    SettingsManager.update(
+                        context = context,
+                        settings = settings.copy(secureMode = settings.secureMode.not())
+                    )
                 }
             }
         }

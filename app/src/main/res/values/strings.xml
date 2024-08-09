@@ -97,5 +97,8 @@
     <string name="set_field_scale">Field scale</string>
     <string name="pause">Pause</string>
     <string name="close">Close</string>
+    <string name="security">Security</string>
+    <string name="hides_content_prohibits_screen_recording">Hides content, prohibits screen recording</string>
+    <string name="secure_mode">Secure mode</string>
 
 </resources>

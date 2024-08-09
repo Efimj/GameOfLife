@@ -10,6 +10,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.jobik.gameoflife.screens.layout.AppLayout
 import com.jobik.gameoflife.services.app.AppCounter
 import com.jobik.gameoflife.services.rate.RateDialogProvider
+import com.jobik.gameoflife.ui.helpers.SecureModeManager
 import com.jobik.gameoflife.ui.theme.GameOfLifeTheme
 import com.jobik.gameoflife.util.ContextUtils
 import com.jobik.gameoflife.util.settings.NightMode
@@ -33,6 +34,8 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
 
         setContent {
+            SecureModeManager()
+
             GameOfLifeTheme(
                 darkTheme = when (SettingsManager.settings.nightMode) {
                     NightMode.Light -> false
@@ -40,7 +43,6 @@ class MainActivity : ComponentActivity() {
                     else -> isSystemInDarkTheme()
                 }, palette = SettingsManager.settings.theme
             ) {
-
                 // Main application
                 AppLayout()
 
