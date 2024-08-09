@@ -32,7 +32,7 @@ import androidx.navigation.NavHostController
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.SharedPreferencesKeys
 import com.jobik.gameoflife.SharedPreferencesKeys.OnboardingFinishedData
-import com.jobik.gameoflife.navigation.NavigationHelpers.Companion.canNavigate
+import com.jobik.gameoflife.navigation.NavigationHelper.Companion.canNavigate
 import com.jobik.gameoflife.navigation.Screen
 import com.jobik.gameoflife.ui.composables.VerticalIndicator
 import com.jobik.gameoflife.ui.helpers.*

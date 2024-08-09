@@ -24,8 +24,8 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.jobik.gameoflife.BuildConfig
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.navigation.AppNavHost
-import com.jobik.gameoflife.navigation.NavigationHelpers
-import com.jobik.gameoflife.navigation.NavigationHelpers.Companion.canNavigate
+import com.jobik.gameoflife.navigation.NavigationHelper
+import com.jobik.gameoflife.navigation.NavigationHelper.Companion.canNavigate
 import com.jobik.gameoflife.ui.helpers.*
 import kotlinx.coroutines.launch
 
@@ -124,7 +124,7 @@ fun LayoutWithNavigationRail(
         ) {
             AppNavHost(
                 navController = navController,
-                startDestination = NavigationHelpers.findStartDestination(context = context)
+                startDestination = NavigationHelper.findStartDestination(context = context)
             )
         }
     }
