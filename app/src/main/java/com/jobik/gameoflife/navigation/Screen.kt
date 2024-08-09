@@ -5,19 +5,17 @@ import kotlinx.serialization.Serializable
 
 @Keep
 @Serializable
-sealed class Screen {
+sealed class Screen(val name: String) {
 
     @Serializable
-    data object Onboarding : Screen()
+    data object Onboarding : Screen(name = "Onboarding")
 
     @Serializable
-    data object Game : Screen()
+    data object Game : Screen(name = "Game")
 
     @Serializable
-    data object Information : Screen()
+    data object Information : Screen(name = "Information")
 
     @Serializable
-    data object Settings : Screen()
-
-    val values = listOf(Onboarding, Game, Information, Settings)
+    data object Settings : Screen(name = "Settings")
 }

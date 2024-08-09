@@ -19,7 +19,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -34,7 +33,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.LifecycleStartEffect
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.gameOfLife.GameOfLife
 import com.jobik.gameoflife.screens.game.actions.GameActions
@@ -65,32 +63,11 @@ fun GameScreen(
     }
 
     LaunchedEffect(viewModel.states.value.gameSettings) {
-        saveGameSettings(context, viewModel)
+        SettingsManager.update(
+            context = context,
+            settings = settings.copy(gameSettings = viewModel.states.value.gameSettings)
+        )
     }
-
-    DisposableEffect(Unit) {
-        onDispose {
-            saveGameSettings(context, viewModel)
-        }
-    }
-
-    LifecycleStartEffect(Unit) {
-        // ON_START code is executed here
-
-        onStopOrDispose {
-            saveGameSettings(context, viewModel)
-        }
-    }
-}
-
-private fun saveGameSettings(
-    context: Context,
-    viewModel: GameScreenViewModel
-) {
-    SettingsManager.update(
-        context = context,
-        settings = settings.copy(gameSettings = viewModel.states.value.gameSettings)
-    )
 }
 
 @Composable

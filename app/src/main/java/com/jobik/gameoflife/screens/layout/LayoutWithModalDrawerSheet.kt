@@ -31,12 +31,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.currentBackStackEntryAsState
 import com.jobik.gameoflife.BuildConfig
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.navigation.AppNavHost
-import com.jobik.gameoflife.navigation.NavigationHelpers
-import com.jobik.gameoflife.navigation.NavigationHelpers.Companion.canNavigate
+import com.jobik.gameoflife.navigation.NavigationHelper
+import com.jobik.gameoflife.navigation.NavigationHelper.Companion.canNavigate
 import com.jobik.gameoflife.navigation.Screen
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.TopWindowInsetsSpacer
@@ -105,7 +104,7 @@ fun LayoutWithModalDrawerSheet(
     ) {
         AppNavHost(
             navController = navController,
-            startDestination = NavigationHelpers.findStartDestination(context = context)
+            startDestination = NavigationHelper.findStartDestination(context = context)
         )
     }
 }

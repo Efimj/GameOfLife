@@ -6,15 +6,12 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
@@ -31,9 +28,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.compose.Palette
-import com.jobik.gameoflife.GameOfLifeApplication
 import com.jobik.gameoflife.R
-import com.jobik.gameoflife.navigation.NavigationHelpers.Companion.canNavigate
+import com.jobik.gameoflife.navigation.NavigationHelper.Companion.canNavigate
 import com.jobik.gameoflife.navigation.Screen
 import com.jobik.gameoflife.ui.composables.modifier.fadingEdges
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
@@ -64,7 +60,7 @@ fun SettingsContent(navController: NavHostController) {
                         NightMode.Dark -> Icons.Outlined.LightMode
                         else -> Icons.Outlined.AutoAwesome
                     },
-                    text = stringResource(id = R.string.change_theme)
+                    title = stringResource(id = R.string.change_theme)
                 ) {
                     SettingsManager.update(
                         context = context,
@@ -83,7 +79,7 @@ fun SettingsContent(navController: NavHostController) {
                 LocalizationSelector(isLanguageSelectorOpen)
                 SettingsItem(
                     icon = Icons.Outlined.Language,
-                    text = stringResource(id = R.string.language),
+                    title = stringResource(id = R.string.language),
                     action = {
                         Column(
                             horizontalAlignment = Alignment.Start,
@@ -118,10 +114,34 @@ fun SettingsContent(navController: NavHostController) {
                 GroupHeader(stringResource(id = R.string.other))
                 SettingsItem(
                     icon = Icons.Outlined.Lightbulb,
-                    text = stringResource(id = R.string.Onboarding)
+                    title = stringResource(id = R.string.Onboarding)
                 ) {
                     if (navController.canNavigate().not()) return@SettingsItem
                     navController.navigate(Screen.Onboarding)
+                }
+            }
+        }
+
+        item {
+            SettingsContainer {
+                GroupHeader(stringResource(R.string.security))
+                SettingsItem(
+                    icon = Icons.Outlined.Security,
+                    title = stringResource(R.string.secure_mode),
+                    description = stringResource(R.string.hides_content_prohibits_screen_recording),
+                    action = {
+                        Switch(checked = settings.secureMode, onCheckedChange = {
+                            SettingsManager.update(
+                                context = context,
+                                settings = settings.copy(secureMode = settings.secureMode.not())
+                            )
+                        })
+                    }
+                ) {
+                    SettingsManager.update(
+                        context = context,
+                        settings = settings.copy(secureMode = settings.secureMode.not())
+                    )
                 }
             }
         }

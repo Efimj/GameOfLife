@@ -21,13 +21,22 @@ fun AppNavHost(
         composable<Screen.Onboarding>() {
             OnboardingScreen(navController)
         }
-        composable<Screen.Game>() {
+        composable<Screen.Game>(
+            enterTransition = { NavigationTransition().mainScreenEnterTransition(this) },
+            exitTransition = { NavigationTransition().mainScreenExitTransition(this) })
+        {
             GameScreen()
         }
-        composable<Screen.Information>() {
+        composable<Screen.Information>(
+            enterTransition = { NavigationTransition().mainScreenEnterTransition(this) },
+            exitTransition = { NavigationTransition().mainScreenExitTransition(this) })
+        {
             InformationScreen()
         }
-        composable<Screen.Settings>() {
+        composable<Screen.Settings>(
+            enterTransition = { NavigationTransition().mainScreenEnterTransition(this) },
+            exitTransition = { NavigationTransition().mainScreenExitTransition(this) })
+        {
             SettingsScreen(navController)
         }
     }
