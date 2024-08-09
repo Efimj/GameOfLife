@@ -65,18 +65,11 @@ fun GameScreen(
     }
 
     LaunchedEffect(viewModel.states.value.gameSettings) {
-        saveGameSettings(context, viewModel)
+        SettingsManager.update(
+            context = context,
+            settings = settings.copy(gameSettings = viewModel.states.value.gameSettings)
+        )
     }
-}
-
-private fun saveGameSettings(
-    context: Context,
-    viewModel: GameScreenViewModel
-) {
-    SettingsManager.update(
-        context = context,
-        settings = settings.copy(gameSettings = viewModel.states.value.gameSettings)
-    )
 }
 
 @Composable
