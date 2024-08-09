@@ -15,6 +15,7 @@ import com.jobik.gameoflife.ui.theme.GameOfLifeTheme
 import com.jobik.gameoflife.util.ContextUtils
 import com.jobik.gameoflife.util.settings.NightMode
 import com.jobik.gameoflife.util.settings.SettingsManager
+import com.jobik.gameoflife.util.settings.SettingsManager.settings
 
 class MainActivity : ComponentActivity() {
     override fun attachBaseContext(newBase: Context) {
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
         super.attachBaseContext(
             ContextUtils.setLocale(
                 context = newBase,
-                language = SettingsManager.settings.localization
+                language = settings.localization
             )
         )
     }
@@ -37,11 +38,11 @@ class MainActivity : ComponentActivity() {
             SecureModeManager()
 
             GameOfLifeTheme(
-                darkTheme = when (SettingsManager.settings.nightMode) {
+                darkTheme = when (settings.nightMode) {
                     NightMode.Light -> false
                     NightMode.Dark -> true
                     else -> isSystemInDarkTheme()
-                }, palette = SettingsManager.settings.theme
+                }, palette = settings.theme
             ) {
                 // Main application
                 AppLayout()

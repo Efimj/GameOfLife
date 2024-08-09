@@ -44,6 +44,7 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             buildConfigField("long", "VERSION_CODE", "${defaultConfig.versionCode}")
             buildConfigField("String", "VERSION_NAME", "\"${defaultConfig.versionName}\"")
+            signingConfig = signingConfigs.getByName("debug")
             ndk {
                 debugSymbolLevel = "FULL"
             }
