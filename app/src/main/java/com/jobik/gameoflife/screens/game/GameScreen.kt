@@ -67,20 +67,6 @@ fun GameScreen(
     LaunchedEffect(viewModel.states.value.gameSettings) {
         saveGameSettings(context, viewModel)
     }
-
-    DisposableEffect(Unit) {
-        onDispose {
-            saveGameSettings(context, viewModel)
-        }
-    }
-
-    LifecycleStartEffect(Unit) {
-        // ON_START code is executed here
-
-        onStopOrDispose {
-            saveGameSettings(context, viewModel)
-        }
-    }
 }
 
 private fun saveGameSettings(
