@@ -246,10 +246,7 @@ fun GameActions(viewModel: GameScreenViewModel) {
                 val selectedRules = remember { mutableStateOf<GameRules?>(null) }
                 val context = LocalContext.current
 
-                LaunchedEffect(
-                    viewModel.states.value.gameSettings.gameOfLifeStepRules.neighborsForAlive,
-                    viewModel.states.value.gameSettings.gameOfLifeStepRules.neighborsForReviving
-                ) {
+                LaunchedEffect(viewModel.states.value.gameSettings.gameOfLifeStepRules) {
                     val currentRules = viewModel.states.value.gameSettings.gameOfLifeStepRules
                     GameRuleSet.forEach { rules ->
                         if (currentRules.neighborsForAlive == rules.rules.neighborsForAlive && currentRules.neighborsForReviving == rules.rules.neighborsForReviving) {

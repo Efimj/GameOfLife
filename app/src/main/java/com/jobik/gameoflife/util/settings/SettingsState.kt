@@ -3,6 +3,7 @@ package com.jobik.gameoflife.util.settings
 import androidx.annotation.Keep
 import com.example.compose.Palette
 import com.jobik.gameoflife.gameOfLife.GameSettings
+import kotlinx.serialization.Serializable
 import java.util.Locale
 
 @Keep
@@ -13,6 +14,7 @@ enum class NightMode {
 }
 
 @Keep
+@Serializable
 data class SettingsState(
     val fontScale: Float = 1f,
     val checkUpdates: Boolean = true,

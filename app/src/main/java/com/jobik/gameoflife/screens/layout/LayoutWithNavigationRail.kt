@@ -60,7 +60,7 @@ fun LayoutWithNavigationRail(
                         .padding(top = 10.dp)
                         .size(80.0.dp)
                         .padding(horizontal = 10.dp),
-                    painter = painterResource(id = R.drawable.icon_for_tint),
+                    painter = painterResource(id = R.drawable.material_icon),
                     contentDescription = "Main app icon",
                     contentScale = ContentScale.Fit,
                     colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)

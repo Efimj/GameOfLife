@@ -3,9 +3,10 @@ package com.jobik.gameoflife.util.settings
 import android.content.Context
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import com.google.gson.Gson
 import com.jobik.gameoflife.SharedPreferencesKeys.AppSettings
 import com.jobik.gameoflife.SharedPreferencesKeys.Settings
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 object SettingsManager {
     private var _settings: MutableState<SettingsState> = mutableStateOf(SettingsState())
@@ -45,9 +46,9 @@ object SettingsManager {
         settings: SettingsState,
         context: Context
     ) {
-        val storedUiThemeString = Gson().toJson(settings, SettingsState::class.java)
+        val storedString = Json.encodeToString(settings)
         val store = context.getSharedPreferences(AppSettings, Context.MODE_PRIVATE)
-        store.edit().putString(Settings, storedUiThemeString.toString()).apply()
+        store.edit().putString(Settings, storedString).apply()
     }
 
     private fun restore(context: Context): SettingsState {
@@ -57,7 +58,7 @@ object SettingsManager {
             SettingsState()
         } else {
             try {
-                Gson().fromJson(savedSettings, SettingsState::class.java)
+                Json.decodeFromString<SettingsState>(savedSettings)
             } catch (e: Exception) {
                 SettingsState()
             }

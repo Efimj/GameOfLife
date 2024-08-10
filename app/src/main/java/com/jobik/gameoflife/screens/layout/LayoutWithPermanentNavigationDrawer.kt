@@ -56,7 +56,7 @@ fun LayoutWithPermanentNavigationDrawer(
                         modifier = Modifier
                             .padding(vertical = 20.dp)
                             .size(120.dp),
-                        painter = painterResource(id = R.drawable.icon_for_tint),
+                        painter = painterResource(id = R.drawable.material_icon),
                         colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary),
                         contentDescription = "Main app icon"
                     )

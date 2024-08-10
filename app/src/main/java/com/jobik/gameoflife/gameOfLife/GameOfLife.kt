@@ -3,6 +3,7 @@ package com.jobik.gameoflife.gameOfLife
 import androidx.annotation.Keep
 import com.jobik.gameoflife.helpers.ArrayHelper
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.GameOfLifeUnitState
+import kotlinx.serialization.Serializable
 import kotlin.random.Random
 
 
@@ -21,6 +22,7 @@ class GameOfLife {
             NoOneSurvived,
         }
 
+        @Serializable
         data class GameOfLifeStepSettings(
             val neighborsForReviving: Set<Int> = setOf(3),
             val neighborsForAlive: Set<Int> = setOf(2, 3),
