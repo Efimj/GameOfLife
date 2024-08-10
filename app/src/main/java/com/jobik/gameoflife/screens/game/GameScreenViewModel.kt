@@ -29,6 +29,7 @@ data class GameScreenStates(
     val gameSettings: GameSettings = settings.gameSettings,
     val currentStep: List<List<GameOfLifeUnitState>> = List(gameSettings.rows) { List(gameSettings.cols) { GameOfLifeUnitState.Empty } },
     val previousStep: List<List<GameOfLifeUnitState>> = emptyList(),
+    val beforePreviousStep: List<List<GameOfLifeUnitState>> = emptyList(),
     val gameResult: GameOfLifeResult? = null,
 )
 
@@ -59,6 +60,7 @@ class GameScreenViewModel : ViewModel() {
             isSimulationRunning = false,
             stepNumber = 0,
             previousStep = emptyList(),
+            beforePreviousStep = emptyList(),
             gameResult = null,
         )
     }
@@ -74,7 +76,11 @@ class GameScreenViewModel : ViewModel() {
                     settings = states.value.gameSettings.gameOfLifeStepRules
                 )
 
-                val gameResult = checkIsGameFinishedResult(nextStep, states.value.previousStep)
+                val gameResult = checkIsGameFinishedResult(
+                    nextState = nextStep,
+                    previousState = states.value.previousStep,
+                    beforePreviousStep = states.value.beforePreviousStep
+                )
                 if (gameResult != null) {
                     turnOffSimulation()
                     _states.value = states.value.copy(gameResult = gameResult)
@@ -99,6 +105,7 @@ class GameScreenViewModel : ViewModel() {
                     deaths = deaths,
                     revivals = revives,
                     previousStep = nextStep,
+                    beforePreviousStep = if (states.value.stepNumber > 0) states.value.previousStep else emptyList(),
                     stepNumber = states.value.stepNumber + 1
                 )
             }
@@ -107,22 +114,35 @@ class GameScreenViewModel : ViewModel() {
 
     private fun checkIsGameFinishedResult(
         nextState: List<List<GameOfLifeUnitState>>,
-        previousState: List<List<GameOfLifeUnitState>>
+        previousState: List<List<GameOfLifeUnitState>>,
+        beforePreviousStep: List<List<GameOfLifeUnitState>>
     ): GameOfLifeResult? {
         if (previousState.isEmpty()) return null
+        val isBeforePreviousStep =
+            beforePreviousStep != emptyList<List<List<GameOfLifeUnitState>>>()
+        var hasLoop = isBeforePreviousStep
+        var stableCombination = true
+        var noSurvived = true
 
-        var isStable = false
         for (row in nextState.indices) {
             for (col in nextState[row].indices) {
-                if (nextState[row][col] != previousState[row][col])
-                    return null
-                if (nextState[row][col] == GameOfLifeUnitState.Alive)
-                    isStable = true
+                if (isBeforePreviousStep && nextState[row][col] != beforePreviousStep[row][col]) {
+                    hasLoop = false
+                }
+                if (nextState[row][col] != previousState[row][col]) {
+                    stableCombination = false
+                }
+                if (nextState[row][col] == GameOfLifeUnitState.Alive) {
+                    noSurvived = false
+                }
             }
         }
 
-        if (isStable) return GameOfLifeResult.StableCombination
-        return GameOfLifeResult.NoOneSurvived
+        if (hasLoop) return GameOfLifeResult.Loop
+        if (stableCombination) return GameOfLifeResult.StableCombination
+        if (noSurvived) return GameOfLifeResult.NoOneSurvived
+
+        return null
     }
 
     private fun freeSouls(
