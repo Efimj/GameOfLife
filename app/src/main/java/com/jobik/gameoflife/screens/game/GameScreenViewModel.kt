@@ -201,7 +201,14 @@ class GameScreenViewModel : ViewModel() {
             initialValue = GameOfLifeUnitState.Alive,
         )
 
-        _states.value = states.value.copy(currentStep = list, gameResult = null, stepNumber = 0)
+        _states.value = states.value.copy(
+            currentStep = list,
+            gameResult = null,
+            stepNumber = 0,
+            alive = states.value.gameSettings.cols * states.value.gameSettings.rows,
+            deaths = 0,
+            previousStepsHash = emptyList()
+        )
     }
 
     fun setFullDeath() {
@@ -210,7 +217,14 @@ class GameScreenViewModel : ViewModel() {
             cols = states.value.gameSettings.cols,
             initialValue = GameOfLifeUnitState.Dead
         )
-        _states.value = states.value.copy(currentStep = list, gameResult = null, stepNumber = 0)
+        _states.value = states.value.copy(
+            currentStep = list,
+            gameResult = null,
+            stepNumber = 0,
+            alive = 0,
+            deaths = states.value.gameSettings.cols * states.value.gameSettings.rows,
+            previousStepsHash = emptyList()
+        )
     }
 
     fun setFullEmpty() {
@@ -220,7 +234,14 @@ class GameScreenViewModel : ViewModel() {
             initialValue = GameOfLifeUnitState.Empty
         )
         _states.value =
-            states.value.copy(currentStep = list, alive = 0, gameResult = null, stepNumber = 0)
+            states.value.copy(
+                currentStep = list,
+                alive = 0,
+                deaths = 0,
+                gameResult = null,
+                stepNumber = 0,
+                previousStepsHash = emptyList(),
+            )
     }
 
     fun turnOnSimulation() {
