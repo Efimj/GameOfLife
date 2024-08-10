@@ -119,13 +119,6 @@ class GameScreenViewModel : ViewModel() {
         var stableCombination = true
         var noSurvived = true
 
-        val currentStateHash = nextState.hashCode()
-        val previousHashes = previousSteps.map { it.hashCode() }
-
-        if (previousHashes.contains(currentStateHash)) {
-            return GameOfLifeResult.Loop
-        }
-
         for (row in nextState.indices) {
             for (col in nextState[row].indices) {
                 if (nextState[row][col] != previousSteps.last()[row][col]) {
@@ -139,6 +132,13 @@ class GameScreenViewModel : ViewModel() {
 
         if (noSurvived) return GameOfLifeResult.NoOneSurvived
         if (stableCombination) return GameOfLifeResult.StableCombination
+
+        val currentStateHash = nextState.hashCode()
+        val previousHashes = previousSteps.map { it.hashCode() }
+
+        if (previousHashes.contains(currentStateHash)) {
+            return GameOfLifeResult.Loop
+        }
 
         return null
     }
