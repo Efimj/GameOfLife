@@ -244,6 +244,9 @@ private fun getTitleText(
         GameOfLife.Companion.GameOfLifeResult.StableCombination -> context.getString(R.string.stable_combination)
 
         GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> context.getString(R.string.no_one_survived)
-        else -> context.getString(R.string.GameOfLife)
+
+        GameOfLife.Companion.GameOfLifeResult.Loop -> context.getString(R.string.loop_combination)
+
+        null -> context.getString(R.string.GameOfLife)
     }
 }
