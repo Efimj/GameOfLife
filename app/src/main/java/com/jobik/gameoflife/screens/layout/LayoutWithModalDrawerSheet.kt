@@ -136,7 +136,7 @@ fun AppDrawerContent(
                     modifier = Modifier
                         .padding(vertical = 20.dp)
                         .size(120.dp),
-                    painter = painterResource(id = R.drawable.material_icon),
+                    painter = painterResource(id = R.drawable.ic_app),
                     colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary),
                     contentScale = ContentScale.Fit,
                     contentDescription = "Main app icon"
