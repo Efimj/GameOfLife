@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -135,8 +136,9 @@ fun AppDrawerContent(
                     modifier = Modifier
                         .padding(vertical = 20.dp)
                         .size(120.dp),
-                    painter = painterResource(id = R.drawable.icon_for_tint),
+                    painter = painterResource(id = R.drawable.material_icon),
                     colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary),
+                    contentScale = ContentScale.Fit,
                     contentDescription = "Main app icon"
                 )
                 Text(
