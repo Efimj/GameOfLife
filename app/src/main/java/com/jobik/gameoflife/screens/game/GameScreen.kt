@@ -37,7 +37,6 @@ import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.gameOfLife.GameOfLife
 import com.jobik.gameoflife.screens.game.actions.GameActions
-import com.jobik.gameoflife.screens.lnformation.InformationAppBar
 import com.jobik.gameoflife.ui.composables.modifier.fadingEdges
 import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
 import com.jobik.gameoflife.ui.helpers.currentWidthSizeClass
