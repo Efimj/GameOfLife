@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
@@ -36,11 +37,18 @@ import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.gameOfLife.GameOfLife
 import com.jobik.gameoflife.screens.game.actions.GameActions
+import com.jobik.gameoflife.screens.lnformation.InformationAppBar
 import com.jobik.gameoflife.ui.composables.modifier.fadingEdges
 import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
 import com.jobik.gameoflife.ui.helpers.currentWidthSizeClass
+import com.jobik.gameoflife.ui.helpers.isWidth
+import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
 import com.jobik.gameoflife.util.settings.SettingsManager
 import com.jobik.gameoflife.util.settings.SettingsManager.settings
+import me.onebone.toolbar.CollapsingToolbarScaffold
+import me.onebone.toolbar.ScrollStrategy
+import me.onebone.toolbar.SnapConfig
+import me.onebone.toolbar.rememberCollapsingToolbarScaffoldState
 
 @Composable
 fun GameScreen(
@@ -187,16 +195,38 @@ private fun CompactGameScreen(
 
     var pinned by rememberSaveable { mutableStateOf(false) }
 
-    Column {
-        GameAppBar(
-            title = getTitleText(context = context, result = viewModel.states.value.gameResult),
-            color = contentColor,
-            backgroundColor = containerColor,
-            isPinned = pinned,
-            onPin = {
-                pinned = !pinned
-            }
-        )
+    val collapsingToolbarScaffold = rememberCollapsingToolbarScaffoldState()
+
+    val isCompact = isWidth(sizeClass = WindowWidthSizeClass.Compact)
+
+    val topInsets = if (isCompact) {
+        Modifier.topWindowInsetsPadding()
+    } else {
+        Modifier
+    }
+
+    CollapsingToolbarScaffold(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(containerColorTarget)
+            .then(topInsets),
+        state = collapsingToolbarScaffold,
+        scrollStrategy = ScrollStrategy.EnterAlways,
+        enabledWhenBodyUnfilled = false,
+        snapConfig = SnapConfig(), // "collapseThreshold = 0.5" by default
+        toolbar = {
+            GameAppBar(
+                modifier = Modifier.background(containerColorTarget),
+                title = getTitleText(context = context, result = viewModel.states.value.gameResult),
+                color = contentColor,
+                backgroundColor = containerColor,
+                isPinned = pinned,
+                onPin = {
+                    pinned = !pinned
+                }
+            )
+        },
+    ) {
         LazyColumn(
             modifier = Modifier.background(MaterialTheme.colorScheme.surface)
         ) {
