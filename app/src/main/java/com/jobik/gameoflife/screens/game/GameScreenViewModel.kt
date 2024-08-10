@@ -138,9 +138,9 @@ class GameScreenViewModel : ViewModel() {
             }
         }
 
+        if (noSurvived) return GameOfLifeResult.NoOneSurvived
         if (hasLoop) return GameOfLifeResult.Loop
         if (stableCombination) return GameOfLifeResult.StableCombination
-        if (noSurvived) return GameOfLifeResult.NoOneSurvived
 
         return null
     }
