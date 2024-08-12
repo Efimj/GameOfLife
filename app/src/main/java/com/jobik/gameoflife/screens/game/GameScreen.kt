@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
@@ -39,8 +40,26 @@ import com.jobik.gameoflife.screens.game.actions.GameActions
 import com.jobik.gameoflife.ui.composables.modifier.fadingEdges
 import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
 import com.jobik.gameoflife.ui.helpers.currentWidthSizeClass
+import com.jobik.gameoflife.ui.helpers.isWidth
+import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
 import com.jobik.gameoflife.util.settings.SettingsManager
 import com.jobik.gameoflife.util.settings.SettingsManager.settings
+import me.onebone.toolbar.CollapsingToolbarScaffold
+import me.onebone.toolbar.ScrollStrategy
+import me.onebone.toolbar.SnapConfig
+import me.onebone.toolbar.rememberCollapsingToolbarScaffoldState
+import nl.dionsegijn.konfetti.compose.KonfettiView
+import nl.dionsegijn.konfetti.compose.OnParticleSystemUpdateListener
+import nl.dionsegijn.konfetti.core.Angle
+import nl.dionsegijn.konfetti.core.Party
+import nl.dionsegijn.konfetti.core.PartySystem
+import nl.dionsegijn.konfetti.core.Position
+import nl.dionsegijn.konfetti.core.Rotation
+import nl.dionsegijn.konfetti.core.Spread
+import nl.dionsegijn.konfetti.core.emitter.Emitter
+import nl.dionsegijn.konfetti.core.models.Shape
+import nl.dionsegijn.konfetti.core.models.Size
+import java.util.concurrent.TimeUnit
 
 @Composable
 fun GameScreen(
@@ -67,6 +86,65 @@ fun GameScreen(
             context = context,
             settings = settings.copy(gameSettings = viewModel.states.value.gameSettings)
         )
+    }
+
+    Confetti(viewModel = viewModel)
+}
+
+@Composable
+fun Confetti(viewModel: GameScreenViewModel) {
+    val state = viewModel.states.value
+
+    var partyView by rememberSaveable {
+        mutableStateOf(false)
+    }
+
+    LaunchedEffect(state.gameResult) {
+        partyView = when (state.gameResult) {
+            GameOfLife.Companion.GameOfLifeResult.Loop -> true
+            GameOfLife.Companion.GameOfLifeResult.StableCombination -> true
+            else -> false
+        }
+    }
+
+    fun rain(
+    ): List<Party> = Party(
+        speed = 10f,
+        maxSpeed = 30f,
+        damping = 0.9f,
+        emitter = Emitter(duration = 3, TimeUnit.SECONDS).perSecond(100),
+    ).let { party ->
+        listOf(
+            party.copy(
+                angle = 45,
+                position = Position.Relative(0.0, 0.0),
+                spread = 90,
+            ),
+            party.copy(
+                angle = 90,
+                position = Position.Relative(0.5, 0.0),
+                spread = 360,
+            ),
+            party.copy(
+                angle = 135,
+                position = Position.Relative(1.0, 0.0),
+                spread = 90,
+            )
+        )
+    }
+
+    if (partyView) {
+        KonfettiView(
+            modifier = Modifier.fillMaxSize(),
+            parties = rain(),
+            updateListener = PartyListener(onFinish = { partyView = false })
+        )
+    }
+}
+
+class PartyListener(val onFinish: () -> Unit) : OnParticleSystemUpdateListener {
+    override fun onParticleSystemEnded(system: PartySystem, activeSystems: Int) {
+        onFinish()
     }
 }
 
@@ -187,16 +265,38 @@ private fun CompactGameScreen(
 
     var pinned by rememberSaveable { mutableStateOf(false) }
 
-    Column {
-        GameAppBar(
-            title = getTitleText(context = context, result = viewModel.states.value.gameResult),
-            color = contentColor,
-            backgroundColor = containerColor,
-            isPinned = pinned,
-            onPin = {
-                pinned = !pinned
-            }
-        )
+    val collapsingToolbarScaffold = rememberCollapsingToolbarScaffoldState()
+
+    val isCompact = isWidth(sizeClass = WindowWidthSizeClass.Compact)
+
+    val topInsets = if (isCompact) {
+        Modifier.topWindowInsetsPadding()
+    } else {
+        Modifier
+    }
+
+    CollapsingToolbarScaffold(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(containerColorTarget)
+            .then(topInsets),
+        state = collapsingToolbarScaffold,
+        scrollStrategy = ScrollStrategy.EnterAlways,
+        enabledWhenBodyUnfilled = false,
+        snapConfig = SnapConfig(), // "collapseThreshold = 0.5" by default
+        toolbar = {
+            GameAppBar(
+                modifier = Modifier.background(containerColorTarget),
+                title = getTitleText(context = context, result = viewModel.states.value.gameResult),
+                color = contentColor,
+                backgroundColor = containerColor,
+                isPinned = pinned,
+                onPin = {
+                    pinned = !pinned
+                }
+            )
+        },
+    ) {
         LazyColumn(
             modifier = Modifier.background(MaterialTheme.colorScheme.surface)
         ) {
@@ -244,6 +344,9 @@ private fun getTitleText(
         GameOfLife.Companion.GameOfLifeResult.StableCombination -> context.getString(R.string.stable_combination)
 
         GameOfLife.Companion.GameOfLifeResult.NoOneSurvived -> context.getString(R.string.no_one_survived)
-        else -> context.getString(R.string.GameOfLife)
+
+        GameOfLife.Companion.GameOfLifeResult.Loop -> context.getString(R.string.loop_combination)
+
+        null -> context.getString(R.string.GameOfLife)
     }
 }

@@ -18,6 +18,7 @@ class GameOfLife {
 
         @Keep
         enum class GameOfLifeResult {
+            Loop,
             StableCombination,
             NoOneSurvived,
         }
@@ -58,7 +59,8 @@ class GameOfLife {
             val newState = cloneGameState(currentState)
             for (row in currentState.indices) {
                 for (col in currentState[row].indices) {
-                    val numberOfNeighbors = getNumberOfNeighbors(list = currentState, row = row, col = col)
+                    val numberOfNeighbors =
+                        getNumberOfNeighbors(list = currentState, row = row, col = col)
                     if (newState[row][col] == GameOfLifeUnitState.Alive && numberOfNeighbors !in settings.neighborsForAlive) {
                         newState[row][col] = GameOfLifeUnitState.Dead
                     } else if (newState[row][col] != GameOfLifeUnitState.Alive && numberOfNeighbors in settings.neighborsForReviving) {

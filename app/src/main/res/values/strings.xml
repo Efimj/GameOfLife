@@ -100,5 +100,6 @@
     <string name="security">Security</string>
     <string name="hides_content_prohibits_screen_recording">Hides content, prohibits screen recording</string>
     <string name="secure_mode">Secure mode</string>
+    <string name="loop_combination">Loop detected 🎡</string>
 
 </resources>

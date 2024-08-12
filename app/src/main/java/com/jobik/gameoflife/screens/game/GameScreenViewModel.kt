@@ -28,7 +28,7 @@ data class GameScreenStates(
     val stepNumber: Long = 0,
     val gameSettings: GameSettings = settings.gameSettings,
     val currentStep: List<List<GameOfLifeUnitState>> = List(gameSettings.rows) { List(gameSettings.cols) { GameOfLifeUnitState.Empty } },
-    val previousStep: List<List<GameOfLifeUnitState>> = emptyList(),
+    val previousStepsHash: List<Int> = emptyList(),
     val gameResult: GameOfLifeResult? = null,
 )
 
@@ -58,7 +58,7 @@ class GameScreenViewModel : ViewModel() {
             revivals = 0,
             isSimulationRunning = false,
             stepNumber = 0,
-            previousStep = emptyList(),
+            previousStepsHash = emptyList(),
             gameResult = null,
         )
     }
@@ -74,7 +74,11 @@ class GameScreenViewModel : ViewModel() {
                     settings = states.value.gameSettings.gameOfLifeStepRules
                 )
 
-                val gameResult = checkIsGameFinishedResult(nextStep, states.value.previousStep)
+                val gameResult = checkIsGameFinishedResult(
+                    nextState = nextStep,
+                    previousStepsHash = states.value.previousStepsHash,
+                    previousStep = states.value.currentStep
+                )
                 if (gameResult != null) {
                     turnOffSimulation()
                     _states.value = states.value.copy(gameResult = gameResult)
@@ -84,21 +88,24 @@ class GameScreenViewModel : ViewModel() {
                 val aliveCount = countAlive(nextStep)
                 var revives = states.value.revivals
                 var deaths = states.value.deaths
-                if (states.value.previousStep.isNotEmpty()) {
-                    revives += countRevives(nextStep, states.value.previousStep)
-                    deaths += countDeaths(nextStep, states.value.previousStep)
+                if (states.value.previousStepsHash.isNotEmpty()) {
+                    revives += countRevives(nextStep, states.value.currentStep)
+                    deaths += countDeaths(nextStep, states.value.currentStep)
                 }
 
                 if (states.value.gameSettings.freeSoulMode)
                     nextStep =
-                        freeSouls(nextState = nextStep, previousState = states.value.previousStep)
+                        freeSouls(
+                            nextState = nextStep,
+                            previousState = states.value.currentStep
+                        )
 
                 _states.value = states.value.copy(
                     currentStep = nextStep,
                     alive = aliveCount,
                     deaths = deaths,
                     revivals = revives,
-                    previousStep = nextStep,
+                    previousStepsHash = states.value.previousStepsHash + nextStep.hashCode(),
                     stepNumber = states.value.stepNumber + 1
                 )
             }
@@ -107,22 +114,33 @@ class GameScreenViewModel : ViewModel() {
 
     private fun checkIsGameFinishedResult(
         nextState: List<List<GameOfLifeUnitState>>,
-        previousState: List<List<GameOfLifeUnitState>>
+        previousStepsHash: List<Int>,
+        previousStep: List<List<GameOfLifeUnitState>>
     ): GameOfLifeResult? {
-        if (previousState.isEmpty()) return null
+        if (previousStepsHash.isEmpty()) return null
+        var stableCombination = true
+        var noSurvived = true
 
-        var isStable = false
         for (row in nextState.indices) {
             for (col in nextState[row].indices) {
-                if (nextState[row][col] != previousState[row][col])
-                    return null
-                if (nextState[row][col] == GameOfLifeUnitState.Alive)
-                    isStable = true
+                if (nextState[row][col] != previousStep[row][col]) {
+                    stableCombination = false
+                }
+                if (nextState[row][col] == GameOfLifeUnitState.Alive) {
+                    noSurvived = false
+                }
             }
         }
 
-        if (isStable) return GameOfLifeResult.StableCombination
-        return GameOfLifeResult.NoOneSurvived
+        if (noSurvived) return GameOfLifeResult.NoOneSurvived
+        if (stableCombination) return GameOfLifeResult.StableCombination
+
+        val currentStateHash = nextState.hashCode()
+        if (previousStepsHash.contains(currentStateHash)) {
+            return GameOfLifeResult.Loop
+        }
+
+        return null
     }
 
     private fun freeSouls(
@@ -146,7 +164,6 @@ class GameScreenViewModel : ViewModel() {
     fun dropGame() {
         regenerateGame()
     }
-
 
     fun onElementClick(row: Int, column: Int) {
         val oldList = states.value.currentStep
@@ -184,7 +201,14 @@ class GameScreenViewModel : ViewModel() {
             initialValue = GameOfLifeUnitState.Alive,
         )
 
-        _states.value = states.value.copy(currentStep = list, gameResult = null, stepNumber = 0)
+        _states.value = states.value.copy(
+            currentStep = list,
+            gameResult = null,
+            stepNumber = 0,
+            alive = states.value.gameSettings.cols * states.value.gameSettings.rows,
+            deaths = 0,
+            previousStepsHash = emptyList()
+        )
     }
 
     fun setFullDeath() {
@@ -193,7 +217,14 @@ class GameScreenViewModel : ViewModel() {
             cols = states.value.gameSettings.cols,
             initialValue = GameOfLifeUnitState.Dead
         )
-        _states.value = states.value.copy(currentStep = list, gameResult = null, stepNumber = 0)
+        _states.value = states.value.copy(
+            currentStep = list,
+            gameResult = null,
+            stepNumber = 0,
+            alive = 0,
+            deaths = states.value.gameSettings.cols * states.value.gameSettings.rows,
+            previousStepsHash = emptyList()
+        )
     }
 
     fun setFullEmpty() {
@@ -203,7 +234,14 @@ class GameScreenViewModel : ViewModel() {
             initialValue = GameOfLifeUnitState.Empty
         )
         _states.value =
-            states.value.copy(currentStep = list, alive = 0, gameResult = null, stepNumber = 0)
+            states.value.copy(
+                currentStep = list,
+                alive = 0,
+                deaths = 0,
+                gameResult = null,
+                stepNumber = 0,
+                previousStepsHash = emptyList(),
+            )
     }
 
     fun turnOnSimulation() {
@@ -291,7 +329,7 @@ class GameScreenViewModel : ViewModel() {
                 deaths = 0,
                 revivals = 0,
                 stepNumber = 0,
-                previousStep = emptyList(),
+                previousStepsHash = emptyList(),
             )
         } else {
             _states.value = states.value.copy(
@@ -305,7 +343,7 @@ class GameScreenViewModel : ViewModel() {
                 deaths = 0,
                 revivals = 0,
                 stepNumber = 0,
-                previousStep = emptyList(),
+                previousStepsHash = emptyList(),
                 currentStep = rules.firstStep
             )
         }

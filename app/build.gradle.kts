@@ -99,6 +99,8 @@ dependencies {
 
     implementation(libs.androidx.material.icons.extended)
 
+    implementation(libs.material)
+
     // Compose navigation
     implementation(libs.androidx.navigation.compose)
 
@@ -117,4 +119,5 @@ dependencies {
     api(libs.fadingEdges)
     implementation(libs.gson)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.konfetti.compose)
 }
