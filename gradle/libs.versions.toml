@@ -1,5 +1,6 @@
 [versions]
 foundationAndroid = "1.7.0-beta07"
+konfettiCompose = "2.0.4"
 materialVersion = "1.13.0-alpha05"
 versionName = "1.1.0-alpha01"
 versionCode = "4"
@@ -32,6 +33,7 @@ navigationComposeVersion = "2.7.7"
 
 [libraries]
 androidx-foundation-android = { module = "androidx.compose.foundation:foundation-android", version.ref = "foundationAndroid" }
+konfetti-compose = { module = "nl.dionsegijn:konfetti-compose", version.ref = "konfettiCompose" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 fadingEdges = { module = "com.github.t8rin:ComposeFadingEdges", version.ref = "fadingEdges" }

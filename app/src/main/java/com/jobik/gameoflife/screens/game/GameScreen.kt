@@ -48,6 +48,18 @@ import me.onebone.toolbar.CollapsingToolbarScaffold
 import me.onebone.toolbar.ScrollStrategy
 import me.onebone.toolbar.SnapConfig
 import me.onebone.toolbar.rememberCollapsingToolbarScaffoldState
+import nl.dionsegijn.konfetti.compose.KonfettiView
+import nl.dionsegijn.konfetti.compose.OnParticleSystemUpdateListener
+import nl.dionsegijn.konfetti.core.Angle
+import nl.dionsegijn.konfetti.core.Party
+import nl.dionsegijn.konfetti.core.PartySystem
+import nl.dionsegijn.konfetti.core.Position
+import nl.dionsegijn.konfetti.core.Rotation
+import nl.dionsegijn.konfetti.core.Spread
+import nl.dionsegijn.konfetti.core.emitter.Emitter
+import nl.dionsegijn.konfetti.core.models.Shape
+import nl.dionsegijn.konfetti.core.models.Size
+import java.util.concurrent.TimeUnit
 
 @Composable
 fun GameScreen(
@@ -74,6 +86,65 @@ fun GameScreen(
             context = context,
             settings = settings.copy(gameSettings = viewModel.states.value.gameSettings)
         )
+    }
+
+    Confetti(viewModel = viewModel)
+}
+
+@Composable
+fun Confetti(viewModel: GameScreenViewModel) {
+    val state = viewModel.states.value
+
+    var partyView by rememberSaveable {
+        mutableStateOf(false)
+    }
+
+    LaunchedEffect(state.gameResult) {
+        partyView = when (state.gameResult) {
+            GameOfLife.Companion.GameOfLifeResult.Loop -> true
+            GameOfLife.Companion.GameOfLifeResult.StableCombination -> true
+            else -> false
+        }
+    }
+
+    fun rain(
+    ): List<Party> = Party(
+        speed = 10f,
+        maxSpeed = 30f,
+        damping = 0.9f,
+        emitter = Emitter(duration = 3, TimeUnit.SECONDS).perSecond(100),
+    ).let { party ->
+        listOf(
+            party.copy(
+                angle = 45,
+                position = Position.Relative(0.0, 0.0),
+                spread = 90,
+            ),
+            party.copy(
+                angle = 90,
+                position = Position.Relative(0.5, 0.0),
+                spread = 360,
+            ),
+            party.copy(
+                angle = 135,
+                position = Position.Relative(1.0, 0.0),
+                spread = 90,
+            )
+        )
+    }
+
+    if (partyView) {
+        KonfettiView(
+            modifier = Modifier.fillMaxSize(),
+            parties = rain(),
+            updateListener = PartyListener(onFinish = { partyView = false })
+        )
+    }
+}
+
+class PartyListener(val onFinish: () -> Unit) : OnParticleSystemUpdateListener {
+    override fun onParticleSystemEnded(system: PartySystem, activeSystems: Int) {
+        onFinish()
     }
 }
 
