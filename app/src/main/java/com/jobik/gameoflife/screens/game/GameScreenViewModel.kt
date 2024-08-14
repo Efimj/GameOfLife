@@ -318,6 +318,11 @@ class GameScreenViewModel : ViewModel() {
         return true
     }
 
+    fun updateSkipSteps(stepsCount: Int) {
+        _states.value =
+            states.value.copy(gameSettings = states.value.gameSettings.copy(skipSteps = stepsCount))
+    }
+
     fun updateGameRules(
         neighborsForReviving: Set<Int> = states.value.gameSettings.gameOfLifeStepRules.neighborsForReviving,
         neighborsForAlive: Set<Int> = states.value.gameSettings.gameOfLifeStepRules.neighborsForAlive

@@ -425,6 +425,38 @@ fun GameActions(viewModel: GameScreenViewModel) {
                 )
             }
             Spacer(modifier = Modifier.height(5.dp))
+
+            val scrollSkipStep = rememberScrollState()
+
+            SettingsItemWrapper(
+                modifier = Modifier
+                    .fadingEdges(scrollSkipStep)
+                    .horizontalScroll(scrollSkipStep),
+                headline = stringResource(R.string.number_of_skipped_steps),
+                horizontalArrangement = Arrangement.Center
+            ) {
+
+                val steps = listOf(0, 5, 10, 50, 100, 250, 500, 1000)
+
+                SingleChoiceSegmentedButtonRow {
+                    steps.forEachIndexed { index, value ->
+                        SegmentedButton(
+                            shape = SegmentedButtonDefaults.itemShape(
+                                index = index,
+                                count = steps.size
+                            ),
+                            onClick = {
+                                viewModel.updateSkipSteps(stepsCount = value)
+                            },
+                            selected = value == viewModel.states.value.gameSettings.skipSteps,
+                            colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
+                        ) {
+                            Text(value.toString())
+                        }
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(5.dp))
             GameFieldScale(viewModel)
             Spacer(modifier = Modifier.height(5.dp))
 
