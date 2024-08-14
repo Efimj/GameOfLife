@@ -37,6 +37,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Book
 import androidx.compose.material.icons.outlined.Cached
+import androidx.compose.material.icons.outlined.Loop
 import androidx.compose.material.icons.outlined.Mood
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -170,9 +171,8 @@ fun GameActions(viewModel: GameScreenViewModel) {
                 Icon(
                     imageVector = Icons.Outlined.Mood,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary,
-
-                    )
+                    tint = MaterialTheme.colorScheme.primary
+                )
                 SettingsItemContent(
                     title = stringResource(id = R.string.emoji_mode),
                     description = stringResource(id = R.string.emoji_mode_description)
@@ -409,6 +409,22 @@ fun GameActions(viewModel: GameScreenViewModel) {
         }
 
         SettingsGroup(headline = stringResource(id = R.string.simulation_settings)) {
+            SettingsItemWrapper(onClick = viewModel::switchLoopDetectingMode) {
+                Icon(
+                    imageVector = Icons.Outlined.Loop,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary
+                )
+                SettingsItemContent(
+                    title = stringResource(R.string.detect_loops),
+                    description = stringResource(R.string.pauses_game_when_loop)
+                )
+                Switch(
+                    checked = viewModel.states.value.gameSettings.loopDetecting,
+                    onCheckedChange = { viewModel.switchLoopDetectingMode() },
+                )
+            }
+            Spacer(modifier = Modifier.height(5.dp))
             GameFieldScale(viewModel)
             Spacer(modifier = Modifier.height(5.dp))
 
