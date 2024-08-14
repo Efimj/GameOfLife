@@ -179,7 +179,7 @@ class GameScreenViewModel : ViewModel() {
         val newList = cloneGameState(oldList)
         newList[row][column] = when (newList[row][column]) {
             GameOfLifeUnitState.Alive -> GameOfLifeUnitState.Dead
-            GameOfLifeUnitState.Dead -> if (isEmojiMode) GameOfLifeUnitState.Empty else GameOfLifeUnitState.Alive
+            GameOfLifeUnitState.Dead -> GameOfLifeUnitState.Empty
             GameOfLifeUnitState.Empty -> GameOfLifeUnitState.Alive
         }
         val aliveCount = countAlive(newList)

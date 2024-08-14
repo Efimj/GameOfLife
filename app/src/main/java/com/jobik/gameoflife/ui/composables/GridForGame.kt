@@ -67,7 +67,10 @@ fun GridForGame(
             })
     }
 
-    val unitColor = MaterialTheme.colorScheme.primary
+    val aliveUnitColor = MaterialTheme.colorScheme.primary
+    val deadUnitColor = MaterialTheme.colorScheme.onTertiaryContainer
+
+    val showDead = viewModel.states.value.gameSettings.showDead
 
     BoxWithConstraints {
         val fieldWidth = with(LocalDensity.current) { maxWidth.toPx() }
@@ -125,7 +128,7 @@ fun GridForGame(
                     } else {
                         if (cell == GameOfLifeUnitState.Alive) {
                             CircularUnit(
-                                unitColor = unitColor,
+                                unitColor = aliveUnitColor,
                                 offsetX = offsetX,
                                 x = x,
                                 cellSizePx = cellSizePx,
@@ -133,6 +136,18 @@ fun GridForGame(
                                 offsetY = offsetY,
                                 y = y
                             )
+                        } else {
+                            if (showDead && cell == GameOfLifeUnitState.Dead) {
+                                CircularUnit(
+                                    unitColor = deadUnitColor,
+                                    offsetX = offsetX,
+                                    x = x,
+                                    cellSizePx = cellSizePx,
+                                    cellSpacingPx = cellSpacingPx,
+                                    offsetY = offsetY,
+                                    y = y
+                                )
+                            }
                         }
                     }
                 }

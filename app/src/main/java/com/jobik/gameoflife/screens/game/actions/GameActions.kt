@@ -37,6 +37,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Book
 import androidx.compose.material.icons.outlined.Cached
+import androidx.compose.material.icons.outlined.Cancel
 import androidx.compose.material.icons.outlined.Loop
 import androidx.compose.material.icons.outlined.Mood
 import androidx.compose.material3.Button
@@ -190,34 +191,39 @@ fun GameActions(viewModel: GameScreenViewModel) {
                 )
             }
             Spacer(modifier = Modifier.height(5.dp))
-            AnimatedVisibility(
-                visible = viewModel.states.value.gameSettings.emojiEnabled,
-                enter = slideInVertically() + expandVertically() + fadeIn(),
-                exit = slideOutVertically() + shrinkVertically() + fadeOut(),
-            ) {
-                SettingsItemWrapper(onClick = viewModel::switchFreeSoulMode) {
-                    Icon(
-                        imageVector = Icons.Outlined.Cached,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary
-                    )
-                    SettingsItemContent(
-                        title = stringResource(id = R.string.free_soul_mode),
-                        description = stringResource(id = R.string.free_soul_mode_description)
-                    )
-                    Switch(
-                        enabled = viewModel.states.value.gameSettings.emojiEnabled,
-                        checked = viewModel.states.value.gameSettings.freeSoulMode,
-                        onCheckedChange = { viewModel.switchFreeSoulMode() },
-                        thumbContent = if (!viewModel.states.value.gameSettings.freeSoulMode) {
-                            {
-                                Text(text = "\uD83D\uDC80")
-                            }
-                        } else {
-                            null
-                        },
-                    )
-                }
+
+            SettingsItemWrapper(onClick = viewModel::switchShowDeadMode) {
+                Icon(
+                    imageVector = Icons.Outlined.Cancel,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary
+                )
+                SettingsItemContent(
+                    title = stringResource(R.string.show_eliminated_cells),
+                    description = stringResource(R.string.show_eliminated_cells_description)
+                )
+                Switch(
+                    checked = viewModel.states.value.gameSettings.showDead,
+                    onCheckedChange = { viewModel.switchShowDeadMode() },
+                )
+            }
+
+            Spacer(modifier = Modifier.height(5.dp))
+
+            SettingsItemWrapper(onClick = viewModel::switchFreeSoulMode) {
+                Icon(
+                    imageVector = Icons.Outlined.Cached,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary
+                )
+                SettingsItemContent(
+                    title = stringResource(id = R.string.free_soul_mode),
+                    description = stringResource(id = R.string.free_soul_mode_description)
+                )
+                Switch(
+                    checked = viewModel.states.value.gameSettings.freeSoulMode,
+                    onCheckedChange = { viewModel.switchFreeSoulMode() },
+                )
             }
             Spacer(modifier = Modifier.height(5.dp))
 
