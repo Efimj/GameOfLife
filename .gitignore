@@ -17,3 +17,5 @@ local.properties
 /.idea/deploymentTargetDropDown.xml
 /app/release
 /.idea/
+/app/foss/release
+/app/market/release

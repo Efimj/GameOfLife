@@ -7,12 +7,14 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.lifecycleScope
 import com.jobik.gameoflife.screens.layout.AppLayout
 import com.jobik.gameoflife.services.app.AppCounter
 import com.jobik.gameoflife.services.rate.RateDialogProvider
 import com.jobik.gameoflife.ui.helpers.SecureModeManager
 import com.jobik.gameoflife.ui.theme.GameOfLifeTheme
 import com.jobik.gameoflife.util.ContextUtils
+import com.jobik.gameoflife.util.InAppUpdateManager.Companion.checkAppUpdate
 import com.jobik.gameoflife.util.settings.NightMode
 import com.jobik.gameoflife.util.settings.SettingsManager
 import com.jobik.gameoflife.util.settings.SettingsManager.settings
@@ -33,6 +35,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         actionBar?.hide()
         installSplashScreen()
+
+        if (settings.checkUpdates) {
+            checkAppUpdate(
+                context = this,
+                scope = lifecycleScope,
+                showLatestVersionInstalled = false
+            )
+        }
 
         setContent {
             SecureModeManager()
