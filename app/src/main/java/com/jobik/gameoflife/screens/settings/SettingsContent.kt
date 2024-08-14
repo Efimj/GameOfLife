@@ -6,18 +6,43 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.*
-import androidx.compose.material3.*
+import androidx.compose.material.icons.outlined.AutoAwesome
+import androidx.compose.material.icons.outlined.BrowserUpdated
+import androidx.compose.material.icons.outlined.Check
+import androidx.compose.material.icons.outlined.CloudDownload
+import androidx.compose.material.icons.outlined.DarkMode
+import androidx.compose.material.icons.outlined.Language
+import androidx.compose.material.icons.outlined.LightMode
+import androidx.compose.material.icons.outlined.Lightbulb
+import androidx.compose.material.icons.outlined.Security
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Switch
+import androidx.compose.material3.Text
+import androidx.compose.material3.dynamicDarkColorScheme
+import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -34,6 +59,7 @@ import com.jobik.gameoflife.navigation.Screen
 import com.jobik.gameoflife.ui.composables.modifier.fadingEdges
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
+import com.jobik.gameoflife.util.InAppUpdateManager.Companion.checkAppUpdate
 import com.jobik.gameoflife.util.settings.NightMode
 import com.jobik.gameoflife.util.settings.SettingsManager
 import com.jobik.gameoflife.util.settings.SettingsManager.settings
@@ -111,19 +137,6 @@ fun SettingsContent(navController: NavHostController) {
 
         item {
             SettingsContainer {
-                GroupHeader(stringResource(id = R.string.other))
-                SettingsItem(
-                    icon = Icons.Outlined.Lightbulb,
-                    title = stringResource(id = R.string.Onboarding)
-                ) {
-                    if (navController.canNavigate().not()) return@SettingsItem
-                    navController.navigate(Screen.Onboarding)
-                }
-            }
-        }
-
-        item {
-            SettingsContainer {
                 GroupHeader(stringResource(R.string.security))
                 SettingsItem(
                     icon = Icons.Outlined.Security,
@@ -142,6 +155,69 @@ fun SettingsContent(navController: NavHostController) {
                         context = context,
                         settings = settings.copy(secureMode = settings.secureMode.not())
                     )
+                }
+            }
+        }
+
+        item {
+            val checkUpdates = {
+                SettingsManager.update(
+                    context = context,
+                    settings = settings.copy(checkUpdates = settings.checkUpdates.not())
+                )
+            }
+
+            SettingsContainer {
+                GroupHeader(stringResource(R.string.updates))
+                SettingsItem(
+                    icon = Icons.Outlined.CloudDownload,
+                    title = stringResource(R.string.automatic_check),
+                    description = stringResource(R.string.it_suggests_updating),
+                    action = {
+                        Switch(checked = settings.checkUpdates, onCheckedChange = {
+                            checkUpdates()
+                        })
+                    }
+                ) {
+                    checkUpdates()
+                }
+
+                val scope = rememberCoroutineScope()
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .heightIn(min = 60.dp)
+                        .background(MaterialTheme.colorScheme.secondaryContainer)
+                        .clickable { checkAppUpdate(context = context, scope = scope) }
+                        .padding(horizontal = 20.dp, vertical = 10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.BrowserUpdated,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                    Spacer(modifier = Modifier.width(20.dp))
+                    Text(
+                        text = stringResource(R.string.check_update),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        color = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                }
+            }
+        }
+
+        item {
+            SettingsContainer {
+                GroupHeader(stringResource(id = R.string.other))
+                SettingsItem(
+                    icon = Icons.Outlined.Lightbulb,
+                    title = stringResource(id = R.string.Onboarding)
+                ) {
+                    if (navController.canNavigate().not()) return@SettingsItem
+                    navController.navigate(Screen.Onboarding)
                 }
             }
         }

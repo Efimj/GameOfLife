@@ -141,7 +141,6 @@ dependencies {
 
     api(libs.shadowsPlus)
     api(libs.fadingEdges)
-    implementation(libs.gson)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.konfetti.compose)
 

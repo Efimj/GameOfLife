@@ -101,5 +101,13 @@
     <string name="hides_content_prohibits_screen_recording">Hides content, prohibits screen recording</string>
     <string name="secure_mode">Secure mode</string>
     <string name="loop_combination">Loop detected 🎡</string>
+    <string name="updates">Updates</string>
+    <string name="automatic_check">Automatic check</string>
+    <string name="it_suggests_updating">It suggests updating if updates are available</string>
+    <string name="check_update">Check update</string>
+    <string name="update_downloaded">An update has just been downloaded</string>
+    <string name="update_available">Update available</string>
+    <string name="download">Download</string>
+    <string name="installed_latest_version">Installed latest version</string>
 
 </resources>
