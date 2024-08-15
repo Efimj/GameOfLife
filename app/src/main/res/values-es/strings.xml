@@ -135,5 +135,45 @@
   <string name="onb_3_headline">Regla 2</string>
       
   <string name="onb_3_description">Si una célula viva tiene dos o tres vecinos vivos, sigue viviendo; de lo contrario, la celda muere (por soledad o hacinamiento)</string>
-  
+
+  <string name="set_field_scale">Escala de campo</string>
+
+  <string name="pause">Pausa</string>
+
+  <string name="close">Cerrar</string>
+
+  <string name="security">Seguridad</string>
+
+  <string name="hides_content_prohibits_screen_recording">Oculta contenido, prohíbe la grabación de pantalla</string>
+
+  <string name="secure_mode">Modo seguro</string>
+
+  <string name="loop_combination">Bucle detectado &#127905;</string>
+
+  <string name="updates">Actualizaciones</string>
+
+  <string name="automatic_check">Comprobación automática</string>
+
+  <string name="it_suggests_updating">Sugiere actualizar si hay actualizaciones disponibles</string>
+
+  <string name="check_update">Comprobar actualización</string>
+
+  <string name="update_downloaded">Se acaba de descargar una actualización</string>
+
+  <string name="update_available">Actualización disponible</string>
+
+  <string name="download">Descargar</string>
+
+  <string name="installed_latest_version">Última versión instalada</string>
+
+  <string name="detect_loops">Detectar bucles</string>
+
+  <string name="pauses_game_when_loop">Pausa el juego cuando se detecta un bucle</string>
+
+  <string name="number_of_skipped_steps">Número de pasos omitidos</string>
+
+  <string name="show_eliminated_cells">Mostrar celdas eliminadas</string>
+
+  <string name="show_eliminated_cells_description">Mostrar celdas que fueron eliminadas en el paso anterior</string>
+
 </resources>

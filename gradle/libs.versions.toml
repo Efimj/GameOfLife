@@ -1,5 +1,5 @@
 [versions]
-versionName = "1.1.0-alpha01"
+versionName = "1.1.0"
 versionCode = "4"
 
 androidMinSdk = "27"

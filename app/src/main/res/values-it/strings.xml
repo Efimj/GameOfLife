@@ -135,5 +135,45 @@
   <string name="onb_3_headline">Regola 2</string>
       
   <string name="onb_3_description">Se una cellula vivente ha due o tre vicini viventi, continua a vivere; altrimenti la cellula muore (a causa della solitudine o del sovraffollamento)</string>
-  
+
+  <string name="set_field_scale">Scala di campo</string>
+
+  <string name="pause">Pausa</string>
+
+  <string name="close">Vicino</string>
+
+  <string name="security">Sicurezza</string>
+
+  <string name="hides_content_prohibits_screen_recording">Nasconde il contenuto, impedisce la registrazione dello schermo</string>
+
+  <string name="secure_mode">Modalità sicura</string>
+
+  <string name="loop_combination">Rilevato loop &#127905;</string>
+
+  <string name="updates">Aggiornamenti</string>
+
+  <string name="automatic_check">Controllo automatico</string>
+
+  <string name="it_suggests_updating">Suggerisce di aggiornare se sono disponibili aggiornamenti</string>
+
+  <string name="check_update">Controlla l\'aggiornamento</string>
+
+  <string name="update_downloaded">Un aggiornamento è stato appena scaricato</string>
+
+  <string name="update_available">Aggiornamento disponibile</string>
+
+  <string name="download">Scaricamento</string>
+
+  <string name="installed_latest_version">Installata l\'ultima versione</string>
+
+  <string name="detect_loops">Rileva i loop</string>
+
+  <string name="pauses_game_when_loop">Mette in pausa il gioco quando viene rilevato un loop</string>
+
+  <string name="number_of_skipped_steps">Numero di passaggi saltati</string>
+
+  <string name="show_eliminated_cells">Mostra le celle eliminate</string>
+
+  <string name="show_eliminated_cells_description">Mostra le celle eliminate nel passaggio precedente</string>
+
 </resources>

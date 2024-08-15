@@ -25,7 +25,7 @@ data class GameScreenStates(
     val alive: Int = 0,
     val deaths: Int = 0,
     val revivals: Int = 0,
-    val stepNumber: Long = 0,
+    val stepNumber: Int = 0,
     val gameSettings: GameSettings = settings.gameSettings,
     val currentStep: List<List<GameOfLifeUnitState>> = List(gameSettings.rows) { List(gameSettings.cols) { GameOfLifeUnitState.Empty } },
     val previousStepsHash: List<Int> = emptyList(),
@@ -68,10 +68,14 @@ class GameScreenViewModel : ViewModel() {
 
         simulationJob = viewModelScope.launch {
             while (true) {
-                delay(states.value.gameSettings.oneStepDurationMills)
+                val gameSettings = states.value.gameSettings
+
+                if (gameSettings.skipSteps == 0 || states.value.stepNumber % gameSettings.skipSteps == 0)
+                    delay(gameSettings.oneStepDurationMills)
+
                 var nextStep = makeOneStepGameOfLife(
                     currentState = states.value.currentStep,
-                    settings = states.value.gameSettings.gameOfLifeStepRules
+                    settings = gameSettings.gameOfLifeStepRules
                 )
 
                 val gameResult = checkIsGameFinishedResult(
@@ -79,6 +83,7 @@ class GameScreenViewModel : ViewModel() {
                     previousStepsHash = states.value.previousStepsHash,
                     previousStep = states.value.currentStep
                 )
+
                 if (gameResult != null) {
                     turnOffSimulation()
                     _states.value = states.value.copy(gameResult = gameResult)
@@ -93,7 +98,7 @@ class GameScreenViewModel : ViewModel() {
                     deaths += countDeaths(nextStep, states.value.currentStep)
                 }
 
-                if (states.value.gameSettings.freeSoulMode)
+                if (gameSettings.freeSoulMode)
                     nextStep =
                         freeSouls(
                             nextState = nextStep,
@@ -135,6 +140,8 @@ class GameScreenViewModel : ViewModel() {
         if (noSurvived) return GameOfLifeResult.NoOneSurvived
         if (stableCombination) return GameOfLifeResult.StableCombination
 
+        if (states.value.gameSettings.loopDetecting.not()) return null
+
         val currentStateHash = nextState.hashCode()
         if (previousStepsHash.contains(currentStateHash)) {
             return GameOfLifeResult.Loop
@@ -172,7 +179,7 @@ class GameScreenViewModel : ViewModel() {
         val newList = cloneGameState(oldList)
         newList[row][column] = when (newList[row][column]) {
             GameOfLifeUnitState.Alive -> GameOfLifeUnitState.Dead
-            GameOfLifeUnitState.Dead -> if (isEmojiMode) GameOfLifeUnitState.Empty else GameOfLifeUnitState.Alive
+            GameOfLifeUnitState.Dead -> GameOfLifeUnitState.Empty
             GameOfLifeUnitState.Empty -> GameOfLifeUnitState.Alive
         }
         val aliveCount = countAlive(newList)
@@ -269,6 +276,16 @@ class GameScreenViewModel : ViewModel() {
             states.value.copy(gameSettings = states.value.gameSettings.copy(emojiEnabled = states.value.gameSettings.emojiEnabled.not()))
     }
 
+    fun switchLoopDetectingMode() {
+        _states.value =
+            states.value.copy(gameSettings = states.value.gameSettings.copy(loopDetecting = states.value.gameSettings.loopDetecting.not()))
+    }
+
+    fun switchShowDeadMode() {
+        _states.value =
+            states.value.copy(gameSettings = states.value.gameSettings.copy(showDead = states.value.gameSettings.showDead.not()))
+    }
+
     val MaxGameDimension = 100
 
     fun setRows(matrixRowsString: String): Boolean {
@@ -299,6 +316,11 @@ class GameScreenViewModel : ViewModel() {
         )
         regenerateGame()
         return true
+    }
+
+    fun updateSkipSteps(stepsCount: Int) {
+        _states.value =
+            states.value.copy(gameSettings = states.value.gameSettings.copy(skipSteps = stepsCount))
     }
 
     fun updateGameRules(

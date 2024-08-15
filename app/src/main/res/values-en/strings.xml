@@ -94,5 +94,25 @@
     <string name="onb_3_description">If a living cell has two or three living neighbors, it continues to live;
         otherwise, the cell dies (due to "loneliness" or "overcrowding")
     </string>
+    <string name="set_field_scale">Field scale</string>
+    <string name="pause">Pause</string>
+    <string name="close">Close</string>
+    <string name="security">Security</string>
+    <string name="hides_content_prohibits_screen_recording">Hides content, prohibits screen recording</string>
+    <string name="secure_mode">Secure mode</string>
+    <string name="loop_combination">Loop detected 🎡</string>
+    <string name="updates">Updates</string>
+    <string name="automatic_check">Automatic check</string>
+    <string name="it_suggests_updating">It suggests updating if updates are available</string>
+    <string name="check_update">Check update</string>
+    <string name="update_downloaded">An update has just been downloaded</string>
+    <string name="update_available">Update available</string>
+    <string name="download">Download</string>
+    <string name="installed_latest_version">Installed latest version</string>
+    <string name="detect_loops">Detect loops</string>
+    <string name="pauses_game_when_loop">Pauses the game when a loop is detected</string>
+    <string name="number_of_skipped_steps">Number of skipped steps</string>
+    <string name="show_eliminated_cells">Show eliminated cells</string>
+    <string name="show_eliminated_cells_description">Show cells that were eliminated in the previous step</string>
 
 </resources>

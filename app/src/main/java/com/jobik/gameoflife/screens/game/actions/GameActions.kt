@@ -37,6 +37,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Book
 import androidx.compose.material.icons.outlined.Cached
+import androidx.compose.material.icons.outlined.Cancel
+import androidx.compose.material.icons.outlined.Loop
 import androidx.compose.material.icons.outlined.Mood
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -170,9 +172,8 @@ fun GameActions(viewModel: GameScreenViewModel) {
                 Icon(
                     imageVector = Icons.Outlined.Mood,
                     contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary,
-
-                    )
+                    tint = MaterialTheme.colorScheme.primary
+                )
                 SettingsItemContent(
                     title = stringResource(id = R.string.emoji_mode),
                     description = stringResource(id = R.string.emoji_mode_description)
@@ -190,34 +191,39 @@ fun GameActions(viewModel: GameScreenViewModel) {
                 )
             }
             Spacer(modifier = Modifier.height(5.dp))
-            AnimatedVisibility(
-                visible = viewModel.states.value.gameSettings.emojiEnabled,
-                enter = slideInVertically() + expandVertically() + fadeIn(),
-                exit = slideOutVertically() + shrinkVertically() + fadeOut(),
-            ) {
-                SettingsItemWrapper(onClick = viewModel::switchFreeSoulMode) {
-                    Icon(
-                        imageVector = Icons.Outlined.Cached,
-                        contentDescription = null,
-                        tint = MaterialTheme.colorScheme.primary
-                    )
-                    SettingsItemContent(
-                        title = stringResource(id = R.string.free_soul_mode),
-                        description = stringResource(id = R.string.free_soul_mode_description)
-                    )
-                    Switch(
-                        enabled = viewModel.states.value.gameSettings.emojiEnabled,
-                        checked = viewModel.states.value.gameSettings.freeSoulMode,
-                        onCheckedChange = { viewModel.switchFreeSoulMode() },
-                        thumbContent = if (!viewModel.states.value.gameSettings.freeSoulMode) {
-                            {
-                                Text(text = "\uD83D\uDC80")
-                            }
-                        } else {
-                            null
-                        },
-                    )
-                }
+
+            SettingsItemWrapper(onClick = viewModel::switchShowDeadMode) {
+                Icon(
+                    imageVector = Icons.Outlined.Cancel,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary
+                )
+                SettingsItemContent(
+                    title = stringResource(R.string.show_eliminated_cells),
+                    description = stringResource(R.string.show_eliminated_cells_description)
+                )
+                Switch(
+                    checked = viewModel.states.value.gameSettings.showDead,
+                    onCheckedChange = { viewModel.switchShowDeadMode() },
+                )
+            }
+
+            Spacer(modifier = Modifier.height(5.dp))
+
+            SettingsItemWrapper(onClick = viewModel::switchFreeSoulMode) {
+                Icon(
+                    imageVector = Icons.Outlined.Cached,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary
+                )
+                SettingsItemContent(
+                    title = stringResource(id = R.string.free_soul_mode),
+                    description = stringResource(id = R.string.free_soul_mode_description)
+                )
+                Switch(
+                    checked = viewModel.states.value.gameSettings.freeSoulMode,
+                    onCheckedChange = { viewModel.switchFreeSoulMode() },
+                )
             }
             Spacer(modifier = Modifier.height(5.dp))
 
@@ -409,6 +415,54 @@ fun GameActions(viewModel: GameScreenViewModel) {
         }
 
         SettingsGroup(headline = stringResource(id = R.string.simulation_settings)) {
+            SettingsItemWrapper(onClick = viewModel::switchLoopDetectingMode) {
+                Icon(
+                    imageVector = Icons.Outlined.Loop,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary
+                )
+                SettingsItemContent(
+                    title = stringResource(R.string.detect_loops),
+                    description = stringResource(R.string.pauses_game_when_loop)
+                )
+                Switch(
+                    checked = viewModel.states.value.gameSettings.loopDetecting,
+                    onCheckedChange = { viewModel.switchLoopDetectingMode() },
+                )
+            }
+            Spacer(modifier = Modifier.height(5.dp))
+
+            val scrollSkipStep = rememberScrollState()
+
+            SettingsItemWrapper(
+                modifier = Modifier
+                    .fadingEdges(scrollSkipStep)
+                    .horizontalScroll(scrollSkipStep),
+                headline = stringResource(R.string.number_of_skipped_steps),
+                horizontalArrangement = Arrangement.Center
+            ) {
+
+                val steps = listOf(0, 5, 10, 50, 100, 250, 500, 1000)
+
+                SingleChoiceSegmentedButtonRow {
+                    steps.forEachIndexed { index, value ->
+                        SegmentedButton(
+                            shape = SegmentedButtonDefaults.itemShape(
+                                index = index,
+                                count = steps.size
+                            ),
+                            onClick = {
+                                viewModel.updateSkipSteps(stepsCount = value)
+                            },
+                            selected = value == viewModel.states.value.gameSettings.skipSteps,
+                            colors = SegmentedButtonDefaults.colors(inactiveContainerColor = Color.Transparent)
+                        ) {
+                            Text(value.toString())
+                        }
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(5.dp))
             GameFieldScale(viewModel)
             Spacer(modifier = Modifier.height(5.dp))
 

@@ -109,5 +109,10 @@
     <string name="update_available">Update available</string>
     <string name="download">Download</string>
     <string name="installed_latest_version">Installed latest version</string>
+    <string name="detect_loops">Detect loops</string>
+    <string name="pauses_game_when_loop">Pauses the game when a loop is detected</string>
+    <string name="number_of_skipped_steps">Number of skipped steps</string>
+    <string name="show_eliminated_cells">Show eliminated cells</string>
+    <string name="show_eliminated_cells_description">Show cells that were eliminated in the previous step</string>
 
 </resources>

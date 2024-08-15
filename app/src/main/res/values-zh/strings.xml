@@ -136,4 +136,44 @@
 
     <string name="onb_3_description">如果一个活细胞有两个或三个活的邻居，它就会继续活下去；否则，细胞就会死亡（由于孤独或过度拥挤）</string>
 
+    <string name="set_field_scale">场地规模</string>
+
+    <string name="pause">暂停</string>
+
+    <string name="close">关闭</string>
+
+    <string name="security">安全性</string>
+
+    <string name="hides_content_prohibits_screen_recording">隐藏内容，禁止屏幕录制</string>
+
+    <string name="secure_mode">安全模式</string>
+
+    <string name="loop_combination">检测到循环 &#127905;?</string>
+
+    <string name="updates">更新</string>
+
+    <string name="automatic_check">自动检查</string>
+
+    <string name="it_suggests_updating">如果有可用更新，它会建议更新</string>
+
+    <string name="check_update">检查更新</string>
+
+    <string name="update_downloaded">刚刚下载了更新</string>
+
+    <string name="update_available">可用更新</string>
+
+    <string name="download">下载</string>
+
+    <string name="installed_latest_version">已安装最新版本</string>
+
+    <string name="detect_loops">检测循环</string>
+
+    <string name="pauses_game_when_loop">检测到循环时暂停游戏</string>
+
+    <string name="number_of_skipped_steps">跳过的步数</string>
+
+    <string name="show_eliminated_cells">显示消除的单元格</string>
+
+    <string name="show_eliminated_cells_description">显示在上一步中消除的单元格</string>
+
 </resources>
