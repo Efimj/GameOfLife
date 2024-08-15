@@ -68,7 +68,7 @@ fun GridForGame(
     }
 
     val aliveUnitColor = MaterialTheme.colorScheme.primary
-    val deadUnitColor = MaterialTheme.colorScheme.onTertiaryContainer
+    val deadUnitColor = MaterialTheme.colorScheme.error
 
     val showDead = viewModel.states.value.gameSettings.showDead
 
