@@ -135,5 +135,45 @@
   <string name="onb_3_headline">Règle 2</string>
       
   <string name="onb_3_description">Si une cellule vivante a deux ou trois voisins vivants, elle continue à vivre ; sinon, la cellule meurt (à cause de la solitude ou du surpeuplement)</string>
-  
+
+  <string name="set_field_scale">Échelle de champ</string>
+
+  <string name="pause">Pause</string>
+
+  <string name="close">Fermer</string>
+
+  <string name="security">Sécurité</string>
+
+  <string name="hides_content_prohibits_screen_recording">Masque le contenu, interdit l\'enregistrement d\'écran</string>
+
+  <string name="secure_mode">Mode sécurisé</string>
+
+  <string name="loop_combination">Boucle détectée &#127905;</string>
+
+  <string name="updates">Mises à jour</string>
+
+  <string name="automatic_check">Vérification automatique</string>
+
+  <string name="it_suggests_updating">Il suggère une mise à jour si des mises à jour sont disponibles</string>
+
+  <string name="check_update">Vérifier la mise à jour</string>
+
+  <string name="update_downloaded">Une mise à jour vient d\'être téléchargée</string>
+
+  <string name="update_available">Mise à jour disponible</string>
+
+  <string name="download">Télécharger</string>
+
+  <string name="installed_latest_version">Dernière version installée</string>
+
+  <string name="detect_loops">Détecter les boucles</string>
+
+  <string name="pauses_game_when_loop">Met le jeu en pause lorsqu\'une boucle est détectée</string>
+
+  <string name="number_of_skipped_steps">Nombre d\'étapes sautées</string>
+
+  <string name="show_eliminated_cells">Afficher les cellules éliminées</string>
+
+  <string name="show_eliminated_cells_description">Afficher les cellules qui ont été éliminées à l\'étape précédente</string>
+
 </resources>

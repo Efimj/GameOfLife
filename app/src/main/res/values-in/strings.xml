@@ -136,4 +136,43 @@
 
     <string name="onb_3_description">Jika sebuah sel hidup memiliki dua atau tiga tetangga yang hidup, sel tersebut akan terus hidup; jika tidak, sel akan mati (karena kesepian atau kepadatan yang berlebihan)</string>
 
+    <string name="set_field_scale">Skala lapangan</string>
+
+    <string name="pause">Jeda</string>
+
+    <string name="close">Tutup</string>
+
+    <string name="security">Keamanan</string>
+
+    <string name="hides_content_prohibits_screen_recording">Menyembunyikan konten, melarang perekaman layar</string>
+
+    <string name="secure_mode">Mode aman</string>
+
+    <string name="loop_combination">Loop terdeteksi &#127905;</string>
+
+    <string name="updates">Pembaruan</string>
+
+    <string name="automatic_check">Pemeriksaan otomatis</string>
+
+    <string name="it_suggests_updating">Ini menyarankan pembaruan jika pembaruan tersedia</string>
+
+    <string name="check_update">Periksa pembaruan</string>
+
+    <string name="update_downloaded">Pembaruan baru saja diunduh</string>
+
+    <string name="update_available">Pembaruan tersedia</string>
+
+    <string name="download">Unduh</string>
+
+    <string name="installed_latest_version">Menginstal versi terbaru</string>
+
+    <string name="detect_loops">Deteksi loop</string>
+
+    <string name="pauses_game_when_loop">Menjeda game saat loop terdeteksi</string>
+
+    <string name="number_of_skipped_steps">Jumlah langkah yang dilewati</string>
+
+    <string name="show_eliminated_cells">Tampilkan sel yang dihilangkan</string>
+
+    <string name="show_eliminated_cells_description">Tampilkan sel yang dihilangkan pada langkah sebelumnya</string>
 </resources>

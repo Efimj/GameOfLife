@@ -135,5 +135,45 @@
   <string name="onb_3_headline">กฎข้อที่ 2</string>
       
   <string name="onb_3_description">ถ้าเซลล์ที่มีชีวิตมีเพื่อนบ้านที่มีชีวิตสองหรือสามคน มันก็จะมีชีวิตอยู่ต่อไป มิฉะนั้นเซลล์จะตาย (เนื่องจากความเหงาหรือความแออัดยัดเยียด)</string>
-  
+
+  <string name="set_field_scale">ระดับสนาม</string>
+
+  <string name="pause">หยุดชั่วคราว</string>
+
+  <string name="close">ปิด</string>
+
+  <string name="security">ความปลอดภัย</string>
+
+  <string name="hides_content_prohibits_screen_recording">ซ่อนเนื้อหา ห้ามบันทึกหน้าจอ</string>
+
+  <string name="secure_mode">โหมดปลอดภัย</string>
+
+  <string name="loop_combination">ตรวจพบลูป &#127905;</string>
+
+  <string name="updates">อัปเดต</string>
+
+  <string name="automatic_check">ตรวจสอบอัตโนมัติ</string>
+
+  <string name="it_suggests_updating">แนะนำให้อัปเดตหากมีการอัปเดต</string>
+
+  <string name="check_update">ตรวจสอบการอัปเดต</string>
+
+  <string name="update_downloaded">เพิ่งดาวน์โหลดการอัปเดต</string>
+
+  <string name="update_available">มีการอัปเดต</string>
+
+  <string name="download">ดาวน์โหลด</string>
+
+  <string name="installed_latest_version">ติดตั้งเวอร์ชันล่าสุดแล้ว</string>
+
+  <string name="detect_loops">ตรวจจับลูป</string>
+
+  <string name="pauses_game_when_loop">หยุดเกมชั่วคราวเมื่อตรวจพบการวนซ้ำ</string>
+
+  <string name="number_of_skipped_steps">จำนวนขั้นตอนที่ข้าม</string>
+
+  <string name="show_eliminated_cells">แสดงเซลล์ที่ถูกกำจัด</string>
+
+  <string name="show_eliminated_cells_description">แสดงเซลล์ที่ถูกกำจัดในขั้นตอนก่อนหน้า</string>
+
 </resources>

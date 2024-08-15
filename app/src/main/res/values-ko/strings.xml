@@ -135,5 +135,45 @@
   <string name="onb_3_headline">규칙 2</string>
       
   <string name="onb_3_description">살아있는 세포에 두세 개의 살아있는 이웃이 있으면 계속해서 살아갑니다. 그렇지 않으면 세포가 죽습니다 (외로움이나 과밀로 인해).</string>
-  
+
+  <string name="set_field_scale">현장 규모</string>
+
+  <string name="pause">일시중지</string>
+
+  <string name="close">닫기</string>
+
+  <string name="security">보안</string>
+
+  <string name="hides_content_prohibits_screen_recording">콘텐츠를 숨기고 화면 녹화를 금지합니다.</string>
+
+  <string name="secure_mode">보안 모드</string>
+
+  <string name="loop_combination">루프가 감지되었습니다 &#127905;</string>
+
+  <string name="updates">업데이트</string>
+
+  <string name="automatic_check">자동 확인</string>
+
+  <string name="it_suggests_updating">업데이트가 있으면 업데이트를 제안합니다</string>
+
+  <string name="check_update">업데이트 확인</string>
+
+  <string name="update_downloaded">업데이트가 방금 다운로드되었습니다.</string>
+
+  <string name="update_available">업데이트 가능</string>
+
+  <string name="download">다운로드</string>
+
+  <string name="installed_latest_version">최신 버전이 설치됨</string>
+
+  <string name="detect_loops">루프 감지</string>
+
+  <string name="pauses_game_when_loop">루프가 감지되면 게임을 일시 중지합니다.</string>
+
+  <string name="number_of_skipped_steps">건너뛴 단계 수</string>
+
+  <string name="show_eliminated_cells">제거된 셀 표시</string>
+
+  <string name="show_eliminated_cells_description">이전 단계에서 제거된 셀 표시</string>
+
 </resources>

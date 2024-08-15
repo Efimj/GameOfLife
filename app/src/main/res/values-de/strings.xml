@@ -135,5 +135,44 @@
   <string name="onb_3_headline">Regel 2</string>
       
   <string name="onb_3_description">Wenn eine lebende Zelle zwei oder drei lebende Nachbarn hat, lebt sie weiter; andernfalls stirbt die Zelle (aufgrund von Einsamkeit oder Überfüllung)</string>
-  
+
+  <string name="set_field_scale">Feldmaßstab</string>
+
+  <string name="pause">Pause</string>
+
+  <string name="close">Schließen</string>
+
+  <string name="security">Sicherheit</string>
+
+  <string name="hides_content_prohibits_screen_recording">Versteckt Inhalte, verhindert Bildschirmaufzeichnung</string>
+
+  <string name="secure_mode">Sicherer Modus</string>
+
+  <string name="loop_combination">Schleife erkannt &#127905;</string>
+
+  <string name="updates">Aktualisierungen</string>
+
+  <string name="automatic_check">Automatische Prüfung</string>
+
+  <string name="it_suggests_updating">Es wird empfohlen, zu aktualisieren, wenn Updates verfügbar sind</string>
+
+  <string name="check_update">Update überprüfen</string>
+
+  <string name="update_downloaded">Ein Update wurde gerade heruntergeladen</string>
+
+  <string name="update_available">Update verfügbar</string>
+
+  <string name="download">Herunterladen</string>
+
+  <string name="installed_latest_version">Installierte neueste Version</string>
+
+  <string name="detect_loops">Schleifen erkennen</string>
+
+  <string name="pauses_game_when_loop">Pausiert das Spiel, wenn eine Schleife erkannt wird</string>
+
+  <string name="number_of_skipped_steps">Anzahl der übersprungenen Schritte</string>
+
+  <string name="show_eliminated_cells">Eliminierte Zellen anzeigen</string>
+
+  <string name="show_eliminated_cells_description">Zellen anzeigen, die im vorherigen Schritt entfernt wurden</string>
 </resources>

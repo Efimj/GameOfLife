@@ -135,5 +135,45 @@
   <string name="onb_3_headline">ルール 2</string>
       
   <string name="onb_3_description">生きているセルに 2 つまたは 3 つの生きている隣接セルがある場合、そのセルは生き続けます。そうしないと、細胞が死んでしまいます（孤独または過密により）</string>
-  
+
+  <string name="set_field_scale">フィールドスケール</string>
+
+  <string name="pause">一時停止</string>
+
+  <string name="close">閉じる</string>
+
+  <string name="security">セキュリティ</string>
+
+  <string name="hides_content_prohibits_screen_recording">コンテンツを非表示にし、画面録画を禁止します</string>
+
+  <string name="secure_mode">セキュアモード</string>
+
+  <string name="loop_combination">ループが検出されました &#127905;?</string>
+
+  <string name="updates">アップデート</string>
+
+  <string name="automatic_check">自動チェック</string>
+
+  <string name="it_suggests_updating">アップデートが利用可能な場合は、アップデートを提案します</string>
+
+  <string name="check_update">アップデートを確認する</string>
+
+  <string name="update_downloaded">アップデートがダウンロードされました</string>
+
+  <string name="update_available">利用可能なアップデート</string>
+
+  <string name="download">ダウンロード</string>
+
+  <string name="installed_latest_version">インストールされた最新バージョン</string>
+
+  <string name="detect_loops">ループの検出</string>
+
+  <string name="pauses_game_when_loop">ループが検出されるとゲームを一時停止します</string>
+
+  <string name="number_of_skipped_steps">スキップされたステップの数</string>
+
+  <string name="show_eliminated_cells">削除されたセルを表示</string>
+
+  <string name="show_eliminated_cells_description">前のステップで削除されたセルを表示</string>
+
 </resources>

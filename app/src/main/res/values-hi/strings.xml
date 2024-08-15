@@ -88,4 +88,44 @@
     <string name="onb_3_description">यदि किसी जीवित कोशिका में दो या तीन जीवित पड़ोसी हों, तो वह जीवित रहती है;
         अन्यथा, कोशिका मर जाती है (\"अकेलेपन\" या \"भीड़भाड़ के कारण\")</string>
 
+    <string name="set_field_scale">फ़ील्ड स्केल</string>
+
+    <string name="pause">रोकें</string>
+
+    <string name="close">बंद करें</string>
+
+    <string name="security">सुरक्षा</string>
+
+    <string name="hides_content_prohibits_screen_recording">सामग्री को छुपाता है, स्क्रीन रिकॉर्डिंग को प्रतिबंधित करता है</string>
+
+    <string name="secure_mode">सुरक्षित मोड</string>
+
+    <string name="loop_combination">लूप का पता चला &#127905;</string>
+
+    <string name="updates">अपडेट</string>
+
+    <string name="automatic_check">स्वचालित जांच</string>
+
+    <string name="it_suggests_updating">यदि अपडेट उपलब्ध हैं तो यह अपडेट करने का सुझाव देता है</string>
+
+    <string name="check_update">अपडेट की जांच करें</string>
+
+    <string name="update_downloaded">एक अपडेट अभी डाउनलोड किया गया है</string>
+
+    <string name="update_available">अपडेट उपलब्ध है</string>
+
+    <string name="download">डाउनलोड करें</string>
+
+    <string name="installed_latest_version">नवीनतम संस्करण स्थापित</string>
+
+    <string name="detect_loops">लूप का पता लगाएं</string>
+
+    <string name="pauses_game_when_loop">लूप का पता चलने पर गेम को रोक देता है</string>
+
+    <string name="number_of_skipped_steps">छोड़े गए चरणों की संख्या</string>
+
+    <string name="show_eliminated_cells">हटाए गए सेल दिखाएं</string>
+
+    <string name="show_eliminated_cells_description">उन सेल को दिखाएं जिन्हें पिछले चरण में हटा दिया गया था</string>
+
 </resources>

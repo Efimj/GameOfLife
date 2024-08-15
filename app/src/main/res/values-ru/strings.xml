@@ -84,4 +84,25 @@
     <string name="onb_3_description">Если у живой клетки есть два или три живых соседа, она продолжает жить;
         в противном случае клетка погибает (из-за «одиночества» или «перенаселенности»)</string>
 
+    <string name="set_field_scale">Масштаб поля</string>
+    <string name="pause">Пауза</string>
+    <string name="close">Закрыть</string>
+    <string name="security">Безопасность</string>
+    <string name="hides_content_prohibits_screen_recording">Скрывает контент, запрещает запись экрана</string>
+    <string name="secure_mode">Безопасный режим</string>
+    <string name="loop_combination">Обнаружен цикл 🎡</string>
+    <string name="updates">Обновления</string>
+    <string name="automatic_check">Автоматическая проверка</string>
+    <string name="it_suggests_updating">Предлагает обновиться, если обновления доступны</string>
+    <string name="check_update">Проверить обновление</string>
+    <string name="update_downloaded">Обновление только что загружено</string>
+    <string name="update_available">Доступно обновление</string>
+    <string name="download">Загрузить</string>
+    <string name="installed_latest_version">Установлена последняя версия</string>
+    <string name="detect_loops">Обнаружение зацикленностей</string>
+    <string name="pauses_game_when_loop">Приостанавливает игру при обнаружении цикла</string>
+    <string name="number_of_skipped_steps">Количество пропущенных шагов</string>
+    <string name="show_eliminated_cells">Показать удаленные ячейки</string>
+    <string name="show_eliminated_cells_description">Показать ячейки, удаленные на предыдущем шаге</string>
+
 </resources>

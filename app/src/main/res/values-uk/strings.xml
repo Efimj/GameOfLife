@@ -95,5 +95,25 @@
     <string name="onb_3_description">Якщо у живої клітини є два або три живі сусіди, вона продовжує жити;
         інакше клітина гине (через «самотність» чи «перенаселеність»)
     </string>
+    <string name="set_field_scale">Масштаб поля</string>
+    <string name="pause">Призупинити</string>
+    <string name="close">Закрити</string>
+    <string name="security">Безпека</string>
+    <string name="hides_content_prohibits_screen_recording">Приховує вміст, забороняє запис екрану</string>
+    <string name="secure_mode">Захищений режим</string>
+    <string name="loop_combination">Виявлено цикл 🎡</string>
+    <string name="updates">Оновлення</string>
+    <string name="automatic_check">Автоматична перевірка</string>
+    <string name="it_suggests_updating">Пропонується оновити, якщо доступні оновлення</string>
+    <string name="check_update">Перевірити оновлення</string>
+    <string name="update_downloaded">Оновлення щойно завантажено</string>
+    <string name="update_available">Доступне оновлення</string>
+    <string name="download">Завантажити</string>
+    <string name="installed_latest_version">Установлена остання версія</string>
+    <string name="detect_loops">Виявлення зацикленостей</string>
+    <string name="pauses_game_when_loop">Призупиняє гру, якщо виявлено цикл</string>
+    <string name="number_of_skipped_steps">Кількість пропущених кроків</string>
+    <string name="show_eliminated_cells">Показати вилучені комірки</string>
+    <string name="show_eliminated_cells_description">Показати клітинки, видалені на попередньому кроці</string>
 
 </resources>
