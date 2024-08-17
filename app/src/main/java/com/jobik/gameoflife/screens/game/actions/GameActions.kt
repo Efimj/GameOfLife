@@ -225,8 +225,9 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     onCheckedChange = { viewModel.switchFreeSoulMode() },
                 )
             }
-            Spacer(modifier = Modifier.height(5.dp))
+        }
 
+        SettingsGroup(headline = stringResource(id = R.string.rules)) {
             val ruleSetDialogVisible = remember { mutableStateOf(false) }
 
             LaunchedEffect(ruleSetDialogVisible.value) {
@@ -308,9 +309,8 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     selectedRules = selectedRules.value,
                     onClick = { rules -> viewModel.setRules(rules) })
             }
-        }
+            Spacer(modifier = Modifier.height(5.dp))
 
-        SettingsGroup(headline = stringResource(id = R.string.rules)) {
             val scrollRevivingButtons = rememberScrollState()
 
             SettingsItemWrapper(
