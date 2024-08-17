@@ -22,7 +22,7 @@ fun SettingsScreen(navController: NavHostController) {
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.surface),
         state = collapsingToolbarScaffold,
-        scrollStrategy = ScrollStrategy.ExitUntilCollapsed,
+        scrollStrategy = ScrollStrategy.EnterAlways,
         enabledWhenBodyUnfilled = false,
         snapConfig = SnapConfig(), // "collapseThreshold = 0.5" by default
         toolbar = {
