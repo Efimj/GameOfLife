@@ -13,7 +13,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.GameOfLife"
-            tools:targetApi="31">
+            tools:targetApi="36">
         <activity
                 android:name="com.jobik.gameoflife.activity.MainActivity"
                 android:exported="true"
