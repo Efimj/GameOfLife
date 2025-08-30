@@ -1,10 +1,10 @@
 [versions]
-versionName = "1.2.0"
-versionCode = "5"
+versionName = "1.2.1"
+versionCode = "6"
 
 androidMinSdk = "27"
-androidTargetSdk = "35"
-androidCompileSdk = "35"
+androidTargetSdk = "36"
+androidCompileSdk = "36"
 
 jvmTarget = "17"
 compose-compiler = "1.5.14"
