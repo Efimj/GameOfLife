@@ -8,8 +8,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.compose.rememberNavController
 import com.jobik.gameoflife.screens.layout.AppLayout
 import com.jobik.gameoflife.services.app.AppCounter
+import com.jobik.gameoflife.services.donation.DonationDialogProvider
 import com.jobik.gameoflife.services.rate.RateDialogProvider
 import com.jobik.gameoflife.ui.helpers.SecureModeManager
 import com.jobik.gameoflife.ui.theme.GameOfLifeTheme
@@ -54,11 +56,16 @@ class MainActivity : ComponentActivity() {
                     else -> isSystemInDarkTheme()
                 }, palette = settings.theme
             ) {
+                val navController = rememberNavController()
+
                 // Main application
-                AppLayout()
+                AppLayout(navController = navController)
 
                 // Rate dialog
                 RateDialogProvider()
+
+                // Donation dialog
+                DonationDialogProvider(navController = navController)
             }
         }
 

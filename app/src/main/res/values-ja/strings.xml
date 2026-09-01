@@ -93,6 +93,9 @@
   <string name="later">後で</string>
       
   <string name="rate">レート！</string>
+  <string name="donation_prompt_title">Game of Lifeを支援</string>
+  <string name="donation_prompt_description">このアプリを気に入っていただけたら、開発を支援できます。皆さまのご協力がプロジェクトの成長と今後のアップデートにつながります。</string>
+  <string name="donate">支援する</string>
       
   <string name="custom_rules">カスタムルール</string>
       

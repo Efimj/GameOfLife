@@ -51,6 +51,9 @@
     <string name="dont_ask_again">दोबारा मत पूछो</string>
     <string name="later">बाद में</string>
     <string name="rate">दर!</string>
+    <string name="donation_prompt_title">Game of Life का समर्थन करें</string>
+    <string name="donation_prompt_description">यदि आपको यह ऐप पसंद है, तो आप इसके विकास में सहयोग कर सकते हैं। हर योगदान परियोजना को आगे बढ़ाने और नए अपडेट जारी करने में मदद करता है।</string>
+    <string name="donate">समर्थन करें</string>
     <string name="custom_rules">कस्टम नियम</string>
     <string name="rules_set_description">अलग-अलग गेम परिदृश्य देखने के लिए अलग-अलग नियम चुनें</string>
     <string name="save_rules">वर्तमान नियम सहेजें</string>

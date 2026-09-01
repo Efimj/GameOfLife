@@ -51,6 +51,9 @@
     <string name="dont_ask_again">Не спрашивать больше</string>
     <string name="later">Позже</string>
     <string name="rate">Оценить!</string>
+    <string name="donation_prompt_title">Поддержать Game of Life</string>
+    <string name="donation_prompt_description">Если вам нравится приложение, вы можете поддержать его разработку. Любой вклад помогает развивать проект и выпускать новые обновления.</string>
+    <string name="donate">Поддержать</string>
     <string name="custom_rules">Свои правила</string>
     <string name="rules_set_description">Выбирайте разные наборы правил, чтобы увидеть разные игровые сценарии</string>
     <string name="save_rules">Сохранить текущие правила</string>

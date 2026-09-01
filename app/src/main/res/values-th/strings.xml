@@ -93,6 +93,9 @@
   <string name="later">ภายหลัง</string>
       
   <string name="rate">ประเมิน!</string>
+  <string name="donation_prompt_title">สนับสนุน Game of Life</string>
+  <string name="donation_prompt_description">หากคุณชอบแอปนี้ คุณสามารถสนับสนุนการพัฒนาได้ ทุกการสนับสนุนช่วยให้โครงการเติบโตและทำให้มีการอัปเดตในอนาคต</string>
+  <string name="donate">สนับสนุน</string>
       
   <string name="custom_rules">กฎที่กำหนดเอง</string>
       

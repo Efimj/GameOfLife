@@ -93,6 +93,9 @@
     <string name="later">Nanti</string>
 
     <string name="rate">Kecepatan!</string>
+    <string name="donation_prompt_title">Dukung Game of Life</string>
+    <string name="donation_prompt_description">Jika Anda menyukai aplikasi ini, Anda dapat mendukung pengembangannya. Setiap kontribusi membantu proyek berkembang dan memungkinkan pembaruan berikutnya.</string>
+    <string name="donate">Dukung</string>
 
     <string name="custom_rules">Aturan adat</string>
 

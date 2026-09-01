@@ -93,6 +93,9 @@
   <string name="later">나중에</string>
       
   <string name="rate">비율!</string>
+  <string name="donation_prompt_title">Game of Life 후원</string>
+  <string name="donation_prompt_description">앱이 마음에 드셨다면 개발을 후원해 주세요. 모든 후원은 프로젝트의 성장과 향후 업데이트에 큰 도움이 됩니다.</string>
+  <string name="donate">후원하기</string>
       
   <string name="custom_rules">맞춤 규칙</string>
       

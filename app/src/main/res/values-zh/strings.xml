@@ -93,6 +93,9 @@
     <string name="later">之后</string>
 
     <string name="rate">速度！</string>
+    <string name="donation_prompt_title">支持 Game of Life</string>
+    <string name="donation_prompt_description">如果您喜欢这款应用，可以支持它的开发。每一份支持都能帮助项目成长，并推动未来的更新。</string>
+    <string name="donate">捐赠</string>
 
     <string name="custom_rules">自定义规则</string>
 

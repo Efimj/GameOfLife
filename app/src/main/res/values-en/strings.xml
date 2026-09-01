@@ -52,6 +52,9 @@
     <string name="dont_ask_again">Don\'t ask again</string>
     <string name="later">Later</string>
     <string name="rate">Rate!</string>
+    <string name="donation_prompt_title">Support Game of Life</string>
+    <string name="donation_prompt_description">If you enjoy the app, you can support its development. Every contribution helps the project grow and makes future updates possible.</string>
+    <string name="donate">Donate</string>
     <string name="custom_rules">Custom rules</string>
     <string name="rules_set_description">Choose different rulesets to see different game scenarios</string>
     <string name="save_rules">Save current rules</string>

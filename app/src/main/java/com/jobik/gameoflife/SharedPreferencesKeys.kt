@@ -13,5 +13,6 @@ object SharedPreferencesKeys {
     const val CurrentOnboardingFinishedData = "OnboardingPageFinishedData"
     const val OnCreateCounter = "OnCreateCounter"
     const val CanAskRate = "CanAskRate"
+    const val CanAskDonation = "CanAskDonation"
 
 }

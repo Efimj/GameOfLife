@@ -93,6 +93,9 @@
   <string name="later">Später</string>
       
   <string name="rate">Rate!</string>
+  <string name="donation_prompt_title">Game of Life unterstützen</string>
+  <string name="donation_prompt_description">Wenn Ihnen die App gefällt, können Sie ihre Entwicklung unterstützen. Jeder Beitrag hilft dem Projekt zu wachsen und ermöglicht zukünftige Updates.</string>
+  <string name="donate">Unterstützen</string>
       
   <string name="custom_rules">Benutzerdefinierte Regeln</string>
       
