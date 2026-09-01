@@ -60,11 +60,11 @@
       
   <string name="one_step_duration">1 ステップの継続時間</string>
       
-  <string name="simulation_settings">シミュレーション設定</string>
+  <string name="simulation_settings">シミュレーション</string>
       
   <string name="language">言語</string>
       
-  <string name="game_settings">ゲームの設定</string>
+  <string name="game_settings">ゲーム</string>
   <string name="show_grid">グリッドを表示</string>
   <string name="show_grid_description">ゲームフィールドにセルの境界線を表示</string>
       
@@ -97,6 +97,16 @@
   <string name="custom_rules">カスタムルール</string>
       
   <string name="rules_set_description">さまざまなルールセットを選択して、さまざまなゲームシナリオを確認してください</string>
+  <string name="save_rules">現在のルールを保存</string>
+  <string name="save_rules_title">ルールを保存</string>
+  <string name="saved_rules_name">名前</string>
+  <string name="save">保存</string>
+  <string name="saved_rules">保存済み</string>
+  <string name="standard_rules">標準</string>
+  <string name="delete_saved_rules_title">ルールセットを削除しますか？</string>
+  <string name="delete_saved_rules_message">「%1$s」は削除されます。</string>
+  <string name="cancel">キャンセル</string>
+  <string name="delete">削除</string>
       
   <string name="other">他の</string>
       

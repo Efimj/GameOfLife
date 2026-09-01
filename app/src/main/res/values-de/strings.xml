@@ -60,11 +60,11 @@
       
   <string name="one_step_duration">Dauer eines Schritts</string>
       
-  <string name="simulation_settings">Simulationseinstellungen</string>
+  <string name="simulation_settings">Simulation</string>
       
   <string name="language">Sprache</string>
       
-  <string name="game_settings">Spieleinstellungen</string>
+  <string name="game_settings">Spiel</string>
   <string name="show_grid">Raster anzeigen</string>
   <string name="show_grid_description">Zellgrenzen auf dem Spielfeld anzeigen</string>
       
@@ -97,6 +97,16 @@
   <string name="custom_rules">Benutzerdefinierte Regeln</string>
       
   <string name="rules_set_description">Wählen Sie verschiedene Regelsätze, um verschiedene Spielszenarien anzuzeigen</string>
+  <string name="save_rules">Aktuelle Regeln speichern</string>
+  <string name="save_rules_title">Regeln speichern</string>
+  <string name="saved_rules_name">Name</string>
+  <string name="save">Speichern</string>
+  <string name="saved_rules">Gespeichert</string>
+  <string name="standard_rules">Standard</string>
+  <string name="delete_saved_rules_title">Regelsatz löschen?</string>
+  <string name="delete_saved_rules_message">„%1$s“ wird gelöscht.</string>
+  <string name="cancel">Abbrechen</string>
+  <string name="delete">Löschen</string>
       
   <string name="other">Andere</string>
       

@@ -60,11 +60,11 @@
       
   <string name="one_step_duration">한 단계 지속 시간</string>
       
-  <string name="simulation_settings">시뮬레이션 설정</string>
+  <string name="simulation_settings">시뮬레이션</string>
       
   <string name="language">언어</string>
       
-  <string name="game_settings">게임 설정</string>
+  <string name="game_settings">게임</string>
   <string name="show_grid">격자 표시</string>
   <string name="show_grid_description">게임 필드에 셀 경계 표시</string>
       
@@ -97,6 +97,16 @@
   <string name="custom_rules">맞춤 규칙</string>
       
   <string name="rules_set_description">다양한 게임 시나리오를 보려면 다양한 규칙 세트를 선택하세요.</string>
+  <string name="save_rules">현재 규칙 저장</string>
+  <string name="save_rules_title">규칙 저장</string>
+  <string name="saved_rules_name">이름</string>
+  <string name="save">저장</string>
+  <string name="saved_rules">저장됨</string>
+  <string name="standard_rules">표준</string>
+  <string name="delete_saved_rules_title">규칙 세트를 삭제할까요?</string>
+  <string name="delete_saved_rules_message">“%1$s”이 삭제됩니다.</string>
+  <string name="cancel">취소</string>
+  <string name="delete">삭제</string>
       
   <string name="other">다른</string>
       

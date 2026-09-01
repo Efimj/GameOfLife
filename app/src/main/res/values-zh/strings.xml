@@ -60,11 +60,11 @@
 
     <string name="one_step_duration">一步持续时间</string>
 
-    <string name="simulation_settings">模拟设置</string>
+    <string name="simulation_settings">模拟</string>
 
     <string name="language">语言</string>
 
-    <string name="game_settings">游戏设置</string>
+    <string name="game_settings">游戏</string>
     <string name="show_grid">显示网格</string>
     <string name="show_grid_description">在游戏区域中显示单元格边界</string>
 
@@ -97,6 +97,16 @@
     <string name="custom_rules">自定义规则</string>
 
     <string name="rules_set_description">选择不同的规则集，看到不同的游戏场景</string>
+    <string name="save_rules">保存当前规则</string>
+    <string name="save_rules_title">保存规则</string>
+    <string name="saved_rules_name">名称</string>
+    <string name="save">保存</string>
+    <string name="saved_rules">已保存</string>
+    <string name="standard_rules">标准</string>
+    <string name="delete_saved_rules_title">删除规则集？</string>
+    <string name="delete_saved_rules_message">“%1$s”将被删除。</string>
+    <string name="cancel">取消</string>
+    <string name="delete">删除</string>
 
     <string name="other">其他</string>
 

@@ -3,6 +3,7 @@ package com.jobik.gameoflife.util.settings
 import androidx.annotation.Keep
 import com.example.compose.Palette
 import com.jobik.gameoflife.gameOfLife.GameSettings
+import com.jobik.gameoflife.screens.game.SavedGameRules
 import kotlinx.serialization.Serializable
 import java.util.Locale
 
@@ -23,6 +24,7 @@ data class SettingsState(
     val theme: Palette = Palette.DynamicPalette,
     val localization: Localization = defaultLocalization(),
     val gameSettings: GameSettings = GameSettings(),
+    val savedGameRules: List<SavedGameRules> = emptyList(),
 )
 
 private fun defaultLocalization() = Localization.entries.find {

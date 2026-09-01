@@ -32,9 +32,9 @@
     <string name="rows">पंक्तियों</string>
     <string name="columns">कॉलम</string>
     <string name="one_step_duration">एक चरण की अवधि</string>
-    <string name="simulation_settings">सिमुलेशन सेटिंग्स</string>
+    <string name="simulation_settings">सिमुलेशन</string>
     <string name="language">भाषा</string>
-    <string name="game_settings">खेल सेटिंग्स</string>
+    <string name="game_settings">खेल</string>
     <string name="show_grid">ग्रिड दिखाएं</string>
     <string name="show_grid_description">खेल के मैदान पर सेल की सीमाएं दिखाएं</string>
     <string name="neighbors_for_reviving">पुनर्जीवित करने के लिए पड़ोसी</string>
@@ -53,6 +53,16 @@
     <string name="rate">दर!</string>
     <string name="custom_rules">कस्टम नियम</string>
     <string name="rules_set_description">अलग-अलग गेम परिदृश्य देखने के लिए अलग-अलग नियम चुनें</string>
+    <string name="save_rules">वर्तमान नियम सहेजें</string>
+    <string name="save_rules_title">नियम सहेजें</string>
+    <string name="saved_rules_name">नाम</string>
+    <string name="save">सहेजें</string>
+    <string name="saved_rules">सहेजे गए</string>
+    <string name="standard_rules">मानक</string>
+    <string name="delete_saved_rules_title">नियम सेट हटाएं?</string>
+    <string name="delete_saved_rules_message">“%1$s” हटा दिया जाएगा।</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="delete">हटाएं</string>
     <string name="other">अन्य</string>
 
     <string name="stable">स्थिर</string>

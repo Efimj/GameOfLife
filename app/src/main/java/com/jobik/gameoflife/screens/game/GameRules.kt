@@ -32,6 +32,8 @@ data class GameRules(
     val rules: GameOfLifeStepSettings,
 )
 
+const val CustomGameRulesId = "custom"
+
 private val FullyAlive = List(10) { List(10) { GameOfLifeUnitState.Alive } }
 private val FullyDead = List(10) { List(10) { GameOfLifeUnitState.Dead } }
 private fun getRandomStartStates(rows: Int = 15, cols: Int = 15): List<List<GameOfLifeUnitState>> {
@@ -198,3 +200,5 @@ val GameRuleSet = listOf(
         ),
     ),
 )
+
+fun GameRules.ruleSetId(): String = "standard:${GameRuleSet.indexOf(this)}"

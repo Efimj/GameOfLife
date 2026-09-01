@@ -32,9 +32,9 @@
     <string name="rows">Рядки</string>
     <string name="columns">Стовпці</string>
     <string name="one_step_duration">Тривалість одного кроку</string>
-    <string name="simulation_settings">Налаштування симуляції</string>
+    <string name="simulation_settings">Симуляція</string>
     <string name="language">Мова</string>
-    <string name="game_settings">Ігрові налаштування</string>
+    <string name="game_settings">Гра</string>
     <string name="show_grid">Показувати сітку</string>
     <string name="show_grid_description">Показувати межі клітинок ігрового поля</string>
     <string name="neighbors_for_reviving">Сусідів для відродження</string>
@@ -54,6 +54,16 @@
     <string name="rate">Оцінити!</string>
     <string name="custom_rules">Свої правила</string>
     <string name="rules_set_description">Вибирайте різні набори правил, щоб побачити різні ігрові сценарії</string>
+    <string name="save_rules">Зберегти поточні правила</string>
+    <string name="save_rules_title">Збереження правил</string>
+    <string name="saved_rules_name">Назва</string>
+    <string name="save">Зберегти</string>
+    <string name="saved_rules">Збережені</string>
+    <string name="standard_rules">Стандартні</string>
+    <string name="delete_saved_rules_title">Видалити набір правил?</string>
+    <string name="delete_saved_rules_message">Набір «%1$s» буде видалено.</string>
+    <string name="cancel">Скасувати</string>
+    <string name="delete">Видалити</string>
     <string name="other">Інший</string>
 
     <string name="stable">стабільний</string>

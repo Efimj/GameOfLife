@@ -1,13 +1,38 @@
 package com.jobik.gameoflife.screens.game.actions
 
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.foundation.ScrollState
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.ime
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Delete
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,54 +45,59 @@ import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.screens.game.GameRuleSet
 import com.jobik.gameoflife.screens.game.GameRules
+import com.jobik.gameoflife.screens.game.SavedGameRules
+import com.jobik.gameoflife.screens.game.ruleSetId
 import com.jobik.gameoflife.ui.composables.CustomModalBottomSheet
-import com.jobik.gameoflife.ui.helpers.*
+import com.jobik.gameoflife.ui.helpers.bottomWindowInsetsPadding
+import com.jobik.gameoflife.ui.helpers.horizontalWindowInsetsPadding
+import com.jobik.gameoflife.ui.helpers.topWindowInsetsPadding
+import com.jobik.gameoflife.util.settings.SettingsManager
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SelectGameRuleSet(isOpen: MutableState<Boolean>, selectedRules: GameRules?, onClick: (rules: GameRules) -> Unit) {
+fun SelectGameRuleSet(
+    isOpen: MutableState<Boolean>,
+    selectedRuleSetId: String?,
+    onDefaultClick: (rules: GameRules) -> Unit,
+    onSavedClick: (rules: SavedGameRules) -> Unit,
+    onDelete: (rules: SavedGameRules) -> Unit,
+) {
     val scope = rememberCoroutineScope()
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
-    val showBottomSheet = remember { mutableStateOf(false) }
+    var showBottomSheet by remember { mutableStateOf(false) }
+    var pendingDeletion by remember { mutableStateOf<SavedGameRules?>(null) }
+    val savedRules = SettingsManager.state.value.savedGameRules
 
-    LaunchedEffect(isOpen.value, showBottomSheet.value) {
+    LaunchedEffect(isOpen.value) {
         if (isOpen.value) {
-            showBottomSheet.value = true
-        }
-        if (isOpen.value.not()) {
-            scope.launch {
-                sheetState.hide()
-            }.invokeOnCompletion {
-                if (!sheetState.isVisible) {
-                    showBottomSheet.value = false
-                }
+            showBottomSheet = true
+        } else if (showBottomSheet) {
+            scope.launch { sheetState.hide() }.invokeOnCompletion {
+                showBottomSheet = false
             }
         }
     }
 
-    val topInsetsPaddings = topWindowInsetsPadding()
-    val bottomInsetsPaddings = bottomWindowInsetsPadding()
+    fun close(onClosed: (() -> Unit)? = null) {
+        scope.launch { sheetState.hide() }.invokeOnCompletion {
+            showBottomSheet = false
+            isOpen.value = false
+            onClosed?.invoke()
+        }
+    }
 
-    if (showBottomSheet.value) {
+    if (showBottomSheet) {
         CustomModalBottomSheet(
             state = sheetState,
             dragHandle = null,
             windowInsets = WindowInsets.ime,
-            onCancel = {
-                scope.launch {
-                    sheetState.hide()
-                }.invokeOnCompletion {
-                    if (sheetState.isVisible.not()) {
-                        isOpen.value = false
-                    }
-                }
-            }
+            onCancel = { close() },
         ) {
-            Spacer(modifier = Modifier.height(topInsetsPaddings))
+            Spacer(modifier = Modifier.height(topWindowInsetsPadding()))
+            Header()
 
             val scroll = rememberScrollState()
-            Header(scroll)
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -76,40 +106,82 @@ fun SelectGameRuleSet(isOpen: MutableState<Boolean>, selectedRules: GameRules?, 
                     .padding(horizontal = 20.dp)
                     .padding(bottom = 20.dp),
             ) {
-                GameRuleSet.forEachIndexed { index, rules ->
-                    val isSelected = if (selectedRules == null) false else selectedRules.title == rules.title
-                    RulesItem(
-                        isSelected = isSelected,
-                        rules = rules
-                    ) {
-                        scope
-                            .launch {
-                                sheetState.hide()
-                            }
-                            .invokeOnCompletion {
-                                isOpen.value = false
-                                if (isSelected) return@invokeOnCompletion
-
-                                onClick(rules)
-                            }
+                if (savedRules.isNotEmpty()) {
+                    SectionLabel(stringResource(R.string.saved_rules))
+                    savedRules.forEach { rules ->
+                        RulesItem(
+                            isSelected = selectedRuleSetId == rules.id,
+                            title = rules.name,
+                            subtitle = null,
+                            onDelete = { pendingDeletion = rules },
+                            onClick = {
+                                close {
+                                    if (selectedRuleSetId != rules.id) onSavedClick(rules)
+                                }
+                            },
+                        )
                     }
+                    Spacer(modifier = Modifier.height(24.dp))
+                    SectionLabel(stringResource(R.string.standard_rules))
                 }
 
-                Spacer(modifier = Modifier.height(bottomInsetsPaddings))
+                val context = LocalContext.current
+                GameRuleSet.forEach { rules ->
+                    RulesItem(
+                        isSelected = selectedRuleSetId == rules.ruleSetId(),
+                        title = stringResource(rules.title),
+                        subtitle = rules.type.getLocalizedValue(context),
+                        onClick = {
+                            close {
+                                if (selectedRuleSetId != rules.ruleSetId()) onDefaultClick(rules)
+                            }
+                        },
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(bottomWindowInsetsPadding()))
             }
         }
+    }
+
+    pendingDeletion?.let { rules ->
+        AlertDialog(
+            onDismissRequest = { pendingDeletion = null },
+            title = { Text(stringResource(R.string.delete_saved_rules_title)) },
+            text = {
+                Text(stringResource(R.string.delete_saved_rules_message, rules.name))
+            },
+            dismissButton = {
+                TextButton(onClick = { pendingDeletion = null }) {
+                    Text(stringResource(R.string.cancel))
+                }
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        pendingDeletion = null
+                        onDelete(rules)
+                    },
+                ) {
+                    Text(
+                        text = stringResource(R.string.delete),
+                        color = MaterialTheme.colorScheme.error,
+                    )
+                }
+            },
+        )
     }
 }
 
 @Composable
-private fun Header(scroll: ScrollState) {
+private fun Header() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 40.dp, vertical = 12.dp)
+            .padding(horizontal = 40.dp, vertical = 12.dp),
     ) {
         Text(
-            text = stringResource(id = R.string.rules_set),
+            text = stringResource(R.string.rules_set),
             style = MaterialTheme.typography.headlineSmall,
             textAlign = TextAlign.Right,
             maxLines = 1,
@@ -120,18 +192,37 @@ private fun Header(scroll: ScrollState) {
 }
 
 @Composable
+private fun SectionLabel(title: String) {
+    Text(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 20.dp, top = 16.dp, bottom = 8.dp),
+        text = title,
+        style = MaterialTheme.typography.labelLarge,
+        color = MaterialTheme.colorScheme.primary,
+    )
+}
+
+@Composable
 private fun RulesItem(
-    isSelected: Boolean = false,
-    rules: GameRules,
+    isSelected: Boolean,
+    title: String,
+    subtitle: String?,
+    onDelete: (() -> Unit)? = null,
     onClick: () -> Unit,
 ) {
-    val context = LocalContext.current
-    val backgroundColorValue = if (isSelected) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent
-    val backgroundColor by animateColorAsState(targetValue = backgroundColorValue, label = "backgroundColor")
-
+    val backgroundColorValue =
+        if (isSelected) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent
+    val backgroundColor by animateColorAsState(
+        targetValue = backgroundColorValue,
+        label = "backgroundColor",
+    )
     val contentColorValue =
         if (isSelected) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onBackground
-    val contentColor by animateColorAsState(targetValue = contentColorValue, label = "backgroundColor")
+    val contentColor by animateColorAsState(
+        targetValue = contentColorValue,
+        label = "contentColor",
+    )
 
     Surface(
         color = backgroundColor,
@@ -141,26 +232,39 @@ private fun RulesItem(
         shape = CircleShape,
     ) {
         Row(
+            modifier = Modifier
+                .heightIn(min = 72.dp)
+                .padding(start = 20.dp, end = 8.dp, top = 12.dp, bottom = 12.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.padding(horizontal = 20.dp, vertical = 16.dp)
         ) {
             Text(
-                text = stringResource(id = rules.title),
+                modifier = Modifier.weight(1f),
+                text = title,
                 style = MaterialTheme.typography.bodyLarge,
-                textAlign = TextAlign.Right,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-            Spacer(modifier = Modifier.width(20.dp))
-            Text(
-                text = rules.type.getLocalizedValue(context),
-                style = MaterialTheme.typography.bodyMedium,
-                textAlign = TextAlign.Right,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = .76f)
             )
+            if (subtitle != null) {
+                Text(
+                    text = subtitle,
+                    style = MaterialTheme.typography.bodyMedium,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    color = contentColor.copy(alpha = 0.76f),
+                )
+            }
+            if (onDelete != null) {
+                IconButton(onClick = onDelete) {
+                    Icon(
+                        imageVector = Icons.Outlined.Delete,
+                        contentDescription = stringResource(R.string.delete),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            } else {
+                Spacer(modifier = Modifier.padding(end = 12.dp))
+            }
         }
     }
 }

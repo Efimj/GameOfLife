@@ -74,8 +74,8 @@ import androidx.compose.ui.unit.dp
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.gameOfLife.GameOfLife
 import com.jobik.gameoflife.screens.game.GameRuleSet
-import com.jobik.gameoflife.screens.game.GameRules
 import com.jobik.gameoflife.screens.game.GameScreenViewModel
+import com.jobik.gameoflife.screens.game.ruleSetId
 import com.jobik.gameoflife.ui.composables.AliveEmojis
 import com.jobik.gameoflife.ui.composables.DeadEmojis
 import com.jobik.gameoflife.ui.composables.DefaultGameGapWidth
@@ -84,6 +84,8 @@ import com.jobik.gameoflife.ui.composables.modifier.fadingEdges
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.WindowWidthSizeClass
 import com.jobik.gameoflife.ui.helpers.isWidth
+import com.jobik.gameoflife.util.settings.SavedGameRulesManager
+import com.jobik.gameoflife.util.settings.SettingsManager
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.Locale
@@ -168,89 +170,13 @@ fun GameActions(viewModel: GameScreenViewModel) {
             }
         }
 
-        SettingsGroup(headline = stringResource(id = R.string.game_settings)) {
-            SettingsItemWrapper(onClick = viewModel::switchEmojiMode) {
-                Icon(
-                    imageVector = Icons.Outlined.Mood,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary
-                )
-                SettingsItemContent(
-                    title = stringResource(id = R.string.emoji_mode),
-                    description = stringResource(id = R.string.emoji_mode_description)
-                )
-                Switch(
-                    checked = viewModel.states.value.gameSettings.emojiEnabled,
-                    onCheckedChange = { viewModel.switchEmojiMode() },
-                    thumbContent = if (viewModel.states.value.gameSettings.emojiEnabled) {
-                        {
-                            Text(text = AliveEmojis.random())
-                        }
-                    } else {
-                        null
-                    },
-                )
-            }
-            Spacer(modifier = Modifier.height(5.dp))
-
-            SettingsItemWrapper(onClick = viewModel::switchShowDeadMode) {
-                Icon(
-                    imageVector = Icons.Outlined.Cancel,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary
-                )
-                SettingsItemContent(
-                    title = stringResource(R.string.show_eliminated_cells),
-                    description = stringResource(R.string.show_eliminated_cells_description)
-                )
-                Switch(
-                    checked = viewModel.states.value.gameSettings.showDead,
-                    onCheckedChange = { viewModel.switchShowDeadMode() },
-                )
-            }
-
-            Spacer(modifier = Modifier.height(5.dp))
-
-            SettingsItemWrapper(onClick = viewModel::switchShowGridMode) {
-                Icon(
-                    imageVector = Icons.Outlined.GridOn,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary
-                )
-                SettingsItemContent(
-                    title = stringResource(R.string.show_grid),
-                    description = stringResource(R.string.show_grid_description)
-                )
-                Switch(
-                    checked = viewModel.states.value.gameSettings.showGrid,
-                    onCheckedChange = { viewModel.switchShowGridMode() },
-                )
-            }
-
-            Spacer(modifier = Modifier.height(5.dp))
-
-            SettingsItemWrapper(onClick = viewModel::switchFreeSoulMode) {
-                Icon(
-                    imageVector = Icons.Outlined.Cached,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary
-                )
-                SettingsItemContent(
-                    title = stringResource(id = R.string.free_soul_mode),
-                    description = stringResource(id = R.string.free_soul_mode_description)
-                )
-                Switch(
-                    checked = viewModel.states.value.gameSettings.freeSoulMode,
-                    onCheckedChange = { viewModel.switchFreeSoulMode() },
-                )
-            }
-        }
-
         SettingsGroup(headline = stringResource(id = R.string.rules)) {
             val ruleSetDialogVisible = remember { mutableStateOf(false) }
+            val saveRulesDialogVisible = remember { mutableStateOf(false) }
+            val context = LocalContext.current
 
-            LaunchedEffect(ruleSetDialogVisible.value) {
-                if (ruleSetDialogVisible.value) {
+            LaunchedEffect(ruleSetDialogVisible.value, saveRulesDialogVisible.value) {
+                if (ruleSetDialogVisible.value || saveRulesDialogVisible.value) {
                     viewModel.turnOffSimulation()
                 }
             }
@@ -269,36 +195,45 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     paddings = PaddingValues(start = 20.dp, top = 4.dp, bottom = 4.dp)
                 )
 
-                val selectedRules = remember { mutableStateOf<GameRules?>(null) }
-                val context = LocalContext.current
-
-                LaunchedEffect(viewModel.states.value.gameSettings.gameOfLifeStepRules) {
-                    val currentRules = viewModel.states.value.gameSettings.gameOfLifeStepRules
-                    GameRuleSet.forEach { rules ->
-                        if (currentRules.neighborsForAlive == rules.rules.neighborsForAlive && currentRules.neighborsForReviving == rules.rules.neighborsForReviving) {
-                            selectedRules.value = rules
-                            return@LaunchedEffect
-                        }
-                    }
-                    selectedRules.value = null
+                val currentRules = viewModel.states.value.gameSettings.gameOfLifeStepRules
+                val savedRules = SettingsManager.state.value.savedGameRules
+                val selectedRuleSetId = viewModel.states.value.gameSettings.selectedRuleSetId
+                    ?: savedRules.firstOrNull { it.rules == currentRules }?.id
+                    ?: GameRuleSet.firstOrNull { it.rules == currentRules }?.ruleSetId()
+                val selectedSavedRules = savedRules.firstOrNull { it.id == selectedRuleSetId }
+                val selectedDefaultRules = GameRuleSet.firstOrNull {
+                    it.ruleSetId() == selectedRuleSetId
+                }
+                val selectedTitle = when {
+                    selectedSavedRules != null -> selectedSavedRules.name
+                    selectedDefaultRules != null -> stringResource(selectedDefaultRules.title)
+                    else -> stringResource(R.string.custom_rules)
+                }
+                val selectedSubtitle = when {
+                    selectedSavedRules != null -> null
+                    selectedDefaultRules != null -> selectedDefaultRules.type.getLocalizedValue(context)
+                    else -> null
                 }
 
-                AnimatedContent(targetState = selectedRules.value, label = "") { rules ->
-                    if (rules != null) {
+                AnimatedContent(
+                    targetState = selectedTitle to selectedSubtitle,
+                    label = "selectedRules",
+                ) { (title, subtitle) ->
+                    if (subtitle != null) {
                         Column(
                             horizontalAlignment = Alignment.Start,
                             verticalArrangement = Arrangement.spacedBy(2.dp),
                             modifier = Modifier.padding(start = 20.dp)
                         ) {
                             Text(
-                                text = stringResource(id = rules.title),
+                                text = title,
                                 style = MaterialTheme.typography.bodyLarge,
                                 textAlign = TextAlign.Right,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis
                             )
                             Text(
-                                text = rules.type.getLocalizedValue(context),
+                                text = subtitle,
                                 style = MaterialTheme.typography.bodySmall,
                                 textAlign = TextAlign.Right,
                                 maxLines = 1,
@@ -313,7 +248,7 @@ fun GameActions(viewModel: GameScreenViewModel) {
                             modifier = Modifier.padding(start = 20.dp)
                         ) {
                             Text(
-                                text = stringResource(id = R.string.custom_rules),
+                                text = title,
                                 style = MaterialTheme.typography.bodyLarge,
                                 textAlign = TextAlign.Right,
                                 maxLines = 1,
@@ -325,8 +260,16 @@ fun GameActions(viewModel: GameScreenViewModel) {
 
                 SelectGameRuleSet(
                     isOpen = ruleSetDialogVisible,
-                    selectedRules = selectedRules.value,
-                    onClick = { rules -> viewModel.setRules(rules) })
+                    selectedRuleSetId = selectedRuleSetId,
+                    onDefaultClick = viewModel::setRules,
+                    onSavedClick = viewModel::setRules,
+                    onDelete = { rules ->
+                        SavedGameRulesManager.delete(context, rules.id)
+                        if (selectedRuleSetId == rules.id) {
+                            viewModel.clearSelectedRuleSetSelection()
+                        }
+                    },
+                )
             }
             Spacer(modifier = Modifier.height(5.dp))
 
@@ -431,6 +374,33 @@ fun GameActions(viewModel: GameScreenViewModel) {
                     }
                 }
             }
+
+            Spacer(modifier = Modifier.height(10.dp))
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp),
+                onClick = { saveRulesDialogVisible.value = true },
+            ) {
+                Text(
+                    text = stringResource(R.string.save_rules),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
+
+            SaveGameRulesBottomSheet(
+                isOpen = saveRulesDialogVisible,
+                rules = viewModel.states.value.gameSettings.gameOfLifeStepRules,
+                onSave = { name ->
+                    val savedRules = SavedGameRulesManager.save(
+                        context = context,
+                        name = name,
+                        rules = viewModel.states.value.gameSettings.gameOfLifeStepRules,
+                    )
+                    viewModel.selectRuleSet(savedRules.id)
+                },
+            )
         }
 
         SettingsGroup(headline = stringResource(id = R.string.simulation_settings)) {
@@ -530,8 +500,89 @@ fun GameActions(viewModel: GameScreenViewModel) {
             }
         }
 
+        GameSettingsSection(viewModel)
+
         if (isWidth(sizeClass = WindowWidthSizeClass.Expanded).not()) {
             BottomWindowInsetsSpacer()
+        }
+    }
+}
+
+@Composable
+private fun GameSettingsSection(viewModel: GameScreenViewModel) {
+    SettingsGroup(headline = stringResource(R.string.game_settings)) {
+        SettingsItemWrapper(onClick = viewModel::switchEmojiMode) {
+            Icon(
+                imageVector = Icons.Outlined.Mood,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary,
+            )
+            SettingsItemContent(
+                title = stringResource(R.string.emoji_mode),
+                description = stringResource(R.string.emoji_mode_description),
+            )
+            Switch(
+                checked = viewModel.states.value.gameSettings.emojiEnabled,
+                onCheckedChange = { viewModel.switchEmojiMode() },
+                thumbContent = if (viewModel.states.value.gameSettings.emojiEnabled) {
+                    { Text(text = AliveEmojis.random()) }
+                } else {
+                    null
+                },
+            )
+        }
+        Spacer(modifier = Modifier.height(5.dp))
+
+        SettingsItemWrapper(onClick = viewModel::switchShowDeadMode) {
+            Icon(
+                imageVector = Icons.Outlined.Cancel,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary,
+            )
+            SettingsItemContent(
+                title = stringResource(R.string.show_eliminated_cells),
+                description = stringResource(R.string.show_eliminated_cells_description),
+            )
+            Switch(
+                checked = viewModel.states.value.gameSettings.showDead,
+                onCheckedChange = { viewModel.switchShowDeadMode() },
+            )
+        }
+
+        Spacer(modifier = Modifier.height(5.dp))
+
+        SettingsItemWrapper(onClick = viewModel::switchShowGridMode) {
+            Icon(
+                imageVector = Icons.Outlined.GridOn,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary,
+            )
+            SettingsItemContent(
+                title = stringResource(R.string.show_grid),
+                description = stringResource(R.string.show_grid_description),
+            )
+            Switch(
+                checked = viewModel.states.value.gameSettings.showGrid,
+                onCheckedChange = { viewModel.switchShowGridMode() },
+            )
+        }
+
+        Spacer(modifier = Modifier.height(5.dp))
+
+        SettingsItemWrapper(onClick = viewModel::switchFreeSoulMode) {
+            Icon(
+                imageVector = Icons.Outlined.Cached,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary,
+            )
+            SettingsItemContent(
+                title = stringResource(R.string.free_soul_mode),
+                description = stringResource(R.string.free_soul_mode_description),
+            )
+            Switch(
+                checked = viewModel.states.value.gameSettings.freeSoulMode,
+                onCheckedChange = { viewModel.switchFreeSoulMode() },
+            )
         }
     }
 }

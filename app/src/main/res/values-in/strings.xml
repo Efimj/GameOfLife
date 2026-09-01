@@ -60,11 +60,11 @@
 
     <string name="one_step_duration">Durasi satu langkah</string>
 
-    <string name="simulation_settings">Pengaturan simulasi</string>
+    <string name="simulation_settings">Simulasi</string>
 
     <string name="language">Bahasa</string>
 
-    <string name="game_settings">Pengaturan permainan</string>
+    <string name="game_settings">Permainan</string>
     <string name="show_grid">Tampilkan kisi</string>
     <string name="show_grid_description">Tampilkan batas sel di bidang permainan</string>
 
@@ -97,6 +97,16 @@
     <string name="custom_rules">Aturan adat</string>
 
     <string name="rules_set_description">Pilih kumpulan aturan yang berbeda untuk melihat skenario permainan yang berbeda</string>
+    <string name="save_rules">Simpan aturan saat ini</string>
+    <string name="save_rules_title">Simpan aturan</string>
+    <string name="saved_rules_name">Nama</string>
+    <string name="save">Simpan</string>
+    <string name="saved_rules">Tersimpan</string>
+    <string name="standard_rules">Standar</string>
+    <string name="delete_saved_rules_title">Hapus kumpulan aturan?</string>
+    <string name="delete_saved_rules_message">“%1$s” akan dihapus.</string>
+    <string name="cancel">Batal</string>
+    <string name="delete">Hapus</string>
 
     <string name="other">Lainnya</string>
 

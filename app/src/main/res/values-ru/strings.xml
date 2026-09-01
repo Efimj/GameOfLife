@@ -32,9 +32,9 @@
     <string name="rows">Строки</string>
     <string name="columns">Столбцы</string>
     <string name="one_step_duration">Продолжительность одного шага</string>
-    <string name="simulation_settings">Настройки симуляции</string>
+    <string name="simulation_settings">Симуляция</string>
     <string name="language">Язык</string>
-    <string name="game_settings">Игровые настройки</string>
+    <string name="game_settings">Игра</string>
     <string name="show_grid">Показывать сетку</string>
     <string name="show_grid_description">Показывать границы ячеек игрового поля</string>
     <string name="neighbors_for_reviving">Соседей для возрождению</string>
@@ -53,6 +53,16 @@
     <string name="rate">Оценить!</string>
     <string name="custom_rules">Свои правила</string>
     <string name="rules_set_description">Выбирайте разные наборы правил, чтобы увидеть разные игровые сценарии</string>
+    <string name="save_rules">Сохранить текущие правила</string>
+    <string name="save_rules_title">Сохранение правил</string>
+    <string name="saved_rules_name">Название</string>
+    <string name="save">Сохранить</string>
+    <string name="saved_rules">Сохранённые</string>
+    <string name="standard_rules">Стандартные</string>
+    <string name="delete_saved_rules_title">Удалить набор правил?</string>
+    <string name="delete_saved_rules_message">Набор «%1$s» будет удалён.</string>
+    <string name="cancel">Отмена</string>
+    <string name="delete">Удалить</string>
     <string name="other">Другой</string>
 
     <string name="stable">стабильный</string>

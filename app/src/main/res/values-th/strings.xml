@@ -60,11 +60,11 @@
       
   <string name="one_step_duration">ระยะเวลาหนึ่งขั้นตอน</string>
       
-  <string name="simulation_settings">การตั้งค่าการจำลอง</string>
+  <string name="simulation_settings">การจำลอง</string>
       
   <string name="language">ภาษา</string>
       
-  <string name="game_settings">ตั้งค่าเกม</string>
+  <string name="game_settings">เกม</string>
   <string name="show_grid">แสดงตาราง</string>
   <string name="show_grid_description">แสดงขอบเขตเซลล์บนสนามเกม</string>
       
@@ -97,6 +97,16 @@
   <string name="custom_rules">กฎที่กำหนดเอง</string>
       
   <string name="rules_set_description">เลือกกฎเกณฑ์ที่แตกต่างกันเพื่อดูสถานการณ์ของเกมที่แตกต่างกัน</string>
+  <string name="save_rules">บันทึกกฎปัจจุบัน</string>
+  <string name="save_rules_title">บันทึกกฎ</string>
+  <string name="saved_rules_name">ชื่อ</string>
+  <string name="save">บันทึก</string>
+  <string name="saved_rules">บันทึกแล้ว</string>
+  <string name="standard_rules">มาตรฐาน</string>
+  <string name="delete_saved_rules_title">ลบชุดกฎหรือไม่</string>
+  <string name="delete_saved_rules_message">“%1$s” จะถูกลบ</string>
+  <string name="cancel">ยกเลิก</string>
+  <string name="delete">ลบ</string>
       
   <string name="other">อื่น</string>
       

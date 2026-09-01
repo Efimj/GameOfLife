@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.GameOfLifeResult
+import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.GameOfLifeStepSettings
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.GameOfLifeStepSettingsDefault
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.GameOfLifeUnitState
 import com.jobik.gameoflife.gameOfLife.GameOfLife.Companion.cloneGameState
@@ -337,31 +338,32 @@ class GameScreenViewModel : ViewModel() {
             neighborsForAlive = neighborsForAlive
         )
         _states.value =
-            states.value.copy(gameSettings = states.value.gameSettings.copy(gameOfLifeStepRules = newRules))
+            states.value.copy(
+                gameSettings = states.value.gameSettings.copy(
+                    gameOfLifeStepRules = newRules,
+                    selectedRuleSetId = CustomGameRulesId,
+                )
+            )
     }
 
     fun gameRulesToDefault() {
         _states.value =
-            states.value.copy(gameSettings = states.value.gameSettings.copy(gameOfLifeStepRules = GameOfLifeStepSettingsDefault))
+            states.value.copy(
+                gameSettings = states.value.gameSettings.copy(
+                    gameOfLifeStepRules = GameOfLifeStepSettingsDefault,
+                    selectedRuleSetId = GameRuleSet.first().ruleSetId(),
+                )
+            )
     }
 
     fun setRules(rules: GameRules) {
         if (rules.firstStep == null) {
-            _states.value = states.value.copy(
-                gameSettings = states.value.gameSettings.copy(
-                    gameOfLifeStepRules = rules.rules
-                ),
-                isSimulationRunning = false,
-                alive = 0,
-                deaths = 0,
-                revivals = 0,
-                stepNumber = 0,
-                previousSteps = HashSet(),
-            )
+            setRules(rules.rules, rules.ruleSetId())
         } else {
             _states.value = states.value.copy(
                 gameSettings = states.value.gameSettings.copy(
                     gameOfLifeStepRules = rules.rules,
+                    selectedRuleSetId = rules.ruleSetId(),
                     rows = rules.firstStep.size,
                     cols = rules.firstStep.first().size,
                 ),
@@ -374,6 +376,44 @@ class GameScreenViewModel : ViewModel() {
                 currentStep = rules.firstStep
             )
         }
+    }
+
+    fun setRules(rules: SavedGameRules) {
+        setRules(rules.rules, rules.id)
+    }
+
+    fun setRules(
+        rules: GameOfLifeStepSettings,
+        ruleSetId: String = CustomGameRulesId,
+    ) {
+        _states.value = states.value.copy(
+            gameSettings = states.value.gameSettings.copy(
+                gameOfLifeStepRules = rules,
+                selectedRuleSetId = ruleSetId,
+            ),
+            isSimulationRunning = false,
+            alive = 0,
+            deaths = 0,
+            revivals = 0,
+            stepNumber = 0,
+            previousSteps = HashSet(),
+        )
+    }
+
+    fun clearSelectedRuleSetSelection() {
+        _states.value = states.value.copy(
+            gameSettings = states.value.gameSettings.copy(
+                selectedRuleSetId = CustomGameRulesId
+            )
+        )
+    }
+
+    fun selectRuleSet(ruleSetId: String) {
+        _states.value = states.value.copy(
+            gameSettings = states.value.gameSettings.copy(
+                selectedRuleSetId = ruleSetId
+            )
+        )
     }
 
     fun updateScale(value: Float) {

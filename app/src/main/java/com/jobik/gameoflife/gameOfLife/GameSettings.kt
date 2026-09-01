@@ -17,6 +17,7 @@ data class GameSettings(
     val rows: Int = 32,
     val cols: Int = 32,
     val gameOfLifeStepRules: GameOfLifeStepSettings = GameOfLifeStepSettingsDefault,
+    val selectedRuleSetId: String? = null,
     val oneStepDurationMills: Long = 500,
     val scale: Float = 1f
 )
