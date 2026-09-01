@@ -69,6 +69,7 @@ fun GridForGame(
 
     val aliveUnitColor = MaterialTheme.colorScheme.primary
     val deadUnitColor = MaterialTheme.colorScheme.error
+    val gridColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.16f)
 
     val showDead = viewModel.states.value.gameSettings.showDead
 
@@ -110,6 +111,18 @@ fun GridForGame(
 
             val offsetX = (size.width - gridWidth) / 2
             val offsetY = (size.height - gridHeight) / 2
+
+            if (state.gameSettings.showGrid) {
+                DrawGrid(
+                    color = gridColor,
+                    offsetX = offsetX,
+                    offsetY = offsetY,
+                    rows = state.currentStep.size,
+                    columns = state.currentStep.first().size,
+                    cellSizePx = cellSizePx,
+                    cellSpacingPx = cellSpacingPx
+                )
+            }
 
             for (x in 0 until state.currentStep.size) {
                 for (y in 0 until state.currentStep.first().size) {
@@ -153,6 +166,40 @@ fun GridForGame(
                 }
             }
         }
+    }
+}
+
+private fun DrawScope.DrawGrid(
+    color: Color,
+    offsetX: Float,
+    offsetY: Float,
+    rows: Int,
+    columns: Int,
+    cellSizePx: Float,
+    cellSpacingPx: Float
+) {
+    val cellStride = cellSizePx + cellSpacingPx
+    val width = rows * cellStride
+    val height = columns * cellStride
+
+    for (row in 0..rows) {
+        val x = offsetX + row * cellStride
+        drawLine(
+            color = color,
+            start = Offset(x, offsetY),
+            end = Offset(x, offsetY + height),
+            strokeWidth = cellSpacingPx
+        )
+    }
+
+    for (column in 0..columns) {
+        val y = offsetY + column * cellStride
+        drawLine(
+            color = color,
+            start = Offset(offsetX, y),
+            end = Offset(offsetX + width, y),
+            strokeWidth = cellSpacingPx
+        )
     }
 }
 

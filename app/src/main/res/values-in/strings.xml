@@ -65,6 +65,8 @@
     <string name="language">Bahasa</string>
 
     <string name="game_settings">Pengaturan permainan</string>
+    <string name="show_grid">Tampilkan kisi</string>
+    <string name="show_grid_description">Tampilkan batas sel di bidang permainan</string>
 
     <string name="neighbors_for_reviving">Tetangga untuk bangkit kembali</string>
 

@@ -65,6 +65,8 @@
     <string name="language">语言</string>
 
     <string name="game_settings">游戏设置</string>
+    <string name="show_grid">显示网格</string>
+    <string name="show_grid_description">在游戏区域中显示单元格边界</string>
 
     <string name="neighbors_for_reviving">邻居复兴</string>
 

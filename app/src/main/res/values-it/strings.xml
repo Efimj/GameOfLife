@@ -65,6 +65,8 @@
   <string name="language">Lingua</string>
       
   <string name="game_settings">Impostazioni di gioco</string>
+  <string name="show_grid">Mostra griglia</string>
+  <string name="show_grid_description">Mostra i confini delle celle sul campo di gioco</string>
       
   <string name="neighbors_for_reviving">Vicini per la rianimazione</string>
       

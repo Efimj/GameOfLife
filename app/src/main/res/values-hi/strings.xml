@@ -35,6 +35,8 @@
     <string name="simulation_settings">सिमुलेशन सेटिंग्स</string>
     <string name="language">भाषा</string>
     <string name="game_settings">खेल सेटिंग्स</string>
+    <string name="show_grid">ग्रिड दिखाएं</string>
+    <string name="show_grid_description">खेल के मैदान पर सेल की सीमाएं दिखाएं</string>
     <string name="neighbors_for_reviving">पुनर्जीवित करने के लिए पड़ोसी</string>
     <string name="neighbors_for_surviving">अस्तित्व के लिए पड़ोसी</string>
     <string name="rules">नियम</string>

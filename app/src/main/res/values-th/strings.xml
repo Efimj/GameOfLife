@@ -65,6 +65,8 @@
   <string name="language">ภาษา</string>
       
   <string name="game_settings">ตั้งค่าเกม</string>
+  <string name="show_grid">แสดงตาราง</string>
+  <string name="show_grid_description">แสดงขอบเขตเซลล์บนสนามเกม</string>
       
   <string name="neighbors_for_reviving">เพื่อนบ้านเพื่อการฟื้นฟู</string>
       

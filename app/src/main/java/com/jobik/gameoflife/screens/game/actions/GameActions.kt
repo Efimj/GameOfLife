@@ -38,6 +38,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Book
 import androidx.compose.material.icons.outlined.Cached
 import androidx.compose.material.icons.outlined.Cancel
+import androidx.compose.material.icons.outlined.GridOn
 import androidx.compose.material.icons.outlined.Loop
 import androidx.compose.material.icons.outlined.Mood
 import androidx.compose.material3.Button
@@ -205,6 +206,24 @@ fun GameActions(viewModel: GameScreenViewModel) {
                 Switch(
                     checked = viewModel.states.value.gameSettings.showDead,
                     onCheckedChange = { viewModel.switchShowDeadMode() },
+                )
+            }
+
+            Spacer(modifier = Modifier.height(5.dp))
+
+            SettingsItemWrapper(onClick = viewModel::switchShowGridMode) {
+                Icon(
+                    imageVector = Icons.Outlined.GridOn,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary
+                )
+                SettingsItemContent(
+                    title = stringResource(R.string.show_grid),
+                    description = stringResource(R.string.show_grid_description)
+                )
+                Switch(
+                    checked = viewModel.states.value.gameSettings.showGrid,
+                    onCheckedChange = { viewModel.switchShowGridMode() },
                 )
             }
 

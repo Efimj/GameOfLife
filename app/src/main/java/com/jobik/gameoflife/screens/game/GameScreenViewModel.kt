@@ -286,6 +286,11 @@ class GameScreenViewModel : ViewModel() {
             states.value.copy(gameSettings = states.value.gameSettings.copy(showDead = states.value.gameSettings.showDead.not()))
     }
 
+    fun switchShowGridMode() {
+        _states.value =
+            states.value.copy(gameSettings = states.value.gameSettings.copy(showGrid = states.value.gameSettings.showGrid.not()))
+    }
+
     val MaxGameDimension = 100
 
     fun setRows(matrixRowsString: String): Boolean {

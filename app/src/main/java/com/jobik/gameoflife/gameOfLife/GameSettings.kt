@@ -10,6 +10,7 @@ import kotlinx.serialization.Serializable
 data class GameSettings(
     val freeSoulMode: Boolean = true,
     val showDead: Boolean = true,
+    val showGrid: Boolean = false,
     val emojiEnabled: Boolean = false,
     val loopDetecting: Boolean = true,
     val skipSteps: Int = 0,

@@ -65,6 +65,8 @@
   <string name="language">언어</string>
       
   <string name="game_settings">게임 설정</string>
+  <string name="show_grid">격자 표시</string>
+  <string name="show_grid_description">게임 필드에 셀 경계 표시</string>
       
   <string name="neighbors_for_reviving">부흥을 위한 이웃</string>
       

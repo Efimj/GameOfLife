@@ -65,6 +65,8 @@
   <string name="language">Idioma</string>
       
   <string name="game_settings">Configuraciones de juego</string>
+  <string name="show_grid">Mostrar cuadrícula</string>
+  <string name="show_grid_description">Mostrar los límites de las celdas en el campo de juego</string>
       
   <string name="neighbors_for_reviving">Vecinos por revivir</string>
       

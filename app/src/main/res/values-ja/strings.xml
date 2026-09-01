@@ -65,6 +65,8 @@
   <string name="language">言語</string>
       
   <string name="game_settings">ゲームの設定</string>
+  <string name="show_grid">グリッドを表示</string>
+  <string name="show_grid_description">ゲームフィールドにセルの境界線を表示</string>
       
   <string name="neighbors_for_reviving">復活のための隣人</string>
       

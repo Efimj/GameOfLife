@@ -35,6 +35,8 @@
     <string name="simulation_settings">Налаштування симуляції</string>
     <string name="language">Мова</string>
     <string name="game_settings">Ігрові налаштування</string>
+    <string name="show_grid">Показувати сітку</string>
+    <string name="show_grid_description">Показувати межі клітинок ігрового поля</string>
     <string name="neighbors_for_reviving">Сусідів для відродження</string>
     <string name="neighbors_for_surviving">Сусідів для виживання</string>
     <string name="rules">Правила</string>

@@ -65,6 +65,8 @@
   <string name="language">Sprache</string>
       
   <string name="game_settings">Spieleinstellungen</string>
+  <string name="show_grid">Raster anzeigen</string>
+  <string name="show_grid_description">Zellgrenzen auf dem Spielfeld anzeigen</string>
       
   <string name="neighbors_for_reviving">Nachbarn zur Wiederbelebung</string>
       
