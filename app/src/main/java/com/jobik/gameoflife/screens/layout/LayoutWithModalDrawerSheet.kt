@@ -32,11 +32,12 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.jobik.gameoflife.BuildConfig
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.navigation.AppNavHost
 import com.jobik.gameoflife.navigation.NavigationHelper
-import com.jobik.gameoflife.navigation.NavigationHelper.Companion.canNavigate
+import com.jobik.gameoflife.navigation.NavigationHelper.Companion.navigateToTopLevel
 import com.jobik.gameoflife.navigation.Screen
 import com.jobik.gameoflife.ui.helpers.BottomWindowInsetsSpacer
 import com.jobik.gameoflife.ui.helpers.TopWindowInsetsSpacer
@@ -119,6 +120,8 @@ fun AppDrawerContent(
     drawerState: DrawerState,
 ) {
     val coroutineScope = rememberCoroutineScope()
+    val currentDestination =
+        navController.currentBackStackEntryAsState().value?.destination
 
     ModalDrawerSheet(windowInsets = WindowInsets.ime) {
         Surface(color = MaterialTheme.colorScheme.surfaceContainer) {
@@ -160,21 +163,14 @@ fun AppDrawerContent(
                             title = button.title,
                             contentDescription = button.description,
                             icon = button.icon,
-                            isActive = navController.currentDestination?.hierarchy?.any {
+                            isActive = currentDestination?.hierarchy?.any {
                                 it.hasRoute(button.route::class)
                             } == true,
                             onClick = {
                                 coroutineScope.launch {
                                     drawerState.close()
                                 }
-                                if (navController.currentDestination?.hierarchy?.any {
-                                        it.hasRoute(button.route::class)
-                                    } == true) return@AppDrawerItem
-                                if (navController.canNavigate().not()) return@AppDrawerItem
-                                navController.navigate(button.route) {
-                                    // pops the route to root and places new screen
-                                    popUpTo(button.route)
-                                }
+                                navController.navigateToTopLevel(button.route)
                             }
                         )
                     }

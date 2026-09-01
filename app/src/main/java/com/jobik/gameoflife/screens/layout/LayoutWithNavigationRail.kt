@@ -25,7 +25,7 @@ import com.jobik.gameoflife.BuildConfig
 import com.jobik.gameoflife.R
 import com.jobik.gameoflife.navigation.AppNavHost
 import com.jobik.gameoflife.navigation.NavigationHelper
-import com.jobik.gameoflife.navigation.NavigationHelper.Companion.canNavigate
+import com.jobik.gameoflife.navigation.NavigationHelper.Companion.navigateToTopLevel
 import com.jobik.gameoflife.ui.helpers.*
 import kotlinx.coroutines.launch
 
@@ -35,6 +35,8 @@ fun LayoutWithNavigationRail(
     modalDrawer: ModalDrawer = ModalDrawerImplementation
 ) {
     val context = LocalContext.current
+    val currentDestination =
+        navController.currentBackStackEntryAsState().value?.destination
 
     Row(modifier = Modifier.fillMaxSize()) {
         NavigationRail(
@@ -49,8 +51,6 @@ fun LayoutWithNavigationRail(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                val currentRoute =
-                    navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
                 val coroutineScope = rememberCoroutineScope()
                 TopWindowInsetsSpacer()
 
@@ -70,21 +70,14 @@ fun LayoutWithNavigationRail(
                 Column {
                     for (button in DrawerParams.drawerButtons) {
                         NavigationRailItem(
-                            selected = navController.currentDestination?.hierarchy?.any {
+                            selected = currentDestination?.hierarchy?.any {
                                 it.hasRoute(button.route::class)
                             } == true,
                             onClick = {
                                 coroutineScope.launch {
                                     modalDrawer.drawerState.open()
                                 }
-                                if (navController.currentDestination?.hierarchy?.any {
-                                        it.hasRoute(button.route::class)
-                                    } == true) return@NavigationRailItem
-                                if (navController.canNavigate().not()) return@NavigationRailItem
-                                navController.navigate(button.route) {
-                                    // pops the route to root and places new screen
-                                    popUpTo(button.route)
-                                }
+                                navController.navigateToTopLevel(button.route)
                             },
                             icon = {
                                 Icon(

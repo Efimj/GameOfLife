@@ -5,6 +5,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import com.jobik.gameoflife.SharedPreferencesKeys
 import com.jobik.gameoflife.navigation.Screen.Game
@@ -19,6 +20,22 @@ class NavigationHelper {
 
         fun NavHostController.canNavigate(): Boolean {
             return this.currentBackStackEntry?.lifecycle?.currentState == Lifecycle.State.RESUMED
+        }
+
+        fun NavHostController.navigateToTopLevel(screen: Screen) {
+            val isCurrentDestination = currentBackStackEntry?.destination?.hierarchy?.any {
+                it.hasRoute(screen::class)
+            } == true
+
+            if (isCurrentDestination || canNavigate().not()) return
+
+            navigate(screen) {
+                popUpTo(graph.findStartDestination().id) {
+                    saveState = true
+                }
+                launchSingleTop = true
+                restoreState = true
+            }
         }
 
         fun findStartDestination(context: Context): Screen {

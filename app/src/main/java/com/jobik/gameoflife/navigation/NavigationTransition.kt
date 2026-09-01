@@ -3,6 +3,8 @@ package com.jobik.gameoflife.navigation
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.navigation.NavBackStackEntry
@@ -24,9 +26,19 @@ class NavigationTransition {
         if (initialIndex < 0 || targetIndex < 0) return null
 
         if (initialIndex > targetIndex) {
-            return slideInVertically { -it }
+            return slideInVertically(
+                animationSpec = spring(
+                    dampingRatio = Spring.DampingRatioNoBouncy,
+                    stiffness = Spring.StiffnessLow,
+                )
+            ) { -it }
         } else if (initialIndex < targetIndex) {
-            return slideInVertically { it }
+            return slideInVertically(
+                spring(
+                    dampingRatio = Spring.DampingRatioNoBouncy,
+                    stiffness = Spring.StiffnessLow,
+                )
+            ) { it }
         }
 
         return null
@@ -46,9 +58,19 @@ class NavigationTransition {
         if (initialIndex < 0 || targetIndex < 0) return null
 
         if (initialIndex > targetIndex) {
-            return slideOutVertically { it }
+            return slideOutVertically(
+                spring(
+                    dampingRatio = Spring.DampingRatioNoBouncy,
+                    stiffness = Spring.StiffnessLow,
+                )
+            ) { it }
         } else if (initialIndex < targetIndex) {
-            return slideOutVertically { -it }
+            return slideOutVertically(
+                spring(
+                    dampingRatio = Spring.DampingRatioNoBouncy,
+                    stiffness = Spring.StiffnessLow,
+                )
+            ) { -it }
         }
 
         return null
