@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Verified
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -37,6 +39,7 @@ fun LayoutWithNavigationRail(
     val context = LocalContext.current
     val currentDestination =
         navController.currentBackStackEntryAsState().value?.destination
+    val hasAnyPurchase = flavorHasAnyPurchase()
 
     Row(modifier = Modifier.fillMaxSize()) {
         NavigationRail(
@@ -69,6 +72,15 @@ fun LayoutWithNavigationRail(
 
                 Column {
                     for (button in DrawerParams.drawerButtons) {
+                        val itemColors = if (button.isSupportItem) {
+                            NavigationRailItemDefaults.colors(
+                                selectedIconColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                                indicatorColor = MaterialTheme.colorScheme.tertiaryContainer,
+                                unselectedIconColor = MaterialTheme.colorScheme.tertiary,
+                            )
+                        } else {
+                            NavigationRailItemDefaults.colors()
+                        }
                         NavigationRailItem(
                             selected = currentDestination?.hierarchy?.any {
                                 it.hasRoute(button.route::class)
@@ -79,13 +91,31 @@ fun LayoutWithNavigationRail(
                                 }
                                 navController.navigateToTopLevel(button.route)
                             },
+                            colors = itemColors,
                             icon = {
-                                Icon(
-                                    imageVector = button.icon,
-                                    contentDescription = stringResource(
-                                        id = button.description
+                                if (button.isSupportItem && hasAnyPurchase) {
+                                    Box(modifier = Modifier.size(40.dp)) {
+                                        Icon(
+                                            modifier = Modifier.align(Alignment.Center),
+                                            imageVector = button.icon,
+                                            contentDescription = stringResource(button.description),
+                                        )
+                                        Icon(
+                                            modifier = Modifier
+                                                .align(Alignment.CenterEnd)
+                                                .size(16.dp),
+                                            imageVector = Icons.Filled.Verified,
+                                            contentDescription = stringResource(button.title),
+                                        )
+                                    }
+                                } else {
+                                    Icon(
+                                        imageVector = button.icon,
+                                        contentDescription = stringResource(
+                                            id = button.description
+                                        )
                                     )
-                                )
+                                }
                             }
                         )
                     }

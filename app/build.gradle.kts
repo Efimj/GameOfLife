@@ -137,4 +137,5 @@ dependencies {
 
     "marketImplementation"(libs.app.update)
     "marketImplementation"(libs.app.update.ktx)
+    "marketImplementation"(libs.billing.ktx)
 }

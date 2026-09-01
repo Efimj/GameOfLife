@@ -1,6 +1,6 @@
 [versions]
-versionName = "1.2.1"
-versionCode = "6"
+versionName = "1.2.2"
+versionCode = "7"
 
 androidMinSdk = "27"
 androidTargetSdk = "37"
@@ -25,6 +25,7 @@ shadowsPlus = "1.0.4"
 fadingEdges = "1.0.4"
 kotlinxSerializationJson = "1.11.0"
 androidxJunit = "1.3.0"
+billingKtx = "9.1.0"
 
 [libraries]
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
@@ -38,6 +39,7 @@ material = { module = "com.google.android.material:material", version.ref = "mat
 shadowsPlus = { module = "com.github.GIGAMOLE:ComposeShadowsPlus", version.ref = "shadowsPlus" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+billing-ktx = { module = "com.android.billingclient:billing-ktx", version.ref = "billingKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
 androidx-junit = { module = "androidx.test.ext:junit", version.ref = "androidxJunit" }

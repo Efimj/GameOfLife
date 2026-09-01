@@ -12,6 +12,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.HelpOutline
 import androidx.compose.material.icons.outlined.Casino
 import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.filled.Verified
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -54,6 +55,7 @@ data class AppDrawerItemInfo(
     val icon: ImageVector,
     @StringRes val description: Int,
     val enabled: Boolean = false,
+    val isSupportItem: Boolean = false,
 )
 
 
@@ -74,12 +76,13 @@ object DrawerParams {
             icon = Icons.AutoMirrored.Outlined.HelpOutline,
             description = R.string.information,
         ),
+    ) + flavorDrawerButtons() + listOf(
         AppDrawerItemInfo(
             route = Screen.Settings,
             title = R.string.Settings,
             icon = Icons.Outlined.Settings,
             description = R.string.drawer_Settings_description,
-        ),
+        )
     )
 }
 
@@ -122,6 +125,7 @@ fun AppDrawerContent(
     val coroutineScope = rememberCoroutineScope()
     val currentDestination =
         navController.currentBackStackEntryAsState().value?.destination
+    val hasAnyPurchase = flavorHasAnyPurchase()
 
     ModalDrawerSheet(windowInsets = WindowInsets.ime) {
         Surface(color = MaterialTheme.colorScheme.surfaceContainer) {
@@ -166,6 +170,8 @@ fun AppDrawerContent(
                             isActive = currentDestination?.hierarchy?.any {
                                 it.hasRoute(button.route::class)
                             } == true,
+                            isSupportItem = button.isSupportItem,
+                            showVerified = button.isSupportItem && hasAnyPurchase,
                             onClick = {
                                 coroutineScope.launch {
                                     drawerState.close()
@@ -201,17 +207,26 @@ fun AppDrawerItem(
     @StringRes title: Int,
     @StringRes contentDescription: Int,
     isActive: Boolean,
+    isSupportItem: Boolean,
+    showVerified: Boolean,
     onClick: () -> Unit
 ) {
-    val backgroundColorValue =
-        if (isActive) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent
+    val backgroundColorValue = when {
+        isSupportItem && isActive -> MaterialTheme.colorScheme.tertiaryContainer
+        isSupportItem -> MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = .55f)
+        isActive -> MaterialTheme.colorScheme.secondaryContainer
+        else -> Color.Transparent
+    }
     val backgroundColor by animateColorAsState(
         targetValue = backgroundColorValue,
         label = "backgroundColor"
     )
 
-    val contentColorValue =
-        if (isActive) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onBackground
+    val contentColorValue = when {
+        isSupportItem -> MaterialTheme.colorScheme.onTertiaryContainer
+        isActive -> MaterialTheme.colorScheme.onSecondaryContainer
+        else -> MaterialTheme.colorScheme.onBackground
+    }
     val contentColor by animateColorAsState(
         targetValue = contentColorValue,
         label = "backgroundColor"
@@ -244,6 +259,14 @@ fun AppDrawerItem(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
+            if (showVerified) {
+                Spacer(modifier = Modifier.weight(1f))
+                Icon(
+                    imageVector = Icons.Filled.Verified,
+                    contentDescription = stringResource(title),
+                    modifier = Modifier.size(20.dp),
+                )
+            }
         }
     }
 }

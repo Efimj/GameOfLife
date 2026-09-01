@@ -15,8 +15,8 @@ import com.jobik.gameoflife.navigation.Screen.Settings
 
 class NavigationHelper {
     companion object {
-        val screenList = listOf(Onboarding, Game, Information, Settings)
-        val mainScreenList = listOf(Game, Information, Settings)
+        val screenList = listOf(Onboarding, Game, Information, Settings) + flavorScreens()
+        val mainScreenList = listOf(Game, Information, Settings) + flavorScreens()
 
         fun NavHostController.canNavigate(): Boolean {
             return this.currentBackStackEntry?.lifecycle?.currentState == Lifecycle.State.RESUMED

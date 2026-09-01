@@ -39,5 +39,6 @@ fun AppNavHost(
         {
             SettingsScreen(navController)
         }
+        addFlavorDestinations()
     }
 }

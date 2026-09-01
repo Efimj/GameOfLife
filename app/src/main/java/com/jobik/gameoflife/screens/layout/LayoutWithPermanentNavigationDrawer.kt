@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Verified
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -38,6 +40,7 @@ fun LayoutWithPermanentNavigationDrawer(
     val currentDestination =
         navController.currentBackStackEntryAsState().value?.destination
     val coroutineScope = rememberCoroutineScope()
+    val hasAnyPurchase = flavorHasAnyPurchase()
 
     PermanentNavigationDrawer(
         drawerContent = {
@@ -72,13 +75,40 @@ fun LayoutWithPermanentNavigationDrawer(
                     )
                     Column {
                         DrawerParams.drawerButtons.forEach { button ->
+                            val isSelected = currentDestination?.hierarchy?.any {
+                                it.hasRoute(button.route::class)
+                            } == true
+                            val itemColors = if (button.isSupportItem) {
+                                NavigationDrawerItemDefaults.colors(
+                                    selectedContainerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                                    selectedIconColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                                    selectedTextColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                                    unselectedContainerColor = MaterialTheme.colorScheme.tertiaryContainer.copy(alpha = .55f),
+                                    unselectedIconColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                                    unselectedTextColor = MaterialTheme.colorScheme.onTertiaryContainer,
+                                )
+                            } else {
+                                NavigationDrawerItemDefaults.colors(
+                                    unselectedContainerColor = MaterialTheme.colorScheme.surfaceContainer
+                                )
+                            }
                             NavigationDrawerItem(
                                 icon = { Icon(button.icon, contentDescription = null) },
                                 label = { Text(text = stringResource(id = button.title)) },
-                                selected = currentDestination?.hierarchy?.any {
-                                    it.hasRoute(button.route::class)
-                                } == true,
-                                colors = NavigationDrawerItemDefaults.colors(unselectedContainerColor = MaterialTheme.colorScheme.surfaceContainer),
+                                selected = isSelected,
+                                badge = if (button.isSupportItem && hasAnyPurchase) {
+                                    {
+                                        Icon(
+                                            modifier = Modifier.size(20.dp),
+                                            imageVector = Icons.Filled.Verified,
+                                            contentDescription = stringResource(button.title),
+                                            tint = MaterialTheme.colorScheme.onTertiaryContainer,
+                                        )
+                                    }
+                                } else {
+                                    null
+                                },
+                                colors = itemColors,
                                 onClick = {
                                     coroutineScope.launch {
                                         drawerState.close()
