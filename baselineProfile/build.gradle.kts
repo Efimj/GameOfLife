@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.tech.game_of_life.baselineprofile"
-    compileSdk = 34
+    compileSdk = 37
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -19,7 +19,7 @@ android {
 
     defaultConfig {
         minSdk = 28
-        targetSdk = 34
+        targetSdk = 37
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
