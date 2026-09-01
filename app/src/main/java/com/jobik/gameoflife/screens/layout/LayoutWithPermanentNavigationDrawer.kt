@@ -62,7 +62,7 @@ fun LayoutWithPermanentNavigationDrawer(
                             .size(120.dp),
                         painter = painterResource(id = R.drawable.ic_app),
                         colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary),
-                        contentDescription = "Main app icon"
+                        contentDescription = stringResource(R.string.app_name)
                     )
                     Text(
                         modifier = Modifier

@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?><resources>
 
-    <string name="app_name">生命游戏</string>
+    <string name="app_name">康威生命游戏</string>
+    <string name="app_version_text">由 Efim 创建 · v</string>
 
     <string name="GameOfLife">生命游戏</string>
 
     <string name="Settings">设置</string>
 
-    <string name="Onboarding">入职</string>
+    <string name="Onboarding">简介</string>
 
-    <string name="drawer_GameOfLife_description">生命的游戏</string>
+    <string name="drawer_GameOfLife_description">打开生命游戏</string>
 
-    <string name="drawer_Settings_description">设置</string>
+    <string name="drawer_Settings_description">打开设置</string>
 
-    <string name="drawer_Onboarding_description">介绍</string>
+    <string name="drawer_Onboarding_description">打开简介</string>
 
     <string name="speed_value_100ms">100 毫秒</string>
 
@@ -24,41 +25,41 @@
 
     <string name="speed_value_1s">1 秒</string>
 
-    <string name="start_game">开始游戏</string>
+    <string name="start_game">开始</string>
 
-    <string name="menu_button">菜单按钮</string>
+    <string name="menu_button">打开菜单</string>
 
-    <string name="clear">清除</string>
+    <string name="clear">清空网格</string>
 
-    <string name="free_soul_mode">自由灵魂模式</string>
+    <string name="free_soul_mode">清除旧的死亡细胞</string>
 
-    <string name="free_soul_mode_description">指示是否应清除死亡细胞</string>
+    <string name="free_soul_mode_description">在一个世代后移除死亡细胞标记</string>
 
     <string name="emoji_mode">表情符号模式</string>
 
-    <string name="emoji_mode_description">使用一组表情符号图标代替填充</string>
+    <string name="emoji_mode_description">使用表情符号显示存活和死亡细胞</string>
 
-    <string name="restart">重新开始</string>
+    <string name="restart">重置模拟</string>
 
-    <string name="stable_combination">稳定的组合&#127881;?</string>
+    <string name="stable_combination">检测到稳定图案 🎉</string>
 
-    <string name="no_one_survived">无一人幸存&#128128;?</string>
+    <string name="no_one_survived">所有细胞均已死亡 💀</string>
 
-    <string name="alive">活</string>
+    <string name="alive">存活细胞</string>
 
-    <string name="deaths">死亡人数</string>
+    <string name="deaths">死亡</string>
 
-    <string name="revivals">复兴</string>
+    <string name="revivals">新生</string>
 
-    <string name="switch_running_simulation">开关运行模拟</string>
+    <string name="switch_running_simulation">开始或暂停模拟</string>
 
-    <string name="set_field_dimensions">设置字段尺寸</string>
+    <string name="set_field_dimensions">设置网格尺寸</string>
 
-    <string name="rows">行数</string>
+    <string name="rows">行</string>
 
     <string name="columns">列</string>
 
-    <string name="one_step_duration">一步持续时间</string>
+    <string name="one_step_duration">世代间隔</string>
 
     <string name="simulation_settings">模拟</string>
 
@@ -66,129 +67,129 @@
 
     <string name="game_settings">游戏</string>
     <string name="show_grid">显示网格</string>
-    <string name="show_grid_description">在游戏区域中显示单元格边界</string>
+    <string name="show_grid_description">在网格上显示细胞边界</string>
 
-    <string name="neighbors_for_reviving">邻居复兴</string>
+    <string name="neighbors_for_reviving">新生所需邻居数</string>
 
-    <string name="neighbors_for_surviving">邻居为了生存</string>
+    <string name="neighbors_for_surviving">存活所需邻居数</string>
 
     <string name="rules">规则</string>
 
-    <string name="to_default">默认</string>
+    <string name="to_default">恢复默认值</string>
 
-    <string name="change_theme">改变主题</string>
+    <string name="change_theme">更改主题</string>
 
-    <string name="application">应用</string>
+    <string name="application">外观和语言</string>
 
-    <string name="information">信息</string>
+    <string name="information">关于</string>
 
-    <string name="rules_set">规则设定</string>
+    <string name="rules_set">规则集</string>
 
-    <string name="rate_dialog_title">你喜欢这个应用程序吗？</string>
+    <string name="rate_dialog_title">喜欢 Game of Life 吗？</string>
 
-    <string name="rate_dialog_description">请留下评论，分享您对该应用程序的看法。您的评分将帮助我们为所有用户改进我们的应用程序</string>
+    <string name="rate_dialog_description">如果您喜欢 Game of Life，请留下评价。您的反馈能帮助我们为所有人改进应用。</string>
 
-    <string name="dont_ask_again">不要再问</string>
+    <string name="dont_ask_again">不再询问</string>
 
-    <string name="later">之后</string>
+    <string name="later">稍后</string>
 
-    <string name="rate">速度！</string>
+    <string name="rate">评价应用</string>
     <string name="donation_prompt_title">支持 Game of Life</string>
-    <string name="donation_prompt_description">如果您喜欢这款应用，可以支持它的开发。每一份支持都能帮助项目成长，并推动未来的更新。</string>
+    <string name="donation_prompt_description">如果您喜欢 Game of Life，可以支持它的持续开发。每一份支持都能帮助项目成长，并推动未来的更新。</string>
     <string name="donate">捐赠</string>
 
-    <string name="custom_rules">自定义规则</string>
+    <string name="custom_rules">自定义规则集</string>
 
-    <string name="rules_set_description">选择不同的规则集，看到不同的游戏场景</string>
-    <string name="save_rules">保存当前规则</string>
-    <string name="save_rules_title">保存规则</string>
-    <string name="saved_rules_name">名称</string>
+    <string name="rules_set_description">选择规则集，探索不同的图案和行为</string>
+    <string name="save_rules">保存规则集</string>
+    <string name="save_rules_title">保存规则集</string>
+    <string name="saved_rules_name">规则集名称</string>
     <string name="save">保存</string>
     <string name="saved_rules">已保存</string>
     <string name="standard_rules">标准</string>
     <string name="delete_saved_rules_title">删除规则集？</string>
-    <string name="delete_saved_rules_message">“%1$s”将被删除。</string>
+    <string name="delete_saved_rules_message">“%1$s”将被永久删除。</string>
     <string name="cancel">取消</string>
     <string name="delete">删除</string>
 
     <string name="other">其他</string>
 
-    <string name="stable">稳定的</string>
+    <string name="stable">稳定型</string>
 
-    <string name="chaotic">混乱的</string>
+    <string name="chaotic">混沌型</string>
 
-    <string name="exploding">爆炸</string>
+    <string name="exploding">爆发型</string>
 
-    <string name="undefined">不明确的</string>
+    <string name="undefined">未分类</string>
 
     <string name="open_in_wikipedia">在维基百科中打开</string>
 
     <string name="JohnHortonConway">约翰·霍顿·康威</string>
 
-    <string name="JohnHortonConway_card_description">英国数学家，对有限群、结论、数论、组合博弈论和编码论做出了重大贡献。值得注意的是，他因发明娱乐数学中称为“生命游戏”的元胞自动机而闻名</string>
+    <string name="JohnHortonConway_card_description">约翰·霍顿·康威是一位英国数学家，在群论、纽结理论、数论、组合博弈论和编码理论等领域作出了重要贡献。他因创造康威生命游戏而广为人知。</string>
 
-    <string name="the_game_of_life">生命的游戏</string>
+    <string name="the_game_of_life">康威生命游戏</string>
 
-    <string name="GameOfLife_large_description">生命游戏，也简称为生命，是 1970 年开发的元胞自动机。它是一款零玩家游戏，这意味着它的进化由其初始状态决定，不需要额外的动作。一个人与生命游戏互动，创建一个初始配置并观察它如何发展。它是图灵完备的，可以对通用构造函数或任何其他图灵机进行建模</string>
+    <string name="GameOfLife_large_description">康威生命游戏通常简称为“生命”，是数学家约翰·霍顿·康威于1970年构想的一种元胞自动机。它是一款零玩家游戏：初始图案设定后，后续演化完全由规则决定。该系统具有图灵完备性，能够进行通用计算。</string>
 
     <string name="open_source_project">开源项目</string>
 
-    <string name="open_source_project_description">您可以在 GitHub 上找到完整的源代码⭐️</string>
+    <string name="open_source_project_description">在 GitHub 上查看完整源代码 ⭐️</string>
 
-    <string name="telegram_community">加入电报社区</string>
+    <string name="telegram_community">加入 Telegram 社区</string>
 
-    <string name="telegram_community_description">随时关注应用程序更新、获取早期版本并帮助测试新功能。提出您的想法、提出问题并快速获得答案</string>
+    <string name="telegram_community_description">关注应用动态、体验抢先版本并帮助测试新功能。分享想法、提出问题并快速获得答复。</string>
 
-    <string name="onb_1_headline">约翰·康威博士</string>
+    <string name="onb_1_headline">约翰·康威</string>
 
-    <string name="onb_1_description">1970 年设计了这种细胞自动机进化模拟，称为“生命游戏”，游戏场上的每个细胞都遵循简单的规则</string>
+    <string name="onb_1_description">1970年，数学家约翰·康威构想了生命游戏。这是一种元胞自动机，其中每个细胞都遵循几条简单规则。</string>
 
     <string name="onb_2_headline">规则 1</string>
 
-    <string name="onb_2_description">在空（死）细胞中，如果恰好有三个活着的邻居，生命就会诞生</string>
+    <string name="onb_2_description">一个死亡细胞恰好有三个存活邻居时会变为存活。</string>
 
     <string name="onb_3_headline">规则 2</string>
 
-    <string name="onb_3_description">如果一个活细胞有两个或三个活的邻居，它就会继续活下去；否则，细胞就会死亡（由于孤独或过度拥挤）</string>
+    <string name="onb_3_description">一个存活细胞有两个或三个存活邻居时会继续存活，否则会因邻居过少或过多而死亡。</string>
 
-    <string name="set_field_scale">场地规模</string>
+    <string name="set_field_scale">细胞大小</string>
 
     <string name="pause">暂停</string>
 
     <string name="close">关闭</string>
 
-    <string name="security">安全性</string>
+    <string name="security">安全</string>
 
-    <string name="hides_content_prohibits_screen_recording">隐藏内容，禁止屏幕录制</string>
+    <string name="hides_content_prohibits_screen_recording">隐藏应用预览并阻止截屏和屏幕录制</string>
 
     <string name="secure_mode">安全模式</string>
 
-    <string name="loop_combination">检测到循环 &#127905;?</string>
+    <string name="loop_combination">检测到重复图案 🎡</string>
 
     <string name="updates">更新</string>
 
     <string name="automatic_check">自动检查</string>
 
-    <string name="it_suggests_updating">如果有可用更新，它会建议更新</string>
+    <string name="it_suggests_updating">有可用的应用更新时通知您</string>
 
     <string name="check_update">检查更新</string>
 
-    <string name="update_downloaded">刚刚下载了更新</string>
+    <string name="update_downloaded">更新已下载</string>
 
-    <string name="update_available">可用更新</string>
+    <string name="update_available">有可用更新</string>
 
     <string name="download">下载</string>
 
-    <string name="installed_latest_version">已安装最新版本</string>
+    <string name="installed_latest_version">您正在使用最新版本</string>
 
     <string name="detect_loops">检测循环</string>
 
-    <string name="pauses_game_when_loop">检测到循环时暂停游戏</string>
+    <string name="pauses_game_when_loop">检测到循环时暂停模拟</string>
 
-    <string name="number_of_skipped_steps">跳过的步数</string>
+    <string name="number_of_skipped_steps">要跳过的世代数</string>
 
-    <string name="show_eliminated_cells">显示消除的单元格</string>
+    <string name="show_eliminated_cells">显示死亡细胞</string>
 
-    <string name="show_eliminated_cells_description">显示在上一步中消除的单元格</string>
+    <string name="show_eliminated_cells_description">显示已经死亡的细胞</string>
 
 </resources>

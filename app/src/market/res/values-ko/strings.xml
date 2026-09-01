@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="donations_title">후원</string>
+    <string name="donations_navigation_description">후원 페이지 열기</string>
+    <string name="donations_description">Game of Life가 마음에 드셨다면 지속적인 개발을 후원할 수 있습니다. 여러분의 후원은 프로젝트의 성장을 돕고 이 작업이 의미 있음을 보여 줍니다. 진심으로 감사합니다 ❤️</string>
+    <string name="donations_subscription_label">월간 구독</string>
+    <string name="donations_standard_subscription">후원자</string>
+    <string name="donations_generous_subscription">후원 회원</string>
+    <string name="donations_monthly_label">월간 후원</string>
+    <string name="donations_repeatable_label">일회성 후원</string>
+    <string name="donations_one_time_name">개발 후원</string>
+    <string name="donations_one_time_description">언제든 다시 후원할 수 있습니다.</string>
+    <string name="donations_retry">다시 시도</string>
+    <string name="donations_unavailable">사용할 수 없음</string>
+    <string name="donations_active_subscription">활성 구독</string>
+    <string name="donations_purchase_count">후원 횟수: %1$d</string>
+    <string name="donations_purchase_count_label">후원:</string>
+    <string name="donations_purchase_complete">후원해 주셔서 감사합니다 ❤️</string>
+    <string name="donations_thank_you_title">감사합니다! ❤️</string>
+    <string name="donations_thank_you_letter">여러분의 후원은 단순한 구매보다 훨씬 큰 의미가 있습니다. 이 앱이 유용하고, 들인 시간과 정성이 가치 있으며, 계속 개발해야 한다는 것을 알려 줍니다. 프로젝트의 일원이 되어 성장을 도와주셔서 감사합니다.</string>
+    <string name="donations_purchase_pending">결제가 보류 중입니다.</string>
+    <string name="donations_service_unavailable">Google Play Billing을 일시적으로 사용할 수 없습니다.</string>
+    <string name="donations_products_unavailable">이 계정에서는 후원 옵션을 사용할 수 없습니다.</string>
+</resources>

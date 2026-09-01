@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="donations_title">捐赠</string>
+    <string name="donations_navigation_description">打开捐赠页面</string>
+    <string name="donations_description">如果您喜欢 Game of Life，可以支持它的持续开发。您的支持能帮助项目成长，也表明这项工作具有意义。衷心感谢 ❤️</string>
+    <string name="donations_subscription_label">每月订阅</string>
+    <string name="donations_standard_subscription">支持者</string>
+    <string name="donations_generous_subscription">赞助人</string>
+    <string name="donations_monthly_label">每月支持</string>
+    <string name="donations_repeatable_label">一次性捐赠</string>
+    <string name="donations_one_time_name">支持开发</string>
+    <string name="donations_one_time_description">您可以随时再次捐赠。</string>
+    <string name="donations_retry">重试</string>
+    <string name="donations_unavailable">不可用</string>
+    <string name="donations_active_subscription">有效订阅</string>
+    <string name="donations_purchase_count">捐赠次数：%1$d</string>
+    <string name="donations_purchase_count_label">捐赠：</string>
+    <string name="donations_purchase_complete">感谢您的支持 ❤️</string>
+    <string name="donations_thank_you_title">谢谢！ ❤️</string>
+    <string name="donations_thank_you_letter">您的支持不仅仅是一次购买。它表明这款应用确实有用，投入其中的时间和心血具有价值，也鼓励我继续前进。感谢您成为项目的一员并帮助它成长。</string>
+    <string name="donations_purchase_pending">付款正在等待处理。</string>
+    <string name="donations_service_unavailable">Google Play Billing 暂时不可用。</string>
+    <string name="donations_products_unavailable">此账号无法使用支持选项。</string>
+</resources>

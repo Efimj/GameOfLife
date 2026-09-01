@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?><resources>
 
-    <string name="app_name">Permainan Kehidupan</string>
+    <string name="app_name">Game of Life Conway</string>
+    <string name="app_version_text">Dibuat oleh Efim · v</string>
 
-    <string name="GameOfLife">Permainan Kehidupan</string>
+    <string name="GameOfLife">Game of Life</string>
 
     <string name="Settings">Pengaturan</string>
 
-    <string name="Onboarding">Orientasi</string>
+    <string name="Onboarding">Pengenalan</string>
 
-    <string name="drawer_GameOfLife_description">Permainan kehidupan</string>
+    <string name="drawer_GameOfLife_description">Buka Game of Life</string>
 
-    <string name="drawer_Settings_description">Pengaturan</string>
+    <string name="drawer_Settings_description">Buka pengaturan</string>
 
-    <string name="drawer_Onboarding_description">Perkenalan</string>
+    <string name="drawer_Onboarding_description">Buka pengenalan</string>
 
     <string name="speed_value_100ms">100 md</string>
 
@@ -22,43 +23,43 @@
 
     <string name="speed_value_750ms">750 md</string>
 
-    <string name="speed_value_1s">1 detik</string>
+    <string name="speed_value_1s">1 dtk</string>
 
-    <string name="start_game">Memulai permainan</string>
+    <string name="start_game">Mulai</string>
 
-    <string name="menu_button">Tombol menu</string>
+    <string name="menu_button">Buka menu</string>
 
-    <string name="clear">Jernih</string>
+    <string name="clear">Bersihkan kisi</string>
 
-    <string name="free_soul_mode">Mode jiwa bebas</string>
+    <string name="free_soul_mode">Hapus sel mati lama</string>
 
-    <string name="free_soul_mode_description">Menunjukkan apakah sel-sel mati harus dibersihkan</string>
+    <string name="free_soul_mode_description">Hapus penanda sel mati setelah satu generasi</string>
 
-    <string name="emoji_mode">Modus emoji</string>
+    <string name="emoji_mode">Mode emoji</string>
 
-    <string name="emoji_mode_description">Alih-alih mengisi, serangkaian ikon emoji digunakan</string>
+    <string name="emoji_mode_description">Tampilkan sel hidup dan mati sebagai emoji</string>
 
-    <string name="restart">Mengulang kembali</string>
+    <string name="restart">Atur ulang simulasi</string>
 
-    <string name="stable_combination">Kombinasi yang stabil &#127881;</string>
+    <string name="stable_combination">Pola stabil terdeteksi 🎉</string>
 
-    <string name="no_one_survived">Tidak ada yang selamat &#128128;</string>
+    <string name="no_one_survived">Semua sel telah mati 💀</string>
 
-    <string name="alive">Hidup</string>
+    <string name="alive">Sel hidup</string>
 
-    <string name="deaths">Meninggal</string>
+    <string name="deaths">Kematian</string>
 
-    <string name="revivals">Kebangkitan</string>
+    <string name="revivals">Kelahiran</string>
 
-    <string name="switch_running_simulation">Ganti simulasi yang sedang berjalan</string>
+    <string name="switch_running_simulation">Mulai atau jeda simulasi</string>
 
-    <string name="set_field_dimensions">Tetapkan dimensi bidang</string>
+    <string name="set_field_dimensions">Atur ukuran kisi</string>
 
     <string name="rows">Baris</string>
 
     <string name="columns">Kolom</string>
 
-    <string name="one_step_duration">Durasi satu langkah</string>
+    <string name="one_step_duration">Interval generasi</string>
 
     <string name="simulation_settings">Simulasi</string>
 
@@ -66,92 +67,92 @@
 
     <string name="game_settings">Permainan</string>
     <string name="show_grid">Tampilkan kisi</string>
-    <string name="show_grid_description">Tampilkan batas sel di bidang permainan</string>
+    <string name="show_grid_description">Tampilkan batas sel pada kisi</string>
 
-    <string name="neighbors_for_reviving">Tetangga untuk bangkit kembali</string>
+    <string name="neighbors_for_reviving">Tetangga yang diperlukan untuk lahir</string>
 
-    <string name="neighbors_for_surviving">Tetangga untuk bertahan hidup</string>
+    <string name="neighbors_for_surviving">Tetangga yang diperlukan untuk bertahan</string>
 
     <string name="rules">Aturan</string>
 
-    <string name="to_default">Secara default</string>
+    <string name="to_default">Atur ulang ke bawaan</string>
 
     <string name="change_theme">Ubah tema</string>
 
-    <string name="application">Aplikasi</string>
+    <string name="application">Tampilan dan bahasa</string>
 
-    <string name="information">Informasi</string>
+    <string name="information">Tentang</string>
 
-    <string name="rules_set">Aturan ditetapkan</string>
+    <string name="rules_set">Kumpulan aturan</string>
 
-    <string name="rate_dialog_title">Apakah Anda menyukai aplikasi ini?</string>
+    <string name="rate_dialog_title">Menikmati Game of Life?</string>
 
-    <string name="rate_dialog_description">Silakan bagikan pendapat Anda tentang aplikasi dengan meninggalkan ulasan. Peringkat Anda akan membantu kami meningkatkan aplikasi kami untuk semua pengguna</string>
+    <string name="rate_dialog_description">Jika Anda menikmati Game of Life, silakan tinggalkan ulasan. Masukan Anda membantu kami meningkatkan aplikasi untuk semua orang.</string>
 
-    <string name="dont_ask_again">Jangan tanya lagi</string>
+    <string name="dont_ask_again">Jangan tanyakan lagi</string>
 
     <string name="later">Nanti</string>
 
-    <string name="rate">Kecepatan!</string>
+    <string name="rate">Beri nilai aplikasi</string>
     <string name="donation_prompt_title">Dukung Game of Life</string>
-    <string name="donation_prompt_description">Jika Anda menyukai aplikasi ini, Anda dapat mendukung pengembangannya. Setiap kontribusi membantu proyek berkembang dan memungkinkan pembaruan berikutnya.</string>
-    <string name="donate">Dukung</string>
+    <string name="donation_prompt_description">Jika Anda menikmati Game of Life, Anda dapat mendukung pengembangannya secara berkelanjutan. Setiap kontribusi membantu proyek berkembang dan memungkinkan pembaruan mendatang.</string>
+    <string name="donate">Donasi</string>
 
-    <string name="custom_rules">Aturan adat</string>
+    <string name="custom_rules">Kumpulan aturan khusus</string>
 
-    <string name="rules_set_description">Pilih kumpulan aturan yang berbeda untuk melihat skenario permainan yang berbeda</string>
-    <string name="save_rules">Simpan aturan saat ini</string>
-    <string name="save_rules_title">Simpan aturan</string>
-    <string name="saved_rules_name">Nama</string>
+    <string name="rules_set_description">Pilih kumpulan aturan untuk menjelajahi berbagai pola dan perilaku</string>
+    <string name="save_rules">Simpan kumpulan aturan</string>
+    <string name="save_rules_title">Simpan kumpulan aturan</string>
+    <string name="saved_rules_name">Nama kumpulan aturan</string>
     <string name="save">Simpan</string>
     <string name="saved_rules">Tersimpan</string>
     <string name="standard_rules">Standar</string>
     <string name="delete_saved_rules_title">Hapus kumpulan aturan?</string>
-    <string name="delete_saved_rules_message">“%1$s” akan dihapus.</string>
+    <string name="delete_saved_rules_message">“%1$s” akan dihapus secara permanen.</string>
     <string name="cancel">Batal</string>
     <string name="delete">Hapus</string>
 
     <string name="other">Lainnya</string>
 
-    <string name="stable">stabil</string>
+    <string name="stable">Stabil</string>
 
-    <string name="chaotic">kacau</string>
+    <string name="chaotic">Kacau</string>
 
-    <string name="exploding">meledak</string>
+    <string name="exploding">Eksplosif</string>
 
-    <string name="undefined">belum diartikan</string>
+    <string name="undefined">Belum diklasifikasikan</string>
 
-    <string name="open_in_wikipedia">Buka di wikipedia</string>
+    <string name="open_in_wikipedia">Buka di Wikipedia</string>
 
     <string name="JohnHortonConway">John Horton Conway</string>
 
-    <string name="JohnHortonConway_card_description">Matematikawan Inggris, telah memberikan kontribusi signifikan pada grup hingga, teori simpul, teori bilangan, teori permainan kombinatorial, dan teori pengkodean. Khususnya, ia dikenal karena menciptakan robot seluler yang disebut Game of Life dalam matematika rekreasional</string>
+    <string name="JohnHortonConway_card_description">John Horton Conway adalah matematikawan Inggris yang memberikan kontribusi besar pada teori grup, teori simpul, teori bilangan, teori permainan kombinatorial, dan teori pengodean. Ia dikenal luas sebagai pencipta Game of Life Conway.</string>
 
-    <string name="the_game_of_life">Permainan Kehidupan</string>
+    <string name="the_game_of_life">Game of Life Conway</string>
 
-    <string name="GameOfLife_large_description">Game of Life, juga dikenal sebagai Life, adalah robot seluler yang dikembangkan pada tahun 1970. Ini adalah permainan tanpa pemain, artinya evolusinya ditentukan oleh keadaan awalnya dan tidak memerlukan tindakan tambahan. Seseorang berinteraksi dengan Game of Life, membuat konfigurasi awal dan mengamati perkembangannya. Ini adalah Turing lengkap dan dapat memodelkan konstruktor universal atau mesin Turing lainnya</string>
+    <string name="GameOfLife_large_description">Game of Life Conway, yang sering disebut “Life”, adalah automaton seluler yang dirancang oleh matematikawan John Horton Conway pada tahun 1970. Ini adalah permainan tanpa pemain: setelah pola awal ditetapkan, perkembangannya sepenuhnya ditentukan oleh aturan. Sistem ini lengkap secara Turing dan mampu melakukan komputasi universal.</string>
 
     <string name="open_source_project">Proyek sumber terbuka</string>
 
-    <string name="open_source_project_description">Anda dapat menemukan seluruh kode sumber di GitHub ⭐️</string>
+    <string name="open_source_project_description">Lihat kode sumber lengkap di GitHub ⭐️</string>
 
-    <string name="telegram_community">Bergabunglah dengan Komunitas Telegram</string>
+    <string name="telegram_community">Bergabung dengan komunitas Telegram</string>
 
-    <string name="telegram_community_description">Pantau terus pembaruan aplikasi, dapatkan versi awal, dan bantu pengujian fitur baru. Sarankan ide Anda, ajukan pertanyaan, dan dapatkan jawaban cepat</string>
+    <string name="telegram_community_description">Ikuti kabar aplikasi, coba build awal, dan bantu menguji fitur baru. Bagikan ide, ajukan pertanyaan, dan dapatkan jawaban dengan cepat.</string>
 
-    <string name="onb_1_headline">Dr. John Conway</string>
+    <string name="onb_1_headline">John Conway</string>
 
-    <string name="onb_1_description">Merancang simulasi evolusi automata seluler pada tahun 1970, yang disebut \"Game of Life\", di mana setiap sel di bidang permainan mengikuti aturan sederhana</string>
+    <string name="onb_1_description">Pada tahun 1970, matematikawan John Conway merancang Game of Life, automaton seluler dengan setiap sel yang mengikuti beberapa aturan sederhana.</string>
 
     <string name="onb_2_headline">Aturan 1</string>
 
-    <string name="onb_2_description">Di sel yang kosong (mati), jika ada tepat tiga tetangga yang hidup, maka kehidupan akan lahir</string>
+    <string name="onb_2_description">Sel mati dengan tepat tiga tetangga hidup akan menjadi hidup.</string>
 
     <string name="onb_3_headline">Aturan 2</string>
 
-    <string name="onb_3_description">Jika sebuah sel hidup memiliki dua atau tiga tetangga yang hidup, sel tersebut akan terus hidup; jika tidak, sel akan mati (karena kesepian atau kepadatan yang berlebihan)</string>
+    <string name="onb_3_description">Sel hidup akan bertahan jika memiliki dua atau tiga tetangga hidup. Jika tidak, sel tersebut mati karena kekurangan atau kelebihan populasi.</string>
 
-    <string name="set_field_scale">Skala lapangan</string>
+    <string name="set_field_scale">Ukuran sel</string>
 
     <string name="pause">Jeda</string>
 
@@ -159,35 +160,35 @@
 
     <string name="security">Keamanan</string>
 
-    <string name="hides_content_prohibits_screen_recording">Menyembunyikan konten, melarang perekaman layar</string>
+    <string name="hides_content_prohibits_screen_recording">Sembunyikan pratinjau aplikasi dan blokir tangkapan serta rekaman layar</string>
 
     <string name="secure_mode">Mode aman</string>
 
-    <string name="loop_combination">Loop terdeteksi &#127905;</string>
+    <string name="loop_combination">Pola berulang terdeteksi 🎡</string>
 
     <string name="updates">Pembaruan</string>
 
-    <string name="automatic_check">Pemeriksaan otomatis</string>
+    <string name="automatic_check">Periksa otomatis</string>
 
-    <string name="it_suggests_updating">Ini menyarankan pembaruan jika pembaruan tersedia</string>
+    <string name="it_suggests_updating">Beri tahu saat pembaruan aplikasi tersedia</string>
 
     <string name="check_update">Periksa pembaruan</string>
 
-    <string name="update_downloaded">Pembaruan baru saja diunduh</string>
+    <string name="update_downloaded">Pembaruan telah diunduh</string>
 
     <string name="update_available">Pembaruan tersedia</string>
 
     <string name="download">Unduh</string>
 
-    <string name="installed_latest_version">Menginstal versi terbaru</string>
+    <string name="installed_latest_version">Anda menggunakan versi terbaru</string>
 
-    <string name="detect_loops">Deteksi loop</string>
+    <string name="detect_loops">Deteksi pola berulang</string>
 
-    <string name="pauses_game_when_loop">Menjeda game saat loop terdeteksi</string>
+    <string name="pauses_game_when_loop">Menjeda simulasi saat pola berulang terdeteksi</string>
 
-    <string name="number_of_skipped_steps">Jumlah langkah yang dilewati</string>
+    <string name="number_of_skipped_steps">Generasi yang dilewati</string>
 
-    <string name="show_eliminated_cells">Tampilkan sel yang dihilangkan</string>
+    <string name="show_eliminated_cells">Tampilkan sel mati</string>
 
-    <string name="show_eliminated_cells_description">Tampilkan sel yang dihilangkan pada langkah sebelumnya</string>
+    <string name="show_eliminated_cells_description">Tampilkan sel yang telah mati</string>
 </resources>

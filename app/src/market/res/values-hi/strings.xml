@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="donations_title">दान</string>
+    <string name="donations_navigation_description">दान पेज खोलें</string>
+    <string name="donations_description">यदि आपको Game of Life पसंद है, तो आप इसके निरंतर विकास में सहयोग कर सकते हैं। आपका योगदान परियोजना को आगे बढ़ाता है और बताता है कि यह काम महत्वपूर्ण है। दिल से धन्यवाद ❤️</string>
+    <string name="donations_subscription_label">मासिक सदस्यता</string>
+    <string name="donations_standard_subscription">समर्थक</string>
+    <string name="donations_generous_subscription">संरक्षक</string>
+    <string name="donations_monthly_label">मासिक सहयोग</string>
+    <string name="donations_repeatable_label">एक बार का दान</string>
+    <string name="donations_one_time_name">विकास में सहयोग करें</string>
+    <string name="donations_one_time_description">आप किसी भी समय फिर से दान कर सकते हैं।</string>
+    <string name="donations_retry">फिर कोशिश करें</string>
+    <string name="donations_unavailable">उपलब्ध नहीं</string>
+    <string name="donations_active_subscription">सक्रिय सदस्यता</string>
+    <string name="donations_purchase_count">किए गए दान: %1$d</string>
+    <string name="donations_purchase_count_label">दान:</string>
+    <string name="donations_purchase_complete">आपके सहयोग के लिए धन्यवाद ❤️</string>
+    <string name="donations_thank_you_title">धन्यवाद! ❤️</string>
+    <string name="donations_thank_you_letter">आपका सहयोग केवल खरीद से कहीं अधिक मायने रखता है। यह बताता है कि यह ऐप उपयोगी है, इसमें लगाया गया समय और ध्यान महत्वपूर्ण है और मुझे इसे आगे बढ़ाते रहना चाहिए। परियोजना का हिस्सा बनने और इसे बढ़ने में मदद करने के लिए धन्यवाद।</string>
+    <string name="donations_purchase_pending">भुगतान लंबित है।</string>
+    <string name="donations_service_unavailable">Google Play Billing कुछ समय के लिए उपलब्ध नहीं है।</string>
+    <string name="donations_products_unavailable">इस खाते के लिए सहयोग के विकल्प उपलब्ध नहीं हैं।</string>
+</resources>

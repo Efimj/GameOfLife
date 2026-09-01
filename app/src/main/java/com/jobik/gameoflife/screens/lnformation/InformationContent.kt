@@ -77,6 +77,8 @@ data class CardInfo(
 fun InformationContent() {
     val context = LocalContext.current
     val uriHandler = LocalUriHandler.current
+    val johnHortonConwayWikiUri = stringResource(R.string.JohnHortonConway_wiki_uri)
+    val gameOfLifeWikiUri = stringResource(R.string.GameOfLife_wiki_uri)
     val currentWidthSize = currentWidthSizeClass()
     val countColumns = when (currentWidthSize) {
         WindowWidthSizeClass.Compact -> 1
@@ -96,7 +98,7 @@ fun InformationContent() {
             body = R.string.JohnHortonConway_card_description,
             buttonText = R.string.open_in_wikipedia,
             onClick = {
-                uriHandler.openUri(context.getString(R.string.JohnHortonConway_wiki_uri))
+                uriHandler.openUri(johnHortonConwayWikiUri)
             }
         ),
         CardInfo(
@@ -107,7 +109,7 @@ fun InformationContent() {
             imageWithTint = true,
             buttonText = R.string.open_in_wikipedia,
             onClick = {
-                uriHandler.openUri(context.getString(R.string.GameOfLife_wiki_uri))
+                uriHandler.openUri(gameOfLifeWikiUri)
             }
         ),
         CardInfo(

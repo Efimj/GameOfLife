@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="donations_title">Пожертвования</string>
-    <string name="donations_navigation_description">Открыть пожертвования</string>
-    <string name="donations_description">Это способ сказать спасибо за существование этого приложения. Ваша поддержка даёт мне понять, что я занимаюсь этим не зря. Спасибо от всего сердца ❤️</string>
-    <string name="donations_subscription_label">Подписка</string>
-    <string name="donations_standard_subscription">Друг приложения</string>
-    <string name="donations_generous_subscription">Покровитель приложения</string>
+    <string name="donations_title">Поддержка</string>
+    <string name="donations_navigation_description">Открыть страницу поддержки</string>
+    <string name="donations_description">Если вам нравится Game of Life, вы можете поддержать дальнейшую разработку. Ваш вклад помогает проекту развиваться и показывает, что эта работа важна. Спасибо от всего сердца ❤️</string>
+    <string name="donations_subscription_label">Ежемесячная подписка</string>
+    <string name="donations_standard_subscription">Сторонник</string>
+    <string name="donations_generous_subscription">Покровитель</string>
     <string name="donations_monthly_label">Ежемесячная поддержка</string>
-    <string name="donations_repeatable_label">Многоразовое пожертвование</string>
+    <string name="donations_repeatable_label">Разовый донат</string>
     <string name="donations_one_time_name">Поддержать разработку</string>
-    <string name="donations_one_time_description">Можно пожертвовать снова в любое время.</string>
+    <string name="donations_one_time_description">Вы можете задонатить снова в любое время.</string>
     <string name="donations_retry">Повторить</string>
     <string name="donations_unavailable">Недоступно</string>
     <string name="donations_active_subscription">Активная подписка</string>
-    <string name="donations_purchase_count">Куплено пожертвований: %1$d</string>
-    <string name="donations_purchase_count_label">Количество покупок:</string>
-    <string name="donations_purchase_complete">Спасибо за вашу поддержку ❤️</string>
+    <string name="donations_purchase_count">Сделано донатов: %1$d</string>
+    <string name="donations_purchase_count_label">Донаты:</string>
+    <string name="donations_purchase_complete">Спасибо за поддержку ❤️</string>
     <string name="donations_thank_you_title">Спасибо! ❤️</string>
-    <string name="donations_thank_you_letter">Ваша поддержка для меня — гораздо больше, чем просто покупка. Она говорит о том, что приложение приносит пользу, что вложенные в него время и забота имеют значение и что мне стоит продолжать. Спасибо, что стали частью этого проекта и помогаете ему развиваться.</string>
-    <string name="donations_purchase_pending">Покупка ожидает оплаты.</string>
+    <string name="donations_thank_you_letter">Ваша поддержка значит для меня гораздо больше, чем просто покупка. Она показывает, что приложение полезно, что вложенные в него время и забота важны и что мне стоит продолжать. Спасибо, что вы с этим проектом и помогаете ему развиваться.</string>
+    <string name="donations_purchase_pending">Платёж ожидает завершения.</string>
     <string name="donations_service_unavailable">Google Play Billing временно недоступен.</string>
-    <string name="donations_products_unavailable">Пожертвования недоступны для этого аккаунта.</string>
+    <string name="donations_products_unavailable">Варианты поддержки недоступны для этого аккаунта.</string>
 </resources>

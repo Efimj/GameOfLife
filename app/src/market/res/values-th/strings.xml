@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="donations_title">การบริจาค</string>
+    <string name="donations_navigation_description">เปิดหน้าบริจาค</string>
+    <string name="donations_description">หากคุณชอบ Game of Life คุณสามารถสนับสนุนการพัฒนาอย่างต่อเนื่องได้ การสนับสนุนของคุณช่วยให้โครงการเติบโตและแสดงให้เห็นว่างานนี้มีความหมาย ขอบคุณจากใจ ❤️</string>
+    <string name="donations_subscription_label">การสมัครสมาชิกรายเดือน</string>
+    <string name="donations_standard_subscription">ผู้สนับสนุน</string>
+    <string name="donations_generous_subscription">ผู้อุปถัมภ์</string>
+    <string name="donations_monthly_label">การสนับสนุนรายเดือน</string>
+    <string name="donations_repeatable_label">บริจาคครั้งเดียว</string>
+    <string name="donations_one_time_name">สนับสนุนการพัฒนา</string>
+    <string name="donations_one_time_description">คุณสามารถบริจาคอีกครั้งได้ทุกเมื่อ</string>
+    <string name="donations_retry">ลองอีกครั้ง</string>
+    <string name="donations_unavailable">ไม่พร้อมใช้งาน</string>
+    <string name="donations_active_subscription">การสมัครสมาชิกที่ใช้งานอยู่</string>
+    <string name="donations_purchase_count">จำนวนการบริจาค: %1$d</string>
+    <string name="donations_purchase_count_label">บริจาค:</string>
+    <string name="donations_purchase_complete">ขอบคุณสำหรับการสนับสนุน ❤️</string>
+    <string name="donations_thank_you_title">ขอบคุณ! ❤️</string>
+    <string name="donations_thank_you_letter">การสนับสนุนของคุณมีความหมายมากกว่าการซื้อ มันแสดงให้เห็นว่าแอปนี้มีประโยชน์ เวลาและความใส่ใจที่ทุ่มเทลงไปมีคุณค่า และผมควรพัฒนาต่อไป ขอบคุณที่เป็นส่วนหนึ่งของโครงการและช่วยให้โครงการเติบโต</string>
+    <string name="donations_purchase_pending">กำลังรอการชำระเงิน</string>
+    <string name="donations_service_unavailable">Google Play Billing ไม่พร้อมใช้งานชั่วคราว</string>
+    <string name="donations_products_unavailable">ตัวเลือกการสนับสนุนไม่พร้อมใช้งานสำหรับบัญชีนี้</string>
+</resources>

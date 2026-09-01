@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="donations_title">寄付</string>
+    <string name="donations_navigation_description">寄付ページを開く</string>
+    <string name="donations_description">Game of Lifeを気に入っていただけたら、継続的な開発を支援できます。皆さまのご協力がプロジェクトを成長させ、この取り組みに価値があることを伝えてくれます。心より感謝いたします ❤️</string>
+    <string name="donations_subscription_label">月額サブスクリプション</string>
+    <string name="donations_standard_subscription">サポーター</string>
+    <string name="donations_generous_subscription">パトロン</string>
+    <string name="donations_monthly_label">毎月の支援</string>
+    <string name="donations_repeatable_label">1回限りの寄付</string>
+    <string name="donations_one_time_name">開発を支援</string>
+    <string name="donations_one_time_description">いつでも再度寄付できます。</string>
+    <string name="donations_retry">再試行</string>
+    <string name="donations_unavailable">利用できません</string>
+    <string name="donations_active_subscription">有効なサブスクリプション</string>
+    <string name="donations_purchase_count">寄付回数: %1$d</string>
+    <string name="donations_purchase_count_label">寄付:</string>
+    <string name="donations_purchase_complete">ご支援ありがとうございます ❤️</string>
+    <string name="donations_thank_you_title">ありがとうございます！ ❤️</string>
+    <string name="donations_thank_you_letter">皆さまのご支援は、単なる購入以上の意味を持ちます。このアプリが役立っていること、費やした時間と心配りに価値があること、そして開発を続けるべきだと伝えてくれます。プロジェクトに参加し、成長を支えてくださりありがとうございます。</string>
+    <string name="donations_purchase_pending">お支払いは保留中です。</string>
+    <string name="donations_service_unavailable">Google Play Billingは一時的に利用できません。</string>
+    <string name="donations_products_unavailable">このアカウントでは支援オプションを利用できません。</string>
+</resources>

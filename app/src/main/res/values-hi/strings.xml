@@ -1,109 +1,99 @@
 <resources>
-    <string name="app_name">जीवन का नाटक</string>
+    <string name="app_name">कॉनवे का गेम ऑफ लाइफ़</string>
+    <string name="app_version_text">Efim द्वारा निर्मित · v</string>
 
-    <string name="GameOfLife">जीवन का नाटक</string>
-    <string name="Settings">समायोजन</string>
-    <string name="Onboarding">ज्ञानप्राप्ति</string>
-    <string name="drawer_GameOfLife_description">जीवन का नाटक</string>
-    <string name="drawer_Settings_description">समायोजन</string>
-    <string name="drawer_Onboarding_description">परिचय</string>
+    <string name="GameOfLife">गेम ऑफ लाइफ़</string>
+    <string name="Settings">सेटिंग</string>
+    <string name="Onboarding">परिचय</string>
+    <string name="drawer_GameOfLife_description">गेम ऑफ लाइफ़ खोलें</string>
+    <string name="drawer_Settings_description">सेटिंग खोलें</string>
+    <string name="drawer_Onboarding_description">परिचय खोलें</string>
 
-    <string name="speed_value_100ms">100ms</string>
-    <string name="speed_value_250ms">250ms</string>
-    <string name="speed_value_500ms">500ms</string>
-    <string name="speed_value_750ms">750ms</string>
-    <string name="speed_value_1s">1s</string>
+    <string name="speed_value_100ms">100 मि.से.</string>
+    <string name="speed_value_250ms">250 मि.से.</string>
+    <string name="speed_value_500ms">500 मि.से.</string>
+    <string name="speed_value_750ms">750 मि.से.</string>
+    <string name="speed_value_1s">1 सेकंड</string>
 
-    <string name="start_game">खेल शुरू</string>
-    <string name="menu_button">मेनू बटन</string>
-    <string name="clear">स्पष्ट</string>
-    <string name="free_soul_mode">मुक्त आत्मा मोड</string>
-    <string name="free_soul_mode_description">इंगित करता है कि मृत कोशिकाओं को साफ़ किया जाना चाहिए या नहीं</string>
+    <string name="start_game">शुरू करें</string>
+    <string name="menu_button">मेन्यू खोलें</string>
+    <string name="clear">ग्रिड साफ़ करें</string>
+    <string name="free_soul_mode">पुरानी मृत कोशिकाएँ हटाएँ</string>
+    <string name="free_soul_mode_description">मृत कोशिकाओं के निशान एक पीढ़ी के बाद हटाएँ</string>
     <string name="emoji_mode">इमोजी मोड</string>
-    <string name="emoji_mode_description">भरने के बजाय, इमोजी आइकन का एक सेट उपयोग किया जाता है</string>
-    <string name="restart">पुनः आरंभ करें</string>
-    <string name="stable_combination">स्थिर संयोजन 🎉</string>
-    <string name="no_one_survived">कोई नहीं बचा 💀</string>
-    <string name="alive">जीवित</string>
-    <string name="deaths">मौतें</string>
-    <string name="revivals">पुनरुद्धार</string>
-    <string name="switch_running_simulation">चल रहे सिमुलेशन को स्विच करें</string>
-    <string name="set_field_dimensions">फ़ील्ड आयाम सेट करें</string>
-    <string name="rows">पंक्तियों</string>
-    <string name="columns">कॉलम</string>
-    <string name="one_step_duration">एक चरण की अवधि</string>
-    <string name="simulation_settings">सिमुलेशन</string>
+    <string name="emoji_mode_description">जीवित और मृत कोशिकाओं को इमोजी के रूप में दिखाएँ</string>
+    <string name="restart">सिम्युलेशन रीसेट करें</string>
+    <string name="stable_combination">स्थिर पैटर्न मिला 🎉</string>
+    <string name="no_one_survived">सभी कोशिकाएँ मर गईं 💀</string>
+    <string name="alive">जीवित कोशिकाएँ</string>
+    <string name="deaths">मृत्यु</string>
+    <string name="revivals">जन्म</string>
+    <string name="switch_running_simulation">सिम्युलेशन शुरू करें या रोकें</string>
+    <string name="set_field_dimensions">ग्रिड का आकार तय करें</string>
+    <string name="rows">पंक्तियाँ</string>
+    <string name="columns">स्तंभ</string>
+    <string name="one_step_duration">पीढ़ी अंतराल</string>
+    <string name="simulation_settings">सिम्युलेशन</string>
     <string name="language">भाषा</string>
     <string name="game_settings">खेल</string>
-    <string name="show_grid">ग्रिड दिखाएं</string>
-    <string name="show_grid_description">खेल के मैदान पर सेल की सीमाएं दिखाएं</string>
-    <string name="neighbors_for_reviving">पुनर्जीवित करने के लिए पड़ोसी</string>
-    <string name="neighbors_for_surviving">अस्तित्व के लिए पड़ोसी</string>
+    <string name="show_grid">ग्रिड दिखाएँ</string>
+    <string name="show_grid_description">ग्रिड पर कोशिकाओं की सीमाएँ दिखाएँ</string>
+    <string name="neighbors_for_reviving">जन्म के लिए आवश्यक पड़ोसी</string>
+    <string name="neighbors_for_surviving">जीवित रहने के लिए आवश्यक पड़ोसी</string>
     <string name="rules">नियम</string>
-    <string name="to_default">अकरण को</string>
-    <string name="change_theme">विषय को परिवर्तित करें</string>
-    <string name="application">आवेदन</string>
-    <string name="information">जानकारी</string>
-    <string name="rules_set">नियम निर्धारित</string>
-    <string name="rate_dialog_title">क्या आपको यह ऐप पसंद आया\?</string>
-    <string name="rate_dialog_description">कृपया एक समीक्षा छोड़ कर आवेदन के बारे में अपनी राय साझा करें। आपका
-        रेटिंग से हमें सभी उपयोगकर्ताओं के लिए अपने एप्लिकेशन को बेहतर बनाने में मदद मिलेगी</string>
-    <string name="dont_ask_again">दोबारा मत पूछो</string>
+    <string name="to_default">डिफ़ॉल्ट पर रीसेट करें</string>
+    <string name="change_theme">थीम बदलें</string>
+    <string name="application">दिखावट और भाषा</string>
+    <string name="information">ऐप के बारे में</string>
+    <string name="rules_set">नियम समूह</string>
+    <string name="rate_dialog_title">क्या आपको Game of Life पसंद आ रहा है?</string>
+    <string name="rate_dialog_description">यदि आपको Game of Life पसंद है, तो कृपया समीक्षा लिखें। आपकी प्रतिक्रिया ऐप को सभी के लिए बेहतर बनाने में मदद करती है।</string>
+    <string name="dont_ask_again">फिर न पूछें</string>
     <string name="later">बाद में</string>
-    <string name="rate">दर!</string>
+    <string name="rate">ऐप को रेट करें</string>
     <string name="donation_prompt_title">Game of Life का समर्थन करें</string>
-    <string name="donation_prompt_description">यदि आपको यह ऐप पसंद है, तो आप इसके विकास में सहयोग कर सकते हैं। हर योगदान परियोजना को आगे बढ़ाने और नए अपडेट जारी करने में मदद करता है।</string>
-    <string name="donate">समर्थन करें</string>
-    <string name="custom_rules">कस्टम नियम</string>
-    <string name="rules_set_description">अलग-अलग गेम परिदृश्य देखने के लिए अलग-अलग नियम चुनें</string>
-    <string name="save_rules">वर्तमान नियम सहेजें</string>
-    <string name="save_rules_title">नियम सहेजें</string>
-    <string name="saved_rules_name">नाम</string>
+    <string name="donation_prompt_description">यदि आपको Game of Life पसंद है, तो आप इसके निरंतर विकास में सहयोग कर सकते हैं। हर योगदान परियोजना को आगे बढ़ाने और भविष्य के अपडेट संभव बनाने में मदद करता है।</string>
+    <string name="donate">दान करें</string>
+    <string name="custom_rules">कस्टम नियम समूह</string>
+    <string name="rules_set_description">अलग-अलग पैटर्न और व्यवहार देखने के लिए कोई नियम समूह चुनें</string>
+    <string name="save_rules">नियम समूह सहेजें</string>
+    <string name="save_rules_title">नियम समूह सहेजें</string>
+    <string name="saved_rules_name">नियम समूह का नाम</string>
     <string name="save">सहेजें</string>
     <string name="saved_rules">सहेजे गए</string>
     <string name="standard_rules">मानक</string>
-    <string name="delete_saved_rules_title">नियम सेट हटाएं?</string>
-    <string name="delete_saved_rules_message">“%1$s” हटा दिया जाएगा।</string>
+    <string name="delete_saved_rules_title">नियम समूह हटाएँ?</string>
+    <string name="delete_saved_rules_message">“%1$s” हमेशा के लिए हटा दिया जाएगा।</string>
     <string name="cancel">रद्द करें</string>
-    <string name="delete">हटाएं</string>
+    <string name="delete">हटाएँ</string>
     <string name="other">अन्य</string>
 
     <string name="stable">स्थिर</string>
     <string name="chaotic">अराजक</string>
-    <string name="exploding">एक्सप्लोडिंग</string>
-    <string name="undefined">अपरिभाषित</string>
+    <string name="exploding">विस्फोटक</string>
+    <string name="undefined">अवर्गीकृत</string>
 
     <string name="open_in_wikipedia">विकिपीडिया में खोलें</string>
     <string name="JohnHortonConway">जॉन हॉर्टन कॉनवे</string>
-    <string name="JohnHortonConway_card_description">अंग्रेजी गणितज्ञ ने महत्वपूर्ण बना दिया है
-        परिमित समूहों, गाँठ सिद्धांत, संख्या सिद्धांत, कॉम्बिनेटरियल गेम सिद्धांत और कोडिंग सिद्धांत में योगदान।
-        विशेष रूप से, उन्हें मनोरंजक गणित में गेम ऑफ लाइफ नामक सेलुलर ऑटोमेटन का आविष्कार करने के लिए जाना जाता है</string>
+    <string name="JohnHortonConway_card_description">जॉन हॉर्टन कॉनवे एक अंग्रेज़ गणितज्ञ थे जिन्होंने समूह सिद्धांत, गाँठ सिद्धांत, संख्या सिद्धांत, संयोजकीय खेल सिद्धांत और कोडिंग सिद्धांत में महत्वपूर्ण योगदान दिया। वे कॉनवे का गेम ऑफ लाइफ़ बनाने के लिए व्यापक रूप से जाने जाते हैं।</string>
 
-    <string name="the_game_of_life">जीवन संघरष</string>
-    <string name="GameOfLife_large_description">जीवन का खेल, जिसे \"जीवन\" के नाम से भी जाना जाता है, एक सेलुलर ऑटोमेटन है
-        1970 में विकसित किया गया। यह एक शून्य-खिलाड़ी गेम है, जिसका अर्थ है कि इसका विकास इसकी प्रारंभिक स्थिति से निर्धारित होता है और
-        अतिरिक्त कार्रवाई की आवश्यकता नहीं है. एक व्यक्ति प्रारंभिक विन्यास बनाते हुए जीवन के खेल के साथ अंतःक्रिया करता है
-        और देख रहे हैं कि यह कैसे विकसित होता है। यह ट्यूरिंग पूर्ण है और एक सार्वभौमिक कंस्ट्रक्टर या किसी अन्य ट्यूरिंग का मॉडल बना सकता है
-        मशीन</string>
+    <string name="the_game_of_life">कॉनवे का गेम ऑफ लाइफ़</string>
+    <string name="GameOfLife_large_description">कॉनवे का गेम ऑफ लाइफ़, जिसे अक्सर केवल “Life” कहा जाता है, गणितज्ञ जॉन हॉर्टन कॉनवे द्वारा 1970 में बनाया गया एक सेल्युलर ऑटोमेटन है। यह शून्य-खिलाड़ी खेल है: शुरुआती पैटर्न तय होने के बाद इसका विकास पूरी तरह नियमों से निर्धारित होता है। यह प्रणाली ट्यूरिंग-पूर्ण है और सार्वभौमिक गणना करने में सक्षम है।</string>
 
-    <string name="open_source_project">ओपन सोर्स प्रोजेक्ट</string>
-    <string name="open_source_project_description">आप संपूर्ण स्रोत कोड GitHub ⭐️ पर पा सकते हैं</string>
+    <string name="open_source_project">ओपन-सोर्स परियोजना</string>
+    <string name="open_source_project_description">GitHub पर पूरा सोर्स कोड देखें ⭐️</string>
 
-    <string name="telegram_community">टेलीग्राम समुदाय से जुड़ें</string>
-    <string name="telegram_community_description">ऐप अपडेट के साथ बने रहें, शीघ्र निर्माण प्राप्त करें और परीक्षण में सहायता करें
-        नई सुविधाओं। अपने विचार सुझाएं, प्रश्न पूछें और त्वरित उत्तर प्राप्त करें</string>
+    <string name="telegram_community">Telegram समुदाय से जुड़ें</string>
+    <string name="telegram_community_description">ऐप की खबरें पाएँ, शुरुआती बिल्ड आज़माएँ और नई सुविधाओं की जाँच में मदद करें। अपने विचार साझा करें, सवाल पूछें और जल्दी उत्तर पाएँ।</string>
 
-    <string name="onb_1_headline">डॉ. जॉन कॉनवे</string>
-    <string name="onb_1_description">1970 में सेलुलर ऑटोमेटा विकास के इस अनुकरण को तैयार किया गया, जिसे \"गेम\" कहा गया
-        जीवन का\\", जहां खेल के मैदान पर प्रत्येक कोशिका सरल नियमों का पालन करती है</string>
+    <string name="onb_1_headline">जॉन कॉनवे</string>
+    <string name="onb_1_description">1970 में गणितज्ञ जॉन कॉनवे ने गेम ऑफ लाइफ़ बनाया, एक सेल्युलर ऑटोमेटन जिसमें हर कोशिका कुछ सरल नियमों का पालन करती है।</string>
     <string name="onb_2_headline">नियम 1</string>
-    <string name="onb_2_description">एक खाली (मृत) कोशिका में, यदि ठीक तीन जीवित पड़ोसी हों, तो जीवन है
-        जन्म</string>
+    <string name="onb_2_description">ठीक तीन जीवित पड़ोसियों वाली मृत कोशिका जीवित हो जाती है।</string>
     <string name="onb_3_headline">नियम 2</string>
-    <string name="onb_3_description">यदि किसी जीवित कोशिका में दो या तीन जीवित पड़ोसी हों, तो वह जीवित रहती है;
-        अन्यथा, कोशिका मर जाती है (\"अकेलेपन\" या \"भीड़भाड़ के कारण\")</string>
+    <string name="onb_3_description">जीवित कोशिका के दो या तीन जीवित पड़ोसी हों तो वह जीवित रहती है। अन्यथा वह बहुत कम या बहुत अधिक पड़ोसियों के कारण मर जाती है।</string>
 
-    <string name="set_field_scale">फ़ील्ड स्केल</string>
+    <string name="set_field_scale">कोशिका का आकार</string>
 
     <string name="pause">रोकें</string>
 
@@ -111,36 +101,36 @@
 
     <string name="security">सुरक्षा</string>
 
-    <string name="hides_content_prohibits_screen_recording">सामग्री को छुपाता है, स्क्रीन रिकॉर्डिंग को प्रतिबंधित करता है</string>
+    <string name="hides_content_prohibits_screen_recording">ऐप का पूर्वावलोकन छिपाएँ और स्क्रीनशॉट व स्क्रीन रिकॉर्डिंग रोकें</string>
 
     <string name="secure_mode">सुरक्षित मोड</string>
 
-    <string name="loop_combination">लूप का पता चला &#127905;</string>
+    <string name="loop_combination">दोहराता पैटर्न मिला 🎡</string>
 
     <string name="updates">अपडेट</string>
 
-    <string name="automatic_check">स्वचालित जांच</string>
+    <string name="automatic_check">अपने आप जाँचें</string>
 
-    <string name="it_suggests_updating">यदि अपडेट उपलब्ध हैं तो यह अपडेट करने का सुझाव देता है</string>
+    <string name="it_suggests_updating">ऐप अपडेट उपलब्ध होने पर सूचना दें</string>
 
-    <string name="check_update">अपडेट की जांच करें</string>
+    <string name="check_update">अपडेट जाँचें</string>
 
-    <string name="update_downloaded">एक अपडेट अभी डाउनलोड किया गया है</string>
+    <string name="update_downloaded">अपडेट डाउनलोड हो गया</string>
 
     <string name="update_available">अपडेट उपलब्ध है</string>
 
     <string name="download">डाउनलोड करें</string>
 
-    <string name="installed_latest_version">नवीनतम संस्करण स्थापित</string>
+    <string name="installed_latest_version">आप नवीनतम संस्करण इस्तेमाल कर रहे हैं</string>
 
-    <string name="detect_loops">लूप का पता लगाएं</string>
+    <string name="detect_loops">दोहराव पहचानें</string>
 
-    <string name="pauses_game_when_loop">लूप का पता चलने पर गेम को रोक देता है</string>
+    <string name="pauses_game_when_loop">दोहराव मिलने पर सिम्युलेशन रोक देता है</string>
 
-    <string name="number_of_skipped_steps">छोड़े गए चरणों की संख्या</string>
+    <string name="number_of_skipped_steps">छोड़ने वाली पीढ़ियाँ</string>
 
-    <string name="show_eliminated_cells">हटाए गए सेल दिखाएं</string>
+    <string name="show_eliminated_cells">मृत कोशिकाएँ दिखाएँ</string>
 
-    <string name="show_eliminated_cells_description">उन सेल को दिखाएं जिन्हें पिछले चरण में हटा दिया गया था</string>
+    <string name="show_eliminated_cells_description">मर चुकी कोशिकाएँ दिखाएँ</string>
 
 </resources>

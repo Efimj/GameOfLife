@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="donations_title">Doações</string>
+    <string name="donations_navigation_description">Abrir doações</string>
+    <string name="donations_description">Se você gosta do Game of Life, pode apoiar seu desenvolvimento contínuo. Sua contribuição ajuda o projeto a crescer e mostra que este trabalho é importante. Muito obrigado de coração ❤️</string>
+    <string name="donations_subscription_label">Assinatura mensal</string>
+    <string name="donations_standard_subscription">Apoiador</string>
+    <string name="donations_generous_subscription">Patrono</string>
+    <string name="donations_monthly_label">Apoio mensal</string>
+    <string name="donations_repeatable_label">Doação única</string>
+    <string name="donations_one_time_name">Apoiar o desenvolvimento</string>
+    <string name="donations_one_time_description">Você pode doar novamente a qualquer momento.</string>
+    <string name="donations_retry">Tentar novamente</string>
+    <string name="donations_unavailable">Indisponível</string>
+    <string name="donations_active_subscription">Assinatura ativa</string>
+    <string name="donations_purchase_count">Doações realizadas: %1$d</string>
+    <string name="donations_purchase_count_label">Doações:</string>
+    <string name="donations_purchase_complete">Obrigado pelo apoio ❤️</string>
+    <string name="donations_thank_you_title">Obrigado! ❤️</string>
+    <string name="donations_thank_you_letter">Seu apoio significa muito mais do que uma compra. Ele mostra que este aplicativo é útil, que o tempo e o cuidado dedicados importam e que devo continuar. Obrigado por fazer parte do projeto e ajudá-lo a crescer.</string>
+    <string name="donations_purchase_pending">O pagamento está pendente.</string>
+    <string name="donations_service_unavailable">O Google Play Billing está temporariamente indisponível.</string>
+    <string name="donations_products_unavailable">As opções de apoio não estão disponíveis para esta conta.</string>
+</resources>

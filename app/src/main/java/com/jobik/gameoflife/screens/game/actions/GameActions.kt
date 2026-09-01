@@ -65,6 +65,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
@@ -88,7 +89,6 @@ import com.jobik.gameoflife.util.settings.SavedGameRulesManager
 import com.jobik.gameoflife.util.settings.SettingsManager
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.Locale
 
 @Composable
 fun GameActions(viewModel: GameScreenViewModel) {
@@ -603,7 +603,7 @@ private fun GameFieldScale(viewModel: GameScreenViewModel) {
             )
             Text(
                 text = String.format(
-                    Locale.getDefault(),
+                    LocalConfiguration.current.locales[0],
                     "%.2f",
                     viewModel.states.value.gameSettings.scale
                 ),

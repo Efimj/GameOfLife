@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="donations_title">Spenden</string>
+    <string name="donations_navigation_description">Spendenseite öffnen</string>
+    <string name="donations_description">Wenn dir Game of Life gefällt, kannst du die Weiterentwicklung unterstützen. Dein Beitrag hilft dem Projekt zu wachsen und zeigt, dass diese Arbeit wichtig ist. Vielen Dank von Herzen ❤️</string>
+    <string name="donations_subscription_label">Monatliches Abonnement</string>
+    <string name="donations_standard_subscription">Unterstützer</string>
+    <string name="donations_generous_subscription">Förderer</string>
+    <string name="donations_monthly_label">Monatliche Unterstützung</string>
+    <string name="donations_repeatable_label">Einmalige Spende</string>
+    <string name="donations_one_time_name">Entwicklung unterstützen</string>
+    <string name="donations_one_time_description">Du kannst jederzeit erneut spenden.</string>
+    <string name="donations_retry">Erneut versuchen</string>
+    <string name="donations_unavailable">Nicht verfügbar</string>
+    <string name="donations_active_subscription">Aktives Abonnement</string>
+    <string name="donations_purchase_count">Getätigte Spenden: %1$d</string>
+    <string name="donations_purchase_count_label">Spenden:</string>
+    <string name="donations_purchase_complete">Vielen Dank für deine Unterstützung ❤️</string>
+    <string name="donations_thank_you_title">Vielen Dank! ❤️</string>
+    <string name="donations_thank_you_letter">Deine Unterstützung bedeutet weit mehr als einen Kauf. Sie zeigt mir, dass diese App nützlich ist, dass die investierte Zeit und Sorgfalt zählen und dass ich weitermachen sollte. Danke, dass du Teil des Projekts bist und ihm beim Wachsen hilfst.</string>
+    <string name="donations_purchase_pending">Die Zahlung steht noch aus.</string>
+    <string name="donations_service_unavailable">Google Play Billing ist vorübergehend nicht verfügbar.</string>
+    <string name="donations_products_unavailable">Unterstützungsoptionen sind für dieses Konto nicht verfügbar.</string>
+</resources>

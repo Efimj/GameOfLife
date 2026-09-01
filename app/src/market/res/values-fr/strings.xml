@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="donations_title">Dons</string>
+    <string name="donations_navigation_description">Ouvrir la page des dons</string>
+    <string name="donations_description">Si vous appréciez Game of Life, vous pouvez soutenir la poursuite de son développement. Votre contribution aide le projet à grandir et montre que ce travail compte. Merci du fond du cœur ❤️</string>
+    <string name="donations_subscription_label">Abonnement mensuel</string>
+    <string name="donations_standard_subscription">Soutien</string>
+    <string name="donations_generous_subscription">Mécène</string>
+    <string name="donations_monthly_label">Soutien mensuel</string>
+    <string name="donations_repeatable_label">Don unique</string>
+    <string name="donations_one_time_name">Soutenir le développement</string>
+    <string name="donations_one_time_description">Vous pouvez faire un nouveau don à tout moment.</string>
+    <string name="donations_retry">Réessayer</string>
+    <string name="donations_unavailable">Indisponible</string>
+    <string name="donations_active_subscription">Abonnement actif</string>
+    <string name="donations_purchase_count">Dons effectués : %1$d</string>
+    <string name="donations_purchase_count_label">Dons :</string>
+    <string name="donations_purchase_complete">Merci pour votre soutien ❤️</string>
+    <string name="donations_thank_you_title">Merci ! ❤️</string>
+    <string name="donations_thank_you_letter">Votre soutien représente bien plus qu’un achat. Il me montre que cette application est utile, que le temps et le soin qui lui sont consacrés comptent et que je dois continuer. Merci de faire partie du projet et de l’aider à grandir.</string>
+    <string name="donations_purchase_pending">Le paiement est en attente.</string>
+    <string name="donations_service_unavailable">Google Play Billing est temporairement indisponible.</string>
+    <string name="donations_products_unavailable">Les options de soutien ne sont pas disponibles pour ce compte.</string>
+</resources>

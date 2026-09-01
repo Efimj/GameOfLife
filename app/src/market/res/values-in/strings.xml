@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="donations_title">Donasi</string>
+    <string name="donations_navigation_description">Buka halaman donasi</string>
+    <string name="donations_description">Jika Anda menikmati Game of Life, Anda dapat mendukung pengembangannya secara berkelanjutan. Kontribusi Anda membantu proyek berkembang dan menunjukkan bahwa pekerjaan ini berarti. Terima kasih dari lubuk hati saya ❤️</string>
+    <string name="donations_subscription_label">Langganan bulanan</string>
+    <string name="donations_standard_subscription">Pendukung</string>
+    <string name="donations_generous_subscription">Patron</string>
+    <string name="donations_monthly_label">Dukungan bulanan</string>
+    <string name="donations_repeatable_label">Donasi satu kali</string>
+    <string name="donations_one_time_name">Dukung pengembangan</string>
+    <string name="donations_one_time_description">Anda dapat berdonasi lagi kapan saja.</string>
+    <string name="donations_retry">Coba lagi</string>
+    <string name="donations_unavailable">Tidak tersedia</string>
+    <string name="donations_active_subscription">Langganan aktif</string>
+    <string name="donations_purchase_count">Donasi yang dibuat: %1$d</string>
+    <string name="donations_purchase_count_label">Donasi:</string>
+    <string name="donations_purchase_complete">Terima kasih atas dukungan Anda ❤️</string>
+    <string name="donations_thank_you_title">Terima kasih! ❤️</string>
+    <string name="donations_thank_you_letter">Dukungan Anda jauh lebih berarti daripada sekadar pembelian. Dukungan ini menunjukkan bahwa aplikasi ini berguna, bahwa waktu dan perhatian yang diberikan berarti, dan bahwa saya harus terus melanjutkannya. Terima kasih telah menjadi bagian dari proyek ini dan membantunya berkembang.</string>
+    <string name="donations_purchase_pending">Pembayaran masih tertunda.</string>
+    <string name="donations_service_unavailable">Google Play Billing untuk sementara tidak tersedia.</string>
+    <string name="donations_products_unavailable">Opsi dukungan tidak tersedia untuk akun ini.</string>
+</resources>

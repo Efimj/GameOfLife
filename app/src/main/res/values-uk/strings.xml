@@ -1,134 +1,116 @@
 <resources>
-    <string name="app_name">Гра в Життя</string>
+    <string name="app_name">Гра «Життя» Конвея</string>
+    <string name="app_version_text">Створено Єфімом · v</string>
 
-    <string name="GameOfLife">Гра в Життя</string>
+    <string name="GameOfLife">Гра «Життя»</string>
     <string name="Settings">Налаштування</string>
     <string name="Onboarding">Вступ</string>
-    <string name="drawer_GameOfLife_description">Гра в Життя</string>
-    <string name="drawer_Settings_description">Налаштування</string>
-    <string name="drawer_Onboarding_description">Вступ</string>
+    <string name="drawer_GameOfLife_description">Відкрити гру «Життя»</string>
+    <string name="drawer_Settings_description">Відкрити налаштування</string>
+    <string name="drawer_Onboarding_description">Відкрити вступ</string>
 
-    <string name="speed_value_100ms">100мс</string>
-    <string name="speed_value_250ms">250мс</string>
-    <string name="speed_value_500ms">500мс</string>
-    <string name="speed_value_750ms">750мс</string>
-    <string name="speed_value_1s">1с</string>
+    <string name="speed_value_100ms">100 мс</string>
+    <string name="speed_value_250ms">250 мс</string>
+    <string name="speed_value_500ms">500 мс</string>
+    <string name="speed_value_750ms">750 мс</string>
+    <string name="speed_value_1s">1 с</string>
 
-    <string name="start_game">Почати гру</string>
-    <string name="menu_button">Кнопка меню</string>
-    <string name="clear">Очистити</string>
-    <string name="free_soul_mode">Вільні душі</string>
-    <string name="free_soul_mode_description">Вказує, чи слід видаляти мертві клітини</string>
+    <string name="start_game">Почати</string>
+    <string name="menu_button">Відкрити меню</string>
+    <string name="clear">Очистити поле</string>
+    <string name="free_soul_mode">Видаляти старі мертві клітини</string>
+    <string name="free_soul_mode_description">Видаляти позначки мертвих клітин через одне покоління</string>
     <string name="emoji_mode">Режим емодзі</string>
-    <string name="emoji_mode_description">Замість заливки використовується набір емодзі</string>
-    <string name="restart">Перезапуск</string>
-    <string name="stable_combination">Стабільне поєднання 🎉</string>
-    <string name="no_one_survived">Ніхто не вижив 💀</string>
-    <string name="alive">Живих</string>
-    <string name="deaths">Мертвих</string>
-    <string name="revivals">Відроджень</string>
-    <string name="switch_running_simulation">Переключити режим симуляції</string>
-    <string name="set_field_dimensions">Встановити розмір поля</string>
+    <string name="emoji_mode_description">Показувати живі й мертві клітини як емодзі</string>
+    <string name="restart">Скинути симуляцію</string>
+    <string name="stable_combination">Виявлено стабільну конфігурацію 🎉</string>
+    <string name="no_one_survived">Усі клітини загинули 💀</string>
+    <string name="alive">Живі клітини</string>
+    <string name="deaths">Загибелі</string>
+    <string name="revivals">Народження</string>
+    <string name="switch_running_simulation">Запустити або призупинити симуляцію</string>
+    <string name="set_field_dimensions">Задати розміри поля</string>
     <string name="rows">Рядки</string>
     <string name="columns">Стовпці</string>
-    <string name="one_step_duration">Тривалість одного кроку</string>
+    <string name="one_step_duration">Інтервал між поколіннями</string>
     <string name="simulation_settings">Симуляція</string>
     <string name="language">Мова</string>
     <string name="game_settings">Гра</string>
     <string name="show_grid">Показувати сітку</string>
-    <string name="show_grid_description">Показувати межі клітинок ігрового поля</string>
-    <string name="neighbors_for_reviving">Сусідів для відродження</string>
+    <string name="show_grid_description">Показувати межі клітин на ігровому полі</string>
+    <string name="neighbors_for_reviving">Сусідів для народження</string>
     <string name="neighbors_for_surviving">Сусідів для виживання</string>
     <string name="rules">Правила</string>
-    <string name="to_default">За умовчанням</string>
+    <string name="to_default">Скинути до типових</string>
     <string name="change_theme">Змінити тему</string>
-    <string name="application">Додаток</string>
-    <string name="information">Інформація</string>
+    <string name="application">Вигляд і мова</string>
+    <string name="information">Про застосунок</string>
     <string name="rules_set">Набір правил</string>
-    <string name="rate_dialog_title">Вам сподобалася ця програма?</string>
-    <string name="rate_dialog_description">Будь ласка, поділіться своєю думкою про програму, залишивши відгук. Твоя
-        оцінка допоможе нам покращити програму для всіх користувачів
-    </string>
-    <string name="dont_ask_again">Не питати більше</string>
+    <string name="rate_dialog_title">Подобається Game of Life?</string>
+    <string name="rate_dialog_description">Якщо вам подобається Game of Life, залиште відгук. Ваша думка допомагає зробити застосунок кращим для всіх.</string>
+    <string name="dont_ask_again">Більше не питати</string>
     <string name="later">Пізніше</string>
-    <string name="rate">Оцінити!</string>
+    <string name="rate">Оцінити застосунок</string>
     <string name="donation_prompt_title">Підтримати Game of Life</string>
-    <string name="donation_prompt_description">Якщо вам подобається застосунок, ви можете підтримати його розробку. Кожен внесок допомагає розвивати проєкт і випускати нові оновлення.</string>
+    <string name="donation_prompt_description">Якщо вам подобається Game of Life, ви можете підтримати подальшу розробку. Кожен внесок допомагає проєкту розвиватися й робить можливими майбутні оновлення.</string>
     <string name="donate">Підтримати</string>
-    <string name="custom_rules">Свої правила</string>
-    <string name="rules_set_description">Вибирайте різні набори правил, щоб побачити різні ігрові сценарії</string>
-    <string name="save_rules">Зберегти поточні правила</string>
-    <string name="save_rules_title">Збереження правил</string>
-    <string name="saved_rules_name">Назва</string>
+    <string name="custom_rules">Власний набір</string>
+    <string name="rules_set_description">Виберіть набір правил, щоб дослідити різні конфігурації та варіанти поведінки</string>
+    <string name="save_rules">Зберегти набір правил</string>
+    <string name="save_rules_title">Зберегти набір правил</string>
+    <string name="saved_rules_name">Назва набору</string>
     <string name="save">Зберегти</string>
     <string name="saved_rules">Збережені</string>
     <string name="standard_rules">Стандартні</string>
     <string name="delete_saved_rules_title">Видалити набір правил?</string>
-    <string name="delete_saved_rules_message">Набір «%1$s» буде видалено.</string>
+    <string name="delete_saved_rules_message">Набір «%1$s» буде видалено назавжди.</string>
     <string name="cancel">Скасувати</string>
     <string name="delete">Видалити</string>
-    <string name="other">Інший</string>
+    <string name="other">Інше</string>
 
-    <string name="stable">стабільний</string>
-    <string name="chaotic">хаотичний</string>
-    <string name="exploding">підривний</string>
-    <string name="undefined">невизначений</string>
+    <string name="stable">Стабільний</string>
+    <string name="chaotic">Хаотичний</string>
+    <string name="exploding">Вибуховий</string>
+    <string name="undefined">Без категорії</string>
 
     <string name="open_in_wikipedia">Відкрити у Вікіпедії</string>
     <string name="JohnHortonConway">Джон Хортон Конвей</string>
-    <string name="JohnHortonConway_card_description">Англійський математик, зробив значний внесок у кінцеві автомати,
-        теорію комбінацій, теорію чисел, теорію ігор і теорію кодування.
-        Цікаво, що він відомий винаходом клітинного автомата під назвою «Гра в життя» у розважальній математиці.
-    </string>
+    <string name="JohnHortonConway_card_description">Джон Гортон Конвей — англійський математик, який зробив значний внесок у теорію груп, теорію вузлів, теорію чисел, комбінаторну теорію ігор і теорію кодування. Широко відомий як творець гри «Життя» Конвея.</string>
 
-    <string name="the_game_of_life">Гра в Життя</string>
-    <string name="GameOfLife_large_description">Також відома просто як «Життя», являє собою клітинний автомат.
-        розроблено у 1970 році. Це гра з нульовою участю гравців, а це означає, що її еволюція визначається її
-        початковим станом та
-        не потребує додаткових дій. Людина взаємодіє з грою в життя, створюючи початкову конфігурацію.
-        та спостерігаємо за тим, як воно розвивається. Він є повним за Тьюрингом і може моделювати універсальний
-        конструктор або будь-який інший конструктор Тьюринга.
-    </string>
+    <string name="the_game_of_life">Гра «Життя» Конвея</string>
+    <string name="GameOfLife_large_description">Гра «Життя» Конвея, яку часто називають просто «Життям», — клітинний автомат, створений математиком Джоном Гортоном Конвеєм у 1970 році. Це гра без гравців: після встановлення початкової конфігурації її розвиток повністю визначається правилами. Система є повною за Тюрінгом і здатна виконувати універсальні обчислення.</string>
 
-    <string name="open_source_project">Проект з відкритим вихідним кодом</string>
-    <string name="open_source_project_description">Ви можете знайти весь вихідний код на GitHub ⭐️</string>
+    <string name="open_source_project">Проєкт із відкритим кодом</string>
+    <string name="open_source_project_description">Переглянути повний вихідний код на GitHub ⭐️</string>
 
-    <string name="telegram_community">Приєднуйтесь до спільноти Telegram</string>
-    <string name="telegram_community_description">Слідкуйте за оновленнями програм, отримуйте ранні збірки та
-        допомагайте в тестуванні.
-        нові можливості. Пропонуйте свої ідеї, ставте запитання та отримуйте швидкі відповіді
-    </string>
+    <string name="telegram_community">Приєднатися до спільноти в Telegram</string>
+    <string name="telegram_community_description">Стежте за новинами застосунку, випробовуйте ранні збірки й допомагайте тестувати нові функції. Діліться ідеями, ставте запитання й отримуйте швидкі відповіді.</string>
 
-    <string name="onb_1_headline">Доктор Джон Конвей</string>
-    <string name="onb_1_description">У 1970 році розробив цю симуляцію еволюції клітинних автоматів, названу «Гра в
-        Життя», де кожна клітина ігрового поля підпорядковується простим правилам
-    </string>
+    <string name="onb_1_headline">Джон Конвей</string>
+    <string name="onb_1_description">У 1970 році математик Джон Конвей створив гру «Життя» — клітинний автомат, у якому кожна клітина дотримується кількох простих правил.</string>
     <string name="onb_2_headline">Правило 1</string>
-    <string name="onb_2_description">У порожній (мертвій) клітині, якщо живих сусідів рівно три, життя відроджується
-    </string>
+    <string name="onb_2_description">Мертва клітина рівно з трьома живими сусідами стає живою.</string>
     <string name="onb_3_headline">Правило 2</string>
-    <string name="onb_3_description">Якщо у живої клітини є два або три живі сусіди, вона продовжує жити;
-        інакше клітина гине (через «самотність» чи «перенаселеність»)
-    </string>
-    <string name="set_field_scale">Масштаб поля</string>
+    <string name="onb_3_description">Жива клітина виживає, якщо має двох або трьох живих сусідів. Інакше вона гине від нестачі або надлишку сусідів.</string>
+    <string name="set_field_scale">Розмір клітин</string>
     <string name="pause">Призупинити</string>
     <string name="close">Закрити</string>
     <string name="security">Безпека</string>
-    <string name="hides_content_prohibits_screen_recording">Приховує вміст, забороняє запис екрану</string>
+    <string name="hides_content_prohibits_screen_recording">Приховувати вміст у списку нещодавніх застосунків і блокувати знімки та запис екрана</string>
     <string name="secure_mode">Захищений режим</string>
-    <string name="loop_combination">Виявлено цикл 🎡</string>
+    <string name="loop_combination">Виявлено повторювану конфігурацію 🎡</string>
     <string name="updates">Оновлення</string>
-    <string name="automatic_check">Автоматична перевірка</string>
-    <string name="it_suggests_updating">Пропонується оновити, якщо доступні оновлення</string>
+    <string name="automatic_check">Перевіряти автоматично</string>
+    <string name="it_suggests_updating">Сповіщати про доступні оновлення застосунку</string>
     <string name="check_update">Перевірити оновлення</string>
-    <string name="update_downloaded">Оновлення щойно завантажено</string>
+    <string name="update_downloaded">Оновлення завантажено</string>
     <string name="update_available">Доступне оновлення</string>
     <string name="download">Завантажити</string>
-    <string name="installed_latest_version">Установлена остання версія</string>
-    <string name="detect_loops">Виявлення зацикленостей</string>
-    <string name="pauses_game_when_loop">Призупиняє гру, якщо виявлено цикл</string>
-    <string name="number_of_skipped_steps">Кількість пропущених кроків</string>
-    <string name="show_eliminated_cells">Показати вилучені комірки</string>
-    <string name="show_eliminated_cells_description">Показати клітинки, видалені на попередньому кроці</string>
+    <string name="installed_latest_version">У вас установлена найновіша версія</string>
+    <string name="detect_loops">Виявляти цикли</string>
+    <string name="pauses_game_when_loop">Призупиняє симуляцію, коли виявлено цикл</string>
+    <string name="number_of_skipped_steps">Поколінь для пропуску</string>
+    <string name="show_eliminated_cells">Показувати мертві клітини</string>
+    <string name="show_eliminated_cells_description">Показувати клітини, що загинули</string>
 
 </resources>

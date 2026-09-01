@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="donations_title">Donaciones</string>
+    <string name="donations_navigation_description">Abrir donaciones</string>
+    <string name="donations_description">Si te gusta Game of Life, puedes apoyar su desarrollo continuo. Tu contribución ayuda a que el proyecto crezca y demuestra que este trabajo importa. Gracias de todo corazón ❤️</string>
+    <string name="donations_subscription_label">Suscripción mensual</string>
+    <string name="donations_standard_subscription">Colaborador</string>
+    <string name="donations_generous_subscription">Mecenas</string>
+    <string name="donations_monthly_label">Apoyo mensual</string>
+    <string name="donations_repeatable_label">Donación única</string>
+    <string name="donations_one_time_name">Apoyar el desarrollo</string>
+    <string name="donations_one_time_description">Puedes volver a donar en cualquier momento.</string>
+    <string name="donations_retry">Intentar de nuevo</string>
+    <string name="donations_unavailable">No disponible</string>
+    <string name="donations_active_subscription">Suscripción activa</string>
+    <string name="donations_purchase_count">Donaciones realizadas: %1$d</string>
+    <string name="donations_purchase_count_label">Donaciones:</string>
+    <string name="donations_purchase_complete">Gracias por tu apoyo ❤️</string>
+    <string name="donations_thank_you_title">¡Gracias! ❤️</string>
+    <string name="donations_thank_you_letter">Tu apoyo significa mucho más que una compra. Me demuestra que esta aplicación es útil, que el tiempo y el cuidado invertidos importan y que debo seguir adelante. Gracias por formar parte del proyecto y ayudarlo a crecer.</string>
+    <string name="donations_purchase_pending">El pago está pendiente.</string>
+    <string name="donations_service_unavailable">Google Play Billing no está disponible temporalmente.</string>
+    <string name="donations_products_unavailable">Las opciones de apoyo no están disponibles para esta cuenta.</string>
+</resources>

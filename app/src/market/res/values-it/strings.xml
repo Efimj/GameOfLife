@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="donations_title">Donazioni</string>
+    <string name="donations_navigation_description">Apri donazioni</string>
+    <string name="donations_description">Se ti piace Game of Life, puoi sostenerne lo sviluppo continuo. Il tuo contributo aiuta il progetto a crescere e dimostra che questo lavoro è importante. Grazie di cuore ❤️</string>
+    <string name="donations_subscription_label">Abbonamento mensile</string>
+    <string name="donations_standard_subscription">Sostenitore</string>
+    <string name="donations_generous_subscription">Mecenate</string>
+    <string name="donations_monthly_label">Sostegno mensile</string>
+    <string name="donations_repeatable_label">Donazione una tantum</string>
+    <string name="donations_one_time_name">Sostieni lo sviluppo</string>
+    <string name="donations_one_time_description">Puoi donare di nuovo in qualsiasi momento.</string>
+    <string name="donations_retry">Riprova</string>
+    <string name="donations_unavailable">Non disponibile</string>
+    <string name="donations_active_subscription">Abbonamento attivo</string>
+    <string name="donations_purchase_count">Donazioni effettuate: %1$d</string>
+    <string name="donations_purchase_count_label">Donazioni:</string>
+    <string name="donations_purchase_complete">Grazie per il tuo sostegno ❤️</string>
+    <string name="donations_thank_you_title">Grazie! ❤️</string>
+    <string name="donations_thank_you_letter">Il tuo sostegno significa molto più di un acquisto. Mi dimostra che questa app è utile, che il tempo e la cura dedicati contano e che devo continuare. Grazie per far parte del progetto e aiutarlo a crescere.</string>
+    <string name="donations_purchase_pending">Il pagamento è in sospeso.</string>
+    <string name="donations_service_unavailable">Google Play Billing è temporaneamente non disponibile.</string>
+    <string name="donations_products_unavailable">Le opzioni di sostegno non sono disponibili per questo account.</string>
+</resources>

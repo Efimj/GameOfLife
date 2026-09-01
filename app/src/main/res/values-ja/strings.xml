@@ -1,64 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?><resources>
       
-  <string name="app_name">人生ゲーム</string>
+  <string name="app_name">コンウェイのライフゲーム</string>
+  <string name="app_version_text">Efim 制作 · v</string>
       
-  <string name="GameOfLife">人生ゲーム</string>
+  <string name="GameOfLife">ライフゲーム</string>
       
   <string name="Settings">設定</string>
       
-  <string name="Onboarding">オンボーディング</string>
+  <string name="Onboarding">はじめに</string>
       
-  <string name="drawer_GameOfLife_description">人生ゲーム</string>
+  <string name="drawer_GameOfLife_description">ライフゲームを開く</string>
       
-  <string name="drawer_Settings_description">設定</string>
+  <string name="drawer_Settings_description">設定を開く</string>
       
-  <string name="drawer_Onboarding_description">導入</string>
+  <string name="drawer_Onboarding_description">はじめにを開く</string>
       
-  <string name="speed_value_100ms">100 ミリ秒</string>
+  <string name="speed_value_100ms">100 ms</string>
       
-  <string name="speed_value_250ms">250 ミリ秒</string>
+  <string name="speed_value_250ms">250 ms</string>
       
-  <string name="speed_value_500ms">500 ミリ秒</string>
+  <string name="speed_value_500ms">500 ms</string>
       
-  <string name="speed_value_750ms">750 ミリ秒</string>
+  <string name="speed_value_750ms">750 ms</string>
       
-  <string name="speed_value_1s">1 秒</string>
+  <string name="speed_value_1s">1 s</string>
       
-  <string name="start_game">ゲームをスタート</string>
+  <string name="start_game">始める</string>
       
-  <string name="menu_button">メニューボタン</string>
+  <string name="menu_button">メニューを開く</string>
       
-  <string name="clear">クリア</string>
+  <string name="clear">グリッドをクリア</string>
       
-  <string name="free_soul_mode">フリーソウルモード</string>
+  <string name="free_soul_mode">古い死滅セルを消去</string>
       
-  <string name="free_soul_mode_description">死んだ細胞を除去する必要があるかどうかを示します</string>
+  <string name="free_soul_mode_description">死滅セルのマーカーを1世代後に削除します</string>
       
   <string name="emoji_mode">絵文字モード</string>
       
-  <string name="emoji_mode_description">塗りつぶしの代わりに、一連の絵文字アイコンが使用されます</string>
+  <string name="emoji_mode_description">生存セルと死滅セルを絵文字で表示します</string>
       
-  <string name="restart">再起動</string>
+  <string name="restart">シミュレーションをリセット</string>
       
-  <string name="stable_combination">安定の組み合わせ&#127881;?</string>
+  <string name="stable_combination">安定パターンを検出しました 🎉</string>
       
-  <string name="no_one_survived">誰も生き残れませんでした&#128128;?</string>
+  <string name="no_one_survived">すべてのセルが死滅しました 💀</string>
       
-  <string name="alive">生きている</string>
+  <string name="alive">生存セル</string>
       
-  <string name="deaths">死亡者（数</string>
+  <string name="deaths">死亡</string>
       
-  <string name="revivals">リバイバルズ</string>
+  <string name="revivals">誕生</string>
       
-  <string name="switch_running_simulation">スイッチ走行シミュレーション</string>
+  <string name="switch_running_simulation">シミュレーションを開始または一時停止</string>
       
-  <string name="set_field_dimensions">フィールドの寸法を設定する</string>
+  <string name="set_field_dimensions">グリッドのサイズを設定</string>
       
   <string name="rows">行</string>
       
-  <string name="columns">コラム</string>
+  <string name="columns">列</string>
       
-  <string name="one_step_duration">1 ステップの継続時間</string>
+  <string name="one_step_duration">世代間隔</string>
       
   <string name="simulation_settings">シミュレーション</string>
       
@@ -66,92 +67,92 @@
       
   <string name="game_settings">ゲーム</string>
   <string name="show_grid">グリッドを表示</string>
-  <string name="show_grid_description">ゲームフィールドにセルの境界線を表示</string>
+  <string name="show_grid_description">グリッド上にセルの境界線を表示します</string>
       
-  <string name="neighbors_for_reviving">復活のための隣人</string>
+  <string name="neighbors_for_reviving">誕生に必要な近傍セル数</string>
       
-  <string name="neighbors_for_surviving">生き残るための隣人</string>
+  <string name="neighbors_for_surviving">生存に必要な近傍セル数</string>
       
   <string name="rules">ルール</string>
       
   <string name="to_default">デフォルトに戻す</string>
       
-  <string name="change_theme">テーマの変更</string>
+  <string name="change_theme">テーマを変更</string>
       
-  <string name="application">応用</string>
+  <string name="application">表示と言語</string>
       
-  <string name="information">情報</string>
+  <string name="information">アプリについて</string>
       
   <string name="rules_set">ルールセット</string>
       
-  <string name="rate_dialog_title">このアプリは気に入りましたか?</string>
+  <string name="rate_dialog_title">Game of Lifeを楽しんでいますか？</string>
       
-  <string name="rate_dialog_description">レビューを残して、アプリケーションについてのご意見を共有してください。あなたの評価は、すべてのユーザー向けのアプリケーションの改善に役立ちます</string>
+  <string name="rate_dialog_description">Game of Lifeを気に入っていただけたら、レビューをお願いします。皆さまのご意見がアプリの改善につながります。</string>
       
-  <string name="dont_ask_again">二度と質問しないでください</string>
+  <string name="dont_ask_again">今後表示しない</string>
       
   <string name="later">後で</string>
       
-  <string name="rate">レート！</string>
+  <string name="rate">アプリを評価</string>
   <string name="donation_prompt_title">Game of Lifeを支援</string>
-  <string name="donation_prompt_description">このアプリを気に入っていただけたら、開発を支援できます。皆さまのご協力がプロジェクトの成長と今後のアップデートにつながります。</string>
-  <string name="donate">支援する</string>
+  <string name="donation_prompt_description">Game of Lifeを気に入っていただけたら、継続的な開発を支援できます。皆さまのご協力がプロジェクトの成長と今後のアップデートにつながります。</string>
+  <string name="donate">寄付する</string>
       
-  <string name="custom_rules">カスタムルール</string>
+  <string name="custom_rules">カスタムルールセット</string>
       
-  <string name="rules_set_description">さまざまなルールセットを選択して、さまざまなゲームシナリオを確認してください</string>
-  <string name="save_rules">現在のルールを保存</string>
-  <string name="save_rules_title">ルールを保存</string>
-  <string name="saved_rules_name">名前</string>
+  <string name="rules_set_description">ルールセットを選んで、さまざまなパターンや動作を試しましょう</string>
+  <string name="save_rules">ルールセットを保存</string>
+  <string name="save_rules_title">ルールセットを保存</string>
+  <string name="saved_rules_name">ルールセット名</string>
   <string name="save">保存</string>
   <string name="saved_rules">保存済み</string>
   <string name="standard_rules">標準</string>
   <string name="delete_saved_rules_title">ルールセットを削除しますか？</string>
-  <string name="delete_saved_rules_message">「%1$s」は削除されます。</string>
+  <string name="delete_saved_rules_message">「%1$s」は完全に削除されます。</string>
   <string name="cancel">キャンセル</string>
   <string name="delete">削除</string>
       
-  <string name="other">他の</string>
+  <string name="other">その他</string>
       
-  <string name="stable">安定した</string>
+  <string name="stable">安定型</string>
       
-  <string name="chaotic">混沌としました</string>
+  <string name="chaotic">混沌型</string>
       
-  <string name="exploding">爆発する</string>
+  <string name="exploding">爆発型</string>
       
-  <string name="undefined">未定義</string>
+  <string name="undefined">未分類</string>
       
-  <string name="open_in_wikipedia">ウィキペディアで開く</string>
+  <string name="open_in_wikipedia">Wikipediaで開く</string>
       
   <string name="JohnHortonConway">ジョン・ホートン・コンウェイ</string>
       
-  <string name="JohnHortonConway_card_description">イギリスの数学者。有限群、結び目理論、数論、組み合わせゲーム理論、コーディング理論に多大な貢献をしている。特に、彼はレクリエーション数学におけるライフ ゲームと呼ばれるセル オートマトンを発明したことで知られています。</string>
+  <string name="JohnHortonConway_card_description">ジョン・ホートン・コンウェイは、群論、結び目理論、数論、組合せゲーム理論、符号理論に大きく貢献したイギリスの数学者です。コンウェイのライフゲームを考案したことで広く知られています。</string>
       
-  <string name="the_game_of_life">人生ゲーム</string>
+  <string name="the_game_of_life">コンウェイのライフゲーム</string>
       
-  <string name="GameOfLife_large_description">単にライフとしても知られるライフ ゲームは、1970 年に開発されたセル オートマトンです。これはプレイヤーがいないゲームです。つまり、その進化は初期状態によって決定され、追加のアクションは必要ありません。人はライフ ゲームと対話し、初期構成を作成し、それがどのように発展するかを観察します。これは完全なチューリングであり、ユニバーサル コンストラクターまたは他のチューリング マシンをモデル化できます。</string>
+  <string name="GameOfLife_large_description">コンウェイのライフゲームは、単に「Life」とも呼ばれる、数学者ジョン・ホートン・コンウェイが1970年に考案したセル・オートマトンです。プレイヤーのいないゲームで、初期パターンを設定すると、その後の変化はルールだけで決まります。このシステムはチューリング完全で、万能計算が可能です。</string>
       
   <string name="open_source_project">オープンソースプロジェクト</string>
       
-  <string name="open_source_project_description">ソースコード全体は GitHub で見つけることができます ⭐️</string>
+  <string name="open_source_project_description">GitHubでソースコード全体を見る ⭐️</string>
       
-  <string name="telegram_community">テレグラムコミュニティに参加する</string>
+  <string name="telegram_community">Telegramコミュニティに参加</string>
       
-  <string name="telegram_community_description">アプリのアップデートに注目し、早期ビルドを入手し、新機能のテストを支援してください。アイデアを提案し、質問し、すぐに答えを得る</string>
+  <string name="telegram_community_description">アプリの最新情報を受け取り、先行ビルドを試して、新機能のテストにご協力ください。アイデアや質問を共有し、すばやく回答を得られます。</string>
       
-  <string name="onb_1_headline">ジョン・コンウェイ博士</string>
+  <string name="onb_1_headline">ジョン・コンウェイ</string>
       
-  <string name="onb_1_description">1970 年に「ライフ ゲーム」と呼ばれるセル オートマトンの進化のシミュレーションを考案しました。ゲーム フィールド上の各セルは単純なルールに従います。</string>
+  <string name="onb_1_description">1970年、数学者ジョン・コンウェイは、各セルがいくつかの単純なルールに従うセル・オートマトン「ライフゲーム」を考案しました。</string>
       
   <string name="onb_2_headline">ルール 1</string>
       
-  <string name="onb_2_description">空の（死んだ）独房に、生きている隣人がちょうど 3 人いる場合、生命が誕生します。</string>
+  <string name="onb_2_description">死滅セルは、生存している近傍セルがちょうど3つあると誕生します。</string>
       
   <string name="onb_3_headline">ルール 2</string>
       
-  <string name="onb_3_description">生きているセルに 2 つまたは 3 つの生きている隣接セルがある場合、そのセルは生き続けます。そうしないと、細胞が死んでしまいます（孤独または過密により）</string>
+  <string name="onb_3_description">生存セルは、生存している近傍セルが2つまたは3つなら生き残ります。それ以外の場合は、過疎または過密により死滅します。</string>
 
-  <string name="set_field_scale">フィールドスケール</string>
+  <string name="set_field_scale">セルのサイズ</string>
 
   <string name="pause">一時停止</string>
 
@@ -159,36 +160,36 @@
 
   <string name="security">セキュリティ</string>
 
-  <string name="hides_content_prohibits_screen_recording">コンテンツを非表示にし、画面録画を禁止します</string>
+  <string name="hides_content_prohibits_screen_recording">アプリのプレビューを隠し、スクリーンショットと画面録画をブロックします</string>
 
   <string name="secure_mode">セキュアモード</string>
 
-  <string name="loop_combination">ループが検出されました &#127905;?</string>
+  <string name="loop_combination">繰り返しパターンを検出しました 🎡</string>
 
   <string name="updates">アップデート</string>
 
-  <string name="automatic_check">自動チェック</string>
+  <string name="automatic_check">自動的に確認</string>
 
-  <string name="it_suggests_updating">アップデートが利用可能な場合は、アップデートを提案します</string>
+  <string name="it_suggests_updating">アプリのアップデートが利用可能になったら通知します</string>
 
-  <string name="check_update">アップデートを確認する</string>
+  <string name="check_update">アップデートを確認</string>
 
-  <string name="update_downloaded">アップデートがダウンロードされました</string>
+  <string name="update_downloaded">アップデートをダウンロードしました</string>
 
-  <string name="update_available">利用可能なアップデート</string>
+  <string name="update_available">アップデートがあります</string>
 
   <string name="download">ダウンロード</string>
 
-  <string name="installed_latest_version">インストールされた最新バージョン</string>
+  <string name="installed_latest_version">最新バージョンを使用しています</string>
 
-  <string name="detect_loops">ループの検出</string>
+  <string name="detect_loops">繰り返しを検出</string>
 
-  <string name="pauses_game_when_loop">ループが検出されるとゲームを一時停止します</string>
+  <string name="pauses_game_when_loop">繰り返しパターンを検出するとシミュレーションを一時停止します</string>
 
-  <string name="number_of_skipped_steps">スキップされたステップの数</string>
+  <string name="number_of_skipped_steps">スキップする世代数</string>
 
-  <string name="show_eliminated_cells">削除されたセルを表示</string>
+  <string name="show_eliminated_cells">死滅セルを表示</string>
 
-  <string name="show_eliminated_cells_description">前のステップで削除されたセルを表示</string>
+  <string name="show_eliminated_cells_description">死滅したセルを表示します</string>
 
 </resources>

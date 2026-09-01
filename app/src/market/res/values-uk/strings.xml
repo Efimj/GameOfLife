@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="donations_title">Підтримка</string>
+    <string name="donations_navigation_description">Відкрити сторінку підтримки</string>
+    <string name="donations_description">Якщо вам подобається Game of Life, ви можете підтримати подальшу розробку. Ваш внесок допомагає проєкту розвиватися й показує, що ця робота важлива. Щиро дякую ❤️</string>
+    <string name="donations_subscription_label">Щомісячна підписка</string>
+    <string name="donations_standard_subscription">Прихильник</string>
+    <string name="donations_generous_subscription">Меценат</string>
+    <string name="donations_monthly_label">Щомісячна підтримка</string>
+    <string name="donations_repeatable_label">Одноразовий донат</string>
+    <string name="donations_one_time_name">Підтримати розробку</string>
+    <string name="donations_one_time_description">Ви можете задонатити знову будь-коли.</string>
+    <string name="donations_retry">Повторити</string>
+    <string name="donations_unavailable">Недоступно</string>
+    <string name="donations_active_subscription">Активна підписка</string>
+    <string name="donations_purchase_count">Зроблено донатів: %1$d</string>
+    <string name="donations_purchase_count_label">Донати:</string>
+    <string name="donations_purchase_complete">Дякую за підтримку ❤️</string>
+    <string name="donations_thank_you_title">Дякую! ❤️</string>
+    <string name="donations_thank_you_letter">Ваша підтримка означає для мене набагато більше, ніж просто покупка. Вона показує, що застосунок корисний, що вкладені в нього час і турбота важливі та що мені варто продовжувати. Дякую, що ви з цим проєктом і допомагаєте йому розвиватися.</string>
+    <string name="donations_purchase_pending">Платіж очікує завершення.</string>
+    <string name="donations_service_unavailable">Google Play Billing тимчасово недоступний.</string>
+    <string name="donations_products_unavailable">Варіанти підтримки недоступні для цього облікового запису.</string>
+</resources>

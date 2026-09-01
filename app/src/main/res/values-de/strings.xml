@@ -1,64 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?><resources>
       
-  <string name="app_name">Spiel des Lebens</string>
+  <string name="app_name">Conways Spiel des Lebens</string>
+  <string name="app_version_text">Erstellt von Efim · v</string>
       
   <string name="GameOfLife">Spiel des Lebens</string>
       
   <string name="Settings">Einstellungen</string>
       
-  <string name="Onboarding">Onboarding</string>
+  <string name="Onboarding">Einführung</string>
       
-  <string name="drawer_GameOfLife_description">Spiel des Lebens</string>
+  <string name="drawer_GameOfLife_description">Spiel des Lebens öffnen</string>
       
-  <string name="drawer_Settings_description">Einstellungen</string>
+  <string name="drawer_Settings_description">Einstellungen öffnen</string>
       
-  <string name="drawer_Onboarding_description">Einführung</string>
+  <string name="drawer_Onboarding_description">Einführung öffnen</string>
       
-  <string name="speed_value_100ms">100ms</string>
+  <string name="speed_value_100ms">100 ms</string>
       
-  <string name="speed_value_250ms">250ms</string>
+  <string name="speed_value_250ms">250 ms</string>
       
-  <string name="speed_value_500ms">500ms</string>
+  <string name="speed_value_500ms">500 ms</string>
       
-  <string name="speed_value_750ms">750ms</string>
+  <string name="speed_value_750ms">750 ms</string>
       
-  <string name="speed_value_1s">1s</string>
+  <string name="speed_value_1s">1 s</string>
       
-  <string name="start_game">Spiel beginnen</string>
+  <string name="start_game">Spiel starten</string>
       
-  <string name="menu_button">Menütaste</string>
+  <string name="menu_button">Menü öffnen</string>
       
-  <string name="clear">Klar</string>
+  <string name="clear">Raster leeren</string>
       
-  <string name="free_soul_mode">Kostenloser Soul-Modus</string>
+  <string name="free_soul_mode">Alte tote Zellen entfernen</string>
       
-  <string name="free_soul_mode_description">Gibt an, ob tote Zellen gelöscht werden sollen</string>
+  <string name="free_soul_mode_description">Markierungen toter Zellen nach einer Generation entfernen</string>
       
   <string name="emoji_mode">Emoji-Modus</string>
       
-  <string name="emoji_mode_description">Anstelle der Füllung wird eine Reihe von Emoji-Symbolen verwendet</string>
+  <string name="emoji_mode_description">Lebende und tote Zellen als Emojis anzeigen</string>
       
-  <string name="restart">Neu starten</string>
+  <string name="restart">Simulation zurücksetzen</string>
       
-  <string name="stable_combination">Stabile Kombination &#127881;</string>
+  <string name="stable_combination">Stabiles Muster erkannt 🎉</string>
       
-  <string name="no_one_survived">Niemand hat überlebt &#128128;</string>
+  <string name="no_one_survived">Alle Zellen sind gestorben 💀</string>
       
-  <string name="alive">Lebendig</string>
+  <string name="alive">Lebende Zellen</string>
       
   <string name="deaths">Todesfälle</string>
       
-  <string name="revivals">Wiederbelebungen</string>
+  <string name="revivals">Geburten</string>
       
-  <string name="switch_running_simulation">Laufende Simulation umschalten</string>
+  <string name="switch_running_simulation">Simulation starten oder pausieren</string>
       
-  <string name="set_field_dimensions">Feldabmessungen festlegen</string>
+  <string name="set_field_dimensions">Rastergröße festlegen</string>
       
-  <string name="rows">Reihen</string>
+  <string name="rows">Zeilen</string>
       
-  <string name="columns">Säulen</string>
+  <string name="columns">Spalten</string>
       
-  <string name="one_step_duration">Dauer eines Schritts</string>
+  <string name="one_step_duration">Generationsintervall</string>
       
   <string name="simulation_settings">Simulation</string>
       
@@ -66,128 +67,128 @@
       
   <string name="game_settings">Spiel</string>
   <string name="show_grid">Raster anzeigen</string>
-  <string name="show_grid_description">Zellgrenzen auf dem Spielfeld anzeigen</string>
+  <string name="show_grid_description">Zellgrenzen im Raster anzeigen</string>
       
-  <string name="neighbors_for_reviving">Nachbarn zur Wiederbelebung</string>
+  <string name="neighbors_for_reviving">Für die Geburt erforderliche Nachbarn</string>
       
-  <string name="neighbors_for_surviving">Nachbarn zum Überleben</string>
+  <string name="neighbors_for_surviving">Zum Überleben erforderliche Nachbarn</string>
       
   <string name="rules">Regeln</string>
       
-  <string name="to_default">Zur Standardeinstellung</string>
+  <string name="to_default">Auf Standard zurücksetzen</string>
       
-  <string name="change_theme">Thema ändern</string>
+  <string name="change_theme">Design ändern</string>
       
-  <string name="application">Anwendung</string>
+  <string name="application">Darstellung und Sprache</string>
       
-  <string name="information">Information</string>
+  <string name="information">Über die App</string>
       
-  <string name="rules_set">Regeln festgelegt</string>
+  <string name="rules_set">Regelsatz</string>
       
-  <string name="rate_dialog_title">Hat Ihnen diese App gefallen?</string>
+  <string name="rate_dialog_title">Gefällt dir Game of Life?</string>
       
-  <string name="rate_dialog_description">Bitte teilen Sie Ihre Meinung zur Anwendung mit, indem Sie eine Bewertung hinterlassen. Ihre Bewertung hilft uns, unsere Anwendung für alle Benutzer zu verbessern</string>
+  <string name="rate_dialog_description">Wenn dir Game of Life gefällt, hinterlasse bitte eine Bewertung. Dein Feedback hilft uns, die App für alle zu verbessern.</string>
       
-  <string name="dont_ask_again">Fragen Sie nicht noch einmal</string>
+  <string name="dont_ask_again">Nicht erneut fragen</string>
       
   <string name="later">Später</string>
       
-  <string name="rate">Rate!</string>
+  <string name="rate">App bewerten</string>
   <string name="donation_prompt_title">Game of Life unterstützen</string>
-  <string name="donation_prompt_description">Wenn Ihnen die App gefällt, können Sie ihre Entwicklung unterstützen. Jeder Beitrag hilft dem Projekt zu wachsen und ermöglicht zukünftige Updates.</string>
+  <string name="donation_prompt_description">Wenn dir Game of Life gefällt, kannst du die Weiterentwicklung unterstützen. Jeder Beitrag hilft dem Projekt zu wachsen und ermöglicht zukünftige Updates.</string>
   <string name="donate">Unterstützen</string>
       
-  <string name="custom_rules">Benutzerdefinierte Regeln</string>
+  <string name="custom_rules">Benutzerdefinierter Regelsatz</string>
       
-  <string name="rules_set_description">Wählen Sie verschiedene Regelsätze, um verschiedene Spielszenarien anzuzeigen</string>
-  <string name="save_rules">Aktuelle Regeln speichern</string>
-  <string name="save_rules_title">Regeln speichern</string>
-  <string name="saved_rules_name">Name</string>
+  <string name="rules_set_description">Wähle einen Regelsatz, um verschiedene Muster und Verhaltensweisen zu entdecken</string>
+  <string name="save_rules">Regelsatz speichern</string>
+  <string name="save_rules_title">Regelsatz speichern</string>
+  <string name="saved_rules_name">Name des Regelsatzes</string>
   <string name="save">Speichern</string>
   <string name="saved_rules">Gespeichert</string>
   <string name="standard_rules">Standard</string>
   <string name="delete_saved_rules_title">Regelsatz löschen?</string>
-  <string name="delete_saved_rules_message">„%1$s“ wird gelöscht.</string>
+  <string name="delete_saved_rules_message">„%1$s“ wird dauerhaft gelöscht.</string>
   <string name="cancel">Abbrechen</string>
   <string name="delete">Löschen</string>
       
-  <string name="other">Andere</string>
+  <string name="other">Sonstiges</string>
       
-  <string name="stable">stabil</string>
+  <string name="stable">Stabil</string>
       
-  <string name="chaotic">chaotisch</string>
+  <string name="chaotic">Chaotisch</string>
       
-  <string name="exploding">explodiert</string>
+  <string name="exploding">Explosiv</string>
       
-  <string name="undefined">nicht definiert</string>
+  <string name="undefined">Nicht klassifiziert</string>
       
   <string name="open_in_wikipedia">In Wikipedia öffnen</string>
       
   <string name="JohnHortonConway">John Horton Conway</string>
       
-  <string name="JohnHortonConway_card_description">Der englische Mathematiker hat bedeutende Beiträge zu endlichen Gruppen, zur Knotentheorie, zur Zahlentheorie, zur kombinatorischen Spieltheorie und zur Kodierungstheorie geleistet. Er ist vor allem für die Erfindung des zellulären Automaten namens „Spiel des Lebens“ in der Freizeitmathematik bekannt</string>
+  <string name="JohnHortonConway_card_description">John Horton Conway war ein englischer Mathematiker, der bedeutende Beiträge zur Gruppentheorie, Knotentheorie, Zahlentheorie, kombinatorischen Spieltheorie und Kodierungstheorie leistete. Er ist vor allem als Schöpfer von Conways Spiel des Lebens bekannt.</string>
       
-  <string name="the_game_of_life">Das Spiel des Lebens</string>
+  <string name="the_game_of_life">Conways Spiel des Lebens</string>
       
-  <string name="GameOfLife_large_description">Das Spiel des Lebens, auch einfach als Leben bekannt, ist ein 1970 entwickelter zellularer Automat. Es ist ein Null-Spieler-Spiel, was bedeutet, dass seine Entwicklung durch seinen Ausgangszustand bestimmt wird und keine zusätzlichen Aktionen erforderlich sind. Eine Person interagiert mit dem Spiel des Lebens, erstellt eine anfängliche Konfiguration und beobachtet, wie sie sich entwickelt. Es ist Turing-vollständig und kann einen Universalkonstrukteur oder jede andere Turing-Maschine modellieren</string>
+  <string name="GameOfLife_large_description">Conways Spiel des Lebens, oft einfach „Life“ genannt, ist ein zellulärer Automat, den der Mathematiker John Horton Conway 1970 entwickelte. Es ist ein Nullspieler-Spiel: Sobald das Anfangsmuster festgelegt ist, wird seine Entwicklung vollständig durch die Regeln bestimmt. Das System ist Turing-vollständig und zu universeller Berechnung fähig.</string>
       
   <string name="open_source_project">Open-Source-Projekt</string>
       
-  <string name="open_source_project_description">Den gesamten Quellcode finden Sie auf GitHub ⭐️</string>
+  <string name="open_source_project_description">Den vollständigen Quellcode auf GitHub ansehen ⭐️</string>
       
-  <string name="telegram_community">Treten Sie der Telegram-Community bei</string>
+  <string name="telegram_community">Der Telegram-Community beitreten</string>
       
-  <string name="telegram_community_description">Bleiben Sie mit App-Updates auf dem Laufenden, erhalten Sie frühe Builds und helfen Sie beim Testen neuer Funktionen. Schlagen Sie Ihre Ideen vor, stellen Sie Fragen und erhalten Sie schnelle Antworten</string>
+  <string name="telegram_community_description">Erhalte App-Neuigkeiten, teste frühe Versionen und hilf beim Prüfen neuer Funktionen. Teile Ideen, stelle Fragen und erhalte schnelle Antworten.</string>
       
   <string name="onb_1_headline">John Conway</string>
       
-  <string name="onb_1_description">Entwickelte 1970 diese Simulation der Evolution zellulärer Automaten, genannt „Spiel des Lebens“, bei der jede Zelle auf dem Spielfeld einfachen Regeln folgt</string>
+  <string name="onb_1_description">1970 entwickelte der Mathematiker John Conway das Spiel des Lebens, einen zellulären Automaten, in dem jede Zelle wenigen einfachen Regeln folgt.</string>
       
   <string name="onb_2_headline">Regel 1</string>
       
-  <string name="onb_2_description">Wenn in einer leeren (toten) Zelle genau drei lebende Nachbarn sind, entsteht Leben</string>
+  <string name="onb_2_description">Eine tote Zelle mit genau drei lebenden Nachbarn wird lebendig.</string>
       
   <string name="onb_3_headline">Regel 2</string>
       
-  <string name="onb_3_description">Wenn eine lebende Zelle zwei oder drei lebende Nachbarn hat, lebt sie weiter; andernfalls stirbt die Zelle (aufgrund von Einsamkeit oder Überfüllung)</string>
+  <string name="onb_3_description">Eine lebende Zelle überlebt mit zwei oder drei lebenden Nachbarn. Andernfalls stirbt sie an Unter- oder Überbevölkerung.</string>
 
-  <string name="set_field_scale">Feldmaßstab</string>
+  <string name="set_field_scale">Zellgröße</string>
 
-  <string name="pause">Pause</string>
+  <string name="pause">Pausieren</string>
 
   <string name="close">Schließen</string>
 
   <string name="security">Sicherheit</string>
 
-  <string name="hides_content_prohibits_screen_recording">Versteckt Inhalte, verhindert Bildschirmaufzeichnung</string>
+  <string name="hides_content_prohibits_screen_recording">App-Vorschauen ausblenden und Screenshots sowie Bildschirmaufnahmen blockieren</string>
 
   <string name="secure_mode">Sicherer Modus</string>
 
-  <string name="loop_combination">Schleife erkannt &#127905;</string>
+  <string name="loop_combination">Sich wiederholendes Muster erkannt 🎡</string>
 
-  <string name="updates">Aktualisierungen</string>
+  <string name="updates">Updates</string>
 
-  <string name="automatic_check">Automatische Prüfung</string>
+  <string name="automatic_check">Automatisch prüfen</string>
 
-  <string name="it_suggests_updating">Es wird empfohlen, zu aktualisieren, wenn Updates verfügbar sind</string>
+  <string name="it_suggests_updating">Benachrichtigen, wenn ein App-Update verfügbar ist</string>
 
-  <string name="check_update">Update überprüfen</string>
+  <string name="check_update">Nach Updates suchen</string>
 
-  <string name="update_downloaded">Ein Update wurde gerade heruntergeladen</string>
+  <string name="update_downloaded">Update heruntergeladen</string>
 
   <string name="update_available">Update verfügbar</string>
 
   <string name="download">Herunterladen</string>
 
-  <string name="installed_latest_version">Installierte neueste Version</string>
+  <string name="installed_latest_version">Du verwendest die neueste Version</string>
 
-  <string name="detect_loops">Schleifen erkennen</string>
+  <string name="detect_loops">Zyklen erkennen</string>
 
-  <string name="pauses_game_when_loop">Pausiert das Spiel, wenn eine Schleife erkannt wird</string>
+  <string name="pauses_game_when_loop">Pausiert die Simulation, wenn ein Zyklus erkannt wird</string>
 
-  <string name="number_of_skipped_steps">Anzahl der übersprungenen Schritte</string>
+  <string name="number_of_skipped_steps">Zu überspringende Generationen</string>
 
-  <string name="show_eliminated_cells">Eliminierte Zellen anzeigen</string>
+  <string name="show_eliminated_cells">Tote Zellen anzeigen</string>
 
-  <string name="show_eliminated_cells_description">Zellen anzeigen, die im vorherigen Schritt entfernt wurden</string>
+  <string name="show_eliminated_cells_description">Gestorbene Zellen anzeigen</string>
 </resources>

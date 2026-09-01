@@ -64,7 +64,7 @@ fun LayoutWithNavigationRail(
                         .size(80.0.dp)
                         .padding(horizontal = 10.dp),
                     painter = painterResource(id = R.drawable.ic_app),
-                    contentDescription = "Main app icon",
+                    contentDescription = stringResource(R.string.app_name),
                     contentScale = ContentScale.Fit,
                     colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
 

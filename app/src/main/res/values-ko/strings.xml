@@ -1,64 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?><resources>
       
-  <string name="app_name">인생의 게임</string>
+  <string name="app_name">콘웨이의 생명 게임</string>
+  <string name="app_version_text">Efim 제작 · v</string>
       
-  <string name="GameOfLife">인생의 게임</string>
+  <string name="GameOfLife">생명 게임</string>
       
   <string name="Settings">설정</string>
       
-  <string name="Onboarding">온보딩</string>
+  <string name="Onboarding">소개</string>
       
-  <string name="drawer_GameOfLife_description">인생의 게임</string>
+  <string name="drawer_GameOfLife_description">생명 게임 열기</string>
       
-  <string name="drawer_Settings_description">설정</string>
+  <string name="drawer_Settings_description">설정 열기</string>
       
-  <string name="drawer_Onboarding_description">소개</string>
+  <string name="drawer_Onboarding_description">소개 열기</string>
       
-  <string name="speed_value_100ms">100ms</string>
+  <string name="speed_value_100ms">100 ms</string>
       
-  <string name="speed_value_250ms">250ms</string>
+  <string name="speed_value_250ms">250 ms</string>
       
-  <string name="speed_value_500ms">500ms</string>
+  <string name="speed_value_500ms">500 ms</string>
       
-  <string name="speed_value_750ms">750ms</string>
+  <string name="speed_value_750ms">750 ms</string>
       
-  <string name="speed_value_1s">1초</string>
+  <string name="speed_value_1s">1 s</string>
       
-  <string name="start_game">게임을 시작하다</string>
+  <string name="start_game">시작</string>
       
-  <string name="menu_button">메뉴 버튼</string>
+  <string name="menu_button">메뉴 열기</string>
       
-  <string name="clear">분명한</string>
+  <string name="clear">격자 지우기</string>
       
-  <string name="free_soul_mode">자유로운 영혼 모드</string>
+  <string name="free_soul_mode">오래된 죽은 셀 지우기</string>
       
-  <string name="free_soul_mode_description">죽은 셀을 지워야 하는지 여부를 나타냅니다.</string>
+  <string name="free_soul_mode_description">죽은 셀 표시를 한 세대 후에 제거합니다</string>
       
-  <string name="emoji_mode">이모티콘 모드</string>
+  <string name="emoji_mode">이모지 모드</string>
       
-  <string name="emoji_mode_description">채우기 대신 이모티콘 아이콘 세트가 사용됩니다.</string>
+  <string name="emoji_mode_description">살아 있는 셀과 죽은 셀을 이모지로 표시합니다</string>
       
-  <string name="restart">재시작</string>
+  <string name="restart">시뮬레이션 초기화</string>
       
-  <string name="stable_combination">안정적인 조합 &#127881;</string>
+  <string name="stable_combination">안정된 패턴을 감지했습니다 🎉</string>
       
-  <string name="no_one_survived">아무도 살아남지 못했어요 &#128128;</string>
+  <string name="no_one_survived">모든 셀이 죽었습니다 💀</string>
       
-  <string name="alive">살아 있는</string>
+  <string name="alive">살아 있는 셀</string>
       
-  <string name="deaths">사망자</string>
+  <string name="deaths">사망</string>
       
-  <string name="revivals">부흥</string>
+  <string name="revivals">탄생</string>
       
-  <string name="switch_running_simulation">스위치 실행 시뮬레이션</string>
+  <string name="switch_running_simulation">시뮬레이션 시작 또는 일시중지</string>
       
-  <string name="set_field_dimensions">필드 크기 설정</string>
+  <string name="set_field_dimensions">격자 크기 설정</string>
       
   <string name="rows">행</string>
       
   <string name="columns">열</string>
       
-  <string name="one_step_duration">한 단계 지속 시간</string>
+  <string name="one_step_duration">세대 간격</string>
       
   <string name="simulation_settings">시뮬레이션</string>
       
@@ -66,92 +67,92 @@
       
   <string name="game_settings">게임</string>
   <string name="show_grid">격자 표시</string>
-  <string name="show_grid_description">게임 필드에 셀 경계 표시</string>
+  <string name="show_grid_description">격자에 셀 경계를 표시합니다</string>
       
-  <string name="neighbors_for_reviving">부흥을 위한 이웃</string>
+  <string name="neighbors_for_reviving">탄생에 필요한 이웃 수</string>
       
-  <string name="neighbors_for_surviving">생존을 위한 이웃</string>
+  <string name="neighbors_for_surviving">생존에 필요한 이웃 수</string>
       
   <string name="rules">규칙</string>
       
-  <string name="to_default">기본값으로</string>
+  <string name="to_default">기본값으로 재설정</string>
       
   <string name="change_theme">테마 변경</string>
       
-  <string name="application">애플리케이션</string>
+  <string name="application">화면 및 언어</string>
       
-  <string name="information">정보</string>
+  <string name="information">앱 정보</string>
       
   <string name="rules_set">규칙 세트</string>
       
-  <string name="rate_dialog_title">이 앱이 마음에 드셨나요?</string>
+  <string name="rate_dialog_title">Game of Life를 즐기고 계신가요?</string>
       
-  <string name="rate_dialog_description">리뷰를 남겨 애플리케이션에 대한 의견을 공유해주세요. 귀하의 평가는 모든 사용자를 위해 애플리케이션을 개선하는 데 도움이 됩니다.</string>
+  <string name="rate_dialog_description">Game of Life가 마음에 드셨다면 리뷰를 남겨 주세요. 여러분의 의견은 더 나은 앱을 만드는 데 도움이 됩니다.</string>
       
-  <string name="dont_ask_again">다시 묻지 마세요</string>
+  <string name="dont_ask_again">다시 묻지 않기</string>
       
   <string name="later">나중에</string>
       
-  <string name="rate">비율!</string>
+  <string name="rate">앱 평가</string>
   <string name="donation_prompt_title">Game of Life 후원</string>
-  <string name="donation_prompt_description">앱이 마음에 드셨다면 개발을 후원해 주세요. 모든 후원은 프로젝트의 성장과 향후 업데이트에 큰 도움이 됩니다.</string>
+  <string name="donation_prompt_description">Game of Life가 마음에 드셨다면 지속적인 개발을 후원할 수 있습니다. 모든 후원은 프로젝트의 성장과 향후 업데이트에 큰 도움이 됩니다.</string>
   <string name="donate">후원하기</string>
       
-  <string name="custom_rules">맞춤 규칙</string>
+  <string name="custom_rules">사용자 규칙 세트</string>
       
-  <string name="rules_set_description">다양한 게임 시나리오를 보려면 다양한 규칙 세트를 선택하세요.</string>
-  <string name="save_rules">현재 규칙 저장</string>
-  <string name="save_rules_title">규칙 저장</string>
-  <string name="saved_rules_name">이름</string>
+  <string name="rules_set_description">규칙 세트를 선택하여 다양한 패턴과 동작을 살펴보세요</string>
+  <string name="save_rules">규칙 세트 저장</string>
+  <string name="save_rules_title">규칙 세트 저장</string>
+  <string name="saved_rules_name">규칙 세트 이름</string>
   <string name="save">저장</string>
   <string name="saved_rules">저장됨</string>
   <string name="standard_rules">표준</string>
   <string name="delete_saved_rules_title">규칙 세트를 삭제할까요?</string>
-  <string name="delete_saved_rules_message">“%1$s”이 삭제됩니다.</string>
+  <string name="delete_saved_rules_message">“%1$s”이(가) 영구적으로 삭제됩니다.</string>
   <string name="cancel">취소</string>
   <string name="delete">삭제</string>
       
-  <string name="other">다른</string>
+  <string name="other">기타</string>
       
-  <string name="stable">안정적인</string>
+  <string name="stable">안정형</string>
       
-  <string name="chaotic">혼란스러운</string>
+  <string name="chaotic">혼돈형</string>
       
-  <string name="exploding">폭발하다</string>
+  <string name="exploding">폭발형</string>
       
-  <string name="undefined">한정되지 않은</string>
+  <string name="undefined">미분류</string>
       
-  <string name="open_in_wikipedia">위키피디아에서 열기</string>
+  <string name="open_in_wikipedia">Wikipedia에서 열기</string>
       
   <string name="JohnHortonConway">존 호튼 콘웨이</string>
       
-  <string name="JohnHortonConway_card_description">영국의 수학자로서 유한군, 매듭 이론, 수론, 조합 게임 이론, 코딩 이론에 지대한 공헌을 했습니다. 특히 그는 레크리에이션 수학에서 생명의 게임(Game of Life)이라고 불리는 세포 자동 장치를 발명한 것으로 유명합니다.</string>
+  <string name="JohnHortonConway_card_description">존 호턴 콘웨이는 군론, 매듭 이론, 수론, 조합 게임 이론 및 부호 이론에 크게 기여한 영국의 수학자입니다. 콘웨이의 생명 게임을 만든 것으로 널리 알려져 있습니다.</string>
       
-  <string name="the_game_of_life">인생의 게임</string>
+  <string name="the_game_of_life">콘웨이의 생명 게임</string>
       
-  <string name="GameOfLife_large_description">라이프(Life)라고도 알려진 게임 오브 라이프(Game of Life)는 1970년에 개발된 세포 자동 장치입니다. 이는 제로 플레이어 게임입니다. 즉, 초기 상태에 따라 진화가 결정되며 추가 작업이 필요하지 않습니다. 사람은 Game of Life와 상호 작용하여 초기 구성을 만들고 그것이 어떻게 발전하는지 관찰합니다. 튜링 완전체이며 범용 생성자 또는 기타 튜링 기계를 모델링할 수 있습니다.</string>
+  <string name="GameOfLife_large_description">콘웨이의 생명 게임은 흔히 간단히 “Life”라고 불리는 셀룰러 오토마톤으로, 수학자 존 호턴 콘웨이가 1970년에 고안했습니다. 플레이어가 없는 게임으로, 초기 패턴을 정하면 이후의 변화는 규칙에 의해 완전히 결정됩니다. 이 시스템은 튜링 완전하며 범용 계산이 가능합니다.</string>
       
-  <string name="open_source_project">오픈소스 프로젝트</string>
+  <string name="open_source_project">오픈 소스 프로젝트</string>
       
-  <string name="open_source_project_description">GitHub ⭐️에서 전체 소스 코드를 찾을 수 있습니다.</string>
+  <string name="open_source_project_description">GitHub에서 전체 소스 코드 보기 ⭐️</string>
       
-  <string name="telegram_community">텔레그램 커뮤니티에 가입하세요</string>
+  <string name="telegram_community">Telegram 커뮤니티 참여</string>
       
-  <string name="telegram_community_description">앱 업데이트를 계속 확인하고, 초기 빌드를 받고, 새로운 기능 테스트를 도와주세요. 아이디어를 제안하고, 질문하고, 빠른 답변을 얻으세요.</string>
+  <string name="telegram_community_description">앱 소식을 확인하고, 미리 보기 빌드를 사용해 보고, 새 기능 테스트에 참여하세요. 아이디어를 공유하고 질문하여 빠른 답변을 받을 수 있습니다.</string>
       
-  <string name="onb_1_headline">존 콘웨이 박사</string>
+  <string name="onb_1_headline">존 콘웨이</string>
       
-  <string name="onb_1_description">1970년에 게임 필드의 각 셀이 간단한 규칙을 따르는 \"생명의 게임\"이라고 불리는 세포 오토마타 진화 시뮬레이션을 고안했습니다.</string>
+  <string name="onb_1_description">1970년 수학자 존 콘웨이는 각 셀이 몇 가지 간단한 규칙을 따르는 셀룰러 오토마톤인 생명 게임을 고안했습니다.</string>
       
   <string name="onb_2_headline">규칙 1</string>
       
-  <string name="onb_2_description">빈 (죽은) 셀에 정확히 3명의 이웃이 살아 있으면 생명이 탄생한다</string>
+  <string name="onb_2_description">죽은 셀은 살아 있는 이웃이 정확히 3개이면 살아납니다.</string>
       
   <string name="onb_3_headline">규칙 2</string>
       
-  <string name="onb_3_description">살아있는 세포에 두세 개의 살아있는 이웃이 있으면 계속해서 살아갑니다. 그렇지 않으면 세포가 죽습니다 (외로움이나 과밀로 인해).</string>
+  <string name="onb_3_description">살아 있는 셀은 살아 있는 이웃이 2개 또는 3개이면 생존합니다. 그렇지 않으면 과소 또는 과밀로 죽습니다.</string>
 
-  <string name="set_field_scale">현장 규모</string>
+  <string name="set_field_scale">셀 크기</string>
 
   <string name="pause">일시중지</string>
 
@@ -159,36 +160,36 @@
 
   <string name="security">보안</string>
 
-  <string name="hides_content_prohibits_screen_recording">콘텐츠를 숨기고 화면 녹화를 금지합니다.</string>
+  <string name="hides_content_prohibits_screen_recording">앱 미리 보기를 숨기고 스크린샷과 화면 녹화를 차단합니다</string>
 
   <string name="secure_mode">보안 모드</string>
 
-  <string name="loop_combination">루프가 감지되었습니다 &#127905;</string>
+  <string name="loop_combination">반복 패턴을 감지했습니다 🎡</string>
 
   <string name="updates">업데이트</string>
 
-  <string name="automatic_check">자동 확인</string>
+  <string name="automatic_check">자동으로 확인</string>
 
-  <string name="it_suggests_updating">업데이트가 있으면 업데이트를 제안합니다</string>
+  <string name="it_suggests_updating">앱 업데이트를 사용할 수 있을 때 알림을 보냅니다</string>
 
   <string name="check_update">업데이트 확인</string>
 
-  <string name="update_downloaded">업데이트가 방금 다운로드되었습니다.</string>
+  <string name="update_downloaded">업데이트를 다운로드했습니다</string>
 
   <string name="update_available">업데이트 가능</string>
 
   <string name="download">다운로드</string>
 
-  <string name="installed_latest_version">최신 버전이 설치됨</string>
+  <string name="installed_latest_version">최신 버전을 사용 중입니다</string>
 
-  <string name="detect_loops">루프 감지</string>
+  <string name="detect_loops">반복 감지</string>
 
-  <string name="pauses_game_when_loop">루프가 감지되면 게임을 일시 중지합니다.</string>
+  <string name="pauses_game_when_loop">반복 패턴을 감지하면 시뮬레이션을 일시중지합니다</string>
 
-  <string name="number_of_skipped_steps">건너뛴 단계 수</string>
+  <string name="number_of_skipped_steps">건너뛸 세대 수</string>
 
-  <string name="show_eliminated_cells">제거된 셀 표시</string>
+  <string name="show_eliminated_cells">죽은 셀 표시</string>
 
-  <string name="show_eliminated_cells_description">이전 단계에서 제거된 셀 표시</string>
+  <string name="show_eliminated_cells_description">죽은 셀을 표시합니다</string>
 
 </resources>

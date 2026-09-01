@@ -1,133 +1,116 @@
 <resources>
-    <string name="app_name">Game of Life</string>
+    <string name="app_name">Conway\'s Game of Life</string>
+    <string name="app_version_text">Created by Efim · v</string>
 
     <string name="GameOfLife">Game of Life</string>
     <string name="Settings">Settings</string>
-    <string name="Onboarding">Onboarding</string>
-    <string name="drawer_GameOfLife_description">Game of life</string>
-    <string name="drawer_Settings_description">Settings</string>
-    <string name="drawer_Onboarding_description">Introduction</string>
+    <string name="Onboarding">Introduction</string>
+    <string name="drawer_GameOfLife_description">Open Game of Life</string>
+    <string name="drawer_Settings_description">Open settings</string>
+    <string name="drawer_Onboarding_description">Open introduction</string>
 
-    <string name="speed_value_100ms">100ms</string>
-    <string name="speed_value_250ms">250ms</string>
-    <string name="speed_value_500ms">500ms</string>
-    <string name="speed_value_750ms">750ms</string>
-    <string name="speed_value_1s">1s</string>
+    <string name="speed_value_100ms">100 ms</string>
+    <string name="speed_value_250ms">250 ms</string>
+    <string name="speed_value_500ms">500 ms</string>
+    <string name="speed_value_750ms">750 ms</string>
+    <string name="speed_value_1s">1 s</string>
 
     <string name="start_game">Start game</string>
-    <string name="menu_button">Menu button</string>
-    <string name="clear">Clear</string>
-    <string name="free_soul_mode">Free soul mode</string>
-    <string name="free_soul_mode_description">Indicates whether dead cells should be cleared</string>
+    <string name="menu_button">Open menu</string>
+    <string name="clear">Clear grid</string>
+    <string name="free_soul_mode">Clear old dead cells</string>
+    <string name="free_soul_mode_description">Remove dead-cell markers after one generation</string>
     <string name="emoji_mode">Emoji mode</string>
-    <string name="emoji_mode_description">Instead of fill, a set of emoji icons is used</string>
-    <string name="restart">Restart</string>
-    <string name="stable_combination">Stable combination 🎉</string>
-    <string name="no_one_survived">No one survived 💀</string>
-    <string name="alive">Alive</string>
+    <string name="emoji_mode_description">Display live and dead cells as emoji</string>
+    <string name="restart">Reset simulation</string>
+    <string name="stable_combination">Stable pattern detected 🎉</string>
+    <string name="no_one_survived">All cells have died 💀</string>
+    <string name="alive">Live cells</string>
     <string name="deaths">Deaths</string>
-    <string name="revivals">Revivals</string>
-    <string name="switch_running_simulation">Switch running simulation</string>
-    <string name="set_field_dimensions">Set field dimensions</string>
+    <string name="revivals">Births</string>
+    <string name="switch_running_simulation">Start or pause simulation</string>
+    <string name="set_field_dimensions">Set grid dimensions</string>
     <string name="rows">Rows</string>
     <string name="columns">Columns</string>
-    <string name="one_step_duration">One step duration</string>
+    <string name="one_step_duration">Generation interval</string>
     <string name="simulation_settings">Simulation</string>
     <string name="language">Language</string>
     <string name="game_settings">Game</string>
     <string name="show_grid">Show grid</string>
-    <string name="show_grid_description">Display cell boundaries on the game field</string>
-    <string name="neighbors_for_reviving">Neighbors for reviving</string>
-    <string name="neighbors_for_surviving">Neighbors for survival</string>
+    <string name="show_grid_description">Display cell boundaries on the grid</string>
+    <string name="neighbors_for_reviving">Neighbors required for birth</string>
+    <string name="neighbors_for_surviving">Neighbors required for survival</string>
     <string name="rules">Rules</string>
-    <string name="to_default">To default</string>
+    <string name="to_default">Reset to default</string>
     <string name="change_theme">Change theme</string>
-    <string name="application">Application</string>
-    <string name="information">Information</string>
-    <string name="rules_set">Rules set</string>
-    <string name="rate_dialog_title">Did you like this app?</string>
-    <string name="rate_dialog_description">Please share your opinion about the application by leaving a review. Your
-        rating will help us improve our application for all users
-    </string>
+    <string name="application">Appearance and language</string>
+    <string name="information">About</string>
+    <string name="rules_set">Rule set</string>
+    <string name="rate_dialog_title">Enjoying Game of Life?</string>
+    <string name="rate_dialog_description">If you enjoy Game of Life, please leave a review. Your feedback helps make the app better for everyone.</string>
     <string name="dont_ask_again">Don\'t ask again</string>
     <string name="later">Later</string>
-    <string name="rate">Rate!</string>
+    <string name="rate">Rate app</string>
     <string name="donation_prompt_title">Support Game of Life</string>
-    <string name="donation_prompt_description">If you enjoy the app, you can support its development. Every contribution helps the project grow and makes future updates possible.</string>
+    <string name="donation_prompt_description">If you enjoy Game of Life, you can support its continued development. Every contribution helps the project grow and makes future updates possible.</string>
     <string name="donate">Donate</string>
-    <string name="custom_rules">Custom rules</string>
-    <string name="rules_set_description">Choose different rulesets to see different game scenarios</string>
-    <string name="save_rules">Save current rules</string>
-    <string name="save_rules_title">Save rules</string>
-    <string name="saved_rules_name">Name</string>
+    <string name="custom_rules">Custom rule set</string>
+    <string name="rules_set_description">Choose a rule set to explore different patterns and behaviors</string>
+    <string name="save_rules">Save rule set</string>
+    <string name="save_rules_title">Save rule set</string>
+    <string name="saved_rules_name">Rule set name</string>
     <string name="save">Save</string>
     <string name="saved_rules">Saved</string>
     <string name="standard_rules">Standard</string>
     <string name="delete_saved_rules_title">Delete rule set?</string>
-    <string name="delete_saved_rules_message">“%1$s” will be deleted.</string>
+    <string name="delete_saved_rules_message">“%1$s” will be permanently deleted.</string>
     <string name="cancel">Cancel</string>
     <string name="delete">Delete</string>
     <string name="other">Other</string>
 
-    <string name="stable">stable</string>
-    <string name="chaotic">chaotic</string>
-    <string name="exploding">exploding</string>
-    <string name="undefined">undefined</string>
+    <string name="stable">Stable</string>
+    <string name="chaotic">Chaotic</string>
+    <string name="exploding">Explosive</string>
+    <string name="undefined">Unclassified</string>
 
-    <string name="open_in_wikipedia">Open in wikipedia</string>
+    <string name="open_in_wikipedia">Open in Wikipedia</string>
     <string name="JohnHortonConway">John Horton Conway</string>
-    <string name="JohnHortonConway_card_description">English mathematician, has made significant
-        contributions to finite groups, knot theory, number theory, combinatorial game theory, and coding theory.
-        Notably, he is known for inventing the cellular automaton called the Game of Life in recreational mathematics
-    </string>
+    <string name="JohnHortonConway_card_description">John Horton Conway was an English mathematician who made major contributions to group theory, knot theory, number theory, combinatorial game theory, and coding theory. He is widely known for creating Conway\'s Game of Life.</string>
 
-    <string name="the_game_of_life">The Game of Life</string>
-    <string name="GameOfLife_large_description">The Game of Life, also known simply as "Life", is a cellular automaton
-        developed in 1970. It is a zero-player game, meaning that its evolution is determined by its initial state and
-        does not require additional actions. A person interacts with the Game of Life, creating an initial configuration
-        and watching how it develops. It is Turing complete and can model a universal constructor or any other Turing
-        machine
-    </string>
+    <string name="the_game_of_life">Conway\'s Game of Life</string>
+    <string name="GameOfLife_large_description">Conway\'s Game of Life, often simply called "Life", is a cellular automaton devised by mathematician John Horton Conway in 1970. It is a zero-player game: once the initial pattern is set, its evolution is determined entirely by the rules. The system is Turing-complete and capable of universal computation.</string>
 
-    <string name="open_source_project">Open source project</string>
-    <string name="open_source_project_description">You can find the entire source code on GitHub ⭐️</string>
+    <string name="open_source_project">Open-source project</string>
+    <string name="open_source_project_description">View the complete source code on GitHub ⭐️</string>
 
-    <string name="telegram_community">Join the Telegram Community</string>
-    <string name="telegram_community_description">Stay tuned with app updates, get early builds, and help out testing
-        new features. Suggest your ideas, ask questions and get fast answers
-    </string>
+    <string name="telegram_community">Join the Telegram community</string>
+    <string name="telegram_community_description">Follow app updates, try early builds, and help test new features. Share your ideas, ask questions, and get quick answers.</string>
 
-    <string name="onb_1_headline">Dr. John Conway</string>
-    <string name="onb_1_description">Devised this simulation of cellular automata evolution in 1970, called the \"Game
-        of Life\", where each cell on the game field follows simple rules
-    </string>
+    <string name="onb_1_headline">John Conway</string>
+    <string name="onb_1_description">In 1970, mathematician John Conway devised the Game of Life, a cellular automaton in which every cell follows a few simple rules.</string>
     <string name="onb_2_headline">Rule 1</string>
-    <string name="onb_2_description">In an empty (dead) cell, if there are exactly three living neighbors, life is
-        born
-    </string>
+    <string name="onb_2_description">A dead cell with exactly three live neighbors becomes alive.</string>
     <string name="onb_3_headline">Rule 2</string>
-    <string name="onb_3_description">If a living cell has two or three living neighbors, it continues to live;
-        otherwise, the cell dies (due to "loneliness" or "overcrowding")
-    </string>
-    <string name="set_field_scale">Field scale</string>
+    <string name="onb_3_description">A live cell survives if it has two or three live neighbors. Otherwise, it dies from underpopulation or overpopulation.</string>
+    <string name="set_field_scale">Cell size</string>
     <string name="pause">Pause</string>
     <string name="close">Close</string>
     <string name="security">Security</string>
-    <string name="hides_content_prohibits_screen_recording">Hides content, prohibits screen recording</string>
+    <string name="hides_content_prohibits_screen_recording">Hide app previews and block screenshots and screen recordings</string>
     <string name="secure_mode">Secure mode</string>
-    <string name="loop_combination">Loop detected 🎡</string>
+    <string name="loop_combination">Repeating pattern detected 🎡</string>
     <string name="updates">Updates</string>
-    <string name="automatic_check">Automatic check</string>
-    <string name="it_suggests_updating">It suggests updating if updates are available</string>
-    <string name="check_update">Check update</string>
-    <string name="update_downloaded">An update has just been downloaded</string>
+    <string name="automatic_check">Check automatically</string>
+    <string name="it_suggests_updating">Notify you when an app update is available</string>
+    <string name="check_update">Check for updates</string>
+    <string name="update_downloaded">Update downloaded</string>
     <string name="update_available">Update available</string>
     <string name="download">Download</string>
-    <string name="installed_latest_version">Installed latest version</string>
+    <string name="installed_latest_version">You are using the latest version</string>
     <string name="detect_loops">Detect loops</string>
     <string name="pauses_game_when_loop">Pauses the game when a loop is detected</string>
-    <string name="number_of_skipped_steps">Number of skipped steps</string>
-    <string name="show_eliminated_cells">Show eliminated cells</string>
-    <string name="show_eliminated_cells_description">Show cells that were eliminated in the previous step</string>
+    <string name="number_of_skipped_steps">Generations to skip</string>
+    <string name="show_eliminated_cells">Show dead cells</string>
+    <string name="show_eliminated_cells_description">Display cells that have died</string>
 
 </resources>
