@@ -146,7 +146,7 @@ fun InformationContent() {
                         LargeInformationCard(
                             modifier = Modifier
                                 .sharedElement(
-                                    state = rememberSharedContentState(key = cardInfo.id),
+                                    sharedContentState = rememberSharedContentState(key = cardInfo.id),
                                     animatedVisibilityScope = this@AnimatedVisibility
                                 ),
                             image = cardInfo.image,
@@ -236,7 +236,7 @@ fun SharedTransitionScope.CardDetails(
                 ) {
                     ExpandedCard(
                         modifier = Modifier.sharedElement(
-                            state = rememberSharedContentState(key = targetCard.id),
+                            sharedContentState = rememberSharedContentState(key = targetCard.id),
                             animatedVisibilityScope = this@AnimatedContent
                         ),
                         card = targetCard,

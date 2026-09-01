@@ -1,16 +1,16 @@
-import org.jetbrains.kotlin.gradle.plugin.mpp.pm20.util.archivesName
-
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
     id("androidx.baselineprofile")
-    kotlin("plugin.serialization") version "1.9.24"
+    id("org.jetbrains.kotlin.plugin.compose")
+    id("org.jetbrains.kotlin.plugin.serialization")
 }
 val javaVersion = JavaVersion.toVersion(libs.versions.jvmTarget.get())
 
-android {
-    var isFoss = false
+base {
+    archivesName = "game-of-life-${libs.versions.versionName.get()}"
+}
 
+android {
     namespace = "com.jobik.gameoflife"
     compileSdk = libs.versions.androidCompileSdk.get().toIntOrNull()
 
@@ -27,7 +27,6 @@ android {
         }
         android.buildFeatures.buildConfig = true
 
-        archivesName.set("game-of-life-$versionName${if (isFoss) "-foss" else ""}")
     }
 
     bundle {
@@ -45,7 +44,6 @@ android {
     productFlavors {
         create("foss") {
             dimension = "app"
-            isFoss = true
             extra.set("gmsEnabled", false)
         }
         create("market") {
@@ -79,16 +77,8 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = javaVersion.toString()
-    }
-
     buildFeatures {
         compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
 
     packaging {
@@ -99,6 +89,9 @@ android {
 }
 
 dependencies {
+
+    implementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(platform(libs.androidx.compose.bom))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -126,8 +119,6 @@ dependencies {
     implementation(libs.material)
 
     // Compose navigation
-    implementation(libs.androidx.navigation.compose)
-
     // Splash API
     implementation(libs.androidx.core.splashscreen)
 
