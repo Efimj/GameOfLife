@@ -2,6 +2,7 @@ package com.jobik.gameoflife.activity
 
 import android.content.Context
 import android.os.Bundle
+import android.os.SystemClock
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -33,10 +34,14 @@ class MainActivity : ComponentActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splashStartedAt = SystemClock.uptimeMillis()
+        val splashScreen = installSplashScreen()
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+        splashScreen.setKeepOnScreenCondition {
+            SystemClock.uptimeMillis() - splashStartedAt < SplashDurationMillis
+        }
         actionBar?.hide()
-        installSplashScreen()
 
         if (settings.checkUpdates) {
             checkAppUpdate(
@@ -70,5 +75,9 @@ class MainActivity : ComponentActivity() {
         }
 
         AppCounter(this).updateOnCreateCounter()
+    }
+
+    private companion object {
+        const val SplashDurationMillis = 350L
     }
 }

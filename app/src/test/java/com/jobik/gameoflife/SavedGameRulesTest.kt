@@ -6,7 +6,9 @@ import com.jobik.gameoflife.screens.game.GameRuleSet
 import com.jobik.gameoflife.screens.game.SavedGameRules
 import com.jobik.gameoflife.screens.game.ruleSetId
 import com.jobik.gameoflife.screens.game.toRuleNotation
+import com.jobik.gameoflife.util.settings.Localization
 import com.jobik.gameoflife.util.settings.SettingsState
+import com.jobik.gameoflife.util.settings.settingsJson
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -14,6 +16,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.util.Locale
 
 class SavedGameRulesTest {
     @Test
@@ -69,5 +72,24 @@ class SavedGameRulesTest {
         val restored = Json.decodeFromString<GameSettings>(Json.encodeToString(settings))
 
         assertEquals("saved-rule-id", restored.selectedRuleSetId)
+    }
+
+    @Test
+    fun selectedLocalizationSurvivesSystemLocaleChange() {
+        val originalLocale = Locale.getDefault()
+
+        try {
+            Locale.setDefault(Locale.forLanguageTag("ru"))
+            val stored = settingsJson.encodeToString(
+                SettingsState(localization = Localization.RU)
+            )
+
+            Locale.setDefault(Locale.ENGLISH)
+            val restored = settingsJson.decodeFromString<SettingsState>(stored)
+
+            assertEquals(Localization.RU, restored.localization)
+        } finally {
+            Locale.setDefault(originalLocale)
+        }
     }
 }

@@ -8,6 +8,10 @@ import com.jobik.gameoflife.SharedPreferencesKeys.Settings
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
+internal val settingsJson = Json {
+    encodeDefaults = true
+}
+
 object SettingsManager {
     private var _settings: MutableState<SettingsState> = mutableStateOf(SettingsState())
     var state: MutableState<SettingsState>
@@ -46,7 +50,7 @@ object SettingsManager {
         settings: SettingsState,
         context: Context
     ) {
-        val storedString = Json.encodeToString(settings)
+        val storedString = settingsJson.encodeToString(settings)
         val store = context.getSharedPreferences(AppSettings, Context.MODE_PRIVATE)
         store.edit().putString(Settings, storedString).apply()
     }
@@ -58,7 +62,7 @@ object SettingsManager {
             SettingsState()
         } else {
             try {
-                Json.decodeFromString<SettingsState>(savedSettings)
+                settingsJson.decodeFromString<SettingsState>(savedSettings)
             } catch (e: Exception) {
                 SettingsState()
             }
